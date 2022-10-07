@@ -169,14 +169,6 @@ journalctl -u lighthousebeacon -f -n 100
 ```
 For exit from logs press `CTRL+C`. Now your node should start synchronization proccess. 
 
-#### Check synchronization status
-
-By command bellow you can check the synchronization status of your goerli node
-```
-curl -X POST http://localhost:8545 -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}'
-```
-If output show `{"jsonrpc":"2.0","id":1,"result":false}` that means that your node goerli synchronized.
-
 #
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
