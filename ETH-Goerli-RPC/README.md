@@ -175,5 +175,19 @@ curl -X POST http://localhost:8545 -H "Content-Type: application/json" --data '{
 ```
 If output show `{"jsonrpc":"2.0","id":1,"result":false}` that means that your node goerli synchronized.
 
+#
+
+👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
+
+👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
+
+🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
+
+🔰[Our WebSite](cryptosailors.tech)
+
+🔰[Our Twitter](https://twitter.com/Crypto_Sailors)
+
+#### Guide created by 
+Pavel-LV | C.Sailors#7698 / @SeaInvestor
 
 
