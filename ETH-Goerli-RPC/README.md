@@ -74,6 +74,7 @@ ExecStart=geth \
 
 [Install]
 WantedBy=default.target
+EOF
 ```
 Start your Goerli node
 ```
@@ -147,6 +148,7 @@ ExecStart=/usr/local/bin/lighthouse bn \
 
 [Install]
 WantedBy=multi-user.target
+EOF
 ```
 Start your lighthousebeacon node
 ```
