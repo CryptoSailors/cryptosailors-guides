@@ -1,5 +1,5 @@
 <p align="center">
- <img src="![image](https://miro.medium.com/max/4800/1*witM08dfHB43FdR4yoJdNw.png)"width="900"/></a>
+ <img src="https://miro.medium.com/max/4800/1*witM08dfHB43FdR4yoJdNw.png"width="900"/></a>
 </p>
 
 # In this Guide we will install a Manta Trusted Setup
