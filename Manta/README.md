@@ -57,6 +57,8 @@ If you have it like in the picture above 👆 then you can start filling out the
 
 👉[GitHub](https://github.com/Manta-Network/manta-rs/tree/main/manta-trusted-setup)
 
+👉[Form](https://mantanetwork.typeform.com/TrustedSetup?typeform-source=seainvestor.medium.com)
+
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
 🔰[Our WebSite](cryptosailors.tech)
