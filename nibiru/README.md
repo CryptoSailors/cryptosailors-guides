@@ -100,9 +100,21 @@ persistent_peers = "37713248f21c37a2f022fbbb7228f02862224190@35.243.130.198:2665
 
 Press `CTRL+X,Y,Enter` to exit from nano.
 
-## 6. Set the necessary values
+## 7. Download addressbook
+
 ```
-sed -i ‘s/minimum-gas-prices =.*/minimum-gas-prices = “0.025unibi”/g’ $HOME/.nibid/config/app.toml
+rm -rf .nibid/config/addrbook.json
+```
+```
+wget https://github.com/CryptoSailors/node-guides/releases/download/Nibiru/addrbook.json
+```
+```
+mv addrbook.json .nibid/config/
+```
+
+## 7. Set the necessary values
+```
+sed -i 's/minimum-gas-prices =.*/minimum-gas-prices = "0.025unibi"/g' $HOME/.nibid/config/app.toml
 ```
 ```
 CONFIG_TOML="$HOME/.nibid/config/config.toml"
@@ -116,7 +128,7 @@ CONFIG_TOML="$HOME/.nibid/config/config.toml"
  sed -i 's/skip_timeout_commit =.*/skip_timeout_commit = false/g' $CONFIG_TOML
 ```
 
-## 7. Create a service file and start the node
+## 8. Create a service file and start the node
 ```
 tee /etc/systemd/system/nibidd.service > /dev/null <<EOF
 [Unit]
@@ -144,7 +156,7 @@ journalctl -u nibidd -f -n 100
 ```
 Press `CTRL+X,Y,Enter` to exit from the logs
 
-## 8. Requesting tokens from the faucet
+## 9. Requesting tokens from the faucet
 
 While the node is synchronizing, we can request tokens from the faucet. To do this, we need our new generated wallet.
 ```
@@ -156,7 +168,7 @@ Go to [Discord](https://discord.com/invite/BVCw2cYmhu) and request tokens throug
  <img src="https://miro.medium.com/max/4800/1*N4rbaV9__zJhJJKonQygnw.png"width="600"/></a>
 </p>
 
-## 9. Creating a Validator
+## 10. Creating a Validator
 
 To start, wait for a full synchronization. To make sure that your node is synchronizated, run the command below.
 ```
@@ -193,7 +205,7 @@ Change `<VAL_ADDRESS>` on address from command above.
 ```
 nibid tx staking delegate <VAL_ADDRESS> 8000000unibi --chain-id nibiru-testnet-1 --from wallet --gas-prices 0.025unibi
 ```
-## 10 Backup your node
+## 11 Backup your node
 
 After successfully creating a validator, you must take care of `priv_validator_key.json`. Without it you will not be able to restore the validator. It can be found in the folder `.nibid/config`
 
@@ -201,7 +213,7 @@ After successfully creating a validator, you must take care of `priv_validator_k
  <img src="https://miro.medium.com/max/4800/1*QO2j4zovK9ZP2jqAccs2eQ.png"width="600"/></a>
 </p>
 
-## 11. Deleting a node
+## 12. Deleting a node
 
 ```
 systemctl stop nibidd
