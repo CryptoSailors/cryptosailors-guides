@@ -100,7 +100,7 @@ persistent_peers = "37713248f21c37a2f022fbbb7228f02862224190@35.243.130.198:2665
 
 Press `CTRL+X,Y,Enter` to exit from nano.
 
-## 7. Download addressbook
+## 6. Download addressbook
 
 ```
 rm -rf .nibid/config/addrbook.json
