@@ -59,7 +59,7 @@ Chanhe `YOUR_NAME` on your name
 GITOPIA_MONIKER=YOUR_NAME
 ```
 ```
-GITPOIA_CHAIN_ID=gitopia-janus-testnet-2
+GITOPIA_CHAIN_ID=gitopia-janus-testnet-2
 ```
 ```
 gitopiad init --chain-id "$GITOPIA_CHAIN_ID" "$GITOPIA_MONIKER"
@@ -150,88 +150,40 @@ gitopiad tx staking create-validator \
 ```
 Check you validator through the [explorer](https://explorer.gitopia.com/)
 
-## 9. Requesting tokens from the faucet
-
-While the node is synchronizing, we can request tokens from the faucet. To do this, we need our new generated wallet.
-```
-nibid keys list
-```
-Go to [Discord](https://discord.com/invite/BVCw2cYmhu) and request tokens through Faucet
-
-<p align="center">
- <img src="https://miro.medium.com/max/4800/1*N4rbaV9__zJhJJKonQygnw.png"width="600"/></a>
-</p>
-
-## 10. Creating a Validator
-
-To start, wait for a full synchronization. To make sure that your node is synchronizated, run the command below.
-```
-nibid status 2>&1 | jq .SyncInfo
-```
-If the command gives out `true` - it means that synchronization is still in process
-If the command gives `false` - then you are synchronized and you can start creating the validator.
-
-<p align="center">
- <img src="https://miro.medium.com/max/4800/1*MXaRUb-QF7n-DjVWIybDNg.png"width="600"/></a>
-</p>
-
-Creating a validator. Change `<YOUR_VALIDATOR_NAME>` on your name
-```
-nibid tx staking create-validator \
---amount 1000000unibi \
---commission-max-change-rate "0.1" \
---commission-max-rate "0.20" \
---commission-rate "0.1" \
---min-self-delegation "1" \
---pubkey=$(nibid tendermint show-validator) \
---moniker <YOUR_VALIDATOR_NAME> \
---chain-id nibiru-testnet-1 \
---gas-prices 0.025unibi \ 
---from wallet
-```
-Check yourself through the [explorer](https://nibiru.explorers.guru/validators).
-
-Take out your vallopers address and delegate the remaining tokens to your validator.
-```
-nibid keys show wallet --bech val
-```
-Change `<VAL_ADDRESS>` on address from command above.
-```
-nibid tx staking delegate <VAL_ADDRESS> 8000000unibi --chain-id nibiru-testnet-1 --from wallet --gas-prices 0.025unibi
-```
 ## 11 Backup your node
 
-After successfully creating a validator, you must take care of `priv_validator_key.json`. Without it you will not be able to restore the validator. It can be found in the folder `.nibid/config`
+After successfully creating a validator, you must back up your `priv_validator_key.json`. Without it you will not be able to restore the validator. It can be found in the folder `.gitopia/config`
 
 <p align="center">
- <img src="https://miro.medium.com/max/4800/1*QO2j4zovK9ZP2jqAccs2eQ.png"width="600"/></a>
+ <img src="https://miro.medium.com/max/640/1*NdVJlC93R5QZxyHlGq5skw.png"width="600"/></a>
 </p>
 
 ## 12. Deleting a node
 
 ```
-systemctl stop nibidd
+systemctl stop gitopiad
 ```
 ```
-rm -rf /etc/systemd/system/nibidd.service
-rm -rf /usr/bin/nibid
-rm -rf nibiru
-rm -rf .nibid
+rm -rf /etc/systemd/system/gitopiad.service
+rm -rf /usr/bin/gitopiad
+rm -rf gitopia
+rm -rf .gitopia
+rm -rf /usr/local/bin/git-gitopia
 ```
 #
-👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
+👉[NetCup](https://www.netcup.eu/bestellen/produkt.php?produkt=2902)- with coupon new users will get discount of 5 EU - `36nc16679836760`
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[Discord](https://discord.com/invite/BVCw2cYmhu) 
+👉[Discord](https://discord.com/invite/UchwUrgbjy) 
 
-👉[WebSite](https://nibiru.fi/)
+👉[WebSite](https://gitopia.com/)
 
-👉[Official guide](https://docs.nibiru.fi/)
+👉[Official guide](https://docs.gitopia.com/validator-overview)
 
-👉[GitHub](https://github.com/NibiruChain)
+👉[Gitopia](https://gitopia.com/gitopia/gitopia/releases)
 
-👉[Nibiru Explorer](https://nibiru.explorers.guru/)
+👉[Gitopia Explorer](https://explorer.gitopia.com/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
