@@ -65,7 +65,7 @@ You should see version v0.15.0
 ## 4.Create a wallet
 Change `<moniker-name>` on your name
 ```
-nibid init <moniker-name> --chain-id=nibiru-testnet-1 --home $HOME/.nibid
+nibid init <moniker-name> --chain-id=nibiru-testnet-1 
 ```
 ```
 nibid keys add wallet
