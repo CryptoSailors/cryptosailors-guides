@@ -6,12 +6,23 @@
 
 ## 1. Requirements.
 Official 
-- 4 CPU
+- 8 CPU
 - 16 GB RAM
 - 1000 GB SSD
-- I recommend hosting [netcup.eu](https://www.netcup.eu/bestellen/produkt.php?produkt=2902)- with coupon new users will get discount of 5 EU - 36nc16679836760
+#### My Recomandation
+- I recommend Dedicated Ryzen 7 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
+## 2. Server preparation.
+```
+sudo apt update && sudo apt upgrade -y
+```
+```
+sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
+```
+Instal Golang Go according [this instruction](https://github.com/CryptoSailors/Tools/tree/main/Install%20Golang%20%22Go%22)
+
+## 3. Node installation.
 ```
 git clone https://github.com/ava-labs/avalanchego
 cd avalanchego
@@ -20,6 +31,7 @@ cd avalanchego
 mkdir build
 cd build
 ```
+Check the latest [release](https://github.com/ava-labs/avalanchego/tags). At the time of writing this guide, the latest release is `1.9.3`
 ```
 wget https://github.com/ava-labs/avalanchego/releases/download/v1.9.3/avalanchego-linux-amd64-v1.9.3.tar.gz
 tar -xvzf avalanchego-linux-amd64-v1.9.3.tar.gz
@@ -29,6 +41,8 @@ mv avalanchego-v1.9.3 avalanchego-launch
 rm -rf avalanchego-linux-amd64-v1.9.3.tar.gz
 cd ~ 
 ```
+
+## 4. Launch a node
 ```
 tee /etc/systemd/system/avaxd.service > /dev/null <<EOF
 
@@ -52,79 +66,24 @@ systemctl daemon-reload
 systemctl enable avaxd
 systemctl start avaxd
 ```
+Check logs
 ```
 journalctl -fu avaxd -o cat -n 100
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Wait for full synchronization. It will take approximately 5 days.
 
 #
-👉[NetCup](https://www.netcup.eu/bestellen/produkt.php?produkt=2902)- with coupon new users will get discount of 5 EU - `36nc16679836760`
+👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[Discord](https://discord.com/invite/UchwUrgbjy) 
+👉[WebSite](https://www.avax.network/community)
 
-👉[WebSite](https://gitopia.com/)
+👉[Official guide](https://docs.avax.network/nodes/build/run-avalanche-node-manually)
 
-👉[Official guide](https://docs.gitopia.com/validator-overview)
+👉[Github](https://github.com/ava-labs)
 
-👉[Gitopia](https://gitopia.com/gitopia/gitopia/releases)
-
-👉[Gitopia Explorer](https://explorer.gitopia.com/)
+👉[Avalanche Explorer](https://snowtrace.io/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
