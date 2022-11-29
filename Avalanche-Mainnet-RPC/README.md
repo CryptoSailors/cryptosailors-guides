@@ -86,8 +86,16 @@ sudo mv /home/avalanche/temp/mainnet /home/avalanche/.avalanchego/db/
 systemctl start avalanchego
 ```
 ```
+systemctl enable avalanchego
+```
+```
 journalctl -fu avalanchego -o cat -n 100
 ```
+Check that logs works correctly whitout errors and finaly check status of our node.
+```
+curl -X POST --data '{"jsonrpc": "2.0","method": "info.isBootstrapped","params":{"chain":"C"},"id":1}' -H 'content-type:application/json;' localhost:9650/ext/info
+```
+If node show `{"jsonrpc":"2.0","result":{"isBootstrapped":true},"id":1}` that means that node are full synched.
 
 #
 👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
