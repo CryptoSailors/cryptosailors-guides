@@ -35,6 +35,9 @@ usermod -a -G systemd-journal avalanche
 ```
 sudo su - avalanche
 ```
+```
+cd ~
+```
 
 ## 4. Node installation.
 ```
