@@ -43,6 +43,20 @@ After installation, the terminal will prompt you to enter your Twitter and e-mai
 
 If you have it like in the picture above 👆 then you can start filling out the [form](https://mantanetwork.typeform.com/TrustedSetup?typeform-source=seainvestor.medium.com). The Twitter and email address on the form must be the same as the one you entered in the terminal. That's all for now, wait for further instructions from the Manta Network.
 
+## 5. Contribute
+```
+cd ~
+```
+```
+mv /root/manta-rs/target/release/groth16_phase2_client /usr/bin/manta-trusted-setup
+chmod +x /usr/bin/manta-trusted-setup
+```
+```
+manta-trusted-setup contribute
+```
+<p align="center">
+ <img src="https://miro.medium.com/max/4800/1*Owu26yqqUzzP69IAWrQIsQ.webp"width="900"/></a>
+</p>
 #
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
