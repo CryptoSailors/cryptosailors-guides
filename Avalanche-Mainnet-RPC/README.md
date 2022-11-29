@@ -22,58 +22,71 @@ sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential g
 ```
 Instal Golang Go according [this instruction](https://github.com/CryptoSailors/Tools/tree/main/Install%20Golang%20%22Go%22)
 
-## 3. Node installation.
+## 3. Create your own user
 ```
-git clone https://github.com/ava-labs/avalanchego
-cd avalanchego
-```
-```
-mkdir build
-cd build
-```
-Check the latest [release](https://github.com/ava-labs/avalanchego/tags). At the time of writing this guide, the latest release is `1.9.3`
-```
-wget https://github.com/ava-labs/avalanchego/releases/download/v1.9.3/avalanchego-linux-amd64-v1.9.3.tar.gz
-tar -xvzf avalanchego-linux-amd64-v1.9.3.tar.gz
+sudo adduser avalanche
 ```
 ```
-mv avalanchego-v1.9.3 avalanchego-launch
-rm -rf avalanchego-linux-amd64-v1.9.3.tar.gz
-cd ~ 
+sudo usermod -aG sudo avalanche
+```
+```
+usermod -a -G systemd-journal avalanche
+```
+```
+sudo su - avalanche
 ```
 
-## 4. Launch a node
+## 4. Node installation.
 ```
-tee /etc/systemd/system/avaxd.service > /dev/null <<EOF
+wget -nd -m https://raw.githubusercontent.com/ava-labs/avalanche-docs/master/scripts/avalanchego-installer.sh
+chmod 755 avalanchego-installer.sh
+```
+```
+./avalanchego-installer.sh
+```
+```
+sudo systemctl status avalanchego
+```
+```
+sudo journalctl -u avalanchego -f
+```
+## 5. Download latest snapshot
+```
+sudo mkdir temp
+cd temp
+```
+Check the latest [snapshot here](http://186.233.187.26/)
+```
+sudo wget <INSERT_LINK_FROM DOWNLOAD>
 
-[Unit]
-Description=Avalanche
-After=network-online.target
-
-[Service]
-User=root
-ExecStart=/root/avalanchego/build/avalanchego-launch/avalanchego
-Restart=always
-RestartSec=3
-LimitNOFILE=40000
-[Install]
-
-WantedBy=multi-user.target
-EOF
+## 6. Launch a node
+```
+tar -xf <avalanche_mainnet_....tar>
 ```
 ```
-systemctl daemon-reload
-systemctl enable avaxd
-systemctl start avaxd
+sudo systemctl stop avalanchego
 ```
-Check logs
 ```
-journalctl -fu avaxd -o cat -n 100
+cd ~
 ```
-Wait for full synchronization. It will take approximately 5 days.
+```
+sudo mv /home/avalanche/.avalanchego/db /home/avalanche/.avalanchego/db_old
+```
+```
+sudo mkdir /home/avalanche/.avalanchego/db
+```
+```
+sudo mv /home/avalanche/temp/mainnet /home/avalanche/.avalanchego/db/
+```
+```
+systemctl start avalanchego
+```
+```
+journalctl -fu avalanchego -o cat -n 100
+```
 
 #
-👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
+👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
