@@ -97,6 +97,13 @@ curl -X POST --data '{"jsonrpc": "2.0","method": "info.isBootstrapped","params":
 ```
 If node show `{"jsonrpc":"2.0","result":{"isBootstrapped":true},"id":1}` that means that node are full synched.
 
+## 7 (Optional) Delete unnecessary files
+```
+rm -rf temp
+```
+```
+rm -rf .avalanchego/old_db
+```
 #
 👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
 
