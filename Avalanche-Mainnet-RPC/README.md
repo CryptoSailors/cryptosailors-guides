@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://i.ibb.co/fqcYJXC/Avalanche.jpg"/></a>
+ <img src="https://i.postimg.cc/LsNKcDDB/Avalanche.jpg"/></a>
 </p>
 
 # In this Guide we will install a Avalanche mainnet node as an RPC
