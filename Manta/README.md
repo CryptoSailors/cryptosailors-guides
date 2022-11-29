@@ -55,7 +55,7 @@ chmod +x /usr/bin/manta-trusted-setup
 manta-trusted-setup contribute
 ```
 <p align="center">
- <img src="https://miro.medium.com/max/4800/1*Owu26yqqUzzP69IAWrQIsQ.webp"width="900"/></a>
+ <img src="https://miro.medium.com/max/4800/1*1_kZGZeSF_fwCk6_VhazbA.webp"width="900"/></a>
 </p>
 #
 
