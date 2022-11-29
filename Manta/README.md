@@ -51,13 +51,28 @@ cd ~
 mv /root/manta-rs/target/release/groth16_phase2_client /usr/bin/manta-trusted-setup
 chmod +x /usr/bin/manta-trusted-setup
 ```
+Creating a screen and making a contribution
+```
+screen -S manta
+```
 ```
 manta-trusted-setup contribute
+```
+To exit the screen, press CTRL+A,D. To return and see your turn, type:
+```
+screen -rx manta
 ```
 <p align="center">
  <img src="https://miro.medium.com/max/4800/1*1_kZGZeSF_fwCk6_VhazbA.webp"width="900"/></a>
 </p>
 #
+
+# 6 Delete Trusted Setup
+```
+rm -rf /usr/bin/manta-trusted-setup
+
+rm -rf manta-rs
+```
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
 
