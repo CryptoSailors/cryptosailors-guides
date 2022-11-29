@@ -58,6 +58,7 @@ cd temp
 Check the latest [snapshot here](http://186.233.187.26/)
 ```
 sudo wget <INSERT_LINK_FROM DOWNLOAD>
+```
 
 ## 6. Launch a node
 ```
