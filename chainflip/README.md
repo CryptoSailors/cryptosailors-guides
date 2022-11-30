@@ -228,19 +228,33 @@ sudo chainflip-cli \
     --config-path /etc/chainflip/config/Default.toml \
     vanity-name my-discord-username
 ```
+## 9. Auction
 
+Chainflip has an auction system. The auction involves selecting validators every epoch (14 days), and those validator nodes that have more tokens go through. So, even if you forage 7k tokens (that's how many tokens you need on November 28 to get into the active set), it doesn't mean that you'll become a validator.
+
+## 10. Deleting a node
+```
+sudo systemctl stop chainflip-engine
+sudo systemctl stop chainflip-node
+sudo rm -rf /etc/apt/keyrings 
+sudo rm -rf /etc/apt/sources.list.d/chainflip.list
+sudo rm -rf /etc/chainflip
+sudo rm -rf /etc/logrotate.d/chainflip
+```
 #
 👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[WebSite](https://www.avax.network/community)
+👉[Discord](https://discord.com/invite/aZr8jbx2zh)
 
-👉[Official guide](https://docs.avax.network/nodes/build/run-avalanche-node-manually)
+👉[WebSite](https://chainflip.io/)
 
-👉[Github](https://github.com/ava-labs)
+👉[Official guide](https://docs.chainflip.io/perseverance-validator-documentation/)
 
-👉[Avalanche Explorer](https://snowtrace.io/)
+👉[Chainflip Explorer](https://blocks-perseverance.chainflip.io/)
+
+👉[Swap Dex](https://tflip-dex.thunderhead.world/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
