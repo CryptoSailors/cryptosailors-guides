@@ -92,19 +92,19 @@ cat /etc/chainflip/keys/node_key_file
 First you need to go to [Infura](https://app.infura.io/login), and create a project in Goerli. Then take out two addresses (HTTPS and WEBSOCKETS), which you then have to insert in the editor. Follow the pictures.
 
 <p align="center">
- <img src="https://miro.medium.com/max/4800/1*5i9zgkbFi-7XpRQwowwESQ.webp"/></a>
+ <img src="https://miro.medium.com/max/4800/1*5i9zgkbFi-7XpRQwowwESQ.webp"width="600"/></a>
 </p>
 
 <p align="center">
- <img src="https://miro.medium.com/max/720/1*Ld1g5z3C1R4O3yfqmwcD4A.webp"/></a>
+ <img src="https://miro.medium.com/max/720/1*Ld1g5z3C1R4O3yfqmwcD4A.webp"width="600"/></a>
 </p>
 
 <p align="center">
- <img src="https://miro.medium.com/max/4800/1*6fE-S7eNsoQsuJU6ty7yjA.webp"/></a>
+ <img src="https://miro.medium.com/max/4800/1*6fE-S7eNsoQsuJU6ty7yjA.webp"width="600"/></a>
 </p>
 
 <p align="center">
- <img src="https://miro.medium.com/max/4800/1*COXTGXY_HUnDbvCRuua1lw.webp"/></a>
+ <img src="https://miro.medium.com/max/4800/1*COXTGXY_HUnDbvCRuua1lw.webp"width="600"/></a>
 </p>
 
 Infura will give us two Endpoints. Now we need to insert them into the file and run the node.
@@ -142,6 +142,92 @@ private_key_file = "/etc/chainflip/keys/ethereum_key_file"
 db_file = "/etc/chainflip/data.db"
 ```
 Save the changes with CTRL+X,Y,Enter.
+
+## 6. Start synchronization
+
+```
+sudo systemctl start chainflip-node
+sudo systemctl enable chainflip-node
+sudo systemctl status chainflip-node
+```
+```
+tail -f /var/log/chainflip-node.log
+```
+<b>IMPORTANT</b>: wait for full synchronization. Otherwise you screw up all the work. Full synchronization will look like this:
+
+<p align="center">
+ <img src="https://miro.medium.com/max/4800/1*hkg-T_Ea5LwZIGVfExG9QQ.webp"width="600"/></a>
+</p>
+
+After full synchronization, start the second service.
+
+```
+sudo systemctl start chainflip-engine
+sudo systemctl enable chainflip-engine
+sudo systemctl status chainflip-engine
+```
+```
+tail -f /var/log/chainflip-engine.log
+```
+You will have Errors in your logs. This is normal. We now need to stake the tokens into our node.
+```
+sudo nano /etc/logrotate.d/chainflip
+```
+In the editor, paste everything below
+```
+/var/log/chainflip-*.log {
+  rotate 7
+  daily
+  dateext
+  dateformat -%Y-%m-%d
+  missingok
+  notifempty
+  copytruncate
+  nocompress
+}
+```
+To exit the nano editor, press CTRL+X,Y, Enter.
+```
+sudo chmod 644 /etc/logrotate.d/chainflip
+```
+```
+sudo chown root.root /etc/logrotate.d/chainflip
+```
+
+## 7. Claim test tokens, register your own validator and stake tokens.
+
+We add the tFLIP token to Metamask. Contract address `0x8e71CEe1679bceFE1D426C7f23EAdE9d68e62650`
+
+- Go to their [Swap Dex](https://tflip-dex.thunderhead.world/) and change gETH to tFLIP. We need at least 10 tFLIPs to register a node.
+- Go to their [application](https://stake-perseverance.chainflip.io/auctions). Connect a wallet with test tokens and go to the My Nodes tab.
+- Click on ADD Node. You will open a tab "Register New Node".
+- At the "Validator Public Key (SS58)" line  enter your SS58 key, which you have generated in the beginning. At the Stake line, enter the number of tokens you want to stake and click the Stake button. You need to confirm two transactions.
+
+## 8. Registering the validator
+
+Register with the following command
+```
+sudo chainflip-cli \
+      --config-path /etc/chainflip/config/Default.toml \
+      register-account-role Validator
+```
+Activate our validator
+```
+sudo chainflip-cli \
+    --config-path /etc/chainflip/config/Default.toml \
+    activate
+```
+Rotating keys
+```
+sudo chainflip-cli \
+    --config-path /etc/chainflip/config/Default.toml rotate
+```
+Changing our name. Replace `my-discord-username` with your name.
+```
+sudo chainflip-cli \
+    --config-path /etc/chainflip/config/Default.toml \
+    vanity-name my-discord-username
+```
 
 #
 👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
