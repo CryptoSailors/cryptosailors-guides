@@ -97,12 +97,24 @@ curl -X POST --data '{"jsonrpc": "2.0","method": "info.isBootstrapped","params":
 ```
 If node show `{"jsonrpc":"2.0","result":{"isBootstrapped":true},"id":1}` that means that node are full synched.
 
+Your RPC address will be `http://YOUR_IP_ADDRESS:9650/ext/bc/C/rpc`
+
 ## 7 (Optional) Delete unnecessary files
 ```
 rm -rf temp
 ```
 ```
 rm -rf .avalanchego/old_db
+```
+## 8 Delete your node
+```
+systemctl stop avalanchego
+```
+```
+rm -rf /etc/systemd/system/avalanchego.service
+```
+```
+rm -rf /home/avalanche
 ```
 #
 👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
