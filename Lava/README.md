@@ -49,7 +49,20 @@ mv GHFkqmTzpdNLDd6T/testnet-1/genesis_json/genesis.json .lava/config
 
 ## 5. Node Configuration
 ```
+peers="d9703df8c0e5eef6c0766217d611a13ed6ee8d95@88.99.33.248:26656"
+```
+```
 sed -i 's|seeds =.*|seeds = "3a445bfdbe2d0c8ee82461633aa3af31bc2b4dc0@prod-pnet-seed-node.lavanet.xyz:26656,e593c7a9ca61f5616119d6beb5bd8ef5dd28d62d@prod-pnet-seed-node2.lavanet.xyz:26656"|g' $HOME/.lava/config/config.toml
+sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/.lava/config/config.toml
+```
+```
+#### Setup the latest Snapshot on your node
+```
+cd ~
+```
+```
+wget http://88.99.33.248:8000/lavadata.tar.gz -O - | tar -xzf - -C ~/.lava
+```
 ```
 #### Optional (You can skip this step)
 If you run more than one cosmos node, you can change a ports using the comands bellow.
