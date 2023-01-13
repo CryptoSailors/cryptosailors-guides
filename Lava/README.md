@@ -1,3 +1,7 @@
+<p align="center">
+ <img src="https://i.postimg.cc/CxsxpvY3/banner.jpg"/></a>
+</p>
+
 # In this Guide we will install a Lava testnet node.
 
 ## 1. Requirements.
