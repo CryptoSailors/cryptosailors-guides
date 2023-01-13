@@ -149,15 +149,13 @@ sudo rm -rf /etc/logrotate.d/chainflip
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[Discord](https://discord.com/invite/aZr8jbx2zh)
+👉[Discord](https://discord.gg/BBgprSw2vn)
 
-👉[WebSite](https://chainflip.io/)
+👉[WebSite](https://www.lavanet.xyz/)
 
-👉[Official guide](https://docs.chainflip.io/perseverance-validator-documentation/)
+👉[Official guide](https://docs.lavanet.xyz/)
 
-👉[Chainflip Explorer](https://blocks-perseverance.chainflip.io/)
-
-👉[Swap Dex](https://tflip-dex.thunderhead.world/)
+👉[Lava Explorer](https://lava.explorers.guru/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
