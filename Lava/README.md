@@ -62,7 +62,6 @@ cd ~
 ```
 wget http://88.99.33.248:8000/lavadata.tar.gz -O - | tar -xzf - -C ~/.lava
 ```
-```
 #### Optional (You can skip this step)
 If you run more than one cosmos node, you can change a ports using the comands bellow.
 ```
