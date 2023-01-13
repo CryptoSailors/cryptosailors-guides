@@ -147,17 +147,17 @@ sudo rm -rf /etc/systemd/system/lavad.service
 sudo rm -rf GHFkqmTzpdNLDd6T
 ```
 #
-🐬Address book: d9703df8c0e5eef6c0766217d611a13ed6ee8d95@88.99.33.248:26656
+**🐬Address book:** d9703df8c0e5eef6c0766217d611a13ed6ee8d95@88.99.33.248:26656
 
-🐬Public RPC: 88.99.33.248:26657
+**🐬Public RPC:** http://88.99.33.248:26657/
 
-🐬Peer: d9703df8c0e5eef6c0766217d611a13ed6ee8d95@88.99.33.248:26656
+**🐬Peer:** d9703df8c0e5eef6c0766217d611a13ed6ee8d95@88.99.33.248:26656
 
-🐬API: http://88.99.33.248:1317/
+**🐬API:** http://88.99.33.248:1317/
 
-🐬gRPC: http://88.99.33.248:9090/
+**🐬gRPC:** http://88.99.33.248:9090/
 
-🐬SnapShot: http://88.99.33.248:8000/lavadata.tar.gz
+**🐬SnapShot:** http://88.99.33.248:8000/lavadata.tar.gz
 #
 👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
 
