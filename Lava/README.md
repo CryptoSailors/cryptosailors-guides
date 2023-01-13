@@ -147,7 +147,7 @@ sudo rm -rf /etc/systemd/system/lavad.service
 sudo rm -rf GHFkqmTzpdNLDd6T
 ```
 #
-**🐬Address book:** d9703df8c0e5eef6c0766217d611a13ed6ee8d95@88.99.33.248:26656
+**🐬Address book:** wget -O $HOME/.lava/config/addrbook.json https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Lava/addrbook.json
 
 **🐬Public RPC:** http://88.99.33.248:26657/
 
