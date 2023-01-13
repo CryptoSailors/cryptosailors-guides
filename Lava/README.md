@@ -109,23 +109,35 @@ $request lava@1p3ejzk5k...
 ```
 
 <p align="center">
- <img src="https://i.postimg.cc/9Fkw8XCD/Untitled.jpg"/></a>
+ <img src="https://i.postimg.cc/9Fkw8XCD/Untitled.jpg"width="600"/></a>
 </p>
 
-## 8. Registering the validator
-
-## 9. Auction
-
-Chainflip has an auction system. The auction involves selecting validators every epoch (14 days), and those validator nodes that have more tokens go through. So, even if you forage 7k tokens (that's how many tokens you need on November 28 to get into the active set), it doesn't mean that you'll become a validator.
-
-## 10. Deleting a node
+## 8. Сreate own validator
 ```
-sudo systemctl stop chainflip-engine
-sudo systemctl stop chainflip-node
-sudo rm -rf /etc/apt/keyrings 
-sudo rm -rf /etc/apt/sources.list.d/chainflip.list
-sudo rm -rf /etc/chainflip
-sudo rm -rf /etc/logrotate.d/chainflip
+lavad tx staking create-validator \
+    --amount="10000ulava" \
+    --pubkey=$(lavad tendermint show-validator --home "$HOME/.lava/") \
+    --moniker="Your_Validator_Name" \
+    --chain-id=lava-testnet-1 \
+    --commission-rate="0.10" \
+    --commission-max-rate="0.20" \
+    --commission-max-change-rate="0.01" \
+    --min-self-delegation="10000" \
+    --gas="auto" \
+    --gas-adjustment "1.5" \
+    --gas-prices="0.05ulava" \
+    --home "$HOME/.lava/" \
+    --from=wallet
+```
+Finaly you should see your validator in [Block Explorer]((https://lava.explorers.guru/) on Active or Inactive set.
+
+## 9. Deleting a node
+```
+sudo systemctl stop lavad
+sudo rm -rf .lava
+sudo rm -rf lava
+sudo rm -rf /go/bin/lavad
+sudo rm -rf /etc/systemd/system/lavad.service
 ```
 #
 👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
