@@ -2,7 +2,7 @@
  <img src="https://i.postimg.cc/CxsxpvY3/banner.jpg"/></a>
 </p>
 
-# In this Guide we will install a Lava testnet node.
+# Lava testnet node guide installation.
 
 ## 1. Requirements.
 #### Official 
@@ -117,7 +117,7 @@ The comment bellow will give you a wallet address and mnemonic phrase, which you
 ```
 lavad keys add wallet
 ```
-Ask a test tokens sombody in [Discord](https://discord.gg/BBgprSw2vn). Becouse currently faucet work with issue
+Ask a test tokens sombody in [Discord](https://discord.gg/BBgprSw2vn). Becouse currently faucet work with issue.
 ## 8. Сreate own validator
 ```
 lavad tx staking create-validator \
@@ -135,7 +135,7 @@ lavad tx staking create-validator \
     --home "$HOME/.lava/" \
     --from=wallet
 ```
-Finaly you should see your validator in [Block Explorer]((https://lava.explorers.guru/) on Active or Inactive set.
+Finaly you should see your validator in [Block Explorer](https://lava.explorers.guru/) on Active or Inactive set.
 
 ## 9. Deleting a node
 ```
