@@ -72,7 +72,7 @@ Description=Lava Node
 After=network-online.target
 
 [Service]
-User=lava
+User=$User
 ExecStart=$(which lavad) start
 Restart=always
 RestartSec=180
