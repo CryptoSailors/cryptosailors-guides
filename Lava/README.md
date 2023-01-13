@@ -48,60 +48,55 @@ mv GHFkqmTzpdNLDd6T/testnet-1/genesis_json/genesis.json .lava/config
 ```
 
 ## 5. Node Configuration
+```
 sed -i 's|seeds =.*|seeds = "3a445bfdbe2d0c8ee82461633aa3af31bc2b4dc0@prod-pnet-seed-node.lavanet.xyz:26656,e593c7a9ca61f5616119d6beb5bd8ef5dd28d62d@prod-pnet-seed-node2.lavanet.xyz:26656"|g' $HOME/.lava/config/config.toml
+```
+#### Optional (You can skip this step)
+You you run more than one cosmos node, you can change a ports using the comands bellow.
+```
+COSMOS_PORT=12
+echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.profile
+source $HOME/.profile
+```
+```
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${COSMOS_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${COSMOS_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${COSMOS_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${COSMOS_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${COSMOS_PORT}660\"%" $HOME/.lava/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${COSMOS_PORT}317\"%; s%^address = \":8080\"%address = \":${COSMOS_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${COSMOS_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${COSMOS_PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${COSMOS_PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${COSMOS_PORT}546\"%" $HOME/.lava/config/app.toml
+sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:${COSMOS_PORT}657\"%" $HOME/.lava/config/client.toml
+```
 
+#### Create a systemd file for lava node
+```
+sudo tee /etc/systemd/system/lavad.service > /dev/null <<EOF
+[Unit]
+Description=Lava Node
+After=network-online.target
 
+[Service]
+User=lava
+ExecStart=$(which lavad) start
+Restart=always
+RestartSec=180
+LimitNOFILE=infinity
+LimitNPROC=infinity
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+                                                        
 ## 6. Start synchronization
-
 ```
-sudo systemctl start chainflip-node
-sudo systemctl enable chainflip-node
-sudo systemctl status chainflip-node
+sudo systemctl daemon-reload
+sudo systemctl start lavad
+sudo systemctl enable lavad
+sudo journalctl -u lavad -f -n 100
 ```
+Wait until your node is fully synchronized. To check your synchronization status use command bellow.
 ```
-tail -f /var/log/chainflip-node.log
+lavad status 2>&1 | jq .SyncInfo
 ```
-<b>IMPORTANT</b>: wait for full synchronization. Otherwise you screw up all the work. Full synchronization will look like this:
-
-<p align="center">
- <img src="https://miro.medium.com/max/4800/1*hkg-T_Ea5LwZIGVfExG9QQ.webp"width="600"/></a>
-</p>
-
-After full synchronization, start the second service.
-
-```
-sudo systemctl start chainflip-engine
-sudo systemctl enable chainflip-engine
-sudo systemctl status chainflip-engine
-```
-```
-tail -f /var/log/chainflip-engine.log
-```
-You will have Errors in your logs. This is normal. We now need to stake the tokens into our node.
-```
-sudo nano /etc/logrotate.d/chainflip
-```
-In the editor, paste everything below
-```
-/var/log/chainflip-*.log {
-  rotate 7
-  daily
-  dateext
-  dateformat -%Y-%m-%d
-  missingok
-  notifempty
-  copytruncate
-  nocompress
-}
-```
-To exit the nano editor, press CTRL+X,Y, Enter.
-```
-sudo chmod 644 /etc/logrotate.d/chainflip
-```
-```
-sudo chown root.root /etc/logrotate.d/chainflip
-```
-
+- If node show `false` - that means that you are synched and can contine. 
+- If node show `true` - that means that you are **NOT** synched and should wait.
 ## 7. Claim test tokens, register your own validator and stake tokens.
 
 We add the tFLIP token to Metamask. Contract address `0x8e71CEe1679bceFE1D426C7f23EAdE9d68e62650`
