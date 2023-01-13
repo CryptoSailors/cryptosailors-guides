@@ -43,7 +43,8 @@ git clone https://github.com/K433QLtr6RA9ExEq/GHFkqmTzpdNLDd6T.git
 mv GHFkqmTzpdNLDd6T/testnet-1/genesis_json/genesis.json .lava/config
 ```
 
-## Node Configuration
+## 5. Node Configuration
+sed -i 's|seeds =.*|seeds = "3a445bfdbe2d0c8ee82461633aa3af31bc2b4dc0@prod-pnet-seed-node.lavanet.xyz:26656,e593c7a9ca61f5616119d6beb5bd8ef5dd28d62d@prod-pnet-seed-node2.lavanet.xyz:26656"|g' $HOME/.lava/config/config.toml
 
 
 ## 6. Start synchronization
