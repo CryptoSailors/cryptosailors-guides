@@ -57,10 +57,10 @@ sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/.lava
 ```
 #### Setup the latest Snapshot on your node
 ```
-cd ~
+wget http://88.99.33.248:8000/lavadata.tar.gz
 ```
 ```
-wget http://88.99.33.248:8000/lavadata.tar.gz -O - | tar -xzf - -C ~/.lava
+tar -C $HOME/ -zxvf lavadata.tar.gz --strip-components 1
 ```
 #### Optional (You can skip this step)
 If you run more than one cosmos node, you can change a ports using the comands bellow.
