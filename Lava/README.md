@@ -179,3 +179,4 @@ sudo rm -rf GHFkqmTzpdNLDd6T
 
 #### Guide created by 
 Pavel-LV | C.Sailors#7698 / @SeaInvestor
+oxes#8647 / @oxess
