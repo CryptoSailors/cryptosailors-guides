@@ -51,12 +51,18 @@ mv GHFkqmTzpdNLDd6T/testnet-1/genesis_json/genesis.json .lava/config
 ```
 sed -i 's|seeds =.*|seeds = "3a445bfdbe2d0c8ee82461633aa3af31bc2b4dc0@prod-pnet-seed-node.lavanet.xyz:26656,e593c7a9ca61f5616119d6beb5bd8ef5dd28d62d@prod-pnet-seed-node2.lavanet.xyz:26656"|g' $HOME/.lava/config/config.toml
 ```
+```
+wget -O $HOME/.lava/config/addrbook.json https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Lava/addrbook.json
+```
 #### Setup the latest Snapshot on your node
 ```
 wget http://88.99.33.248:8000/lavadata.tar.gz
 ```
 ```
 tar -C $HOME/ -zxvf lavadata.tar.gz --strip-components 1
+```
+```
+rm -rf lavadata.tar.gz
 ```
 #### Optional (You can skip this step)
 If you run more than one cosmos node, you can change a ports using the comands bellow.
@@ -111,15 +117,7 @@ The comment bellow will give you a wallet address and mnemonic phrase, which you
 ```
 lavad keys add wallet
 ```
-Proced to the [Discord](https://discord.gg/BBgprSw2vn) and request testnet ulava tokens in fauced thread.
-```
-$request lava@1p3ejzk5k...
-```
-
-<p align="center">
- <img src="https://i.postimg.cc/9Fkw8XCD/Untitled.jpg"width="600"/></a>
-</p>
-
+Ask a test tokens sombody in [Discord](https://discord.gg/BBgprSw2vn). Becouse currently faucet work with issue
 ## 8. Сreate own validator
 ```
 lavad tx staking create-validator \
