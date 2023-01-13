@@ -97,40 +97,23 @@ lavad status 2>&1 | jq .SyncInfo
 ```
 - If node show `false` - that means that you are synched and can contine. 
 - If node show `true` - that means that you are **NOT** synched and should wait.
-## 7. Claim test tokens, register your own validator and stake tokens.
 
-We add the tFLIP token to Metamask. Contract address `0x8e71CEe1679bceFE1D426C7f23EAdE9d68e62650`
+## 7. Create your wallet and claim test tokens.
+The comment bellow will give you a wallet address and mnemonic phrase, which you should save on safe place.
+```
+lavad keys add wallet
+```
+Proced to the [Discord](https://discord.gg/BBgprSw2vn) and request testnet ulava tokens in fauced thread.
+```
+$request lava@1p3ejzk5k...
+```
 
-- Go to their [Swap Dex](https://tflip-dex.thunderhead.world/) and change gETH to tFLIP. We need at least 10 tFLIPs to register a node.
-- Go to their [application](https://stake-perseverance.chainflip.io/auctions). Connect a wallet with test tokens and go to the My Nodes tab.
-- Click on ADD Node. You will open a tab "Register New Node".
-- At the "Validator Public Key (SS58)" line  enter your SS58 key, which you have generated in the beginning. At the Stake line, enter the number of tokens you want to stake and click the Stake button. You need to confirm two transactions.
+<p align="center">
+ <img src="https://i.postimg.cc/9Fkw8XCD/Untitled.jpg"/></a>
+</p>
 
 ## 8. Registering the validator
 
-Register with the following command
-```
-sudo chainflip-cli \
-      --config-path /etc/chainflip/config/Default.toml \
-      register-account-role Validator
-```
-Activate our validator
-```
-sudo chainflip-cli \
-    --config-path /etc/chainflip/config/Default.toml \
-    activate
-```
-Rotating keys
-```
-sudo chainflip-cli \
-    --config-path /etc/chainflip/config/Default.toml rotate
-```
-Changing our name. Replace `my-discord-username` with your name.
-```
-sudo chainflip-cli \
-    --config-path /etc/chainflip/config/Default.toml \
-    vanity-name my-discord-username
-```
 ## 9. Auction
 
 Chainflip has an auction system. The auction involves selecting validators every epoch (14 days), and those validator nodes that have more tokens go through. So, even if you forage 7k tokens (that's how many tokens you need on November 28 to get into the active set), it doesn't mean that you'll become a validator.
