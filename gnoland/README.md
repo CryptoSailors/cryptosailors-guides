@@ -131,10 +131,8 @@ After you appear in the board, click on your name, and then go to [post]
 Fill in all the necessary information. The command line will generate a command for you to insert into the terminal.
 
 <p align="center">
- <img src="https://miro.medium.com/max/4800/1*1Dv1eCKpCDGjvU_PtJeYBA.webp"width="500"/>
+ <img src="https://i.postimg.cc/gJcnfQ3g/Untitled.jpg"width="600"/>
 </p>
-
-#
 
 <p align="center">
  <img src="https://miro.medium.com/max/4800/1*ZyLu1jFpZvNxZq9ug2a9Hw.webp"width="600"/>
@@ -165,9 +163,9 @@ rm -rf .gno
 
 👉[GitHub](https://github.com/gnolang/gno)
 
-👉[Gno Faucet](https://test2.gno.land/faucet)
+👉[Gno Faucet](https://app.gno.tools/faucet)
 
-👉[Gno user register](https://test2.gno.land/r/users)
+👉[Gno user register](https://test3.gno.land/r/demo/users)
 
 👉[Gno board](https://test3.gno.land/r/demo/boards)
 
