@@ -131,17 +131,17 @@ After you appear in the board, click on your name, and then go to [post]
 Fill in all the necessary information. The command line will generate a command for you to insert into the terminal.
 
 <p align="center">
- <img src="https://cdn-images-1.medium.com/max/750/1*TNRbgHhqiXwrGIC55DMQLg.png"width="600"/>
+ <img src="https://miro.medium.com/max/4800/1*1Dv1eCKpCDGjvU_PtJeYBA.webp"width="600"/>
 </p>
 
 <p align="center">
- <img src="https://miro.medium.com/max/1400/1*3daoWCYFwJuMluo2LRW-vw.png"width="600"/>
+ <img src="https://miro.medium.com/max/4800/1*ZyLu1jFpZvNxZq9ug2a9Hw.webp"width="600"/>
 </p>
 
 The final result should be like this:
 
 <p align="center">
- <img src="https://miro.medium.com/max/1400/1*OlKElMCslLhD3R7sX0K7mA.png"width="900"/>
+ <img src="https://miro.medium.com/max/4800/1*aJoxXr5adQDVDh7JiZYyag.webp"width="900"/>
 </p>
 
 # 9. Deleting a node.
