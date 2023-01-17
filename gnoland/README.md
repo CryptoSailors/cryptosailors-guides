@@ -45,6 +45,7 @@ git clone https://github.com/gnolang/gno/
 ```
 ```
 cd gno
+git checkout chain/test3.0
 make
 ```
 ```
@@ -62,25 +63,24 @@ gnokey add <accaount_name>
 ```
 (Optional) If you need to restore the wallet, run the following commands.
 ```
-gnokey add account --recover
+gnokey add <accaount_name> --recover
 ```
 Copy your address that starts with "g1qpyg1qpy5..." and save it somewhere easily accessible.
 ```
 gnokey list
 ```
 # 4. Getting test tokens.
-To start, we need to get at least 250 tokens. 200 tokens will be used for registration, and 50 tokens will be left for the commission. Please do not spam the faucet unnecessarily. You will not get any benefits for a billion tokens.
 
-Then we go to this [faucet](https://test2.gno.land/faucet) and requiest test tokens. It may be that faucet denies your request, in this case try again after 5 minutes.
+Then we go to this [faucet](https://app.gno.tools/faucet) and requiest test tokens.
 
 In order to check how many tokens you have on your balance, type the command below.Replace `<address>` with your address and delete `<>`
 ```
-gnokey query auth/accounts/<b><address></b> --remote test2.gno.land:36657
+gnokey query auth/accounts/<b><address></b> --remote test3.gno.land:36657
 ```
 # 5. Registering our account.
 Replace `<address>` with your address. Remove the `<>`.
 ```
-gnokey query auth/accounts/<address> --remote test2.gno.land:36657
+gnokey query auth/accounts/<address> --remote test3.gno.land:36657
 ```
 You should get the output as shown in the image below. From this output you need to write out `account_number` and `sequence`.
 <p align="center">
@@ -90,19 +90,19 @@ You should get the output as shown in the image below. From this output you need
 1) Replace `<address>` and `<USERNAME>` with your own values. Remove `<>` 
 2) `<USERNAME>` can only contain small letters and must be 6~17 characters.
 ```
-gnokey maketx call <ADDRESS> --pkgpath "gno.land/r/users" --func "Register" --gas-fee 1000000ugnot --gas-wanted 3000000 --send "200000000ugnot" --args "" --args "<USERNAME>" --args "" > unsigned.tx
+gnokey maketx call <ADDRESS> --pkgpath "gno.land/r/demo/users" --func "Register" --gas-fee 1000000ugnot --gas-wanted 3000000 --send "200000000ugnot" --args "" --args "<USERNAME>" --args "" > unsigned.tx
 ```
 #### Creating a transaction
 Replace `<address>` , `<ACCOUNTNUMBER>` and `<SEQUENCENUMBER>` with your values. Delete `<>`
 
 ```
-gnokey sign <ADDRESS> --txpath unsigned.tx --chainid test2 --number <ACCOUNTNUMBER> --sequence <SEQUENCENUMBER> > signed.tx
+gnokey sign <ADDRESS> --txpath unsigned.tx --chainid test3 --number <ACCOUNTNUMBER> --sequence <SEQUENCENUMBER> > signed.tx
 ```
 Conducting a transaction
 ```
-gnokey broadcast signed.tx --remote test2.gno.land:36657
+gnokey broadcast signed.tx --remote test3.gno.land:36657
 ```
-Check our username at the [link](https://test2.gno.land/r/users). If it's there, it's done.
+Check our username at the [link](https://test3.gno.land/r/demo/users). If it's there, it's done.
 
 <p align="center">
  <img src="https://cdn-images-1.medium.com/max/750/1*LLxVHeTvRT1WNufeSWNVZg.png"width="600"/>
@@ -111,9 +111,9 @@ Check our username at the [link](https://test2.gno.land/r/users). If it's there,
 # 6. Creating a name in BoardName
 Replace `<address>` and `<BOARDNAME>` with your values. Delete `<>`
 ```
-gnokey maketx call <address> --pkgpath "gno.land/r/boards" --func "CreateBoard" --gas-fee 1000000ugnot --gas-wanted 10000000 --send 1000000ugnot --broadcast true --chainid test2 --args "<BOARDNAME>" --remote test2.gno.land:36657
+gnokey maketx call <address> --pkgpath "gno.land/r/demo/boards" --func "CreateBoard" --gas-fee 1000000ugnot --gas-wanted 10000000 --send 1000000ugnot --broadcast true --chainid test3 --args "<BOARDNAME>" --remote test3.gno.land:36657
 ```
-Follow the [link](https://test2.gno.land/r/boards) and check your name on the board list. It will look like this:
+Follow the [link](https://test3.gno.land/r/demo/boards) and check your name on the board list. It will look like this:
 
 <p align="center">
  <img src="https://cdn-images-1.medium.com/max/750/1*sHbDwaNPzUMZRf-pTuqHYA.png"width="600"/>
@@ -167,7 +167,7 @@ rm -rf .gno
 
 👉[Gno user register](https://test2.gno.land/r/users)
 
-👉[Gno board](https://test2.gno.land/r/boards)
+👉[Gno board](https://test3.gno.land/r/demo/boards)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
