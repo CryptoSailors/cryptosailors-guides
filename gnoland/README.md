@@ -23,10 +23,8 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen -y
 ```
 ```
-wget https://golang.org/dl/go1.19.linux-amd64.tar.gz
-```
-```
-sudo tar -C /usr/local -xzf go1.19.linux-amd64.tar.gz
+wget https://golang.org/dl/go1.19.4.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.19.4.linux-amd64.tar.gz
 ```
 ```
 cat <<EOF >> ~/.profile
@@ -37,7 +35,7 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 EOF
 source ~/.profile
 go version
-rm -rf go1.19.linux-amd64.tar.gz
+rm -rf go1.19.4.linux-amd64.tar.gz
 ```
 # 3. Node installation.
 ```
