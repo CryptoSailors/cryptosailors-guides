@@ -198,13 +198,13 @@ rm -rf $(which bcnad)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[Discord](https://discord.gg/BBgprSw2vn)
+👉[Discord](https://discord.gg/jyaG8jhZGu)
 
-👉[WebSite](https://www.lavanet.xyz/)
+👉[WebSite](https://www.bitcanna.io/)
 
-👉[Official guide](https://docs.lavanet.xyz/)
+👉[Official guide](https://docs.bitcanna.io/)
 
-👉[Lava Explorer](https://lava.explorers.guru/)
+👉[Bitcanna Explorer](https://explorer.bitcanna.io/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
