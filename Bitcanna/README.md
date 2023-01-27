@@ -2,7 +2,7 @@
  <img src="https://i.imgur.com/HvrpANG.jpg"/></a>
 </p>
 
-# Bitcanna mainnet node installation guide.
+# Bitcanna Mainnet node installation guide.
 
 ## 1. Requirements.
 #### Official 
