@@ -61,7 +61,7 @@ sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 100/g' $HOME/.bcna/c
 sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 100/g' $HOME/.bcna/config/config.toml
 ```
 ```
-wget -O $HOME/.bcna/config/addrbook.json https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Bcna/addrbook.json
+wget -O $HOME/.bcna/config/addrbook.json https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Bitcanna/addrbook.json
 ```
 ### Choose Sync Mode (Snapshot or State-Sync)
 #### Snapshot
@@ -180,7 +180,7 @@ rm -rf .bcna && \
 rm -rf $(which bcnad)
 ```
 #
-**🐬Address book:** `wget -O $HOME/.bcna/config/addrbook.json https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Bcna/addrbook.json`
+**🐬Address book:** `wget -O $HOME/.bcna/config/addrbook.json https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Bitcanna/addrbook.json`
 
 **🐬Public RPC:** http://88.99.33.248:12657/
 
@@ -198,13 +198,13 @@ rm -rf $(which bcnad)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[Discord](https://discord.gg/BBgprSw2vn)
+👉[Discord](https://discord.gg/jyaG8jhZGu)
 
-👉[WebSite](https://www.lavanet.xyz/)
+👉[WebSite](https://www.bitcanna.io/)
 
-👉[Official guide](https://docs.lavanet.xyz/)
+👉[Official guide](https://docs.bitcanna.io/)
 
-👉[Lava Explorer](https://lava.explorers.guru/)
+👉[Bitcanna Explorer](https://explorer.bitcanna.io/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
