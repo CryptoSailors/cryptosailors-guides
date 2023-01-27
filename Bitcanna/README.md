@@ -10,7 +10,7 @@
 - 8 GB RAM
 - 200GB - 300GB SSD Disk space per year (NVMe disks are recommended)
 - 400 Mbit/s bandwith
-#### My Recomandation
+#### Our Recommendations
 - I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
