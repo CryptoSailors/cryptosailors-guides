@@ -2,7 +2,7 @@
  <img src="https://i.imgur.com/HvrpANG.jpg"/></a>
 </p>
 
-# Lava testnet node guide installation.
+# Bitcanna mainnet node guide installation.
 
 ## 1. Requirements.
 #### Official 
