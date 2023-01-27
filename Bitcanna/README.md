@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://i.postimg.cc/CxsxpvY3/banner.jpg"/></a>
+ <img src="https://i.imgur.com/HvrpANG.jpg"/></a>
 </p>
 
 # Lava testnet node guide installation.
