@@ -9,7 +9,7 @@
 - 4 CPU
 - 8 GB RAM
 - 100 GB SSD
-#### My Recomandation
+#### My Recommendations
 - I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
@@ -29,7 +29,7 @@ source $HOME/.profile
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
 ## 4. Install a node
-Make sure that you are installing the [latest release](https://github.com/lavanet/lava/tags). In this guide we use release `v0.4.3`
+Make sure that you are installing the [latest release](https://github.com/lavanet/lava/tags). In this guide we use release `v0.4.4`
 ```
 git clone https://github.com/lavanet/lava
 cd lava
