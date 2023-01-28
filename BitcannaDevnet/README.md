@@ -163,7 +163,7 @@ bcnad tx staking create-validator \
 --commission-max-change-rate="0.1" \
 --min-self-delegation="1" \
 --from=<WALLETNAME> \
---chain-id=bitcanna-1 \
+--chain-id=bitcanna-dev-1 \
 --gas=auto -y
 ```
 Finaly you should see your validator in [Block Explorer](https://testnet.ping.pub/bitcanna/staking) on Active or Inactive set.
