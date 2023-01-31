@@ -191,7 +191,7 @@ nibid keys show wallet --bech val
 ```
 Change `<VAL_ADDRESS>` on address from command above.
 ```
-nibid tx staking delegate <VAL_ADDRESS> 8000000unibi --chain-id nibiru-testnet-1 --from wallet --gas-prices 0.025unibi
+nibid tx staking delegate <VAL_ADDRESS> 8000000unibi --chain-id nibiru-testnet-2 --from wallet --gas-prices 0.025unibi
 ```
 ## 10 Backup your node
 
