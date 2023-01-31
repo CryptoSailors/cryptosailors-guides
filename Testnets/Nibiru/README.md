@@ -24,8 +24,8 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 ```
 ```
-wget https://golang.org/dl/go1.19.2.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.19.2.linux-amd64.tar.gz
+wget https://golang.org/dl/go1.19.4.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.19.4.linux-amd64.tar.gz
 ```
 ```
 cat <<EOF >> ~/.profile
@@ -36,7 +36,7 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 EOF
 source ~/.profile
 go version
-rm -rf go1.19.2.linux-amd64.tar.gz
+rm -rf go1.19.4.linux-amd64.tar.gz
 ```
 ## 3. Node installation.
 ```
@@ -46,7 +46,7 @@ git clone https://github.com/NibiruChain/nibiru
 cd nibiru
 ```
 ```
-git checkout v0.15.0
+git checkout v0.16.3
 ```
 ```
 make install
@@ -60,12 +60,12 @@ chmod +x /usr/bin/nibid
 ```
 nibid version
 ```
-You should see version v0.15.0
+You should see version v0.16.3
 
 ## 4.Create a wallet
 Change `<moniker-name>` on your name
 ```
-nibid init <moniker-name> --chain-id=nibiru-testnet-1 
+nibid init <moniker-name> --chain-id=nibiru-testnet-2 
 ```
 ```
 nibid keys add wallet
@@ -100,19 +100,7 @@ persistent_peers = "37713248f21c37a2f022fbbb7228f02862224190@35.243.130.198:2665
 
 Press `CTRL+X,Y,Enter` to exit from nano.
 
-## 6. Download addressbook
-
-```
-rm -rf .nibid/config/addrbook.json
-```
-```
-wget https://github.com/CryptoSailors/node-guides/releases/download/Nibiru/addrbook.json
-```
-```
-mv addrbook.json .nibid/config/
-```
-
-## 7. Set the necessary values
+## 6. Set the necessary values
 ```
 sed -i 's/minimum-gas-prices =.*/minimum-gas-prices = "0.025unibi"/g' $HOME/.nibid/config/app.toml
 ```
@@ -128,7 +116,7 @@ CONFIG_TOML="$HOME/.nibid/config/config.toml"
  sed -i 's/skip_timeout_commit =.*/skip_timeout_commit = false/g' $CONFIG_TOML
 ```
 
-## 8. Create a service file and start the node
+## 7. Create a service file and start the node
 ```
 tee /etc/systemd/system/nibidd.service > /dev/null <<EOF
 [Unit]
@@ -156,7 +144,7 @@ journalctl -u nibidd -f -n 100
 ```
 Press `CTRL+X,Y,Enter` to exit from the logs
 
-## 9. Requesting tokens from the faucet
+## 8. Requesting tokens from the faucet
 
 While the node is synchronizing, we can request tokens from the faucet. To do this, we need our new generated wallet.
 ```
@@ -168,7 +156,7 @@ Go to [Discord](https://discord.com/invite/BVCw2cYmhu) and request tokens throug
  <img src="https://miro.medium.com/max/4800/1*N4rbaV9__zJhJJKonQygnw.png"width="600"/></a>
 </p>
 
-## 10. Creating a Validator
+## 9. Creating a Validator
 
 To start, wait for a full synchronization. To make sure that your node is synchronizated, run the command below.
 ```
@@ -191,7 +179,7 @@ nibid tx staking create-validator \
 --min-self-delegation "1" \
 --pubkey=$(nibid tendermint show-validator) \
 --moniker <YOUR_VALIDATOR_NAME> \
---chain-id nibiru-testnet-1 \
+--chain-id nibiru-testnet-2 \
 --gas-prices 0.025unibi \ 
 --from wallet
 ```
@@ -205,7 +193,7 @@ Change `<VAL_ADDRESS>` on address from command above.
 ```
 nibid tx staking delegate <VAL_ADDRESS> 8000000unibi --chain-id nibiru-testnet-1 --from wallet --gas-prices 0.025unibi
 ```
-## 11 Backup your node
+## 10 Backup your node
 
 After successfully creating a validator, you must take care of `priv_validator_key.json`. Without it you will not be able to restore the validator. It can be found in the folder `.nibid/config`
 
@@ -213,7 +201,7 @@ After successfully creating a validator, you must take care of `priv_validator_k
  <img src="https://miro.medium.com/max/4800/1*QO2j4zovK9ZP2jqAccs2eQ.png"width="600"/></a>
 </p>
 
-## 12. Deleting a node
+## 11. Deleting a node
 
 ```
 systemctl stop nibidd
