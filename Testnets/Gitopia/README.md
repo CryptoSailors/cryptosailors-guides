@@ -88,12 +88,12 @@ You should see outpus `038a81d821f3d8f99e782cbfed609e4853d24843c48a1469287528e63
 
 ## 5. Launch a node
 ```
-tee /etc/systemd/system/gitopiad.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/gitopiad.service > /dev/null <<EOF
 [Unit]
 Description=Gitopia
 After=network-online.target
 [Service]
-User=root
+User=$HOME
 ExecStart=$(which gitopiad) start
 Restart=always
 RestartSec=3
