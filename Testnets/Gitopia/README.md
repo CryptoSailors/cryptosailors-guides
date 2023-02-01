@@ -79,7 +79,7 @@ gunzip genesis.json.gz
 mv genesis.json $HOME/.gitopia/config/genesis.json
 ```
 ```
-mv go/bin/gitopiad /usr/bin/
+sudo mv go/bin/gitopiad /usr/bin/
 ```
 ```
 shasum -a 256 $HOME/.gitopia/config/genesis.json
