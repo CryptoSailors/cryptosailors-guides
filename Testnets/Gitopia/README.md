@@ -49,7 +49,7 @@ cd gitopia && make install
 ```
 gitopiad version
 ```
-You should get version v0.1.2
+You should get version v1.2.0
 ## 4.Setting up our node
 ```
 cd ~
@@ -57,9 +57,9 @@ cd ~
 Chanhe `YOUR_NAME` on your name
 ```
 GITOPIA_MONIKER=YOUR_NAME
-```
-```
 GITOPIA_CHAIN_ID=gitopia-janus-testnet-2
+echo "export GITOPIA_MONIKER=YOUR_NAME" >> $HOME/.profile
+echo "export GITOPIA_CHAIN_ID=gitopia-janus-testnet-2" >> $HOME/.profile
 ```
 ```
 gitopiad init --chain-id "$GITOPIA_CHAIN_ID" "$GITOPIA_MONIKER"
