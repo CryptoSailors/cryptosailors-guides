@@ -21,7 +21,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 ```
 ```
-CHAIN_ID=ALTHEA_7357-1
+CHAIN_ID=althea_7357-1
 echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.profile
 source $HOME/.profile
 ```
