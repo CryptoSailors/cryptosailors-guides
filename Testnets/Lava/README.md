@@ -33,7 +33,7 @@ Make sure that you are installing the [latest release](https://github.com/lavane
 ```
 git clone https://github.com/lavanet/lava
 cd lava
-git checkout v0.4.4 
+git checkout v0.5.2 
 make install
 ```
 ```
