@@ -124,7 +124,6 @@ althea tx staking create-validator \
 --commission-max-change-rate=0.1 \
 --min-self-delegation=1 \
 --gas=auto \
---identity=8F292E79DCDEF143 \
 -y
 ```
 Finaly you should see your validator in [Block Explorer](https://test.anode.team/althea) on Active or Inactive set.
