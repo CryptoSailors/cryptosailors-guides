@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://ibb.co/hRCS5dm"/></a>
+ <img src="[https://ibb.co/hRCS5dm](https://i.ibb.co/QFX4BHK/68747470733a2f2f7062732e7477696d672e636f6d2f6578745f74775f766964656f5f7468756d622f313632333035313030.jpg)"/></a>
 </p>
 
 # Althea testnet node guide installation.
