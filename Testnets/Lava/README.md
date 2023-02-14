@@ -57,7 +57,7 @@ sed -i 's/timeout_commit = ".*s"/timeout_commit = "60s"/g' ~/.lava/config/config
 sed -i 's/timeout_broadcast_tx_commit = ".*s"/timeout_broadcast_tx_commit = "601s"/g' ~/.lava/config/config.toml
 ```
 ```
-wget -O $HOME/.lava/config/addrbook.json https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Lava/addrbook.json
+wget -O $HOME/.lava/config/addrbook.json https://github.com/CryptoSailors/cryptosailors-guides/blob/main/Testnets/Lava/addrbook.json
 ```
 #### Setup the latest Snapshot on your node
 ```
