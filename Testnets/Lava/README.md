@@ -80,7 +80,6 @@ sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:${CO
 ```
 
 #### Create a systemd file for lava node
-if you run from root, insert `USER=root` in systemd configuration.
 ```
 sudo tee /etc/systemd/system/lavad.service > /dev/null <<EOF
 [Unit]
