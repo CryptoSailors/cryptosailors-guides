@@ -91,7 +91,7 @@ Description=Lava Node
 After=network-online.target
 
 [Service]
-User=<Insert_your_User>
+User=$USER
 ExecStart=$(which lavad) start
 Restart=always
 RestartSec=180
