@@ -63,7 +63,7 @@ sudo systemctl enable geth
 sudo systemctl start geth
 sudo journalctl -u geth -f -n 100
 ```
-Our node start looking for peers and beacon. Now we need configure our prysm beacon.
+Our node start looking for peers and beacon. Now we need configure our prysm beacon. The Prysm node will be synched from [SnapShot](https://docs.prylabs.network/docs/prysm-usage/checkpoint-sync). 
 ```
 sudo tee /etc/systemd/system/prysm.service > /dev/null <<EOF
 [Service]
@@ -91,12 +91,22 @@ sudo systemctl enable prysm
 sudo systemctl start prysm
 sudo journalctl -u prysm -f -n 100
 ```
-
+By command bellow you can check a status of synchronization process of your node.
+```
+curl -X POST http://localhost:8545 \
+  -H "Content-Type: application/json" \
+  --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}'
+```
+- If the show `false` that means that your node is fully synchronized.
 #
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
+
+👉[Prysm](https://docs.prylabs.network/docs/getting-started)
+
+👉[Goerli Prysm beacon snapshot](https://docs.prylabs.network/docs/prysm-usage/checkpoint-sync)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
