@@ -28,6 +28,7 @@ sudo apt -y install geth
 ## 3. Install Prysm
 ```
 mkdir prysm && cd prysm
+wget https://github.com/eth-clients/eth2-networks/raw/master/shared/prater/genesis.ssz
 ```
 ```
 curl https://raw.githubusercontent.com/prysmaticlabs/prysm/master/prysm.sh --output prysm.sh && chmod +x prysm.sh
@@ -69,14 +70,7 @@ sudo tee /etc/systemd/system/prysm.service > /dev/null <<EOF
 [Service]
 User=$USER
 Type=simple
-ExecStart=/home/ethereum/prysm/prysm.sh beacon-chain \
- --prater \ 
- --execution-endpoint=http://localhost:8551 \ 
- --jwt-secret=/home/ethereum/prysm/jwt.hex \
- --suggested-fee-recipient=0x01234567722E6b0000012BFEBf6177F1D2e9758D9 \ 
- --checkpoint-sync-url=https://prater-checkpoint-sync.stakely.io \
- --genesis-beacon-api-url=https://prater-checkpoint-sync.stakely.io \
- --accept-terms-of-use
+ExecStart=/home/ethereum/prysm/prysm.sh beacon-chain --prater --execution-endpoint=http://localhost:8551 --jwt-secret=/home/ethereum/prysm/jwt.hex --suggested-fee-recipient=0x01234567722E6b0000012BFEBf6177F1D2e9758D9 --genesis-state=/home/ethereum/prysm/genesis.ssz --accept-terms-of-use
 Restart=on-failure
 LimitNOFILE=65535
 
