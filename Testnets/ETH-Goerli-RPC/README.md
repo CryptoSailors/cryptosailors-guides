@@ -6,7 +6,9 @@
 
 #### Flollowing parametrs:
 
-4-CPU/8-GBRAM/400-GBSSD (On 7-OCT-2022 node occupie 250GB)
+- 4-CPU
+- 8-GBRAM
+- 400-GBSSD (On 7-OCT-2022 node occupie 250GB)
 
 ## 1. Node Preparation
 ```
