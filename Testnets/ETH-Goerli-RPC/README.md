@@ -64,7 +64,7 @@ sudo systemctl enable geth
 sudo systemctl start geth
 sudo journalctl -u geth -f -n 100
 ```
-Our node start looking for peers and beacon. Now we need configure our prysm beacon. The Prysm node will be synched from [SnapShot](https://docs.prylabs.network/docs/prysm-usage/checkpoint-sync). 
+Our node start looking for peers and beacon. Now we need configure our prysm beacon.
 ```
 sudo tee /etc/systemd/system/prysm.service > /dev/null <<EOF
 [Service]
@@ -99,8 +99,6 @@ curl -X POST http://localhost:8545 \
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
 👉[Prysm](https://docs.prylabs.network/docs/getting-started)
-
-👉[Goerli Prysm beacon snapshot](https://docs.prylabs.network/docs/prysm-usage/checkpoint-sync)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
