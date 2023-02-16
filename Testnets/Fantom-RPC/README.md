@@ -1,9 +1,9 @@
 # In this guide we will setup Fantom RPC node.
 
 #### Flollowing parametrs:
-- 4 CPU
-- 16 GB RAM
-- 1.5 TB SSD
+- 2 CPU
+- 8 GB RAM
+- 300 TB SSD
 
 ## 1. Node Preparation.
 ```
