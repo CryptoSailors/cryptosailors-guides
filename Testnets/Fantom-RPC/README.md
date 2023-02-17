@@ -74,7 +74,7 @@ curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method":
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[Fantom Ofiicial guide](https://docs.fantom.foundation/)
+👉[Fantom Official guide](https://docs.fantom.foundation/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
