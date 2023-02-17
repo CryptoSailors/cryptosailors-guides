@@ -46,7 +46,7 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=/usr/bin --genesis /root/go-opera/build/testnet-6226-pruned-mpt.g --identity CryptoSailors --cache 8096 --http --http.addr 0.0.0.0 --http.corsdomain '*' --http.vhosts "*" --http.api "eth,net,web3" 
+ExecStart=/usr/bin/opera --genesis /root/go-opera/build/testnet-6226-pruned-mpt.g --identity CryptoSailors --cache 8096 --http --http.addr 0.0.0.0 --http.corsdomain '*' --http.vhosts "*" --http.api "eth,net,web3" 
 Restart=on-failure
 LimitNOFILE=65535
 
