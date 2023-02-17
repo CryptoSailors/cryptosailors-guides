@@ -61,4 +61,29 @@ sudo systemctl daemon-reload
 sudo systemctl start fantom
 sudo journalctl -u fantom -f -n 100
 ```
+By command bellow you can check a status of synchronization process of your node.
+
+```
+curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "eth_syncing", "params":[]}' localhost:18545
+```
+- If the show false that means that your node is fully synchronized.
+
+#
+
+👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
+
+👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
+
+👉[Fantom Ofiicial guide](https://docs.fantom.foundation/)
+
+🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
+
+🔰[Our WebSite](cryptosailors.tech)
+
+🔰[Our Twitter](https://twitter.com/Crypto_Sailors)
+
+🔰[Our Youtube](https://www.youtube.com/@CryptoSailors)
+
+#### Guide created by 
+Pavel-LV | C.Sailors#7698 / @SeaInvestor
                                                     
