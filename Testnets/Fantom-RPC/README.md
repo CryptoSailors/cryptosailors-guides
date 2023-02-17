@@ -2,7 +2,7 @@
  <img src="https://i.postimg.cc/9QfDm4fz/Fantom-1.png"width="900"/></a>
 </p>
 
-# In this guide we will setup Fantom RPC node.
+# In this guide we will setup Fantom testnet RPC node.
 
 #### Flollowing parametrs:
 - 2 CPU
