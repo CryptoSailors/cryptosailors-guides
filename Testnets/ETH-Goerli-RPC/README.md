@@ -51,7 +51,8 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=/usr/bin/geth --goerli --syncmode "snap" --http --http.api=eth,net,web3,engine --http.vhosts * --http.addr 0.0.0.0 --authrpc.jwtsecret=/home/ethereum/prysm/jwt.hex --override.terminaltotaldifficulty 50000000000000000
+ExecStart=/usr/bin/geth --goerli --syncmode "snap" --http --http.api=eth,net,web3,engine --http.vhosts * --http.addr 0.0.0.0 \
+ --authrpc.jwtsecret=/root/prysm/jwt.hex 
 Restart=on-failure
 LimitNOFILE=65535
 
@@ -72,7 +73,7 @@ sudo tee /etc/systemd/system/prysm.service > /dev/null <<EOF
 [Service]
 User=$USER
 Type=simple
-ExecStart=/home/ethereum/prysm/prysm.sh beacon-chain --prater --execution-endpoint=http://localhost:8551 --jwt-secret=/home/ethereum/prysm/jwt.hex --suggested-fee-recipient=0x01234567722E6b0000012BFEBf6177F1D2e9758D9 --genesis-state=/home/ethereum/prysm/genesis.ssz --accept-terms-of-use
+ExecStart=/root/prysm/prysm.sh beacon-chain --prater --execution-endpoint=http://localhost:8551 --jwt-secret=/root/prysm/jwt.hex --suggested-fee-recipient=0x01234567722E6b0000012BFEBf6177F1D2e9758D9 --genesis-state=/root/prysm/genesis.ssz --accept-terms-of-use --checkpoint-sync-url=https://goerli.beaconstate.info --genesis-beacon-api-url=https://goerli.beaconstate.info
 Restart=on-failure
 LimitNOFILE=65535
 
