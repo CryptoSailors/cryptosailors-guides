@@ -7,7 +7,7 @@
 #### Flollowing parametrs:
 - 2 CPU
 - 8 GB RAM
-- 300 TB SSD
+- 300 GB SSD
 
 ## 1. Node Preparation.
 ```
