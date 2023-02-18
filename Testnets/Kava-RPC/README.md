@@ -37,16 +37,10 @@ cd ~
 kava init moniker --chain-id kava_2221-16000
 ```
 ```
-wget https://raw.githubusercontent.com/Kava-Labs/kava-testnets/master/16000/genesis.json
-```
-```
-cd ~
-```
+wget -O genesis.json https://snapshots.polkachu.com/testnet-genesis/kava/genesis.json --inet4-only
+sudo mv genesis.json ~/.kava/config
 ```
 sed -i 's/seeds = ""/seeds = "ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:13956"/' ~/.kava/config/config.toml
-```
-```
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.kava/config/config.toml
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025ukava;1000000000akava\"/" $HOME/.kava/config/app.toml
 sed -i.bak -e "s/^pruning  *=.*/pruning  = \"custom\"/" $HOME/.kava/config/app.toml
 sed -i.bak -e "s/^pruning-keep-recent  *=.*/pruning-keep-recent  = \"100\"/" $HOME/.kava/config/app.toml
@@ -61,6 +55,9 @@ sudo snap install lz4
 ```
 ```
 wget -O kava_3952228.tar.lz4 https://snapshots.polkachu.com/testnet-snapshots/kava/kava_3952228.tar.lz4 --inet4-only
+```
+```
+kava tendermint unsafe-reset-all --home $HOME/.kava --keep-addr-book
 ```
 ```
 lz4 -c -d kava_3952228.tar.lz4  | tar -x -C $HOME/.kava
