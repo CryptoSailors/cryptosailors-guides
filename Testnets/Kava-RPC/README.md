@@ -40,13 +40,13 @@ kava init moniker --chain-id kava_2221-16000
 wget -O genesis.json https://snapshots.polkachu.com/testnet-genesis/kava/genesis.json --inet4-only
 sudo mv genesis.json ~/.kava/config
 ```
+```
 sed -i 's/seeds = ""/seeds = "ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@testnet-seeds.polkachu.com:13956"/' ~/.kava/config/config.toml
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025ukava;1000000000akava\"/" $HOME/.kava/config/app.toml
 sed -i.bak -e "s/^pruning  *=.*/pruning  = \"custom\"/" $HOME/.kava/config/app.toml
 sed -i.bak -e "s/^pruning-keep-recent  *=.*/pruning-keep-recent  = \"100\"/" $HOME/.kava/config/app.toml
 sed -i.bak -e "s/^pruning-keep-every  *=.*/pruning-keep-every  = \"0\"/" $HOME/.kava/config/app.toml
 sed -i.bak -e "s/^pruning-interval  *=.*/pruning-interval  = \"10\"/" $HOME/.kava/config/app.toml
-
 ```
 We will launch our node from [snapshot](https://polkachu.com/testnets/kava/snapshots) accodring  configuration bellow.
 ```
