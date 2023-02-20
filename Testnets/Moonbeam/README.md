@@ -16,6 +16,14 @@ sudo apt update && sudo apt upgrade -y
 ```
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake clang protobuf-compiler libprotobuf-dev -y
 ```
+Install Rust and its prerequisites:
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+```
+Update your PATH environment variable by running:
+```
+source $HOME/.cargo/env
+```
 
 ## 2. Create Moonbeam User and add it to Sudo group.
 ```
@@ -49,7 +57,11 @@ go version
 sudo rm -rf /usr/src/go*.linux-amd64.tar.gz
 ```
 
-## 4. Install Moonbeam.
+## 4. Install Moonbeam.\
+Check out to the latest [release](https://github.com/PureStake/moonbeam/releases). In this example the latest release is `v0.29.0`
+```
+RELEASE=v0.29.0
+```
 Go to the user home directory:
 ```
 cd ~
@@ -58,21 +70,7 @@ Clone the Moonbeam repo:
 ```
 git clone https://github.com/PureStake/moonbeam
 cd moonbeam
-```
-Check out to the latest release:
-```
-git checkout tags/$(git describe --tags)
-```
-Install Rust and its prerequisites:
-```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-```
-Update your PATH environment variable by running:
-```
-source $HOME/.cargo/env
-```
-Build the parachain binary:
-```
+git checkout $RELEASE
 cargo build --release
 ```
 ## 5. Setup the Sytemd Service.
@@ -91,23 +89,27 @@ SyslogIdentifier=moonbeam
 SyslogFacility=local7
 KillSignal=SIGHUP
 ExecStart=/home/moonbeam/moonbeam/target/release/moonbeam \\
-     --port 30333 \\
-     --rpc-port 9933 \\
-     --ws-port 9944 \\
-     --execution wasm \\
-     --wasm-execution compiled \\
-     --state-pruning=archive \\
-     --trie-cache-size 0 \\
-     --db-cache 4096 \\
-     --base-path /home/moonbeam/moonbeam \\
-     --chain moonbeam \\
-     --name "CryptoSailorsMoonbeam-Axelar-Testnet" \\
-     -- \\
-     --port 30334 \\
-     --rpc-port 9934 \\
-     --ws-port 9945 \\
-     --execution wasm \\
-     --name="CryptoSailors-Axelar-Testnet"
+     --port 30333 \
+     --rpc-port 9935 \
+     --ws-port 9944 \
+     --rpc-cors=all \
+     --unsafe-rpc-external \
+     --unsafe-ws-external \
+     --execution wasm \
+     --wasm-execution compiled \
+     --pruning=archive \
+     --trie-cache-size 0 \
+     --db-cache 16000 \
+     --base-path /home/moonbeam/moonbram \
+     --chain alphanet \
+     --name "CryptoSailorsAxelarRPC" \
+     -- \
+     --port 30334 \
+     --rpc-port 9934 \
+     --ws-port 9945 \
+     --execution wasm \
+     --pruning=1000 \
+     --name="YOUR_NODE_NAME"
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -132,7 +134,7 @@ You should see something like this:
 
 You can run a cURL request to see the status of your node:
 ```
-curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "eth_syncing", "params":[]}' localhost:9933
+curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "eth_syncing", "params":[]}' localhost:9935
 ```
 
 When the node will be successfully synced, the output from above will print 
