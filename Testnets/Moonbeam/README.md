@@ -102,7 +102,7 @@ ExecStart=/home/moonbeam/moonbeam/target/release/moonbeam \\
      --db-cache 16000 \
      --base-path /home/moonbeam/moonbram \
      --chain alphanet \
-     --name "CryptoSailorsAxelarRPC" \
+     --name "YOUR_NODE_NAME" \
      -- \
      --port 30334 \
      --rpc-port 9934 \
