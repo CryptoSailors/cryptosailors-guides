@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://i.postimg.cc/0Qh8XhbD/Kava-Labs.png"width="900"/></a>
+ <img src="https://i.postimg.cc/W3QtQdh9/Kava-logo.jpg"/></a>
 </p>
 
 # In this guide we will setup Kava RPC testnet node.
