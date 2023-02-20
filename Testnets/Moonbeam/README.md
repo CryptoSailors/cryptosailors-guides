@@ -1,3 +1,7 @@
+<p align="center">
+ <img src="https://i.postimg.cc/bwgvTC8N/Moonbeam.jpg"width="900"/></a>
+</p>
+
 # In this guide, we will describe how to setup the Moonbeam testnet RPC node.
 
 #### System requirements:
