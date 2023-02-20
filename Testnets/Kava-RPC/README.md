@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://i.posftimg.cc/L8DRwBr1/Ethereum-1.jpg"width="900"/></a>
+ <img src="https://i.postimg.cc/0Qh8XhbD/Kava-Labs.png"width="900"/></a>
 </p>
 
 # In this guide we will setup Kava RPC testnet node.
@@ -88,3 +88,22 @@ sudo systemctl enable kava
 sudo systemctl daemon-reload
 sudo systemctl start kava
 sudo journalctl -u kava -f -n 100
+
+#
+
+👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
+
+👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
+
+👉[Kava Official guide](https://docs.kava.io/docs/participate/validator-node/)
+
+🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
+
+🔰[Our WebSite](cryptosailors.tech)
+
+🔰[Our Twitter](https://twitter.com/Crypto_Sailors)
+
+🔰[Our Youtube](https://www.youtube.com/@CryptoSailors)
+
+#### Guide created by 
+Pavel-LV | C.Sailors#7698 / @SeaInvestor
