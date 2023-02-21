@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://i.postimg.cc/ffhGhwmGky/Untitled-1200-630-px.png"width="900"/></a>
+ <img src="https://i.postimg.cc/JncQhdYZ/image-2022-04-27-191225357.png"width="900"/></a>
 </p>
 
 # In this guide we will setup Optimism testnet RPC node.
@@ -131,7 +131,26 @@ Also you can check the status of your synchrinization process. If they will show
 ```
 curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "eth_blockNumber","params": []}' localhost:9991
 ```
+#
 
+👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
+
+👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
+
+👉[Optimism Official docs](https://community.optimism.io/docs/developers/bedrock/node-operator-guide/#)
+
+👉[Optimism Goerli Explorer](https://goerli-optimism.etherscan.io/)
+
+🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
+
+🔰[Our WebSite](cryptosailors.tech)
+
+🔰[Our Twitter](https://twitter.com/Crypto_Sailors)
+
+🔰[Our Youtube](https://www.youtube.com/@CryptoSailors)
+
+#### Guide created by 
+Pavel-LV | C.Sailors#7698 / @SeaInvestor
 
 
 
