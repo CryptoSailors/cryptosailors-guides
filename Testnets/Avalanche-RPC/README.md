@@ -121,5 +121,7 @@ sudo rm -rf avalanche-node
 
 🔰[Our Twitter](https://twitter.com/Crypto_Sailors)
 
+🔰[Our Youtube](https://www.youtube.com/@CryptoSailors)
+
 #### Guide created by 
 Pavel-LV | C.Sailors#7698 / @SeaInvestor
