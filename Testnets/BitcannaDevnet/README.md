@@ -30,11 +30,11 @@ source $HOME/.profile
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
 ## 4. Install a node
-Make sure that you are installing the [latest release](https://github.com/BitCannaGlobal/bcna/releases/latest). In this guide we use release `v1.5.3`
+Make sure that you are installing the [latest release](https://github.com/BitCannaGlobal/bcna/releases/latest). In this guide we use pre-release `v1.6.0-rc2`
 ```
 git clone https://github.com/BitCannaGlobal/bcna
 cd bcna
-git checkout v1.5.3
+git checkout v1.6.0-rc2
 make install
 ```
 ```
@@ -180,7 +180,6 @@ rm -rf .bcna && \
 rm -rf $(which bcnad)
 ```
 #
-**🐬Address book:** `wget -O $HOME/.bcna/config/addrbook.json https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/BitcannaDevnet/addrbook.json`
 
 **🐬Public RPC:** 88.99.15.74:26657
 
