@@ -64,7 +64,7 @@ screen -S sdownload
 
 Create a data directory and download the archive file:
 ```
-mkdir $HOME/.bsc/data; cd $HOME/.bsc/data
+cd $HOME/.bsc
 aria2c -s14 -x14 -k100M https://snapshots.48.club/geth.25916461.tar.lz4 -o geth.tar.lz4
 ```
 
