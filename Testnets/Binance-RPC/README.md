@@ -116,7 +116,7 @@ After=online.target
 [Service]
 Type=simple
 User=binance
-ExecStart=/home/binance/binaries/geth --config $HOME/.bsc/config/config.toml --txlookuplimit=0 --syncmode=full --tries-verify-mode=none --pruneancient=true --diffblock=5000 --cache 8000 --rpc.allow-unprotected-txs --datadir $HOME/.bsc --http --http.vhosts "*" --http.addr 0.0.0.0 --ws --ws.origins '*' --ws.addr 0.0.0.0 --http.port 8645 --port 31303
+ExecStart=/home/binance/binaries/geth --config $HOME/.bsc/config/config.toml --txlookuplimit=0 --syncmode=full --tries-verify-mode=none --pruneancient=true --diffblock=5000 --cache 8000 --rpc.allow-unprotected-txs --datadir /home/binance/.bsc/data/geth --http --http.vhosts "*" --http.addr 0.0.0.0 --ws --ws.origins '*' --ws.addr 0.0.0.0 --http.port 8645 --port 31303
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=4096
