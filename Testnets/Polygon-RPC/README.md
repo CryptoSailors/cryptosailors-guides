@@ -59,7 +59,7 @@ sed -i.bak -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.heimdalld/config/conf
 sed -i.bak -e "s/^max_open_connections *=.*/max_open_connections = \"100\"/" $HOME/.heimdalld/config/config.toml
 sed -i.bak -e "s/^eth_rpc_url *=.*/eth_rpc_url = \"$ETH_GOERLI_RPC\"/" $HOME/.heimdalld/config/heimdall-config.toml
 ```
-## 5. Create a systemd, download latest snapshot and launch heimdall
+## 6. Create a systemd, download latest snapshot and launch heimdall
 ```
 sudo tee /etc/systemd/system/heimdalld.service > /dev/null <<EOF
 [Unit]
@@ -82,6 +82,33 @@ Download latest heimdall-mumbai [snapshot](https://snapshots.polygon.technology/
 ```
 wget <snapshot-link-heimdall> -O - | tar -xzf - -C ~/.heimdalld/data/
 ```
+## 7. Start a heimdall node
+```
+sudo systemctl daemon-reload
+sudo systemctl enable heimdalld
+sudo systemctl start heimdalld
+sudo journalctl -u heimdalld -f -n 100
+```
+#### Before to proceed step 8, make sure that your heimdall node is fully synched. Other wise your bor service will run with issues.
+
+Checek your synch with command:
+```
+curl -s localhost:10657/status
+```
+You will get somthing like this:
+```
+ },
+    "sync_info": {
+      "latest_block_hash": "8158653F44D9713FCF919215C2AAD5AFB10DAC541DED85BED203E0E3C788F8B7",
+      "latest_app_hash": "FAB2E0808DCA67D1409D7FD751875496C566659D5D7F9F357E97BEECA72421E5",
+      "latest_block_height": "15198037",
+      "latest_block_time": "2023-02-22T15:28:41.607754234Z",
+      "catching_up": true
+},
+```
+ - if you get `true`  - means that you still synch
+ - if you get `false` - means you are synched and can continue.
+
 #
 👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
 
