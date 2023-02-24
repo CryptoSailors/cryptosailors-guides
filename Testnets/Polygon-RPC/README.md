@@ -116,21 +116,22 @@ You will get somthing like this:
  - if you get `false` - means you are synched and can continue.
 
 ## 8. Install a Bor
-Make sure that you are installing the [latest release](https://github.com/maticnetwork/bor/tags). In this guide we use release `v0.3.4`
+Make sure that you are installing the [latest release](https://github.com/maticnetwork/bor/tags). In this guide we use release `v0.3.3`
 ```
 cd ~
-RELEASE=v0.3.4
+RELEASE=v0.3.3
 ```
 ```
-curl -L https://raw.githubusercontent.com/maticnetwork/install/main/bor.sh | bash -s -- $RELEASE mumbai sentry
-```
-```
-source .profile
+git clone https://github.com/maticnetwork/bor
+cd bor
+git checkout $RELEASE
+make
 bor version
 ```
 ## 9. Configure your bor node
 ```
-mkdir /var/lib/bor/data
+cd ~
+mkdir .bor && cd .bor && mkdir data && mkdir config.toml
 ```
 ```
 sudo nano /var/lib/bor/config.toml
