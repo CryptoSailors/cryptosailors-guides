@@ -37,7 +37,7 @@ cd ~
 ```
 ## 5. Configure Heimdall node
 ```
-heimdalld init
+heimdalld init --chain=mumbai
 ```
 ```
 COSMOS_PORT=10
