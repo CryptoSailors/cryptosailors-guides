@@ -27,10 +27,13 @@ Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/
 Make sure that you are installing the [latest release](https://github.com/maticnetwork/heimdall/tags). In this guide we use release `v0.3.0`
 ```
 RELEASE=v0.3.0
+```
+```
 git clone https://github.com/maticnetwork/heimdall
 cd heimdall
 git checkout $RELEASE
 make install
+heimdalld version
 ```
 ```
 cd ~
@@ -40,26 +43,29 @@ cd ~
 heimdalld init --chain=mumbai
 ```
 ```
+SEEDS="4cd60c1d76e44b05f7dfd8bab3f447b119e87042@54.147.31.250:26656,b18bbe1f3d8576f4b73d9b18976e71c65e839149@34.226.134.117:26656"
+```
+Insert your Goerli RPC Url in `YOUR_ETH_GOERLI_LINK`
+```
+ETH_GOERLI_RPC="YOUR_ETH_GOERLI_LINK"
+```
+```
+sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/" $HOME/.heimdalld/config/config.toml
+sed -i.bak -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.heimdalld/config/config.toml
+sed -i.bak -e "s/^max_open_connections *=.*/max_open_connections = \"100\"/" $HOME/.heimdalld/config/config.toml
+sed -i.bak -e "s%^eth_rpc_url = \"http://localhost:9545\"%eth_rpc_url = \"${ETH_GOERLI_RPC}\"%" $HOME/.heimdalld/config/heimdall-config.toml
+```
+#### Optional. You can skip step bellow and continue from step 6. It only need, if you have other cosmos node on your server.
+```
 COSMOS_PORT=10
 echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.profile
 source $HOME/.profile
 ```
 ```
-SEEDS="4cd60c1d76e44b05f7dfd8bab3f447b119e87042@54.147.31.250:26656,b18bbe1f3d8576f4b73d9b18976e71c65e839149@34.226.134.117:26656"
-```
-In command bellow insert your ETH goeril url started from http://:PRORT
-```
-ETH_GOERLI_RPC="http://YOUR_RPC_URL:PORT"
-```
-```
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${COSMOS_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${COSMOS_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${COSMOS_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${COSMOS_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${COSMOS_PORT}660\"%" $HOME/.heimdalld/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${COSMOS_PORT}317\"%; s%^address = \":8080\"%address = \":${COSMOS_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${COSMOS_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${COSMOS_PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${COSMOS_PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${COSMOS_PORT}546\"%" $HOME/.heimdalld/config/app.toml
-sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/" $HOME/.heimdalld/config/config.toml
-sed -i.bak -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.heimdalld/config/config.toml
-sed -i.bak -e "s/^max_open_connections *=.*/max_open_connections = \"100\"/" $HOME/.heimdalld/config/config.toml
-sed -i.bak -e "s/^eth_rpc_url *=.*/eth_rpc_url = \"$ETH_GOERLI_RPC\"/" $HOME/.heimdalld/config/heimdall-config.toml
 ```
-## 6. Create a systemd, download latest snapshot and launch heimdall
+
+## 6. Create a systemd, download latest snapshot.
 ```
 sudo tee /etc/systemd/system/heimdalld.service > /dev/null <<EOF
 [Unit]
@@ -109,6 +115,96 @@ You will get somthing like this:
  - if you get `true`  - means that you still synch
  - if you get `false` - means you are synched and can continue.
 
+## 8. Install a Bor
+Make sure that you are installing the [latest release](https://github.com/maticnetwork/bor/tags). In this guide we use release `v0.3.4`
+```
+cd ~
+RELEASE=v0.3.4
+```
+```
+curl -L https://raw.githubusercontent.com/maticnetwork/install/main/bor.sh | bash -s -- $RELEASE mumbai sentry
+```
+```
+source .profile
+bor version
+```
+## 9. Configure your bor node
+```
+mkdir /var/lib/bor/data
+```
+```
+sudo nano /var/lib/bor/config.toml
+```
+Find and correct the following lines
+```
+[jsonrpc.http]
+        enabled = true
+        port = 8573
+        host = "0.0.0.0"
+        api = ["eth", "net", "web3", "txpool", "bor"]
+        vhosts = ["*"]
+        corsdomain = ["*"]
+        # prefix = ""
+        # ep-size = 40
+        # ep-requesttimeout = "0s"
+     [jsonrpc.ws]
+         enabled = true
+         port = 8915
+        # prefix = ""
+         host = "0.0.0.0"
+         api = ["eth", "net", "web3"]
+         origins = ["*"]
+         ep-size = 40
+         ep-requesttimeout = "0s"
+```
+**Create a systemd file for bor**
+```
+sudo tee /etc/systemd/system/bor.service > /dev/null <<EOF
+
+[Unit]
+  Description=bor
+  StartLimitIntervalSec=500
+  StartLimitBurst=5
+
+[Service]
+  Restart=on-failure
+  RestartSec=5s
+  ExecStart=$(which bor) server -config /var/lib/bor/config.toml
+  Type=simple
+  User=$USER
+  KillSignal=SIGINT
+  TimeoutStopSec=120
+
+[Install]
+  WantedBy=multi-user.target
+  
+EOF
+```
+## 9. Fetch launch repo
+```
+cd ~
+git clone https://github.com/maticnetwork/launch
+mkdir -p node
+cp -rf launch/testnet-v4/sentry/sentry/* ~/node
+cd ~/node
+wget https://raw.githubusercontent.com/maticnetwork/launch/master/testnet-v4/service.sh
+
+
+
+
+
+## 10. Download the lates snapshot and launch a node.
+Download latest bor-mumbai [snapshot](https://snapshots.polygon.technology/). I recomend use `screen` or `tmux`, becouse downloading the snapshot will take about 70min.
+```
+wget <snapshot-link-bor> -O - | tar -xzf - -C /var/lib/bor/data
+```
+Start a bor service
+```
+sudo systemctl daemon-reload
+sudo systemctl enable bor
+sudo systemctl start bor
+sudo journalctl -u bor -f -n 100
+```
 #
 👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
 
