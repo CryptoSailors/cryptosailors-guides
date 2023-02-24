@@ -128,38 +128,16 @@ git checkout $RELEASE
 make
 bor version
 ```
+
 ## 9. Configure your bor node
 ```
 cd ~
-mkdir .bor && cd .bor && mkdir data && mkdir config.toml
-```
-```
-sudo nano /var/lib/bor/config.toml
-```
-Find and correct the following lines
-```
-[jsonrpc.http]
-        enabled = true
-        port = 8573
-        host = "0.0.0.0"
-        api = ["eth", "net", "web3", "txpool", "bor"]
-        vhosts = ["*"]
-        corsdomain = ["*"]
-        # prefix = ""
-        # ep-size = 40
-        # ep-requesttimeout = "0s"
-     [jsonrpc.ws]
-         enabled = true
-         port = 8915
-        # prefix = ""
-         host = "0.0.0.0"
-         api = ["eth", "net", "web3"]
-         origins = ["*"]
-         ep-size = 40
-         ep-requesttimeout = "0s"
+mkdir .bor && cd .bor && mkdir data 
+wget https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Testnets/Polygon-RPC/config.toml
 ```
 **Create a systemd file for bor**
 ```
+cd ~
 sudo tee /etc/systemd/system/bor.service > /dev/null <<EOF
 
 [Unit]
@@ -170,7 +148,7 @@ sudo tee /etc/systemd/system/bor.service > /dev/null <<EOF
 [Service]
   Restart=on-failure
   RestartSec=5s
-  ExecStart=$(which bor) server -config /var/lib/bor/config.toml
+  ExecStart=$(which bor) server -config ~/.bor/config.toml
   Type=simple
   User=$USER
   KillSignal=SIGINT
@@ -181,23 +159,10 @@ sudo tee /etc/systemd/system/bor.service > /dev/null <<EOF
   
 EOF
 ```
-## 9. Fetch launch repo
-```
-cd ~
-git clone https://github.com/maticnetwork/launch
-mkdir -p node
-cp -rf launch/testnet-v4/sentry/sentry/* ~/node
-cd ~/node
-wget https://raw.githubusercontent.com/maticnetwork/launch/master/testnet-v4/service.sh
-
-
-
-
-
 ## 10. Download the lates snapshot and launch a node.
 Download latest bor-mumbai [snapshot](https://snapshots.polygon.technology/). I recomend use `screen` or `tmux`, becouse downloading the snapshot will take about 70min.
 ```
-wget <snapshot-link-bor> -O - | tar -xzf - -C /var/lib/bor/data
+wget <snapshot-link-bor> -O - | tar -xzf - -C ~/.bor/data
 ```
 Start a bor service
 ```
