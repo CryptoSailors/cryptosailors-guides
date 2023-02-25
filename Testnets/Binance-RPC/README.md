@@ -57,40 +57,11 @@ unzip testnet.zip
 rm testnet.zip
 ```
 
-## 5. Sync node from snapshot.
-Open the screen session to download the snapshot:
+## 5. Perform sync from genesis
 ```
-screen -S sdownload
+cd ~
+geth --datadir $HOME/.bsc init $HOME/.bsc/config/genesis.json
 ```
-
-Create a data directory and download the archive file:
-```
-cd $HOME/.bsc
-aria2c -s14 -x14 -k100M https://snapshots.48.club/geth.25916461.tar.lz4 -o geth.tar.lz4
-```
-
-## Please note the latest version of the snapshot you can find here: https://github.com/48Club/bsc-snapshots
-
-## To leave the screen session while the snapshot is loading please press: Ctrl+A+D 
-
-## To enter back to the screen session: 
-```
-screen -rx `screen -list | awk {'print $1'} | tail -n +2 | head -n -1`
-```
-
-Check checksum: it will take time to calculate the checksum:
-```
-openssl sha256 geth.tar.lz4
-```
-
-## Please note the correct checksum you can find here: https://github.com/48Club/bsc-snapshots
-
-Uncompress the snapshot file
-```
-lz4 -cd geth.tar.lz4 | tar xf -
-rm geth.tar.lz4
-```
-
 
 ## 6. Enable journalctl to view Binance RPC node logs.
 ```
@@ -117,7 +88,22 @@ After=online.target
 [Service]
 Type=simple
 User=binance
-ExecStart=/home/binance/binaries/geth --config $HOME/.bsc/config/config.toml --txlookuplimit=0 --syncmode=full --tries-verify-mode=none --pruneancient=true --diffblock=5000 --cache 8000 --rpc.allow-unprotected-txs --datadir /home/binance/.bsc --http --http.vhosts "*" --http.addr 0.0.0.0 --ws --ws.origins '*' --ws.addr 0.0.0.0 --http.port 8645 --port 31303
+ExecStart=/home/binance/binaries/geth \\
+     --config $HOME/.bsc/config/config.toml \\ 
+     --txlookuplimit=0 \\ 
+     --syncmode=full \\ 
+     --tries-verify-mode=none \\ 
+     --pruneancient=true \\ 
+     --diffblock=5000 \\
+     --cache 8000 \\ 
+     --rpc.allow-unprotected-txs \\
+     --datadir /home/binance/.bsc \\ 
+     --http --http.vhosts "*" \\
+     --http.addr 0.0.0.0 \\
+     --ws --ws.origins '*' \\
+     --ws.addr 0.0.0.0 \\
+     --http.port 8645 \\
+     --port 31303
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=4096
