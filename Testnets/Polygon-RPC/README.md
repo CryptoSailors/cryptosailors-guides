@@ -34,8 +34,6 @@ cd heimdall
 git checkout $RELEASE
 make install
 heimdalld version
-```
-```
 cd ~
 ```
 ## 5. Configure Heimdall node
