@@ -59,11 +59,12 @@ To check logs of your node:
 ```
 sudo docker logs celo-fullnode -f --tail 100
 ```
-## 5. Check your synch
-Once your node is fully synced, the output from above will say `false`. To test your Celo RPC node, you can send an RPC request using cURL
-```
-curl http://0.0.0.0:8911 --request POST --header "Content-Type: application/json" --data '{ "jsonrpc":"2.0", "method":"eth_blockNumber","params":[],"id":1}'
-```
+
+## 5. Link on your rpc:
+
+- http://YOUR_IP:8911
+
+#
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
 
