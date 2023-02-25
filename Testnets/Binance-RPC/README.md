@@ -148,4 +148,22 @@ Wait for it to become false before using it in vald config
 eth.syncing
 false
 ```
-                                                           
+
+#
+
+👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
+
+👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
+
+👉[Moonbeam Official guide](https://docs.moonbeam.network)
+
+🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
+
+🔰[Our WebSite](cryptosailors.tech)
+
+🔰[Our Twitter](https://twitter.com/Crypto_Sailors)
+
+🔰[Our Youtube](https://www.youtube.com/@CryptoSailors)
+
+#### Guide created by 
+AntonM | C.Sailors#6222 / @antonmashnin
