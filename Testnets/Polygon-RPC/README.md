@@ -125,7 +125,7 @@ RELEASE=v0.3.3
 git clone https://github.com/maticnetwork/bor
 cd bor
 git checkout $RELEASE
-make
+make bor
 bor version
 ```
 
