@@ -55,15 +55,6 @@ sed -i.bak -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.heimdalld/config/conf
 sed -i.bak -e "s/^max_open_connections *=.*/max_open_connections = \"100\"/" $HOME/.heimdalld/config/config.toml
 sed -i.bak -e "s%^eth_rpc_url = \"http://localhost:9545\"%eth_rpc_url = \"${ETH_GOERLI_RPC}\"%" $HOME/.heimdalld/config/heimdall-config.toml
 ```
-#### Optional. You can skip step bellow and continue from step 6. It only need, if you have other cosmos node on your server.
-```
-COSMOS_PORT=10
-echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.profile
-source $HOME/.profile
-```
-```
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${COSMOS_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${COSMOS_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${COSMOS_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${COSMOS_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${COSMOS_PORT}660\"%" $HOME/.heimdalld/config/config.toml
-```
 
 ## 6. Create a systemd, download latest snapshot.
 ```
@@ -99,7 +90,7 @@ sudo journalctl -u heimdalld -f -n 100
 
 Checek your synch with command:
 ```
-curl -s localhost:10657/status
+curl -s localhost:26657/status
 ```
 You will get somthing like this:
 ```
