@@ -111,12 +111,10 @@ journalctl -u bscgeth -f -n 100 -o cat
 ```
 You should see something like this:
 ```
-INFO [02-25|11:06:12.190] Imported new chain segment               blocks=2048 txs=3714 mgas=74.357 elapsed=3.847s    mgasps=19.325 number=80818 hash=bac7ca..1f8a16 age=2y7mo4w dirty=0.00B
-INFO [02-25|11:06:13.736] Imported new chain segment               blocks=2048 txs=304  mgas=6.385  elapsed=1.529s    mgasps=4.174  number=82866 hash=e103c2..a19ad2 age=2y7mo4w dirty=0.00B
-INFO [02-25|11:06:16.672] Imported new chain segment               blocks=2048 txs=310  mgas=6.496  elapsed=2.916s    mgasps=2.228  number=84914 hash=70caf7..77efc9 age=2y7mo4w dirty=0.00B
-INFO [02-25|11:06:18.457] Imported new chain segment               blocks=2048 txs=438  mgas=8.994  elapsed=1.771s    mgasps=5.077  number=86962 hash=98386a..11872b age=2y7mo4w dirty=0.00B
-INFO [02-25|11:06:20.297] Imported new chain segment               blocks=2048 txs=304  mgas=6.385  elapsed=1.818s    mgasps=3.512  number=89010 hash=44923f..ef1a72 age=2y7mo4w dirty=0.00B
-INFO [02-25|11:06:22.123] Imported new chain segment               blocks=2048 txs=304  mgas=6.385  elapsed=1.807s    mgasps=3.531  number=91058 hash=eab3c3..2b6c51 age=2y7mo3w dirty=0.00B
+INFO [02-25|11:11:38.289] Imported new chain segment               blocks=65 txs=7 mgas=1.510 elapsed=64.653ms mgasps=23.355 number=65 hash=fbcdb0..b98988 age=2y8mo1d  dirty=0.00B
+INFO [02-25|11:11:38.837] Imported new chain segment               blocks=319 txs=33 mgas=3.111 elapsed=347.327ms mgasps=8.956  number=384 hash=07fa21..986b45 age=2y8mo1d  dirty=0.00B
+INFO [02-25|11:11:39.050] Imported new chain segment               blocks=181 txs=0  mgas=0.000 elapsed=190.440ms mgasps=0.000  number=565 hash=7d341a..b5a407 age=2y8mo1d  dirty=0.00B
+INFO [02-25|11:11:41.442] Imported new chain segment               blocks=1908 txs=529 mgas=73.465 elapsed=2.346s    mgasps=31.310 number=2473 hash=085eb4..6805a3 age=2y8mo1d  dirty=0.00B
 ```
 
 You can run a cURL request to see the status of your node:
