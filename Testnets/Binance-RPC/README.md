@@ -44,8 +44,8 @@ Git Commit: 6587671e748805a438c4c617e766ce168a38e5e6
 Architecture: amd64
 Go Version: go1.19.5
 Operating System: linux
-GOPATH=/home/binance/go
-GOROOT=/usr/local/go
+GOPATH=
+GOROOT=
 ```
 
 ## 4. Download the config files genesis.json and config.toml.
