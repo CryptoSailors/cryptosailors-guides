@@ -52,6 +52,11 @@ curl -X POST http://localhost:8550 \
   --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}'
 ```
 
+## 6. Link to your RPC
+- `http://YOUR_IP:8550`
+
+#
+
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
