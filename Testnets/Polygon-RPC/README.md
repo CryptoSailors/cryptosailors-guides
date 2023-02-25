@@ -137,7 +137,7 @@ sudo tee /etc/systemd/system/bor.service > /dev/null <<EOF
 [Service]
   Restart=on-failure
   RestartSec=5s
-  ExecStart=$(which bor) server -config ~/.bor/config.toml
+  ExecStart=$(which bor) server -config /root/.bor/config.toml
   Type=simple
   User=$USER
   KillSignal=SIGINT
