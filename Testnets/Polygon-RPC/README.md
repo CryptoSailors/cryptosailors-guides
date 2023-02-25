@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://i.postimg.cc/FRptCfdXh4/68fee74747073sdsd3a2f2f7062732e7477696d672e636f6d2f6578745f74775f766964656f5f7468756d622f313632333035313030.jpg"/></a>
+ <img src="https://i.postimg.cc/RZfxLxXb/Polygon-logo-resized-jpeg.jpg"/></a>
 </p>
 
 # Polygon testnet node guide installation.
@@ -167,13 +167,17 @@ sudo journalctl -u bor -f -n 100
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[Discord](https://discord.gg/ps6B3yaMb7)
+👉[Discord](https://discord.gg/0xpolygon)
 
-👉[WebSite](https://www.althea.net/)
+👉[Official guide](https://wiki.polygon.technology/)
 
-👉[Official guide](https://github.com/althea-net/althea-chain-docs/blob/main/docs/testnet-3-launch.md)
+👉[Polygon Testnet Explorer](https://staking.polygon.technology)
 
-👉[Althea Explorer](https://test.anode.team/althea)
+👉[Heimdall Github](https://github.com/maticnetwork/heimdall/tags)
+
+👉[Bor Github](https://github.com/maticnetwork/bor/tags)
+
+👉[Snapshots](https://snapshots.polygon.technology/) 
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
