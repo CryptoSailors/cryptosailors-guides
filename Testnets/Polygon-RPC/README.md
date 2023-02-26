@@ -160,6 +160,15 @@ sudo systemctl enable bor
 sudo systemctl start bor
 sudo journalctl -u bor -f -n 100
 ```
+You can check your synch:
+```
+curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "eth_syncing", "params":[]}' localhost:8573
+```
+- if they show `false` you are synched.
+
+## 11 Your RPC url are:
+- `http://YOUR_IP:8573`
+- `ws://YOUR_IP:8915`
 #
 👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
 
