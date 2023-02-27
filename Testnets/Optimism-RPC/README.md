@@ -127,7 +127,7 @@ If you get something like this in response to the above rpc call, your node is s
   "result": "0x62ca4"
 }
 ```
-## 7 Your RPC url:
+## 7 Your RPC url are:
 
 - `http://YOUR_IP:9993`
 - `ws://YOUR_IP:9994`
