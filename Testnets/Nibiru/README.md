@@ -108,6 +108,7 @@ If the command gives out `true` - it means that synchronization is still in proc
 If the command gives `false` - then you are synchronized and you can start creating the validator.
 
 ## 8. Requesting tokens from the faucet
+You can proceed to their [application](https://app.nibiru.fi/), connect your Keplr wallet and request tokens or do it manualy through terminal.
 ```
 ADDR=<your-wallet-address>
 ```
@@ -176,6 +177,8 @@ rm -rf .nibid
 👉[WebSite](https://nibiru.fi/)
 
 👉[Official guide](https://docs.nibiru.fi/)
+
+👉[Nibiru application](https://app.nibiru.fi/)
 
 👉[GitHub](https://github.com/NibiruChain)
 
