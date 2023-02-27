@@ -50,53 +50,43 @@ The command will ask for a password and then give you a mnemonic phrase, which y
 
 #### Download the genis.json file
 ```
-curl -s https://rpc.testnet-1.nibiru.fi/genesis | jq -r .result.genesis > genesis.json
+NETWORK=nibiru-itn-1
+curl -s https://networks.itn.nibiru.fi/$NETWORK/genesis > $HOME/.nibid/config/genesis.json
+shasum -a 256 $HOME/.nibid/config/genesis.json
 ```
+You should see output `e162ace87f5cbc624aa2a4882006312ef8762a8a549cf4a22ae35bba12482c72`
+## 5. Configure our node
 ```
-mv genesis.json $HOME/.nibid/config/genesis.json
-```
-
-## 5. Updating config.toml file with new peers
-```
-cd ~
-nano .nibid/config/config.toml
-```
-Scroll down and look for the `persistent_peers line` and add peers to it.
-```
-persistent_peers = "37713248f21c37a2f022fbbb7228f02862224190@35.243.130.198:26656,ff59bff2d8b8fb6114191af7063e92a9dd637bd9@35.185.114.96:26656,cb431d789fe4c3f94873b0769cb4fce5143daf97@35.227.113.63:26656"
-```
-
-<p align="center">
- <img src="https://miro.medium.com/max/4800/1*OLUMjnZaM0IAISO4dMAbGw.png"width="600"/></a>
-</p>
-
-Press `CTRL+X,Y,Enter` to exit from nano.
-
-## 6. Set the necessary values
-```
+NETWORK=nibiru-itn-1
+sed -i 's|seeds =.*|seeds = "'$(curl -s https://networks.itn.nibiru.fi/$NETWORK/seeds)'"|g' $HOME/.nibid/config/config.toml
 sed -i 's/minimum-gas-prices =.*/minimum-gas-prices = "0.025unibi"/g' $HOME/.nibid/config/app.toml
+sed -i 's|enable =.*|enable = true|g' $HOME/.nibid/config/config.toml
+sed -i 's|rpc_servers =.*|rpc_servers = "'$(curl -s https://networks.itn.nibiru.fi/$NETWORK/rpc_servers)'"|g' $HOME/.nibid/config/config.toml
+sed -i 's|trust_height =.*|trust_height = "'$(curl -s https://networks.itn.nibiru.fi/$NETWORK/trust_height)'"|g' $HOME/.nibid/config/config.toml
+sed -i 's|trust_hash =.*|trust_hash = "'$(curl -s https://networks.itn.nibiru.fi/$NETWORK/trust_hash)'"|g' $HOME/.nibid/config/config.toml
+sed -i 's|indexer =.*|indexer = "'null'"|g' $HOME/.nibid/config/config.toml
+```
+## 6. This step is optional needed only, if you run more than one node on your machine.
+```
+COSMOS_PORT=11
+echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.profile
+source $HOME/.profile
 ```
 ```
-CONFIG_TOML="$HOME/.nibid/config/config.toml"
- sed -i 's/timeout_propose =.*/timeout_propose = "100ms"/g' $CONFIG_TOML
- sed -i 's/timeout_propose_delta =.*/timeout_propose_delta = "500ms"/g' $CONFIG_TOML
- sed -i 's/timeout_prevote =.*/timeout_prevote = "100ms"/g' $CONFIG_TOML
- sed -i 's/timeout_prevote_delta =.*/timeout_prevote_delta = "500ms"/g' $CONFIG_TOML
- sed -i 's/timeout_precommit =.*/timeout_precommit = "100ms"/g' $CONFIG_TOML
- sed -i 's/timeout_precommit_delta =.*/timeout_precommit_delta = "500ms"/g' $CONFIG_TOML
- sed -i 's/timeout_commit =.*/timeout_commit = "1s"/g' $CONFIG_TOML
- sed -i 's/skip_timeout_commit =.*/skip_timeout_commit = false/g' $CONFIG_TOML
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${COSMOS_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${COSMOS_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${COSMOS_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${COSMOS_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${COSMOS_PORT}660\"%" $HOME/.nibid/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${COSMOS_PORT}317\"%; s%^address = \":8080\"%address = \":${COSMOS_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${COSMOS_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${COSMOS_PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${COSMOS_PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${COSMOS_PORT}546\"%" $HOME/.nibid/config/app.toml
+sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:${COSMOS_PORT}657\"%" $HOME/.nibid/config/client.toml
 ```
 
 ## 7. Create a service file and start the node
 ```
-tee /etc/systemd/system/nibidd.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/nibidd.service > /dev/null <<EOF
 [Unit]
 Description=Nibid
 After=network-online.target
 [Service]
-User=root
-ExecStart=/usr/bin/nibid start
+User=$USER
+ExecStart=$(which nibid) start
 Restart=always
 RestartSec=3
 LimitNOFILE=10000
@@ -106,14 +96,12 @@ EOF
 ```
 Start a node
 ```
-systemctl daemon-reload
-systemctl start nibidd
-systemctl enable nibidd
+sudo systemctl daemon-reload
+sudo systemctl start nibidd
+sudo systemctl enable nibidd
+sudo journalctl -u nibidd -f -n 100
 ```
-Check logs
-```
-journalctl -u nibidd -f -n 100
-```
+We are launchig a node from State Synch. Node need some time to catch up a peers. 
 Press `CTRL+X,Y,Enter` to exit from the logs
 
 ## 8. Requesting tokens from the faucet
