@@ -139,7 +139,7 @@ nibid tx staking create-validator \
 --pubkey=$(nibid tendermint show-validator) \
 --moniker <YOUR_VALIDATOR_NAME> \
 --chain-id nibiru-itn-1 \
---gas-prices 0.025unibi \ 
+--gas-prices 0.025unibi \
 --from wallet
 ```
 
