@@ -144,7 +144,7 @@ Check yourself through the [explorer](https://explorer.kjnodes.com/nibiru-testne
 ```
 nibid keys show wallet --bech val
 ```
-**Delegate tokens to the valodator**
+- Delegate tokens to the valodator
 ```
 nibid tx staking delegate <VAL_ADDRESS> 8000000unibi --chain-id nibiru-itn-1 --from wallet --gas-prices 0.025unibi
 ```
@@ -187,6 +187,8 @@ rm -rf .nibid
 🔰[Our WebSite](cryptosailors.tech)
 
 🔰[Our Twitter](https://twitter.com/Crypto_Sailors)
+
+🔰[Our YouTube](https://www.youtube.com/@CryptoSailors)
 
 #### Guide created by 
 Pavel-LV | C.Sailors#7698 / @SeaInvestor
