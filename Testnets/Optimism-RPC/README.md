@@ -114,10 +114,10 @@ Check l2geth logs
 ```
 sudo docker-compose logs l2geth -f --tail 100
 ```
-## Verify your node status.
+## 6 Verify your node status.
 Input command bellow to verify,that you configure node correctly.
 ```
-curl -X POST $(curl -4 ifconfig.co):9991 -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' | jq
+curl -X POST $(curl -4 ifconfig.co):9993 -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' | jq
 ```
 If you get something like this in response to the above rpc call, your node is setup correctly:
 ```
@@ -127,10 +127,10 @@ If you get something like this in response to the above rpc call, your node is s
   "result": "0x62ca4"
 }
 ```
-Also you can check the status of your synchrinization process. If they will show `false` that mean that you are synched.
-```
-curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "eth_blockNumber","params": []}' localhost:9991
-```
+## 7 Your RPC url:
+
+- `http://YOUR_IP:9993`
+- `ws://YOUR_IP:9994`
 #
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
