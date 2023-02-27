@@ -6,7 +6,7 @@
 
 This test node is rewarded and is part of the [main tasks](https://nibiru.fi/blog/posts/007-itn-1.html).
 <p align="center">
- <img src="https://miro.medium.com/max/720/0*heqm_EdLLtJ7nDU1.png"width="600"/></a>
+ <img src="https://nibiru.fi/blog/nc/007/itn-roadmap-1.png"width="600"/></a>
 </p>
 
 ## 1. Requirements.
