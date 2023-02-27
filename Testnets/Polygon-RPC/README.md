@@ -121,7 +121,7 @@ bor version
 ## 9. Configure your bor node
 ```
 cd ~
-mkdir .bor && cd .bor && mkdir data 
+mkdir .bor && cd .bor && mkdir data && cd data && mkdir bor && cd bor && mkdir chaindata
 wget https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Testnets/Polygon-RPC/config.toml
 ```
 **Create a systemd file for bor**
@@ -151,7 +151,7 @@ EOF
 ## 10. Download the lates snapshot and launch a node.
 Download latest bor-mumbai [snapshot](https://snapshots.polygon.technology/). I recomend use `screen` or `tmux`, becouse downloading the snapshot will take about 70min.
 ```
-wget <snapshot-link-bor> -O - | tar -xzf - -C ~/.bor/data
+wget <snapshot-link-bor> -O - | tar -xzf - -C ~/.bor/data/bor/chaindata
 ```
 Start a bor service
 ```
