@@ -14,7 +14,7 @@ This testnet is currently without awards, but the Incentive Testnet phase is pla
 Official 
 - 2 CPU
 - 4 GB RAM
-- 100 GB SSD
+- 400 GB SSD
 
 ## 2. Server preparation.
 ```
@@ -27,31 +27,17 @@ Install [GO according this instruction](https://github.com/CryptoSailors/cryptos
 ## 3. Node installation.
 ```
 git clone https://github.com/NibiruChain/nibiru
-```
-```
 cd nibiru
-```
-```
-git checkout v0.16.3
-```
-```
+git checkout v0.19.2
 make install
-```
-```
-mv /root/go/bin/nibid /usr/bin/
-```
-```
-chmod +x /usr/bin/nibid
-```
-```
 nibid version
 ```
-You should see version v0.16.3
+You should see version v0.19.2
 
 ## 4.Create a wallet
 Change `<moniker-name>` on your name
 ```
-nibid init <moniker-name> --chain-id=nibiru-testnet-2 
+nibid init <moniker-name> --chain-id=nibiru-itn-1
 ```
 ```
 nibid keys add wallet
