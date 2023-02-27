@@ -31,6 +31,7 @@ cd nibiru
 git checkout v0.19.2
 make install
 nibid version
+cd ~
 ```
 You should see version v0.19.2
 
@@ -59,6 +60,7 @@ You should see output `e162ace87f5cbc624aa2a4882006312ef8762a8a549cf4a22ae35bba1
 ```
 NETWORK=nibiru-itn-1
 sed -i 's|seeds =.*|seeds = "'$(curl -s https://networks.itn.nibiru.fi/$NETWORK/seeds)'"|g' $HOME/.nibid/config/config.toml
+sed -i 's/indexer =.*/indexer = "null"/g' $HOME/.nibid/config/app.toml
 sed -i 's/minimum-gas-prices =.*/minimum-gas-prices = "0.025unibi"/g' $HOME/.nibid/config/app.toml
 sed -i 's|enable =.*|enable = true|g' $HOME/.nibid/config/config.toml
 sed -i 's|rpc_servers =.*|rpc_servers = "'$(curl -s https://networks.itn.nibiru.fi/$NETWORK/rpc_servers)'"|g' $HOME/.nibid/config/config.toml
@@ -83,7 +85,7 @@ EOF
 ```
 ## 6. This step is optional needed only, if you run more than one node on your machine.
 ```
-COSMOS_PORT=11
+COSMOS_PORT=13
 echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.profile
 source $HOME/.profile
 ```
@@ -99,57 +101,52 @@ sudo systemctl start nibidd
 sudo systemctl enable nibidd
 sudo journalctl -u nibidd -f -n 100
 ```
-We are launchig a node from State Synch. Node need some time to catch up a peers. 
-Press `CTRL+X,Y,Enter` to exit from the logs
-
-## 8. Requesting tokens from the faucet
-
-While the node is synchronizing, we can request tokens from the faucet. To do this, we need our new generated wallet.
-```
-nibid keys list
-```
-Go to [Discord](https://discord.com/invite/BVCw2cYmhu) and request tokens through Faucet
-
-<p align="center">
- <img src="https://miro.medium.com/max/4800/1*N4rbaV9__zJhJJKonQygnw.png"width="600"/></a>
-</p>
-
-## 9. Creating a Validator
-
-To start, wait for a full synchronization. To make sure that your node is synchronizated, run the command below.
+We are launchig a node from State Synch. Node need some time to catch up a peers. Press `CTRL+X,Y,Enter` to exit from the logs. To checke your synch launch command:
 ```
 nibid status 2>&1 | jq .SyncInfo
 ```
 If the command gives out `true` - it means that synchronization is still in process
 If the command gives `false` - then you are synchronized and you can start creating the validator.
 
-<p align="center">
- <img src="https://miro.medium.com/max/4800/1*MXaRUb-QF7n-DjVWIybDNg.png"width="600"/></a>
-</p>
+## 8. Requesting tokens from the faucet
+```
+ADDR=<your-wallet-address>
+```
+```
+FAUCET_URL="https://faucet.itn-1.nibiru.fi/"
+curl -X POST -d '{"address": "'"$ADDR"'", "coins": ["11000000unibi","100000000unusd","100000000uusdt"]}' $FAUCET_URL
+```
+Check your ballance
+```
+nibid q bank balances <your-wallet-address>
+```
 
+## 9. Creating a Validator
 Creating a validator. Change `<YOUR_VALIDATOR_NAME>` on your name
 ```
 nibid tx staking create-validator \
---amount 1000000unibi \
+--amount 10000000unibi \
 --commission-max-change-rate "0.1" \
 --commission-max-rate "0.20" \
 --commission-rate "0.1" \
 --min-self-delegation "1" \
 --pubkey=$(nibid tendermint show-validator) \
 --moniker <YOUR_VALIDATOR_NAME> \
---chain-id nibiru-testnet-2 \
+--chain-id nibiru-itn-1 \
 --gas-prices 0.025unibi \ 
 --from wallet
 ```
-Check yourself through the [explorer](https://nibiru.explorers.guru/validators).
 
-Take out your vallopers address and delegate the remaining tokens to your validator.
+Check yourself through the [explorer](https://explorer.kjnodes.com/nibiru-testnet).
+
+**Additional commands**
+- Your valoper address
 ```
 nibid keys show wallet --bech val
 ```
-Change `<VAL_ADDRESS>` on address from command above.
+**Delegate tokens to the valodator**
 ```
-nibid tx staking delegate <VAL_ADDRESS> 8000000unibi --chain-id nibiru-testnet-2 --from wallet --gas-prices 0.025unibi
+nibid tx staking delegate <VAL_ADDRESS> 8000000unibi --chain-id nibiru-itn-1 --from wallet --gas-prices 0.025unibi
 ```
 ## 10 Backup your node
 
@@ -166,7 +163,7 @@ systemctl stop nibidd
 ```
 ```
 rm -rf /etc/systemd/system/nibidd.service
-rm -rf /usr/bin/nibid
+rm -rf go/bin/nibid
 rm -rf nibiru
 rm -rf .nibid
 ```
@@ -183,7 +180,7 @@ rm -rf .nibid
 
 👉[GitHub](https://github.com/NibiruChain)
 
-👉[Nibiru Explorer](https://nibiru.explorers.guru/)
+👉[kjnodes Explorer](https://explorer.kjnodes.com/nibiru-testnet)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
