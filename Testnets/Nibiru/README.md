@@ -4,7 +4,7 @@
 
 # In this Guide we will install a Nibiru Node
 
-This testnet is testnet is incentive testnet.
+This test node is rewarded and is part of the [main tasks](https://nibiru.fi/blog/posts/007-itn-1.html).
 <p align="center">
  <img src="https://miro.medium.com/max/720/0*heqm_EdLLtJ7nDU1.png"width="600"/></a>
 </p>
@@ -34,11 +34,12 @@ cd ~
 ```
 You should see version v0.19.2
 
-## 4.Create a wallet
+## 4.Create a wallet or recover it
 Change `<moniker-name>` on your name
 ```
 nibid init <moniker-name> --chain-id=nibiru-itn-1
 ```
+To Crate a new wallet do:
 ```
 nibid keys add wallet
 ```
@@ -47,6 +48,11 @@ The command will ask for a password and then give you a mnemonic phrase, which y
 <p align="center">
  <img src="https://miro.medium.com/proxy/1*4Ym6WCEJJXy6cLO9_y41lA.png"width="600"/></a>
 </p>
+
+To recover your wallet do:
+```
+nibid keys add wallet --recover
+```
 
 #### Download the genis.json file
 ```
