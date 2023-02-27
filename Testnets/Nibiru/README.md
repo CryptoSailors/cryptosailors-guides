@@ -4,8 +4,7 @@
 
 # In this Guide we will install a Nibiru Node
 
-This testnet is currently without awards, but the Incentive Testnet phase is planned for the third phase. There is no information about awards yet. At the moment you can get into the first phase of the testnet.
-
+This testnet is testnet is incentive testnet.
 <p align="center">
  <img src="https://miro.medium.com/max/720/0*heqm_EdLLtJ7nDU1.png"width="600"/></a>
 </p>
