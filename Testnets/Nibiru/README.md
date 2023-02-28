@@ -162,13 +162,73 @@ After successfully creating a validator, you must take care of `priv_validator_k
  <img src="https://miro.medium.com/max/4800/1*QO2j4zovK9ZP2jqAccs2eQ.png"width="600"/></a>
 </p>
 
+## 11. Become a pricedefeefer.
+
+You should be in active set to become an pricedefeefer.
+```
+curl -s https://get.nibiru.fi/pricefeeder! | bash
+```
+```
+nibid keys add pricefeeder-wallet
+```
+```
+export FEEDER_MNEMONIC="<your mnemonic here>"
+```
+```
+export VALIDATOR_ADDRESS="nibi1valoper..."
+```
+```
+export CHAIN_ID="nibiru-itn-1"
+export GRPC_ENDPOINT="localhost:13090"
+export WEBSOCKET_ENDPOINT="ws://localhost:13657/websocket"
+export EXCHANGE_SYMBOLS_MAP='{ "bitfinex": { "ubtc:uusd": "tBTCUSD", "ueth:uusd": "tETHUSD", "uusdt:uusd": "tUSTUSD" }, "binance": { "ubtc:uusd": "BTCUSD", "ueth:uusd": "ETHUSD", "uusdt:uusd": "USDTUSD", "uusdc:uusd": "USDCUSD", "uatom:uusd": "ATOMUSD", "ubnb:uusd": "BNBUSD", "uavax:uusd": "AVAXUSD", "usol:uusd": "SOLUSD", "uada:uusd": "ADAUSD", "ubtc:unusd": "BTCUSD", "ueth:unusd": "ETHUSD", "uusdt:unusd": "USDTUSD", "uusdc:unusd": "USDCUSD", "uatom:unusd": "ATOMUSD", "ubnb:unusd": "BNBUSD", "uavax:unusd": "AVAXUSD", "usol:unusd": "SOLUSD", "uada:unusd": "ADAUSD" } }'
+```
+Create a systemd service
+```
+sudo tee /etc/systemd/system/pricefeeder.service<<EOF
+[Unit]
+Description=Nibiru Pricefeeder
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=exec
+User=$USER
+Group=$USER
+ExecStart=$(which pricefeeder)
+Restart=on-failure
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGTERM
+PermissionsStartOnly=true
+LimitNOFILE=65535
+Environment=CHAIN_ID='$CHAIN_ID'
+Environment=GRPC_ENDPOINT='$GRPC_ENDPOINT'
+Environment=WEBSOCKET_ENDPOINT='$WEBSOCKET_ENDPOINT'
+Environment=EXCHANGE_SYMBOLS_MAP='$EXCHANGE_SYMBOLS_MAP'
+Environment=FEEDER_MNEMONIC='$FEEDER_MNEMONIC'
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+Start pricedefeeder
+```
+sudo systemctl daemon-reload && \
+sudo systemctl enable pricefeeder && \
+sudo systemctl start pricefeeder && \
+sudo journalctl -u pricefeeder -f -n 100
+```
+
 ## 11. Deleting a node
 
 ```
-systemctl stop nibidd
+sudo systemctl stop nibidd
+sudo systemctl stop pricefeeder
 ```
 ```
 rm -rf /etc/systemd/system/nibidd.service
+rm -rf /etc/systemd/system/pricefeeder.service
+rm -rf /usr/local/bin/pricefeeder
 rm -rf go/bin/nibid
 rm -rf nibiru
 rm -rf .nibid
