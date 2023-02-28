@@ -148,7 +148,8 @@ Wait for it to become false before using it in vald config
 eth.syncing
 false
 ```
-
+## Your RPC URL are:
+- `http://YOUR_IP:8645`
 #
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
