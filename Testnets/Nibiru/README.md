@@ -219,7 +219,7 @@ sudo systemctl start pricefeeder && \
 sudo journalctl -u pricefeeder -f -n 100
 ```
 
-## 11. Deleting a node
+## 12. Deleting a node
 
 ```
 sudo systemctl stop nibidd
