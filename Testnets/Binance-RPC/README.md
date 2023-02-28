@@ -155,7 +155,7 @@ false
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[Moonbeam Official guide](https://docs.moonbeam.network)
+👉[Binance Official guide](https://docs.bnbchain.org/docs/beaconchain/develop/node/install)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
