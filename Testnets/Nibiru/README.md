@@ -162,15 +162,20 @@ After successfully creating a validator, you must take care of `priv_validator_k
  <img src="https://miro.medium.com/max/4800/1*QO2j4zovK9ZP2jqAccs2eQ.png"width="600"/></a>
 </p>
 
-## 11. Become a pricedefeefer.
+## 11. Become a pricefeeder.
 
-You should be in active set to become an pricedefeefer.
+You should be in active set to become an pricefeeder.
 ```
 curl -s https://get.nibiru.fi/pricefeeder! | bash
 ```
 ```
 nibid keys add pricefeeder-wallet
 ```
+Send tokens to your `pricefeeder-wallet`. You should monitor your balance all the time. If balance will be 0 `pricefeeder` will not work.
+```
+nibid tx bank send wallet <nibi16....> <100000000>unibi --chain-id nibiru-itn-1 --gas-prices 0.025unibi
+```
+Configure our systemd.service
 ```
 export FEEDER_MNEMONIC="<your mnemonic here>"
 ```
@@ -183,7 +188,7 @@ export GRPC_ENDPOINT="localhost:13090"
 export WEBSOCKET_ENDPOINT="ws://localhost:13657/websocket"
 export EXCHANGE_SYMBOLS_MAP='{ "bitfinex": { "ubtc:uusd": "tBTCUSD", "ueth:uusd": "tETHUSD", "uusdt:uusd": "tUSTUSD" }, "binance": { "ubtc:uusd": "BTCUSD", "ueth:uusd": "ETHUSD", "uusdt:uusd": "USDTUSD", "uusdc:uusd": "USDCUSD", "uatom:uusd": "ATOMUSD", "ubnb:uusd": "BNBUSD", "uavax:uusd": "AVAXUSD", "usol:uusd": "SOLUSD", "uada:uusd": "ADAUSD", "ubtc:unusd": "BTCUSD", "ueth:unusd": "ETHUSD", "uusdt:unusd": "USDTUSD", "uusdc:unusd": "USDCUSD", "uatom:unusd": "ATOMUSD", "ubnb:unusd": "BNBUSD", "uavax:unusd": "AVAXUSD", "usol:unusd": "SOLUSD", "uada:unusd": "ADAUSD" } }'
 ```
-Create a systemd service
+**Create a systemd service**
 ```
 sudo tee /etc/systemd/system/pricefeeder.service<<EOF
 [Unit]
@@ -206,17 +211,23 @@ Environment=GRPC_ENDPOINT='$GRPC_ENDPOINT'
 Environment=WEBSOCKET_ENDPOINT='$WEBSOCKET_ENDPOINT'
 Environment=EXCHANGE_SYMBOLS_MAP='$EXCHANGE_SYMBOLS_MAP'
 Environment=FEEDER_MNEMONIC='$FEEDER_MNEMONIC'
+Environment=VALIDATOR_ADDRESS='$VALIDATOR_ADDRESS'
 
 [Install]
 WantedBy=multi-user.target
 EOF
 ```
-Start pricedefeeder
+**Start pricefeeder**
 ```
 sudo systemctl daemon-reload && \
 sudo systemctl enable pricefeeder && \
 sudo systemctl start pricefeeder && \
 sudo journalctl -u pricefeeder -f -n 100
+```
+**Register your pricefeeder.** It is not necessary, if you input your validator mnemonic in `FEEDER_MNEMONIC`
+
+```
+nibid tx oracle set-feeder $(nibid keys show pricefeeder-wallet -a) --from wallet --gas-prices 0.025unibi --chain-id nibiru-itn-1
 ```
 
 ## 12. Deleting a node
