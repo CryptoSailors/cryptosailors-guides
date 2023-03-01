@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://miro.mediudsdsdm.com/proxy/1*B_PuVSPbQ5E9PaxV7TRcWA.jpeg"width="900"/></a>
+ <img src="https://i.postimg.cc/gkDsRV8S/1-2u3ic7ilt-VQi-H7nm-Uce-Zjw.png"width="900"/></a>
 </p>
 
 # In this Guide we will install a Kyve Testnet Node
@@ -142,21 +142,17 @@ sudo rm -rf go/bin/kyved
 sudo rm -rf .kyve
 ```
 #
-👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
+👉[Dedicated Ryzen 5 Server on webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[Discord](https://discord.com/invite/BVCw2cYmhu) 
+👉[Discord](https://discord.gg/CpMZu5xhfD) 
 
-👉[WebSite](https://nibiru.fi/)
+👉[WebSite](https://www.kyve.network/)
 
-👉[Official guide](https://docs.nibiru.fi/)
+👉[Official guide](https://github.com/itrocket-team/testnet_guides/tree/main/kyve)
 
-👉[Nibiru application](https://app.nibiru.fi/)
-
-👉[GitHub](https://github.com/NibiruChain)
-
-👉[kjnodes Explorer](https://explorer.kjnodes.com/nibiru-testnet)
+👉[NodesGuru Explorer](https://kyve.explorers.guru/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
