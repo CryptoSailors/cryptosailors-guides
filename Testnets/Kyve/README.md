@@ -127,11 +127,11 @@ kyved keys show wallet --bech val
 ```
 kyved tx staking delegate <VAL_ADDRESS> <ammount>tkyve --chain-id kaon-1  --from wallet --gas auto --fees 5000tkyve
 ```
-## 10 Backup your node
+## 9 Backup your node
 
 After successfully creating a validator, you must take care of `priv_validator_key.json`. Without it you will not be able to restore the validator. It can be found in the folder `.kyve/config`
 
-## 12. Deleting a node
+## 10. Deleting a node
 
 ```
 sudo systemctl stop kyved
