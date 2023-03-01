@@ -175,7 +175,7 @@ Send tokens to your `pricefeeder-wallet`. You should monitor your balance all th
 ```
 nibid tx bank send wallet <nibi16....> <100000000>unibi --chain-id nibiru-itn-1 --gas-prices 0.025unibi
 ```
-Configure our systemd.service
+**Configure our systemd.service**
 ```
 export FEEDER_MNEMONIC="<your mnemonic here>"
 ```
