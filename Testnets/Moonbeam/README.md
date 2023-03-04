@@ -89,27 +89,31 @@ SyslogIdentifier=moonbeam
 SyslogFacility=local7
 KillSignal=SIGHUP
 ExecStart=/home/moonbeam/moonbeam/target/release/moonbeam \\
+     --execution wasm \
      --port 30333 \
-     --rpc-port 9935 \
+     --rpc-port 9933 \
      --ws-port 9944 \
-     --rpc-cors=all \
+     --wasm-execution compiled \
      --unsafe-rpc-external \
      --unsafe-ws-external \
-     --execution wasm \
-     --wasm-execution compiled \
-     --pruning=archive \
-     --trie-cache-size 0 \
-     --db-cache 16000 \
+     --state-pruning=archive \
+     --trie-cache-size 4 \
+     --max-past-logs 100000 \
+     --rpc-max-response-size 128 \
      --base-path /home/moonbeam/moonbram \
+     --ethapi=debug,trace,txpool \
+     --wasm-runtime-overrides=/home/moonbeam/moonbram/wasm \
+     --ws-max-connections 10000 \
+     --rpc-cors all \
+     --runtime-cache-size 64 \
      --chain alphanet \
      --name "YOUR_NODE_NAME" \
      -- \
      --port 30334 \
-     --rpc-port 9934 \
-     --ws-port 9945 \
      --execution wasm \
-     --pruning=1000 \
+     --state-pruning=1000 \
      --name="YOUR_NODE_NAME"
+
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -134,13 +138,16 @@ You should see something like this:
 
 You can run a cURL request to see the status of your node:
 ```
-curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "eth_syncing", "params":[]}' localhost:9935
+curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "eth_syncing", "params":[]}' localhost:9944
 ```
 
 When the node will be successfully synced, the output from above will print 
 ```
 {"jsonrpc":"2.0","result":false,"id":1}
 ```
+## Your RPC endpoints will be: 
+- `http:YOUR:IP:9944`
+- `http:YOUR:IP:9944'
 
 #
 
