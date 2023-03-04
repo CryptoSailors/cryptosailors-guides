@@ -61,6 +61,7 @@ EOF
 source ~/.profile
 go version
 sudo rm -rf /usr/src/go*.linux-amd64.tar.gz
+cd ~
 ```
 
 ## 4. Install Moonbeam.\
