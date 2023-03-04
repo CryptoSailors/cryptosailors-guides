@@ -76,6 +76,10 @@ cd moonbeam
 git checkout $RELEASE
 cargo build --release
 ```
+```
+cd ~
+```
+mkdir moonbram && cd moonbram && mkdir wasm
 ## 5. Setup the Sytemd Service.
 ```
 sudo tee <<EOF >/dev/null /etc/systemd/system/moonbeam.service
