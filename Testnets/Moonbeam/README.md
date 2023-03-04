@@ -19,6 +19,7 @@ sudo usermod -aG sudo moonbeam
 Enter the shell of the moonbeam account:
 ```
 su -s /bin/bash moonbeam
+cd ~
 ```
 
 ## 2. Node Preparation.
