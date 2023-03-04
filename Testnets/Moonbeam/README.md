@@ -145,7 +145,7 @@ When the node will be successfully synced, the output from above will print
 ```
 {"jsonrpc":"2.0","result":false,"id":1}
 ```
-## Your RPC endpoints will be: 
+## 6. Your RPC endpoints will be: 
 - `http:YOUR:IP:9944`
 - `http:YOUR:IP:9944'
 
