@@ -30,6 +30,9 @@ Update your PATH environment variable by running:
 ```
 source $HOME/.cargo/env
 ```
+```
+sudo apt install cargo
+```
 
 ## 3. Install golang go.
 Enter the shell of the moonbeam account:
