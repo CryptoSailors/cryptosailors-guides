@@ -12,6 +12,8 @@
 ## 1. Create Moonbeam User and add it to Sudo group.
 ```
 adduser --gecos "" moonbeam
+```
+```
 sudo usermod -aG sudo moonbeam
 ```
 Enter the shell of the moonbeam account:
