@@ -9,7 +9,13 @@
 - 16 GB RAM
 - 1 TB SSD (Recommended)
 
-## 1. Node Preparation.
+## 1. Create Moonbeam User and add it to Sudo group.
+```
+adduser --gecos "" moonbeam
+sudo usermod -aG sudo moonbeam
+```
+
+## 2. Node Preparation.
 ```
 sudo apt update && sudo apt upgrade -y
 ```
@@ -23,12 +29,6 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 Update your PATH environment variable by running:
 ```
 source $HOME/.cargo/env
-```
-
-## 2. Create Moonbeam User and add it to Sudo group.
-```
-adduser --gecos "" moonbeam
-sudo usermod -aG sudo moonbeam
 ```
 
 ## 3. Install golang go.
