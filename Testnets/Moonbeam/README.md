@@ -14,6 +14,10 @@
 adduser --gecos "" moonbeam
 sudo usermod -aG sudo moonbeam
 ```
+Enter the shell of the moonbeam account:
+```
+su -s /bin/bash moonbeam
+```
 
 ## 2. Node Preparation.
 ```
@@ -35,10 +39,6 @@ sudo apt install cargo
 ```
 
 ## 3. Install golang go.
-Enter the shell of the moonbeam account:
-```
-su -s /bin/bash moonbeam
-```
 Install the latest version of the Golang "Go" tool:
 ```
 cd /usr/src
