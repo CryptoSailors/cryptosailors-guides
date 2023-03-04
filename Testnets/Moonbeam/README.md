@@ -58,9 +58,9 @@ sudo rm -rf /usr/src/go*.linux-amd64.tar.gz
 ```
 
 ## 4. Install Moonbeam.\
-Check out to the latest [release](https://github.com/PureStake/moonbeam/releases). In this example the latest release is `v0.29.0`
+Check out to the latest [release](https://github.com/PureStake/moonbeam/releases). In this example the latest release is `v0.30.0`
 ```
-RELEASE=v0.29.0
+RELEASE=v0.30.0
 ```
 Go to the user home directory:
 ```
