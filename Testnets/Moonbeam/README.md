@@ -69,10 +69,6 @@ Check out to the latest [release](https://github.com/PureStake/moonbeam/releases
 ```
 RELEASE=v0.30.0
 ```
-Go to the user home directory:
-```
-cd ~
-```
 Clone the Moonbeam repo:
 ```
 git clone https://github.com/PureStake/moonbeam
