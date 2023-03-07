@@ -154,7 +154,7 @@ When the node will be successfully synced, the output from above will print
 ```
 ## 6. Your RPC endpoints will be: 
 - `http:YOUR:IP:9944`
-- `http:YOUR:IP:9944'
+- `http:YOUR:IP:9944`
 
 #
 
