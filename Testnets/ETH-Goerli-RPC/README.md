@@ -18,7 +18,10 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 ```
 ```
-sudo apt -y install software-properties-common wget curl ccze
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+```
+```
+source $HOME/.cargo/env
 ```
 ## 2. Installing Geth
 ```
@@ -27,21 +30,22 @@ sudo add-apt-repository -y ppa:ethereum/ethereum
 ```
 sudo apt -y install geth
 ```
-## 3. Install Prysm
+## 3. Install Lighthouse
 ```
-mkdir prysm && cd prysm
-wget https://github.com/eth-clients/eth2-networks/raw/master/shared/prater/genesis.ssz
+git clone https://github.com/sigp/lighthouse.git
+cd lighthouse
+git checkout stable
+make
 ```
+Open nano redactor and insert key from [generator](https://seanwasere.com/generate-random-hex/)
 ```
-curl https://raw.githubusercontent.com/prysmaticlabs/prysm/master/prysm.sh --output prysm.sh && chmod +x prysm.sh
+sudo nano jwt.hex
 ```
-```
-./prysm.sh beacon-chain generate-auth-secret
-```
+Close redactor buy CTRL+X,Y,Enter.
 ```
 cd ~
 ```
-## 4. Configuring and launch Geth and Prysm node.
+## 4. Configuring and launch Geth and Lighthouse node.
 ```
 sudo tee /etc/systemd/system/geth.service > /dev/null <<EOF
 [Unit]
@@ -51,13 +55,13 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=/usr/bin/geth --goerli --syncmode "snap" --http --http.api=eth,net,web3,engine --http.vhosts * --http.addr 0.0.0.0 \
- --authrpc.jwtsecret=/root/prysm/jwt.hex 
+ExecStart=/usr/bin/geth --goerli --syncmode "snap" --http --http.api=eth,net,web3,engine --http.vhosts * --http.addr 0.0.0.0  --authrpc.jwtsecret=/root/lighthouse/jwt.hex
 Restart=on-failure
 LimitNOFILE=65535
 
 [Install]
 WantedBy=multi-user.target
+
 EOF
 ```
 Launch our Geth node
@@ -67,26 +71,30 @@ sudo systemctl enable geth
 sudo systemctl start geth
 sudo journalctl -u geth -f -n 100
 ```
-Our node start looking for peers and beacon. Now we need configure our prysm beacon.
+Our node start looking for peers and beacon. Now we need configure our lighthouse beacon. We will launch a lighthouse node from [snapshot](https://eth-clients.github.io/checkpoint-sync-endpoints/).
 ```
-sudo tee /etc/systemd/system/prysm.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/lighthouse.service > /dev/null <<EOF
+[Unit]
+Description=lighthouse
+After=network-online.target
+
 [Service]
 User=$USER
-Type=simple
-ExecStart=/root/prysm/prysm.sh beacon-chain --prater --execution-endpoint=http://localhost:8551 --jwt-secret=/root/prysm/jwt.hex --suggested-fee-recipient=0x01234567722E6b0000012BFEBf6177F1D2e9758D9 --genesis-state=/root/prysm/genesis.ssz --accept-terms-of-use --checkpoint-sync-url=https://goerli.beaconstate.info --genesis-beacon-api-url=https://goerli.beaconstate.info
-Restart=on-failure
-LimitNOFILE=65535
+ExecStart=/root/.cargo/bin/lighthouse bn --network goerli --execution-endpoint http://localhost:8551 --execution-jwt /root/lighthouse/jwt.hex --http  --disable-deposit-contract-sync --checkpoint-sync-url=https://prater-checkpoint-sync.stakely.io
+Restart=always
+RestartSec=3
+LimitNOFILE=10000
 
 [Install]
 WantedBy=multi-user.target
 EOF
 ```
-Launch our Prysm node
+Launch our lighthouse node
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable prysm
-sudo systemctl start prysm
-sudo journalctl -u prysm -f -n 100
+sudo systemctl enable lighthouse
+sudo systemctl start lighthouse
+sudo journalctl -u lighthouse -f -n 100
 ```
 By command bellow you can check a status of synchronization process of your node.
 ```
@@ -101,7 +109,7 @@ curl -X POST http://localhost:8545 \
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[Prysm](https://docs.prylabs.network/docs/getting-started)
+👉[Lighthouse](https://github.com/sigp/lighthouse)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
