@@ -21,6 +21,9 @@ sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential g
 sudo apt install software-properties-common -y
 ```
 ```
+sudo apt-get install protobuf-compiler
+```
+```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ```
 ```
