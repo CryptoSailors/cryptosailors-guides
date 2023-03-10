@@ -23,11 +23,11 @@ sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential g
 Install [GO according this instruction](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22)
 ## 3. Node installation.
 ```
-wget https://files.kyve.network/chain/v1.0.0-rc0/kyved_linux_amd64.tar.gz
-tar -xvzf kyved_linux_amd64.tar.gz
-chmod +x kyved
-sudo mv kyved go/bin
-rm -rf kyved_linux_amd64.tar.gz
+git clone https://github.com/KYVENetwork/chain
+cd chain
+git checkout v1.0.0-rc1
+make install ENV=kaon
+cd ~
 ```
 ## 4.Create a wallet or recover it
 Change `<moniker-name>` on your name
@@ -55,7 +55,7 @@ sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.kyve/con
 sed -i 's/indexer =.*/indexer = "null"/g' $HOME/.kyve/config/app.toml
 
 ```
-Create a systemd file for nibiru
+Create a systemd file for kyve.
 ```
 sudo tee /etc/systemd/system/kyved.service > /dev/null <<EOF
 
@@ -85,7 +85,22 @@ sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.
 sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${COSMOS_PORT}317\"%; s%^address = \":8080\"%address = \":${COSMOS_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${COSMOS_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${COSMOS_PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${COSMOS_PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${COSMOS_PORT}546\"%" $HOME/.kyve/config/app.toml
 sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:${COSMOS_PORT}657\"%" $HOME/.kyve/config/client.toml
 ```
-## 7. Start a node
+## 7. Setup a snapshot
+Setup a snashot from [ITRocket Service](https://itrocket.net/services/testnet/kyve/)
+```
+cp $HOME/.kyve/data/priv_validator_state.json $HOME/.kyve/priv_validator_state.json.backup
+```
+```
+rm -rf $HOME/.kyve/data 
+```
+```
+curl https://files.itrocket.net/testnet/kyve/snap_kyve.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.kyve
+```
+```
+mv $HOME/.kyve/priv_validator_state.json.backup $HOME/.kyve/data/priv_validator_state.json
+```
+
+## 8. Start a node
 ```
 sudo systemctl daemon-reload
 sudo systemctl start kyved
@@ -99,7 +114,7 @@ kyved status 2>&1 | jq .SyncInfo
 If the command gives out `true` - it means that synchronization is still in process
 If the command gives `false` - then you are synchronized and you can start creating the validator.
 
-## 8. Creating a Validator
+## 9. Creating a Validator
 Creating a validator. Change `<YOUR_VALIDATOR_NAME>` on your name
 ```
 kyved tx staking create-validator \
@@ -149,6 +164,8 @@ sudo rm -rf .kyve
 👉[Discord](https://discord.gg/CpMZu5xhfD) 
 
 👉[WebSite](https://www.kyve.network/)
+
+👉Setup a snashot from [ITRocket Service](https://itrocket.net/services/testnet/kyve/)
 
 👉[Official guide](https://github.com/itrocket-team/testnet_guides/tree/main/kyve)
 
