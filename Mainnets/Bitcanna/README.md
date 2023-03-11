@@ -34,7 +34,7 @@ Make sure that you are installing the [latest release](https://github.com/BitCan
 ```
 git clone https://github.com/BitCannaGlobal/bcna
 cd bcna
-git checkout v1.5.3
+git checkout v1.6.1
 make install
 ```
 ```
