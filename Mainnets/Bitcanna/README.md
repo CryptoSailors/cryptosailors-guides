@@ -30,11 +30,11 @@ source $HOME/.profile
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
 ## 4. Install a node
-Make sure that you are installing the [latest release](https://github.com/BitCannaGlobal/bcna/releases/latest). In this guide we use release `v1.5.3`
+Make sure that you are installing the [latest release](https://github.com/BitCannaGlobal/bcna/releases/latest). In this guide we use release `v1.6.1`
 ```
 git clone https://github.com/BitCannaGlobal/bcna
 cd bcna
-git checkout v1.5.3
+git checkout v1.6.1
 make install
 ```
 ```
@@ -53,7 +53,7 @@ sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0stake\"/;" ~/.
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $HOME/.bcna/config/config.toml
 external_address=$(wget -qO- eth0.me) 
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.bcna/config/config.toml
-peers="e1da69dd506228fd84707ef0203b49e85f5433ab@88.99.33.248:12656"
+peers="86e5fc5d80aed6a52bf89245bcc53c1b77641113@88.99.33.248:12656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.bcna/config/config.toml
 seeds=""
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.bcna/config/config.toml
@@ -76,7 +76,7 @@ rm -rf bcnadata.tar.gz
 ```
 #### State-Sync
 ```
-peers="e1da69dd506228fd84707ef0203b49e85f5433ab@88.99.33.248:12656" 
+peers="86e5fc5d80aed6a52bf89245bcc53c1b77641113@88.99.33.248:12656" 
 sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/.bcna/config/config.toml
 ```
 ```
@@ -184,7 +184,7 @@ rm -rf $(which bcnad)
 
 **🐬Public RPC:** http://88.99.33.248:12657/
 
-**🐬Peer:** `e1da69dd506228fd84707ef0203b49e85f5433ab@88.99.33.248:12656`
+**🐬Peer:** `86e5fc5d80aed6a52bf89245bcc53c1b77641113@88.99.33.248:12656`
 
 **🐬API:** http://88.99.33.248:12317/
 
