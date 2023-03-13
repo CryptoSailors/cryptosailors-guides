@@ -148,6 +148,16 @@ sudo rm -rf /go/bin/lavad
 sudo rm -rf /etc/systemd/system/lavad.service
 sudo rm -rf GHFkqmTzpdNLDd6T
 ```
+
+## 10. Set up an RPC provider.
+
+To launch an RPC provider, you need to set up your own independent node, which you will later connect to the lava node. Below are examples of connecting some nodes.
+Create a new provider wallet with `--keyring-backend`
+```
+lavad keys add wallet --keyring-backend test
+```
+Top up your new wallet with lava tokens. You should have at least 50000lava or 50000000000ulava token for successful setup RPC provider.
+
 #
 **🐬Public RPC:** http://88.99.33.248:26657/
 
