@@ -46,7 +46,7 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=/usr/bin/opera --genesis /root/go-opera/build/testnet-6226-pruned-mpt.g --identity CryptoSailors --cache 8096 --http --http.addr 0.0.0.0 --http.corsdomain '*' --http.vhosts "*" --http.api "eth,net,web3" 
+ExecStart=/usr/bin/opera --genesis /root/go-opera/build/testnet-6226-pruned-mpt.g --identity CryptoSailors --cache 8096 --http --http.addr 0.0.0.0 --http.corsdomain '*' --http.vhosts "*" --http.api "eth,net,web3" --ws --ws.addr 0.0.0.0 --ws.origins=* --ws.api="ftm,eth,abft,dag,rpc,web3,net,debug"
 Restart=on-failure
 LimitNOFILE=65535
 
@@ -67,6 +67,11 @@ By command bellow you can check a status of synchronization process of your node
 curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "eth_syncing", "params":[]}' localhost:18545
 ```
 - If the show false that means that your node is fully synchronized.
+
+## 5.Your RPC link will be:
+
+- `http://YOUR_IP:18545`
+- `ws://YOUR_IP:18546`
 
 #
 
