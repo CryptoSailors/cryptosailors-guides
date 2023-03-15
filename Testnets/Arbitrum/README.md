@@ -46,7 +46,7 @@ echo "export ETH_RPC_URL=${ETH_RPC_URL}" >> .bash_profile
 source .bash_profile
 ```
 ```
-sudo docker run --rm -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8550:8547 -p 0.0.0.0:8549:8548 $RELEASE --l1.url $ETH_RPC_URL --l2.chain-id=421613 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=*
+sudo docker run --name arbitrum --rm -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8550:8547 -p 0.0.0.0:8549:8548 $RELEASE --l1.url $ETH_RPC_URL --l2.chain-id=421613 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=*
 ```
 Check your logs: 
 ```
@@ -73,7 +73,7 @@ echo $RELEASE
 sudo docker stop arbitrum
 ```
 ```
-sudo docker run --rm -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8550:8547 -p 0.0.0.0:8549:8548 $RELEASE --l1.url $ETH_RPC_URL --l2.chain-id=421613 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=*
+sudo docker run --name arbitrum --rm -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8550:8547 -p 0.0.0.0:8549:8548 $RELEASE --l1.url $ETH_RPC_URL --l2.chain-id=421613 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=*
 ```
 #
 
