@@ -33,13 +33,10 @@ sudo docker-compose version
 ## 3. Install and configure Celo testnet node
 ```
 echo "export CELO_IMAGE=us.gcr.io/celo-org/geth:alfajores" >> $HOME/.profile
-source $HOME/.profile
+source $HOME/.bash_profile
 ```
 ```
 sudo docker pull $CELO_IMAGE
-```
-```
-sudo docker-compose logs -f --tail 100
 ```
 ```
 mkdir celo-data-dir
@@ -48,12 +45,12 @@ sudo docker run -v $PWD:/$HOME/.celo --rm -it $CELO_IMAGE account new
 ```
 You will get a public address of the key
 ```
-echo "export CELO_ACCOUNT_ADDRESS=<YOUR-ACCOUNT-ADDRESS>" >> $HOME/.profile
-source $HOME/.profile
+echo "export CELO_ACCOUNT_ADDRESS=<YOUR-ACCOUNT-ADDRESS>" >> $HOME/.bash_profile
+source $HOME/.bash_profile
 ```
 ## 4. Start a celo testnet node.
 ```
-sudo docker run --name celo-fullnode -d --restart unless-stopped --stop-timeout 300 -p 0.0.0.0:8911:8545 -p 0.0.0.0:8912:8546 -p 30305:30303 -p 30305:30303/udp -v $PWD:/root/.celo $CELO_IMAGE --verbosity 3 --syncmode full --http --http.addr 0.0.0.0 --http.api eth,net,web3,debug,admin,personal --light.serve 90 --light.maxpeers 1000 --maxpeers 1100 --etherbase $CELO_ACCOUNT_ADDRESS --alfajores --datadir /root/.celo
+sudo docker run --name celo-fullnode -d --restart unless-stopped --stop-timeout 300 -p 0.0.0.0:8911:8545 -p 0.0.0.0:8912:8546 -p 30305:30303 -p 30305:30303/udp -v $PWD:$HOME/.celo $CELO_IMAGE --verbosity 3 --syncmode full --http --http.addr 0.0.0.0 --http.api eth,net,web3,debug,admin,personal --light.serve 90 --light.maxpeers 1000 --maxpeers 1100 --etherbase $CELO_ACCOUNT_ADDRESS --alfajores --datadir $HOME/.celo
 ```
 To check logs of your node:
 ```
