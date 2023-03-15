@@ -59,7 +59,7 @@ sudo docker logs celo-fullnode -f --tail 100
 
 ## 5. Link on your rpc:
 
-- http://YOUR_IP:8911
+- `http://YOUR_IP:8911`
 
 #
 
