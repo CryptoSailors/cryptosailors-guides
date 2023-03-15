@@ -193,6 +193,10 @@ journalctl -u bscgeth -f -n 100 -o cat
 
 👉[Binance Official guide](https://docs.bnbchain.org/docs/beaconchain/develop/node/install)
 
+👉[Binance Github](https://github.com/bnb-chain/bsc)
+
+👉[Binance testnet explorer](https://testnet.bscscan.com/)
+
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
 🔰[Our WebSite](cryptosailors.tech)
