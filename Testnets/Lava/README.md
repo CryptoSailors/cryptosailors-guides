@@ -158,6 +158,88 @@ lavad keys add wallet --keyring-backend test
 ```
 Top up your new wallet with lava tokens. You should have at least 50000lava or 50000000000ulava token for successful setup RPC provider.
 
+To ensure your wallet was saved to your keyring, use the following command:
+```
+lavad keys list --keyring-backend test
+```
+
+The excpected value should be:
+```
+- name: wallet
+  type: local
+  address: lava@1edbazz2f2svsr7ajlsr54w8a8hypr0u5zcvr3q
+  pubkey: '{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"A+vB423Tgs8I3ZCb34L/5PWCFBN4vfxmAOQss3N3skOP"}'
+  mnemonic: ""
+```
+
+Please make sure that your wallet contains enough tokens to become a provider. To check the balance you may use the following command:
+```
+lavad query bank balances "{ACCOUNT_PUBLIC_ADDRESS}" --denom ulava
+```
+
+Here is a live example:
+```
+lavad query bank balances "lava@1edbazz2f2svsr7ajlsr54w8a8hypr0u5zcvr3q" --denom ulava
+```
+
+Then we need to stake a single service. For this we need to use the following command:
+```
+lavad tx pairing stake-provider "{NETWORK_NAME}" \
+"{STAKE_AMOUNT}" \
+"{SERVICED_NODE_IP}:{SERVICED_NODE_PORT},{PROTOCOL},1" 1 \
+--from "{ACCOUNT_NAME}" \
+--keyring-backend "{KEYRING_BACKEND}" \
+--chain-id "{CHAIN_ID}" \
+--gas="auto" \
+--gas-adjustment "1.5" \
+--node "{LAVA_RPC_NODE}"
+```
+NETWORK_NAME - The ID of the serviced chain, see the full list here http://public-rpc.lavanet.xyz/rest/lavanet/lava/spec/show_all_chains
+STAKE_AMOUNT - The amount you are willing to stake for being a provider for the specific network. Example 2010ulava
+SERVICED_NODE_IP - This is the main IP address of our Lava Node server which we need to announce for the Lava Network (for example if the main server IP where we running a provider is 1.1.1.1 we need to set it in this parameter)
+SERVICED_NODE_PORT - Port of the node that will service requests (this is a port on which we run our Lava provider in the command provided below)
+PROTOCOL - The protocol to be used, see how to query the full list. Example jsonrpc, or rest, in our case we will use "jsonrpc" protocol
+ACCOUNT_NAME - The account to be used for the provider staking. Example my_account
+KEYRING_BACKEND - A keyring-backend of your choosing, for more information (FAQ: what is a keyring). Example test
+CHAIN_ID - The chain_id of the network. Example lava-testnet-1
+GEOLOCATION - Indicates the geographical location where the process is located. Example 1 for US or 2 for EU
+
+Here is example of the command:
+```
+lavad tx pairing stake-provider "ARBN" "64400000002ulava" "1.1.1.1:29658,jsonrpc,2" 2 --from "wallet" --keyring-backend "test" --chain-id "lava-testnet-1" --fees 500ulava --moniker "MyLavaRPCProvider"  -y
+```
+where:
+ARBN - chain name of the Arbitrum Nova Testnet (the full list you can find here: http://public-rpc.lavanet.xyz/rest/lavanet/lava/spec/show_all_chains)
+64400000002ulava - number of tokens
+1.1.1.1:29658 - IP address of our Lava Network node (where we run our provider and port)
+jsonrpc,2 - type of the protocol and geolocation
+
+Finally, we need to run our provider service. For this I would like to recommend creating systemd service:
+```
+sudo tee /etc/systemd/system/ARBN.service > /dev/null <<EOF
+[Unit]
+Description=Provider daemon Fantom Mainnet
+After=network-online.target
+
+
+[Service]
+ExecStart=$(which lavad) server 1.1.1.1 29658 "http://2.2.2.2:8550" ARBN jsonrpc --from wallet --keyring-backend test --chain-id lava-testnet-1 --geolocation 2
+User=lavanetwork
+Restart=always
+RestartSec=180
+LimitNOFILE=infinity
+LimitNPROC=infinity
+
+[Install]
+WantedBy=multi-user.target"
+EOF
+```
+where:
+http://2.2.2.2:8550 - this IP address of our RPC fanton node and ws port of it
+
+
+
+
 #
 **🐬Public RPC:** http://88.99.33.248:26657/
 
