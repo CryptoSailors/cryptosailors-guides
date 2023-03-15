@@ -217,10 +217,13 @@ Here is example of the command:
 lavad tx pairing stake-provider "ARBN" "64400000002ulava" "1.1.1.1:29658,jsonrpc,2" 2 --from "wallet" --keyring-backend "test" --chain-id "lava-testnet-1" --fees 500ulava --moniker "MyLavaRPCProvider"  -y
 ```
 where:
-ARBN - chain name of the Arbitrum Nova Testnet (the full list you can find here: http://public-rpc.lavanet.xyz/rest/lavanet/lava/spec/show_all_chains)
-64400000002ulava - number of tokens
-1.1.1.1:29658 - IP address of our Lava Network node (where we run our provider and port)
-jsonrpc,2 - type of the protocol and geolocation
+`ARBN` - chain name of the Arbitrum Nova Testnet (the full list you can find here: http://public-rpc.lavanet.xyz/rest/lavanet/lava/spec/show_all_chains)
+
+`64400000002ulava` - number of tokens
+
+`1.1.1.1:29658` - IP address of our Lava Network node (where we run our provider and port)
+
+`jsonrpc,2` - type of the protocol and geolocation
 
 Finally, we need to run our provider service. For this I would like to recommend creating systemd service:
 ```
