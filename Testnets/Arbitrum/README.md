@@ -16,7 +16,7 @@ sudo apt update && sudo apt upgrade -y
 ```
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 ```
-
+- Install Golang go according step 2 of [this instruction.](https://github.com/CryptoSailors/cryptosailors-tools/blob/main/Install%20Golang%20%22Go%22/README.md)
 ## 2. Install docker and docker-compose
 Check the latest version of [docker-compose](https://github.com/docker/compose/releases) and follow the guide.
 ```
@@ -37,14 +37,22 @@ RELEASE="offchainlabs/nitro-node:v2.0.11-8e786ec"
 mkdir -p $HOME/data/arbitrum
 chmod -fR 777 $HOME/data/arbitrum
 ```
+Input your URL address started from `htttp://123` or link from [infura](https://www.infura.io/).
 ```
-sudo docker run --rm -it -d -v /path/to/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8550:8547 -p 0.0.0.0:8549:8548 $RELEASE --l1.url <YOUR_GOERLI_ETH_RPC_URL> --l2.chain-id=421613 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=*
+ETH_RPC_URL="http://123....:8545 or link from infura"
 ```
-To check your logs: 
+```
+echo "export ETH_RPC_URL=${ETH_RPC_URL}" >> .bash_profile
+source .bash_profile
+```
+```
+sudo docker run --rm -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8550:8547 -p 0.0.0.0:8549:8548 $RELEASE --l1.url $ETH_RPC_URL --l2.chain-id=421613 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=*
+```
+Check your logs: 
 ```
 sudo docker logs arbitrum -f --tail 100
 ```
-## 5. Check your synch
+## 4. Check your synch
 Once your node is fully synced, the output from above will say `false`. To test your Arbitrum RPC node, you can send an RPC request using cURL
 ```
 curl -X POST http://localhost:8550 \
@@ -52,9 +60,21 @@ curl -X POST http://localhost:8550 \
   --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}'
 ```
 
-## 6. Link to your RPC
+## 5. Link to your RPC
 - `http://YOUR_IP:8550`
 
+## 6. Upgrade your Arbitrum node
+First check latest realiease. In our case the [latest release](https://github.com/OffchainLabs/nitro/tags) is `offchainlabs/nitro-node:v2.0.11-8e786ec`
+```
+RELEASE="offchainlabs/nitro-node:v2.0.11-8e786ec"
+```
+```
+echo $RELEASE
+sudo docker stop arbitrum
+```
+```
+sudo docker run --rm -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8550:8547 -p 0.0.0.0:8549:8548 $RELEASE --l1.url $ETH_RPC_URL --l2.chain-id=421613 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=*
+```
 #
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
