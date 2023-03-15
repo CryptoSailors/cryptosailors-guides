@@ -1,3 +1,7 @@
+<p align="center">
+ <img src="https://i.postimg.cc/2yfLHwVB/f618ab67-d7a1-4615-8427-aef0e157a72f.png"/></a>
+</p>
+
 # In this guide, we will describe how to setup the Binance testnet RPC node.
 
 #### System requirements:
