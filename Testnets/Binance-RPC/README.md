@@ -148,8 +148,39 @@ Wait for it to become false before using it in vald config
 eth.syncing
 false
 ```
-## Your RPC URL are:
+## 10. Your RPC URL are:
 - `http://YOUR_IP:8645`
+
+## 11. Upgrade your node
+In case of new update, do the following commands:
+
+```
+sudo su bincance
+cd ~
+```
+```
+cd binaries
+wget   $(curl -s https://api.github.com/repos/bnb-chain/bsc/releases/latest |grep browser_ |grep geth_linux |cut -d\" -f4)
+mv geth_linux geth
+chmod -v u+x geth
+./geth version
+```
+You should see something like this:
+```
+Geth
+Version: 1.1.20
+Git Commit: fc4303c6c601a697bc1d1f9da17e11c556c6dba1
+Architecture: amd64
+Go Version: go1.19.6
+Operating System: linux
+GOPATH=/home/binance/go
+GOROOT=/usr/local/go
+```
+```
+sudo systemctl restart bscgeth
+journalctl -u bscgeth -f -n 100 -o cat
+```
+
 #
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
