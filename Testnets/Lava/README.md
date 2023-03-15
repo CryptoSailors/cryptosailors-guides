@@ -195,13 +195,21 @@ lavad tx pairing stake-provider "{NETWORK_NAME}" \
 --node "{LAVA_RPC_NODE}"
 ```
 NETWORK_NAME - The ID of the serviced chain, see the full list here http://public-rpc.lavanet.xyz/rest/lavanet/lava/spec/show_all_chains
+
 STAKE_AMOUNT - The amount you are willing to stake for being a provider for the specific network. Example 2010ulava
+
 SERVICED_NODE_IP - This is the main IP address of our Lava Node server which we need to announce for the Lava Network (for example if the main server IP where we running a provider is 1.1.1.1 we need to set it in this parameter)
+
 SERVICED_NODE_PORT - Port of the node that will service requests (this is a port on which we run our Lava provider in the command provided below)
+
 PROTOCOL - The protocol to be used, see how to query the full list. Example jsonrpc, or rest, in our case we will use "jsonrpc" protocol
+
 ACCOUNT_NAME - The account to be used for the provider staking. Example my_account
+
 KEYRING_BACKEND - A keyring-backend of your choosing, for more information (FAQ: what is a keyring). Example test
+
 CHAIN_ID - The chain_id of the network. Example lava-testnet-1
+
 GEOLOCATION - Indicates the geographical location where the process is located. Example 1 for US or 2 for EU
 
 Here is example of the command:
