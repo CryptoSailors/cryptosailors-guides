@@ -192,7 +192,6 @@ lavad tx pairing stake-provider "{NETWORK_NAME}" \
 --chain-id "{CHAIN_ID}" \
 --gas="auto" \
 --gas-adjustment "1.5" \
---node "{LAVA_RPC_NODE}"
 ```
 `NETWORK_NAME` - The ID of the serviced chain, see the full list here http://public-rpc.lavanet.xyz/rest/lavanet/lava/spec/show_all_chains
 
