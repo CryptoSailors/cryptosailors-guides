@@ -94,7 +94,7 @@ OP_NODE__RPC_TYPE=basic
 To close redactor press CTRL+X,Y,ENTER
 
 ## 5. Launch a node
-To start an Optimism node you should be inside folder `simple-optimis-node`
+To start an Optimism node you should be inside folder `simple-optimism-node`
 ```
 sudo docker-compose up -d
 ```
