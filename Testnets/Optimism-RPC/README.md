@@ -70,7 +70,7 @@ TORRENT_UI_PASSWORD=adminadmin
 SYNC_SOURCE=l1
 
 # Reference L2 node to run healthcheck against
-HEALTHCHECK__REFERENCE_RPC_PROVIDER=https://mainnet.optimism.io/
+HEALTHCHECK__REFERENCE_RPC_PROVIDER=https://goerli.optimism.io
 
 # L1 node to run fault detection against
 FAULT_DETECTOR__L1_RPC_PROVIDER=<YOUR_GOERLI_ETHEREUM_RPC>
