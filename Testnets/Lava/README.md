@@ -213,7 +213,7 @@ lavad tx pairing stake-provider "{NETWORK_NAME}" \
 
 Here is example of the command:
 ```
-lavad tx pairing stake-provider "ARBN" "64400000002ulava" "1.1.1.1:29658,jsonrpc,2" 2 --from "wallet" --keyring-backend "test" --chain-id "lava-testnet-1" --fees 500ulava --moniker "MyLavaRPCProvider"  -y
+lavad tx pairing stake-provider "ARBN" "64400000002ulava" "1.1.1.1:29659,jsonrpc,2" 2 --from "wallet" --keyring-backend "test" --chain-id "lava-testnet-1" --fees 500ulava --moniker "MyLavaRPCProvider"  -y
 ```
 where:
 
@@ -221,7 +221,7 @@ where:
 
 `64400000002ulava` - number of tokens
 
-`1.1.1.1:29658` - IP address of our Lava Network node (where we run our provider and port)
+`1.1.1.1:29659` - IP address of our Lava Network node (where we run our provider and port)
 
 `jsonrpc,2` - type of the protocol and geolocation
 
@@ -234,7 +234,7 @@ After=network-online.target
 
 
 [Service]
-ExecStart=$(which lavad) server 1.1.1.1 29658 "http://2.2.2.2:8550" ARBN jsonrpc --from wallet --keyring-backend test --chain-id lava-testnet-1 --geolocation 2
+ExecStart=$(which lavad) server 1.1.1.1 29659 "http://2.2.2.2:8550" ARBN jsonrpc --from wallet --keyring-backend test --chain-id lava-testnet-1 --geolocation 2
 User=lavanetwork
 Restart=always
 RestartSec=180
