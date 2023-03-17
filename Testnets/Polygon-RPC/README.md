@@ -105,10 +105,10 @@ You will get somthing like this:
  - if you get `false` - means you are synched and can continue.
 
 ## 8. Install a Bor
-Make sure that you are installing the [latest release](https://github.com/maticnetwork/bor/tags). In this guide we use release `v0.3.3`
+Make sure that you are installing the [latest release](https://github.com/maticnetwork/bor/tags). In this guide we use release `v0.3.4`
 ```
 cd ~
-RELEASE=v0.3.3
+RELEASE=v0.3.4
 ```
 ```
 git clone https://github.com/maticnetwork/bor
