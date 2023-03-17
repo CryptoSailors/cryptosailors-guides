@@ -153,7 +153,7 @@ EOF
 ## 10. Download the lates snapshot and launch a node.
 Download latest bor-mumbai [snapshot](https://snapshots.polygon.technology/). I recomend use `screen` or `tmux`, becouse downloading the snapshot will take about 70min.
 ```
-wget <snapshot-link-bor> -O - | tar -xzf - -C ~/.bor/data/bor/chaindata
+wget <snapshot-link-bor> -O - | tar -I zstd -xvf - -C ~/.bor/data/bor/chaindata
 ```
 Start a bor service
 ```
