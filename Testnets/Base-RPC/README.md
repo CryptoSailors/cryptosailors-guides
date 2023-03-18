@@ -75,7 +75,7 @@ echo Latest synced block behind by: $((($(date +%s)-$( \
   -H "Content-Type: application/json" http://localhost:7545 | \
   jq -r .result.unsafe_l2.timestamp))/60)) minutes
   ```
-You'll also know that the sync hasn't completed if you get Error: nonce has already been used if you try to deploy using your node.  
+  
 ## 6. Link on your rpc:
 
 - `http://YOUR_IP:8545`
