@@ -216,8 +216,8 @@ make install
 heimdalld version
 ```
 ```
-sudo systemctl start bor
 sudo systemctl start heimdalld 
+sudo systemctl start bor
 sudo journalctl -u heimdalld -f -n 100
 ```
 #
