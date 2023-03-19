@@ -172,7 +172,7 @@ You can download autoscript and launch it when new update is relesead or update 
 #### Bor auto update
 ```
 wget https://github.com/CryptoSailors/cryptosailors-guides/raw/main/Testnets/Polygon-RPC/bor_update.sh
-sudo chmod +X bor_update.sh
+sudo chmod +x bor_update.sh
 ```
 Launch script
 ```
@@ -197,7 +197,7 @@ You can download autoscript and launch it when new update is relesead or update 
 #### Heimdall auto update
 ```
 wget https://github.com/CryptoSailors/cryptosailors-guides/raw/main/Testnets/Polygon-RPC/heimdall_update.sh
-sudo chmod +X heimdall_update.sh
+sudo chmod +x heimdall_update.sh
 ```
 Launch script
 ```
