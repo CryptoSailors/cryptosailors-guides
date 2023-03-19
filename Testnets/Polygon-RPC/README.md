@@ -8,7 +8,7 @@
 #### Official 
 - 8 CPU
 - 32 GB RAM
-- 2000 GB SSD
+- 500 GB SSD
 #### My Recommendations
 - I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
@@ -24,14 +24,12 @@ sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential g
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
 ## 4. Install a Heimdall
-Make sure that you are installing the [latest release](https://github.com/maticnetwork/heimdall/tags). In this guide we use release `v0.3.0`
-```
-RELEASE=v0.3.0
-```
+Checek the [latest release](https://github.com/maticnetwork/heimdall/tags).
 ```
 git clone https://github.com/maticnetwork/heimdall
 cd heimdall
-git checkout $RELEASE
+latestTag=$(git describe --tags $(git rev-list --tags --max-count=1))
+git checkout $latestTag
 make install
 heimdalld version
 cd ~
@@ -75,7 +73,7 @@ EOF
 ```
 Download latest heimdall-mumbai [snapshot](https://snapshots.polygon.technology/). I recomend use `screen` or `tmux`, becouse downloading the snapshot will take about 20min.
 ```
-wget <snapshot-link-heimdall> -O - | tar -xzf - -C ~/.heimdalld/data/
+wget <snapshot-link-heimdall> -O - | tar -I zstd -xvf -C ~/.heimdalld/data/
 ```
 ## 7. Start a heimdall node
 ```
@@ -105,15 +103,12 @@ You will get somthing like this:
  - if you get `false` - means you are synched and can continue.
 
 ## 8. Install a Bor
-Make sure that you are installing the [latest release](https://github.com/maticnetwork/bor/tags). In this guide we use release `v0.3.4`
-```
-cd ~
-RELEASE=v0.3.4
-```
+Checek the [latest release](https://github.com/maticnetwork/bor/tags).
 ```
 git clone https://github.com/maticnetwork/bor
 cd bor
-git checkout $RELEASE
+latestTag=$(git describe --tags $(git rev-list --tags --max-count=1))
+git checkout $latestTag
 make bor
 bor version
 ```
@@ -171,7 +166,62 @@ curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method":
 ## 11 Your RPC url are:
 - `http://YOUR_IP:8573`
 - `ws://YOUR_IP:8915`
+
+## 12. Update your bor node
+You can download autoscript and launch it when new update is relesead or update a node manualy.
+#### Bor auto update
+```
+wget https://github.com/CryptoSailors/cryptosailors-guides/raw/main/Testnets/Polygon-RPC/bor_update.sh
+sudo chmod +X bor_update.sh
+```
+Launch script
+```
+./bor_update.sh
+```
+#### Bor Manual update
+```
+source .bash_profile
+sudo systemctl stop bor
+cd bor
+git pull
+latestTag=$(git describe --tags $(git rev-list --tags --max-count=1))
+git checkout $latestTag
+make
+bor version
+```
+```
+sudo systemctl start bor && journalctl -u bor -f -n 100
+```
+## 13. Update your heimdall node
+You can download autoscript and launch it when new update is relesead or update a node manualy.
+#### Heimdall auto update
+```
+wget https://github.com/CryptoSailors/cryptosailors-guides/raw/main/Testnets/Polygon-RPC/heimdall_update.sh
+sudo chmod +X heimdall_update.sh
+```
+Launch script
+```
+./heimdall_update.sh
+```
+#### Heimdall Manual update
+```
+source .bash_profile
+sudo systemclt stop bor
+sudo systemctl stop heimdalld
+cd heimdall
+git pull
+latestTag=$(git describe --tags $(git rev-list --tags --max-count=1))
+git checkout $latestTag
+make install
+heimdalld version
+```
+```
+sudo systemctl start bor
+sudo systemctl start heimdalld 
+sudo journalctl -u heimdalld -f -n 100
+```
 #
+
 👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
