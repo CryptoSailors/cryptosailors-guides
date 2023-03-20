@@ -276,7 +276,7 @@ http://2.2.2.2:8550 - this IP address of our RPC fanton node and ws port of it
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
-🔰[Our WebSite](cryptosailors.tech)
+🔰[Our WebSite](https://cryptosailors.tech)
 
 🔰[Our Twitter](https://twitter.com/Crypto_Sailors)
 
