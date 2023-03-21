@@ -152,6 +152,10 @@ sudo journalctl -u geth -f -n 100
 
 👉[Lighthouse](https://github.com/sigp/lighthouse)
 
+👉[Ethereum Github](https://github.com/ethereum/go-ethereum)
+
+👉[Ethereum Goerli Explorer](https://goerli.etherscan.io/)
+
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
 🔰[Our WebSite](cryptosailors.tech)
