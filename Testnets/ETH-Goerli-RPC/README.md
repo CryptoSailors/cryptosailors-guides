@@ -21,7 +21,7 @@ sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential g
 sudo apt install software-properties-common -y
 ```
 ```
-sudo apt-get install protobuf-compiler
+sudo apt-get install protobuf-compiler -y
 ```
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -29,12 +29,18 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ```
 source $HOME/.cargo/env
 ```
+
+Install Golang go from [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22) according section 2.
 ## 2. Installing Geth
 ```
-sudo add-apt-repository -y ppa:ethereum/ethereum
-```
-```
-sudo apt -y install geth
+git clone https://github.com/ethereum/go-ethereum
+cd go-ethereum
+latestTag=$(git describe --tags $(git rev-list --tags --max-count=1))
+git checkout $latestTag
+make 
+sudo mv build/bin/geth /usr/bin/
+geth version
+cd ~
 ```
 ## 3. Install Lighthouse
 ```
@@ -61,7 +67,7 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=/usr/bin/geth --goerli --syncmode "snap" --http --http.api=eth,net,web3,engine --http.vhosts * --http.addr 0.0.0.0  --authrpc.jwtsecret=/root/lighthouse/jwt.hex
+ExecStart=$(which geth) --goerli --syncmode "snap" --http --http.api=eth,net,web3,engine --http.vhosts * --http.addr 0.0.0.0  --authrpc.jwtsecret=$HOME/lighthouse/jwt.hex
 Restart=on-failure
 LimitNOFILE=65535
 
@@ -86,7 +92,7 @@ After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=/root/.cargo/bin/lighthouse bn --network goerli --execution-endpoint http://localhost:8551 --execution-jwt /root/lighthouse/jwt.hex --http  --disable-deposit-contract-sync --checkpoint-sync-url=https://prater-checkpoint-sync.stakely.io
+ExecStart=$HOME/.cargo/bin/lighthouse bn --network goerli --execution-endpoint http://localhost:8551 --execution-jwt $HOME/lighthouse/jwt.hex --http  --disable-deposit-contract-sync --checkpoint-sync-url=https://prater-checkpoint-sync.stakely.io
 Restart=always
 RestartSec=3
 LimitNOFILE=10000
@@ -109,7 +115,36 @@ curl -X POST http://localhost:8545 \
   --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}'
 ```
 - If the show `false` that means that your node is fully synchronized.
+
+## 5. Update your Ethereum Goerli node
+You can download autoscript and launch it when new update is relesead or update a node manualy.
+
+#### Ethereum Goerli auto update.
+```
+wget https://github.com/CryptoSailors/cryptosailors-guides/raw/main/Testnets/ETH-Goerli-RPC/ethereum_update.sh
+sudo chmod +x ethereum_update.sh
+```
+Launch script
+```
+./ethereum_update.sh
+```
+#### Ethereum Goerli manual update
+```
+source .bash_profile
+cd go-ethereum
+git pull
+latestTag=$(git describe --tags $(git rev-list --tags --max-count=1))
+git checkout $latestTag
+make
+```
+```
+sudo mv build/bin/geth /usr/bin/
+geth version 
+sudo systemctl restart geth 
+sudo journalctl -u geth -f -n 100
+```
 #
+
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
 
