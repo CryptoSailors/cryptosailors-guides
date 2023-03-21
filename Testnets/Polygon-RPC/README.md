@@ -28,7 +28,8 @@ Checek the [latest release](https://github.com/maticnetwork/heimdall/tags).
 ```
 git clone https://github.com/maticnetwork/heimdall
 cd heimdall
-latestTag=$(git describe --tags $(git rev-list --tags --max-count=1))
+latestTag=$(curl -s https://api.github.com/repos/maticnetwork/heimdall/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
 git checkout $latestTag
 make install
 heimdalld version
@@ -107,7 +108,8 @@ Checek the [latest release](https://github.com/maticnetwork/bor/tags).
 ```
 git clone https://github.com/maticnetwork/bor
 cd bor
-latestTag=$(git describe --tags $(git rev-list --tags --max-count=1))
+latestTag=$(curl -s https://api.github.com/repos/maticnetwork/bor/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
 git checkout $latestTag
 make bor
 bor version
@@ -184,7 +186,8 @@ source .bash_profile
 sudo systemctl stop bor
 cd bor
 git pull
-latestTag=$(git describe --tags $(git rev-list --tags --max-count=1))
+latestTag=$(curl -s https://api.github.com/repos/maticnetwork/bor/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
 git checkout $latestTag
 make
 bor version
@@ -210,7 +213,8 @@ sudo systemclt stop bor
 sudo systemctl stop heimdalld
 cd heimdall
 git pull
-latestTag=$(git describe --tags $(git rev-list --tags --max-count=1))
+latestTag=$(curl -s https://api.github.com/repos/maticnetwork/heimdall/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
 git checkout $latestTag
 make install
 heimdalld version
