@@ -67,7 +67,7 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=$(which geth) --goerli --syncmode "snap" --http --http.api=eth,net,web3,engine --http.vhosts * --http.addr 0.0.0.0  --authrpc.jwtsecret=$HOME/lighthouse/jwt.hex
+ExecStart=$(which geth) --goerli --rpc.gascap 150000000 --syncmode "snap" --http --http.api=eth,net,web3,engine --http.vhosts * --http.addr 0.0.0.0  --authrpc.jwtsecret=$HOME/lighthouse/jwt.hex
 Restart=on-failure
 LimitNOFILE=65535
 
