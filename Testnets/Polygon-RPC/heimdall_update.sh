@@ -6,7 +6,8 @@ sudo systemctl stop bor
 sudo systemctl stop heimdalld
 cd heimdall
 git pull
-latestTag=$(git describe --tags $(git rev-list --tags --max-count=1))
+latestTag=$(curl -s https://api.github.com/repos/maticnetwork/heimdall/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
 git checkout $latestTag
 make install
 
