@@ -5,7 +5,8 @@ source .bash_profile
 sudo systemctl stop bor
 cd bor
 git pull
-latestTag=$(git describe --tags $(git rev-list --tags --max-count=1))
+latestTag=$(curl -s https://api.github.com/repos/maticnetwork/bor/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
 git checkout $latestTag
 make
 
