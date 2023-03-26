@@ -156,7 +156,7 @@ rm -rf $(which uptickd)
 
 👉[Uptick Explorer]()
 
-[Uptick Github](https://github.com/UptickNetwork/uptick)
+👉[Uptick Github](https://github.com/UptickNetwork/uptick)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
