@@ -126,7 +126,7 @@ sudo chmod +x ethereum_update.sh
 ```
 Launch script
 ```
-./ethereum_update.sh
+sudo ./ethereum_update.sh
 ```
 #### Ethereum Goerli manual update
 ```
@@ -142,6 +142,35 @@ sudo mv build/bin/geth /usr/bin/
 geth version 
 sudo systemctl restart geth 
 sudo journalctl -u geth -f -n 100
+```
+
+## 6. Update your Lighthouse Beacone node
+You can download autoscript and launch it when new update is relesead or update a node manualy.
+
+#### Lighthouse Beacone auto update.
+```
+wget https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Testnets/ETH-Goerli-RPC/lighthouse_update.sh
+sudo chmod +x ethereum_update.sh
+```
+Launch script
+```
+sudo ./lighthouse_update.sh
+```
+#### Lighthouse Beacone manual update
+```
+source .bash_profile
+cd lighthouse
+git pull
+latestTag=$(curl -s https://api.github.com/repos/sigp/lighthouse/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
+make
+```
+```
+cd ~
+./.cargo/bin/lighthouse --version
+sudo systemctl restart lighthouse
+sudo journalctl -u lighthouse -f -n 100
 ```
 #
 
