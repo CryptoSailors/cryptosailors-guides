@@ -126,7 +126,7 @@ sudo chmod +x ethereum_update.sh
 ```
 Launch script
 ```
-sudo ./ethereum_update.sh
+./ethereum_update.sh
 ```
 #### Ethereum Goerli manual update
 ```
@@ -154,7 +154,7 @@ sudo chmod +x lighthouse_update.sh
 ```
 Launch script
 ```
-sudo ./lighthouse_update.sh
+./lighthouse_update.sh
 ```
 #### Lighthouse Beacone manual update
 ```
