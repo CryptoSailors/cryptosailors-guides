@@ -150,7 +150,7 @@ You can download autoscript and launch it when new update is relesead or update 
 #### Lighthouse Beacone auto update.
 ```
 wget https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Testnets/ETH-Goerli-RPC/lighthouse_update.sh
-sudo chmod +x ethereum_update.sh
+sudo chmod +x lighthouse_update.sh
 ```
 Launch script
 ```
