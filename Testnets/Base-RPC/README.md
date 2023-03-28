@@ -21,7 +21,7 @@ Check the latest version of [docker-compose](https://github.com/docker/compose/r
 sudo apt install docker.io -y
 git clone https://github.com/docker/compose
 cd compose
-git checkout v2.16.0
+git checkout v2.17.2
 make
 cd ~
 sudo mv compose/bin/build/docker-compose /usr/bin/docker-compose
