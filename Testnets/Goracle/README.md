@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://i.postimg.cfgfc/9QBPqDyW/1-a-Ck-Sgk39-Uhfb-1wzg-Ty5-Pg.jpg"/></a>
+ <img src="https://i.postimg.cc/V6VkvYj9/photo-2023-03-28-13-34-31.jpg"/></a>
 </p>
 
 # Goracle testnet node installation guide.
@@ -9,7 +9,7 @@
 - No Official info
 
 #### Our Recommendations
-- I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
+- I recommend [Hetzner CX11](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
 ## 2. Server preparation.
@@ -59,24 +59,24 @@ Connect your pera wallet and prepare your phone. Make sure that you switch netwo
 
 ## 5. Start your node
 ```
-sudo ./goracle docker-start --background
+sudo goracle docker-start --background
+```
+Check you logs
+```
+sudo docker logs goracle-nr -f --tail 100
 ```
 
 
 #
-👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
+👉[Hetzner](https://hetzner.cloud/?ref=NY9VHC3PPsL0).
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[Discord](https://discord.gg/jyaG8jhZGu)
+👉[Discord](https://discord.gg/ukzSEdhCzF)
 
-👉[WebSite](https://www.uptick.network/)
+👉[WebSite](https://www.goracle.io/)
 
-👉[Official guide](https://docs.uptick.network/)
-
-👉[Uptick Explorer]()
-
-👉[Uptick Github](https://github.com/UptickNetwork/uptick)
+👉[Official guide](https://docs.goracle.io/technical-documentation/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
