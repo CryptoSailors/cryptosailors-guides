@@ -32,9 +32,9 @@ sudo chmod +x /usr/bin/docker-compose
 sudo docker-compose version
 ```
 ## 3. Install and start Arbitrum mainnet node
-First check latest realiease. In our case the [latest release](https://github.com/OffchainLabs/nitro/tags) is `offchainlabs/nitro-node:v2.0.12-65d4e7a`
+First check latest realiease. In our case the [latest release](https://github.com/OffchainLabs/nitro/tags) is `offchainlabs/nitro-node:v2.0.13-174496c`
 ```
-RELEASE="offchainlabs/nitro-node:v2.0.12-65d4e7a"
+RELEASE="offchainlabs/nitro-node:v2.0.13-174496c"
 mkdir -p $HOME/data/arbitrum
 chmod -fR 777 $HOME/data/arbitrum
 ```
@@ -67,14 +67,14 @@ curl -X POST http://localhost:8547 \
 ## 6. Upgrade your Arbitrum node
 First check latest realiease. In our case the [latest release](https://github.com/OffchainLabs/nitro/tags) is `offchainlabs/nitro-node:v2.0.12-65d4e7a`
 ```
-RELEASE="offchainlabs/nitro-node:v2.0.12-65d4e7a"
+RELEASE="offchainlabs/nitro-node:v2.0.13-174496c"
 ```
 ```
 echo $RELEASE
 sudo docker stop arbitrum
 ```
 ```
-sudo docker run --name arbitrum --rm -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8547:8547 -p 0.0.0.0:8548:8548 $RELEASE --l1.url $ETH_RPC_URL --l2.chain-id=42161 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=*
+sudo docker run --name arbitrum --rm -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8547:8547 -p 0.0.0.0:8548:8548 $RELEASE --l1.url $ETH_RPC_URL --l2.chain-id=42161 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=* --init.url="https://snapshot.arbitrum.io/mainnet/nitro.tar"
 ```
 #
 
