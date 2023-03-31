@@ -136,6 +136,8 @@ Check your logs
 tail -F /var/log/lotus/daemon.log
 ```
 
+## 8. Your RPC url
+- `http:YOUR_IP:1234/rpc/v1`
 #
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
