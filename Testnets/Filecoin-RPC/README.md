@@ -54,9 +54,36 @@ chmod -Rv 777 hyperspace-latest-pruned.car
 lotus daemon --import-snapshot $HOME/lotus/hyperspace-latest-pruned.car --halt-after-import
 ```
 
-## 5. Configure and start your node 
+## 5. Configure your node 
 ```
 sudo nano ~/.lotus/config.toml
+```
+- Set `ListenAddress`
+```
+[API]
+  # Binding address for the Lotus API
+  #
+  # type: string
+  # env var: LOTUS_API_LISTENADDRESS
+   ListenAddress = "/ip4/0.0.0.0/tcp/1234/http"
+```
+- Set `ListenAddresses` and `AnnounceAddresses`. Take any port wich you wish. In my case port `1235`
+```
+[Libp2p]
+  # Binding address for the libp2p host - 0 means random port.
+  # Format: multiaddress; see https://multiformats.io/multiaddr/
+  #
+  # type: []string
+  # env var: LOTUS_LIBP2P_LISTENADDRESSES
+  ListenAddresses = ["/ip4/0.0.0.0/tcp/1235"]
+
+  # Addresses to explicitally announce to other peers. If not specified,
+  # all interface addresses are announced
+  # Format: multiaddress
+  #
+  # type: []string
+  # env var: LOTUS_LIBP2P_ANNOUNCEADDRESSES
+  AnnounceAddresses = ["/ip4/0.0.0.0/tcp/1235"]
 ```
 - Set `SplitStore = true` feature to reduce disk usage
 - ColdStoreType needs to be set to messages to allow querying FEVM transactions.
@@ -84,11 +111,21 @@ sudo nano ~/.lotus/config.toml
   # env var: LOTUS_FEVM_ENABLEETHRPC
   EnableEthRPC = true
 ```
-Create a systemd service
+Save and close file `CTRL+X,Y,NETER`
+## 6. Create a systemd service
 ```
 sudo make install-daemon-service
 ```
-Launch your node
+```
+sudo nano /etc/systemd/system/lotus-daemon.service
+```
+In the generated systemd file `/etc/systemd/system/lotus-daemon.service`, under `[Service]`,  add and set the `LOTUS_PATH` env variable to the config folder (e.g. `/home/ubuntu/.lotus`).
+```
+[Service]
+Environment=LOTUS_PATH="/path/to/.lotus"
+```
+Save and close file `CTRL+X,Y,NETER`
+## 7. Launch your node
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable lotus-daemon
