@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://i.postimgafsd.cc/RZdG5Yvq/arbitrum-layer-2-nitro-upgrade-goes-live-ahead-of-ethereum-merge-900x478.jpg"width="900"/></a>
+ <img src="https://i.postimg.cc/pLfCmhCM/143690-art-kosmos-nebo-cifrovoe-iskusstvo-zelenyj-1920x1080.jpg"width="900"/></a>
 </p>
 
 # In this guide we will setup Filecoin testnet RPC node.
@@ -99,30 +99,17 @@ Check your logs
 tail -F /var/log/lotus/daemon.log
 ```
 
-
-## 6. Upgrade your Arbitrum node
-First check latest realiease. In our case the [latest release](https://github.com/OffchainLabs/nitro/tags) is `offchainlabs/nitro-node:v2.0.13-174496c`
-```
-RELEASE="offchainlabs/nitro-node:v2.0.13-174496c"
-```
-```
-echo $RELEASE
-sudo docker stop arbitrum
-```
-```
-sudo docker run --name arbitrum --rm -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8550:8547 -p 0.0.0.0:8549:8548 $RELEASE --l1.url $ETH_RPC_URL --l2.chain-id=421613 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=*
-```
 #
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[Arbitrum Official docs](https://docs.axelar.dev/validator/external-chains/arbitrum)
+👉[FileCoin Official docs](https://kb.factor8.io/docs/filecoin/testnets/hyperspace)
 
-👉[Arbitrum Github](https://github.com/OffchainLabs/nitro)
+👉[FileCoin Github](https://github.com/filecoin-project/lotus)
 
-👉[Arbitrum Goerli Explorer](https://goerli.arbiscan.io/)
+👉[FileCoin Testnet Explorer](https://hyperspace.filfox.info/en/tipset)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
