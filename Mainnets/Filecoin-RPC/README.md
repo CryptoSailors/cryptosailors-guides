@@ -40,8 +40,6 @@ rm -rf go1.19.7.linux-amd64.tar.gz
 ```
 git clone https://github.com/filecoin-project/lotus.git
 cd lotus/
-export RUSTFLAGS="-C target-cpu=native -g"
-export FFI_BUILD_FROM_SOURCE=1
 git checkout releases
 make clean all
 sudo make install
