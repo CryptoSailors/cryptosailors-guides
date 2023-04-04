@@ -50,7 +50,7 @@ sudo make install
 aria2c -x5 https://snapshots.mainnet.filops.net/minimal/latest.zst
 ```
 ```
-lotus daemon --import-snapshot path/to/snapshot.car --halt-after-import
+sudo lotus daemon --import-snapshot /path/to/snapshot.car --halt-after-import
 ```
 
 ## 5. Configure your node 
