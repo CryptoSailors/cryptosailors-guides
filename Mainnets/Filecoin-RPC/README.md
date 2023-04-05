@@ -52,8 +52,8 @@ aria2c -x5 https://snapshots.mainnet.filops.net/minimal/latest.zst
 ```
 sudo lotus daemon --import-snapshot /path/to/snapshot.car --halt-after-import
 ```
-
-## 5. Configure your node 
+After command above should be created folder `.lotus`. If you launched command from user, the folder `.lotus` can be created in the `/root`. In this case move folder `.lotus` from the `/root` to the user folder.
+## 5. Configure your node.
 ```
 sudo nano ~/.lotus/config.toml
 ```
@@ -127,6 +127,13 @@ In the generated systemd file `/etc/systemd/system/lotus-daemon.service`, under 
 ```
 [Service]
 Environment=LOTUS_PATH="/path/to/.lotus"
+```
+and change
+```
+MemoryAccounting=true
+MemoryHigh=96G
+MemoryMax=128G
+LimitNOFILE=65536
 ```
 Save and close file `CTRL+X,Y,NETER`
 ## 7. Launch your node
