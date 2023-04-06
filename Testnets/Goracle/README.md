@@ -65,9 +65,59 @@ Check you logs
 ```
 sudo docker logs goracle-nr -f --tail 100
 ```
+## 6. Swith your node on PureStake API
+- Register at [developer.purestake.io](https://developer.purestake.io/)
+- You should take you `YOUR API KEY` and insert on your node. Than restart it.
+<p align="center">
+ <img src="https://i.postimg.cc/4dbqF4n2/Untitled.jpg"/></a>
+</p>
 
+Than in your server open `.goracle`
+
+```
+sudo nano .goracle
+```
+and insert line 
+```
+"authKey": "<Your Purestake access key>",
+```
+It will looks like this:
+```
+{
+  "blockchain": {
+    "server": "https://testnet-api.algonode.cloud/",
+    "token": "",
+    "authKey": "YBLLyHJHJKinkljlaiuhlikHnlfQf6rFZRkSW ",
+    "mnemonic": "canyon nuclear tribe same movie online undo dinosaur shove fire uphold about tobacco",
+    "mainAddr": "CA4TD6FJAJDIW:ONDGAFYWWCFLE2CDENPZOPONRSV3ZG6ZOKZI"
+  }
+}
+```
+Save your file by CTRL+X,Y,ENTER.
+
+Relaunch your node and check logs
+```
+sudo docker restart goracle-nr
+```
+```
+sudo docker logs goracle-nr -f --tail 100
+```
+The logs should be somethink like this. Time to times you can get errors. This is normal.
+```
+2023-04-06T11:35:51.282Z INFO  Processing oracle request "2YJ4KSTQUP2ON2KGWXVDNBWVCIIMEUFP7RONYBF2T26M2UVPOXFA", destination: "149228678.test_endpoint"
+2023-04-06T11:35:58.859Z INFO  Submitted 9999116 vote(s) on request "2YJ4KSTQUP2ON2KGWXVDNBWVCIIMEUFP7RONYBF2T26M2UVPOXFA"
+2023-04-06T11:36:03.285Z INFO  Processing oracle request "4CSNMSAJCGTPWZQSCRGIUOJR7BCOLE4UBB2YEGUV24AZI3YQFWGA", destination: "162365438.test_endpoint"
+```
+Also check your node in [explorer by your Participation address](https://testnet.algoexplorer.io/)
+
+Should be someting like this.
+
+<p align="center">
+ <img src="https://i.postimg.cc/y8Lh1kbC/Untitled.jpg"/></a>
+</p>
 
 #
+
 👉[Hetzner](https://hetzner.cloud/?ref=NY9VHC3PPsL0).
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
@@ -77,6 +127,8 @@ sudo docker logs goracle-nr -f --tail 100
 👉[WebSite](https://www.goracle.io/)
 
 👉[Official guide](https://docs.goracle.io/technical-documentation/)
+
+👉[Testnet Explorer] (https://testnet.algoexplorer.io/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
