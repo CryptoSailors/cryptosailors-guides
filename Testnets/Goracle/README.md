@@ -67,7 +67,7 @@ sudo docker logs goracle-nr -f --tail 100
 ```
 ## 7. Swith your node on PureStake API
 - Register at [developer.purestake.io](https://developer.purestake.io/)
-- You should take you `YOUR API KEY` and insert on your node. Than restart it.
+- You should take your `YOUR API KEY` and insert in your node. Than restart it.
 <p align="center">
  <img src="https://i.postimg.cc/4dbqF4n2/Untitled.jpg"/></a>
 </p>
