@@ -57,7 +57,7 @@ Connect your pera wallet and prepare your phone. Make sure that you switch netwo
  <img src="https://img4.teletype.in/files/f7/34/f734da10-8e2b-448a-a0db-c9b19aa2c370.png"/></a>
 </p>
 
-## 5. Start your node
+## 6. Start your node
 ```
 sudo goracle docker-start --background
 ```
@@ -65,7 +65,7 @@ Check you logs
 ```
 sudo docker logs goracle-nr -f --tail 100
 ```
-## 6. Swith your node on PureStake API
+## 7. Swith your node on PureStake API
 - Register at [developer.purestake.io](https://developer.purestake.io/)
 - You should take you `YOUR API KEY` and insert on your node. Than restart it.
 <p align="center">
