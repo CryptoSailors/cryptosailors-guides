@@ -36,7 +36,7 @@ sudo mv compose/bin/build/docker-compose /usr/bin/docker-compose
 chmod +x /usr/bin/docker-compose
 docker-compose version
 ```
-## 3. Install a node
+## 5. Install a node
 ```
 wget https://staging.dev.goracle.io/downloads/latest-staging/goracle
 sudo mv goracle /usr/bin
