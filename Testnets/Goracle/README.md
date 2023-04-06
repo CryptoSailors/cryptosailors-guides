@@ -87,7 +87,7 @@ It will looks like this:
   "blockchain": {
     "server": "https://testnet-api.algonode.cloud/",
     "token": "",
-    "authKey": "YBLLyHJHJKinkljlaiuhlikHnlfQf6rFZRkSW ",
+    "authKey": "YBLLyHJHJKinkljlaiuhlikHnlfQf6rFZRkSW",
     "mnemonic": "canyon nuclear tribe same movie online undo dinosaur shove fire uphold about tobacco",
     "mainAddr": "CA4TD6FJAJDIW:ONDGAFYWWCFLE2CDENPZOPONRSV3ZG6ZOKZI"
   }
