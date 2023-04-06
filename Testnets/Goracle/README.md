@@ -128,7 +128,7 @@ Should be someting like this.
 
 👉[Official guide](https://docs.goracle.io/technical-documentation/)
 
-👉[Testnet Explorer] (https://testnet.algoexplorer.io/)
+👉[Testnet Explorer](https://testnet.algoexplorer.io/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
