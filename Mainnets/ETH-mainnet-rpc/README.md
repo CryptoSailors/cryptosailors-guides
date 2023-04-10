@@ -2,13 +2,16 @@
  <img src="https://i.postimg.cc/Lasd8DRwBr1/Ethereum-1.jpg"width="900"/></a>
 </p>
 
-# In this guide we will setup ETH RPC node on Goerli network
+# In this guide we will setup ETH RPC node on Mainnet network
 
 #### Flollowing parametrs:
 
-- 4-CPU
-- 8-GBRAM
-- 1.5-GBSSD 
+- 4 CPU
+- 8 GB RAM
+- 1.5 GB SSD/NVME
+#### My Recommendations
+- I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) with extended SSD or NVME disk.
+- I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
 ## 1. Node Preparation
 ```
@@ -149,7 +152,7 @@ You can download autoscript and launch it when new update is relesead or update 
 
 #### Lighthouse Beacone auto update.
 ```
-wget https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Testnets/ETH-Goerli-RPC/lighthouse_update.sh
+wget 
 sudo chmod +x lighthouse_update.sh
 ```
 Launch script
