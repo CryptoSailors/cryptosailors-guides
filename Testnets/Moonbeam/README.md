@@ -64,7 +64,7 @@ sudo rm -rf /usr/src/go*.linux-amd64.tar.gz
 cd ~
 ```
 
-## 4. Install Moonbeam.\
+## 4. Install Moonbeam.
 Clone the Moonbeam repo:
 ```
 git clone https://github.com/PureStake/moonbeam
