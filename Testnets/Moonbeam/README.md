@@ -50,7 +50,7 @@ sudo wget https://go.dev/dl/`curl -s https://go.dev/dl/?mode=json | jq -r '.[0].
 sudo tar -C /usr/local -xzf go*.linux-amd64.tar.gz
 ```
 ```
-cat <<EOF >> ~/.profile
+cat <<EOF >> ~/.bash_profile
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export GO111MODULE=on
@@ -58,28 +58,24 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 EOF
 ```
 ```
-source ~/.profile
+source ~/.bash_profile
 go version
 sudo rm -rf /usr/src/go*.linux-amd64.tar.gz
 cd ~
 ```
 
 ## 4. Install Moonbeam.\
-Check out to the latest [release](https://github.com/PureStake/moonbeam/releases). In this example the latest release is `v0.30.0`
-```
-RELEASE=v0.30.0
-```
 Clone the Moonbeam repo:
 ```
 git clone https://github.com/PureStake/moonbeam
 cd moonbeam
-git checkout $RELEASE
+git checkout $(curl -s https://api.github.com/repos/PureStake/moonbeam/releases/latest |grep tag_name | awk {'print $2'} | sed 's/"//g;s/,//g')
 cargo build --release
 ```
 ```
 cd ~
 ```
-mkdir moonbram && cd moonbram && mkdir wasm
+mkdir moonbeam && cd moonbeam && mkdir wasm
 ## 5. Setup the Sytemd Service.
 ```
 sudo tee <<EOF >/dev/null /etc/systemd/system/moonbeam.service
