@@ -188,7 +188,7 @@ sudo journalctl -u lighthouse -f -n 100
 
 👉[Ethereum Github](https://github.com/ethereum/go-ethereum)
 
-👉[Ethereum Goerli Explorer](https://goerli.etherscan.io/)
+👉[Ethereum Explorer](https://etherscan.io/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
