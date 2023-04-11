@@ -116,7 +116,10 @@ curl -X POST http://localhost:8545 \
 ```
 - If the show `false` that means that your node is fully synchronized.
 
-## 5. Update your Ethereum Goerli node
+## 5. Your Ethereum RPC endpoint
+- `http://YOUR_IP:8545`
+
+## 6. Update your Ethereum Goerli node
 You can download autoscript and launch it when new update is relesead or update a node manualy.
 
 #### Ethereum Goerli auto update.
@@ -144,7 +147,7 @@ sudo systemctl restart geth
 sudo journalctl -u geth -f -n 100
 ```
 
-## 6. Update your Lighthouse Beacone node
+## 7. Update your Lighthouse Beacone node
 You can download autoscript and launch it when new update is relesead or update a node manualy.
 
 #### Lighthouse Beacone auto update.
