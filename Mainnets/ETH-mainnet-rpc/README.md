@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://i.postimg.cc/Lasd8DRwBr1/Ethereum-1.jpg"width="900"/></a>
+ <img src="https://i.postimg.cc/yx90tprK/wp2322138-ethereum-wallpapers.png"width="900"/></a>
 </p>
 
 # In this guide we will setup ETH RPC node on Mainnet network
@@ -119,12 +119,15 @@ curl -X POST http://localhost:8545 \
 ```
 - If the show `false` that means that your node is fully synchronized.
 
-## 5. Update your Ethereum node
+## 5. Your RPC endpoint.
+ - `http://YOUR_IP:8545`
+
+## 6. Update your Ethereum node
 You can download autoscript and launch it when new update is relesead or update a node manualy.
 
 #### Ethereum auto update.
 ```
-wget https://github.com/CryptoSailors/cryptosailors-guides/raw/main/Testnets/ETH-Goerli-RPC/ethereum_update.sh
+wget https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Mainnets/ETH-mainnet-rpc/ethereum_update.sh
 sudo chmod +x ethereum_update.sh
 ```
 Launch script
@@ -147,12 +150,12 @@ sudo systemctl restart geth
 sudo journalctl -u geth -f -n 100
 ```
 
-## 6. Update your Lighthouse Beacone node
+## 7. Update your Lighthouse Beacone node
 You can download autoscript and launch it when new update is relesead or update a node manualy.
 
 #### Lighthouse Beacone auto update.
 ```
-wget 
+wget https://github.com/CryptoSailors/cryptosailors-guides/raw/main/Mainnets/ETH-mainnet-rpc/lighthouse_update.sh
 sudo chmod +x lighthouse_update.sh
 ```
 Launch script
@@ -176,7 +179,6 @@ sudo systemctl restart lighthouse
 sudo journalctl -u lighthouse -f -n 100
 ```
 #
-
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
 
