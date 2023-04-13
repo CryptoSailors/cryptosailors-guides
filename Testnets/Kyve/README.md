@@ -77,8 +77,8 @@ EOF
 ## 6. This step is optional needed only, if you run more than one node on your machine.
 ```
 COSMOS_PORT=14
-echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.profile
-source $HOME/.profile
+echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.bash_profile
+source $HOME/.bash_profile
 ```
 ```
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${COSMOS_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${COSMOS_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${COSMOS_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${COSMOS_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${COSMOS_PORT}660\"%" $HOME/.kyve/config/config.toml
