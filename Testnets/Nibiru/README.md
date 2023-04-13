@@ -12,8 +12,8 @@ This test node is rewarded and is part of the [main tasks](https://nibiru.fi/blo
 ## 1. Requirements.
 Official 
 - 4 CPU
-- 8 GB RAM
-- 400 GB SSD/NVME and more
+- 16 GB RAM
+- 1000 GB SSD/NVME and more
 
 #### My Recommendations
 - I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) with extended SSD or NVME disk.
