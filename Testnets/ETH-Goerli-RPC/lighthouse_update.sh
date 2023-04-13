@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo -e '\n\e[42mUpgrade lighthouse Beacone\e[0m\n' && sleep 1
-source .bash_profile
+source $HOME/.cargo/env
 cd lighthouse
 git pull
 latestTag=$(curl -s https://api.github.com/repos/sigp/lighthouse/releases/latest | grep '.tag_name'|cut -d\" -f4)
