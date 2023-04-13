@@ -11,9 +11,13 @@ This test node is rewarded and is part of the [main tasks](https://nibiru.fi/blo
 
 ## 1. Requirements.
 Official 
-- 2 CPU
-- 4 GB RAM
-- 400 GB SSD
+- 4 CPU
+- 8 GB RAM
+- 400 GB SSD/NVME and more
+
+#### My Recommendations
+- I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) with extended SSD or NVME disk.
+- I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
 ## 2. Server preparation.
 ```
@@ -22,8 +26,10 @@ sudo apt update && sudo apt upgrade -y
 ```
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake snapd lz4 -y
 ```
+## 3 Instal Golang go.
 Install [GO according this instruction](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22)
-## 3. Node installation.
+
+## 4. Node installation.
 ```
 git clone https://github.com/NibiruChain/nibiru
 cd nibiru
@@ -34,10 +40,15 @@ cd ~
 ```
 You should see version v0.19.2
 
-## 4.Create a wallet or recover it
+## 5.Create a wallet or recover it
+```
+CHAIN_ID=nibiru-itn-1
+echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
+source $HOME/.bash_profile
+```
 Change `<moniker-name>` on your name
 ```
-nibid init <moniker-name> --chain-id=nibiru-itn-1
+nibid init <moniker-name> --chain-id=$CHAIN_ID
 ```
 To Crate a new wallet do:
 ```
@@ -61,7 +72,7 @@ curl -s https://networks.itn.nibiru.fi/$NETWORK/genesis > $HOME/.nibid/config/ge
 shasum -a 256 $HOME/.nibid/config/genesis.json
 ```
 You should see output `e162ace87f5cbc624aa2a4882006312ef8762a8a549cf4a22ae35bba12482c72`
-## 5. Configure our node
+## 6. Configure our node
 ```
 NETWORK=nibiru-itn-1
 sed -i 's|seeds =.*|seeds = "'$(curl -s https://networks.itn.nibiru.fi/$NETWORK/seeds)'"|g' $HOME/.nibid/config/config.toml
@@ -88,18 +99,18 @@ LimitNOFILE=10000
 WantedBy=multi-user.target
 EOF
 ```
-## 6. This step is optional needed only, if you run more than one node on your machine.
+## 7. This step is optional needed only, if you run more than one node on your machine.
 ```
 COSMOS_PORT=13
-echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.profile
-source $HOME/.profile
+echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.bash_profile
+source $HOME/.bash_profile
 ```
 ```
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${COSMOS_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${COSMOS_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${COSMOS_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${COSMOS_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${COSMOS_PORT}660\"%" $HOME/.nibid/config/config.toml
 sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${COSMOS_PORT}317\"%; s%^address = \":8080\"%address = \":${COSMOS_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${COSMOS_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${COSMOS_PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${COSMOS_PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${COSMOS_PORT}546\"%" $HOME/.nibid/config/app.toml
 sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:${COSMOS_PORT}657\"%" $HOME/.nibid/config/client.toml
 ```
-## 7. Start a node
+## 8. Start a node
 ```
 sudo systemctl daemon-reload
 sudo systemctl start nibidd
@@ -113,7 +124,7 @@ nibid status 2>&1 | jq .SyncInfo
 If the command gives out `true` - it means that synchronization is still in process
 If the command gives `false` - then you are synchronized and you can start creating the validator.
 
-## 8. Requesting tokens from the faucet
+## 9. Requesting tokens from the faucet
 You can proceed to their [application](https://app.nibiru.fi/), connect your Keplr wallet and request tokens or do it manualy through terminal.
 ```
 ADDR=<your-wallet-address>
@@ -127,7 +138,7 @@ Check your ballance
 nibid q bank balances <your-wallet-address>
 ```
 
-## 9. Creating a Validator
+## 10. Creating a Validator
 Creating a validator. Change `<YOUR_VALIDATOR_NAME>` on your name
 ```
 nibid tx staking create-validator \
@@ -154,7 +165,7 @@ nibid keys show wallet --bech val
 ```
 nibid tx staking delegate <VAL_ADDRESS> 8000000unibi --chain-id nibiru-itn-1 --from wallet --gas-prices 0.025unibi
 ```
-## 10 Backup your node
+## 11 Backup your node
 
 After successfully creating a validator, you must take care of `priv_validator_key.json`. Without it you will not be able to restore the validator. It can be found in the folder `.nibid/config`
 
@@ -162,7 +173,7 @@ After successfully creating a validator, you must take care of `priv_validator_k
  <img src="https://miro.medium.com/max/4800/1*QO2j4zovK9ZP2jqAccs2eQ.png"width="600"/></a>
 </p>
 
-## 11. Become a pricefeeder.
+## 12. Become a pricefeeder.
 
 You should be in active set to become an pricefeeder.
 ```
@@ -230,7 +241,7 @@ sudo journalctl -u pricefeeder -f -n 100
 nibid tx oracle set-feeder $(nibid keys show pricefeeder-wallet -a) --from wallet --gas-prices 0.025unibi --chain-id nibiru-itn-1
 ```
 
-## 12. Deleting a node
+## 13. Deleting a node
 
 ```
 sudo systemctl stop nibidd
