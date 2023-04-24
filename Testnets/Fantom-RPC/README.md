@@ -9,6 +9,10 @@
 - 8 GB RAM
 - 300 GB SSD
 
+#### My Recommendations
+- I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) with extended SSD or NVME disk.
+- I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
+
 ## 1. Node Preparation.
 ```
 sudo apt update && sudo apt upgrade -y
@@ -20,12 +24,13 @@ sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential g
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
 ## 3. Install Fantom.
-Make sure that you install the [latest release tag](https://github.com/Fantom-foundation/go-opera/tags). For example `v1.1.2-rc.5`
+Make sure that you install the [latest release tag](https://github.com/Fantom-foundation/go-opera/tags).
 ```
-RELEASE=v1.1.2-rc.5
 git clone https://github.com/Fantom-foundation/go-opera.git
 cd go-opera
-git checkout $RELEASE
+latestTag=$(curl -s https://api.github.com/repos/Fantom-foundation/go-opera/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
 make
 ```
 ```
@@ -46,7 +51,7 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=/usr/bin/opera --genesis /root/go-opera/build/testnet-6226-pruned-mpt.g --identity CryptoSailors --cache 8096 --http --http.addr 0.0.0.0 --http.corsdomain '*' --http.vhosts "*" --http.api "eth,net,web3" --ws --ws.addr 0.0.0.0 --ws.origins=* --ws.api="ftm,eth,abft,dag,rpc,web3,net,debug"
+ExecStart=/usr/bin/opera --genesis /root/go-opera/build/testnet-6226-pruned-mpt.g --identity node --cache 8096 --http --http.addr 0.0.0.0 --http.corsdomain '*' --http.vhosts "*" --http.api "eth,net,web3" --ws --ws.addr 0.0.0.0 --ws.origins=* --ws.api="ftm,eth,abft,dag,rpc,web3,net,debug"
 Restart=on-failure
 LimitNOFILE=65535
 
@@ -73,7 +78,24 @@ curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method":
 - `http://YOUR_IP:18545`
 - `ws://YOUR_IP:18546`
 
+## 6. Manual update your Fantom testnet node
+```
+source .bash_profile
+cd go-opera
+git pull
+latestTag=$(curl -s https://api.github.com/repos/Fantom-foundation/go-opera/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
+make
+sudo mv $HOME/go-opera/build/opera /usr/bin/
+opera version
+sudo systemctl restart fantom
+sudo journalctl -u fantom -f -n 100
+```
+
 #
+
+👉[Webtropia - server rental](https://www.webtropia.com/?kwk=255074042020228216158042)
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
 
