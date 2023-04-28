@@ -89,6 +89,20 @@ echo Latest synced block behind by: $((($(date +%s)-$( \
 
 - `http://YOUR_IP:8545`
 
+## 8. Update your Base testnet node:
+
+Before start i recomd to copy or save a file `docker-compose.yml` somewhere. This file is located in `/node/docker-compose.yml`
+```
+cd node
+git pull
+sudo docker-compose stop
+sudo docker-compose build
+sudo docker-compose up -d
+```
+Whait about 10 min. and then check your logs:
+```
+sudo docker-compose logs -f --tail 100
+```
 #
 
 👉[Webtropia — server rental](https://www.webtropia.com/?kwk=255074042020228216158042)
