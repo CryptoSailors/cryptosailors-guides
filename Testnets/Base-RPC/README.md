@@ -7,6 +7,10 @@
 #### Flollowing parametrs:
 - No official info.
 
+#### My Recommendations
+- I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) with extended SSD or NVME disk.
+- I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
+
 ## 1. Node Preparation.
 ```
 sudo apt update && sudo apt upgrade -y
@@ -14,8 +18,13 @@ sudo apt update && sudo apt upgrade -y
 ```
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 ```
+
+## 2. Install golang Go.
+
 Install Golang go according step 2 of [this instruction](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22).
-## 2. Install docker and docker-compose
+
+## 3. Install docker and docker-compose
+
 Check the latest version of [docker-compose](https://github.com/docker/compose/releases) and follow the guide.
 ```
 sudo apt install docker.io -y
@@ -28,7 +37,7 @@ sudo mv compose/bin/build/docker-compose /usr/bin/docker-compose
 sudo chmod +x /usr/bin/docker-compose
 sudo docker-compose version
 ```
-## 3. Install and configure Base testnet node
+## 4. Install and configure Base testnet node
 ```
 git clone https://github.com/base-org/node
 cd node
@@ -42,11 +51,11 @@ Example:
 environment:
       - OP_NODE_L1_ETH_RPC=<YOUR_ETH_GOERLI_RPC_URL> # [recommended] replace wit.....
 ```
-## 4. Start a Besu testnet node.
+## 5. Start a Besu testnet node.
 ```
 sudo docker-compose up -d
 ```
-## 5. Check you node. 
+## 6. Check you node. 
 - To check logs of your node you should be in folder `node`:
 ```
 sudo docker-compose logs -f --tail 100
@@ -76,13 +85,13 @@ echo Latest synced block behind by: $((($(date +%s)-$( \
   jq -r .result.unsafe_l2.timestamp))/60)) minutes
   ```
   
-## 6. Link on your rpc:
+## 7. Link on your rpc:
 
 - `http://YOUR_IP:8545`
 
 #
 
-👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
+👉[Webtropia — server rental](https://www.webtropia.com/?kwk=255074042020228216158042)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
