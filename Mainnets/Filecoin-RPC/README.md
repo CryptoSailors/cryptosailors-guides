@@ -8,6 +8,10 @@
 - 8 CPU 
 - 32 GB RAM
 
+#### My Recommendations
+- I recommend Dedicated Ryzen 5 Server on [Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) with extended SSD or NVME disk.
+- I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
+
 ## 1. Node Preparation.
 ```
 sudo apt update && sudo apt upgrade -y
@@ -141,17 +145,35 @@ Save and close file `CTRL+X,Y,NETER`
 sudo systemctl daemon-reload
 sudo systemctl enable lotus-daemon
 sudo systemctl start lotus-daemon
+sudo chmod -R 777 $HOME/.lotus/token
 ```
-Check your logs 
+Check your logs and sync status
 ```
 tail -F /var/log/lotus/daemon.log
+```
+```
+lotus sync wait
 ```
 
 ## 8. Your RPC url
 - `http:YOUR_IP:1234/rpc/v1`
+
+## 9. Update your node.
+
+In case if new release are out, do following steps:
+```
+cd lotus
+git pull
+git checkout releases
+make clean all
+sudo make install
+```
+```
+sudo systemctl restart lotus-daemon
+```
 #
 
-👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
+👉[Webtropia — server rental](https://www.webtropia.com/?kwk=255074042020228216158042)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
