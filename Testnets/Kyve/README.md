@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://i.postimg.cc/gkDsRV8S/1-2u3ic7ilt-VQi-H7nm-Uce-Zjw.png"width="900"/></a>
+ <img src="https://i.postimg.cc/0rR2Bttq/photo-2023-03-15-00-17-47.jpg"width="900"/></a>
 </p>
 
 # In this Guide we will install a Kyve Testnet Node
