@@ -21,7 +21,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 ```
 ```
-CHAIN_ID=humans_3000-1
+CHAIN_ID=humans_3000-23
 export FOLDER=.humansd
 echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
 echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
@@ -133,6 +133,18 @@ sudo rm -rf humans
 sudo rm -rf /go/bin/humansd
 sudo rm -rf /etc/systemd/system/humansd.service
 ```
+
+## 10. Upgrade your node
+```
+cd humans
+git pull
+latestTag=$(curl -s https://api.github.com/repos/humansdotai/humans/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
+make install
+humansd version
+```
+
 #
 👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
 
