@@ -25,7 +25,7 @@ Install [GO according this instruction](https://github.com/CryptoSailors/cryptos
 ```
 git clone https://github.com/KYVENetwork/chain
 cd chain
-git checkout v1.0.0-rc1
+git checkout v1.1.0
 make install ENV=kaon
 cd ~
 ```
@@ -131,7 +131,7 @@ kyved tx staking create-validator \
 --fees 1006000tkyve
 ```
 
-Check yourself through the [explorer](https://kyve.explorers.guru/).
+Check yourself through the [explorer](https://testnet.itrocket.net/kyve).
 
 **Additional commands**
 - Your valoper address
@@ -170,7 +170,7 @@ sudo rm -rf .kyve
 
 👉[Official guide](https://github.com/itrocket-team/testnet_guides/tree/main/kyve)
 
-👉[NodesGuru Explorer](https://kyve.explorers.guru/)
+👉[ITRocket Explorer](https://testnet.itrocket.net/kyve)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
