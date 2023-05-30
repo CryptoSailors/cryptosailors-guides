@@ -166,6 +166,16 @@ sudo rm -rf /etc/systemd/system/kyved.service
 sudo rm -rf go/bin/kyved
 sudo rm -rf $FOLDER
 ```
+## 12. Upgrade your node
+```
+cd chain
+git pull
+latestTag=$(curl -s https://api.github.com/repos/KYVENetwork/chain/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
+make install
+kyved version
+```
 #
 👉[Dedicated Ryzen 5 Server on webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
 
