@@ -23,8 +23,8 @@ sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential g
 ```
 CHAIN_ID=kyve-1
 export FOLDER=.kyve
-sudo echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
-sudo echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
+echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
+echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 Install [GO according this instruction](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22)
