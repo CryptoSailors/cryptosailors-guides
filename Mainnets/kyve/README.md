@@ -88,9 +88,9 @@ echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 ```
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${COSMOS_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${COSMOS_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${COSMOS_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${COSMOS_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${COSMOS_PORT}660\"%" $HOME/.kyve/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${COSMOS_PORT}317\"%; s%^address = \":8080\"%address = \":${COSMOS_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${COSMOS_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${COSMOS_PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${COSMOS_PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${COSMOS_PORT}546\"%" $HOME/.kyve/config/app.toml
-sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:${COSMOS_PORT}657\"%" $HOME/.kyve/config/client.toml
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${COSMOS_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${COSMOS_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${COSMOS_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${COSMOS_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${COSMOS_PORT}660\"%" $HOME/$FOLDER/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${COSMOS_PORT}317\"%; s%^address = \":8080\"%address = \":${COSMOS_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${COSMOS_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${COSMOS_PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${COSMOS_PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${COSMOS_PORT}546\"%" $HOME/$FOLDER/config/app.toml
+sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:${COSMOS_PORT}657\"%" $HOME/$FOLDER/config/client.toml
 ```
 ## 7. Setup a snapshot
 Setup a snashot from [ITRocket Service](https://itrocket.net/services/testnet/kyve/)
@@ -132,13 +132,13 @@ kyved tx staking create-validator \
 --min-self-delegation "1" \
 --pubkey=$(kyved tendermint show-validator) \
 --moniker <YOUR_VALIDATOR_NAME> \
---chain-id kaon-1 \
+--chain-id $CHAIN_ID \
 --gas auto \
 --from wallet \
 --fees 1006000tkyve
 ```
 
-Check yourself through the [explorer](https://testnet.itrocket.net/kyve).
+Check yourself through the [explorer](https://kyve.explorers.guru/).
 
 **Additional commands**
 - Your valoper address
@@ -147,7 +147,7 @@ kyved keys show wallet --bech val
 ```
 - Delegate tokens to the validator
 ```
-kyved tx staking delegate <VAL_ADDRESS> <ammount>tkyve --chain-id kaon-1  --from wallet --gas auto --fees 5000tkyve
+kyved tx staking delegate <VAL_ADDRESS> <ammount>tkyve --chain-id $CHAIN_ID  --from wallet --gas auto --fees 5000tkyve
 ```
 ## 10. Backup your node
 
@@ -162,7 +162,7 @@ sudo systemctl stop kyved
 sudo rm -rf chain
 sudo rm -rf /etc/systemd/system/kyved.service
 sudo rm -rf go/bin/kyved
-sudo rm -rf .kyve
+sudo rm -rf $FOLDER
 ```
 #
 👉[Dedicated Ryzen 5 Server on webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
@@ -177,7 +177,7 @@ sudo rm -rf .kyve
 
 👉[Official guide](https://github.com/itrocket-team/testnet_guides/tree/main/kyve)
 
-👉[ITRocket Explorer](https://testnet.itrocket.net/kyve)
+👉[NodesGurur Explorer](https://kyve.explorers.guru/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
