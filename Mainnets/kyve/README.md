@@ -20,19 +20,26 @@ sudo apt update && sudo apt upgrade -y
 ```
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake snapd lz4 -y
 ```
+```
+CHAIN_ID=kyve-1
+export FOLDER=.kyve
+sudo echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
+sudo echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
+source $HOME/.bash_profile
+```
 Install [GO according this instruction](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22)
 ## 3. Node installation.
 ```
 git clone https://github.com/KYVENetwork/chain
 cd chain
 git checkout v1.2.0
-make install ENV=kyve-1
+make install
 cd ~
 ```
 ## 4.Create a wallet or recover it
 Change `<moniker-name>` on your name
 ```
-kyved init moniker --chain-id=kyve-1
+kyved init moniker --chain-id=$CHAIN_ID
 ```
 To create a new wallet, do:
 ```
@@ -46,13 +53,13 @@ kyved keys add wallet --recover
 ```
 Download the genis.json file.
 ```
-curl https://raw.githubusercontent.com/KYVENetwork/networks/main/kaon-1/genesis.json > ~/.kyve/config/genesis.json
+curl https://files.kyve.network/mainnet/genesis.json > ~/.kyve/config/genesis.json
 ```
 ## 5. Configure our node
 ```
-PEERS="48d9c401d033ac39f33ac3b12ce485dd56679f00@81.30.157.35:14656,664e06d2d6110c5ba93f8ecfee66f150bad981bf@kyve-testnet-peer.itrocket.net:28656,5f54a853e7224ad32cbe4e5cddead24b512b629f@51.159.191.220:28656,5d79eb04b94300f5a7982e065a6340ba4ebd4da3@45.33.28.253:26656,157e0aca4aa382d62e24ffc7f936a5e8bbf4e90e@207.180.245.116:46656,b2b4479a6cb001ffe39d4a95f31bb6993ae0a256@194.163.190.31:26656,c0c8ed45a6c266c4ebe028788456cb14b44164bb@65.109.37.21:27656,f5a6484b239fdbe3f9c9bad889d737e8a9f153c6@149.102.140.248:46656,cf69d30beecfdd44d497fb56eb61b12bbffaf38f@167.86.72.171:26656,39392cf41c1d7ae8f98b6efaa740dc4abe3002ff@65.109.92.241:20656,72df41dabaa13d194e2aa633b1f9af60c9cbd5a2@45.158.38.38:26656,0a7504c77cbeb0c3ead588972780f4c670f5a377@65.109.135.149:26656"
-sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.kyve/config/config.toml
-sed -i 's/indexer =.*/indexer = "null"/g' $HOME/.kyve/config/app.toml
+PEERS=b950b6b08f7a6d5c3e068fcd263802b336ffe047@18.198.182.214:26656,25da6253fc8740893277630461eb34c2e4daf545@3.76.244.30:26656
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/$FOLDER/config/config.toml
+sed -i 's/indexer =.*/indexer = "null"/g' $HOME/$FOLDER/config/app.toml
 
 ```
 Create a systemd file for kyve.
@@ -76,7 +83,7 @@ EOF
 ```
 ## 6. This step is optional needed only, if you run more than one node on your machine.
 ```
-COSMOS_PORT=14
+COSMOS_PORT=16
 echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
