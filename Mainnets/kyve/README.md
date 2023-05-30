@@ -32,7 +32,9 @@ Install [GO according this instruction](https://github.com/CryptoSailors/cryptos
 ```
 git clone https://github.com/KYVENetwork/chain
 cd chain
-git checkout v1.2.0
+latestTag=$(curl -s https://api.github.com/repos/KYVENetwork/chain/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
 make install
 cd ~
 ```
