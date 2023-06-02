@@ -35,7 +35,7 @@ cd chain
 latestTag=$(curl -s https://api.github.com/repos/KYVENetwork/chain/releases/latest | grep '.tag_name'|cut -d\" -f4)
 echo $latestTag
 git checkout $latestTag
-make install
+make build ENV=mainnet
 cd ~
 ```
 ## 4.Create a wallet or recover it
@@ -187,7 +187,7 @@ kyved version
 
 👉Setup a snashot from [ITRocket Service](https://itrocket.net/services/testnet/kyve/)
 
-👉[Official guide](https://github.com/itrocket-team/testnet_guides/tree/main/kyve)
+👉[Official guide](https://docs.kyve.network/validators/chain_nodes/installation)
 
 👉[NodesGurur Explorer](https://kyve.explorers.guru/)
 
