@@ -36,6 +36,7 @@ latestTag=$(curl -s https://api.github.com/repos/KYVENetwork/chain/releases/late
 echo $latestTag
 git checkout $latestTag
 make build ENV=mainnet
+sudo mv build/kyved /usr/bin
 cd ~
 ```
 ## 4.Create a wallet or recover it
@@ -85,7 +86,7 @@ EOF
 ```
 ## 6. This step is optional needed only, if you run more than one node on your machine.
 ```
-COSMOS_PORT=16
+COSMOS_PORT=15
 echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
@@ -95,17 +96,17 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
 sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:${COSMOS_PORT}657\"%" $HOME/$FOLDER/config/client.toml
 ```
 ## 7. Setup a snapshot
-Setup a snashot from [ITRocket Service](https://itrocket.net/services/testnet/kyve/)
+Setup a snashot from [NodeStake](https://nodestake.top/kyve)
 ```
-cp $HOME/.kyve/data/priv_validator_state.json $HOME/.kyve/priv_validator_state.json.backup
-```
-```
-rm -rf $HOME/.kyve/data 
+sudo apt-get install snapd lz4 -y
 ```
 ```
-curl https://files.itrocket.net/testnet/kyve/snap_kyve.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.kyve
+cp $HOME/.kyve/data/priv_validator_state.json $HOME/.kyve/priv_validator_state.json.backuprm -rf ~/.kyve/data
+kyved tendermint unsafe-reset-all --home ~/.kyve/ --keep-addr-book
 ```
 ```
+SNAP_NAME=$(curl -s https://snapshots.nodestake.top/kyve/ | egrep -o ">20.*\.tar.lz4" | tr -d ">")
+curl -o - -L https://snapshots.nodestake.top/kyve/${SNAP_NAME}  | lz4 -c -d - | tar -x -C $HOME/.kyve
 mv $HOME/.kyve/priv_validator_state.json.backup $HOME/.kyve/data/priv_validator_state.json
 ```
 
@@ -185,7 +186,7 @@ kyved version
 
 👉[WebSite](https://www.kyve.network/)
 
-👉Setup a snashot from [ITRocket Service](https://itrocket.net/services/testnet/kyve/)
+👉Setup a snashot from [NodeStake](https://nodestake.top/kyve)
 
 👉[Official guide](https://docs.kyve.network/validators/chain_nodes/installation)
 
