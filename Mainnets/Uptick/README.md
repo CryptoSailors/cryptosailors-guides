@@ -171,7 +171,7 @@ rm -rf $(which uptickd)
 
 👉[Uptick Explorer](https://uptick.explorers.guru/)
 
-👉[Kjnodes snapshot] (https://services.kjnodes.com/home/mainnet/uptick/snapshot)
+👉[Kjnodes snapshot](https://services.kjnodes.com/home/mainnet/uptick/snapshot)
 
 👉[Uptick Github](https://github.com/UptickNetwork/uptick)
 
