@@ -56,6 +56,12 @@ sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $HOME/$FOLDER/config/c
 sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 100/g' $HOME/$FOLDER/config/config.toml
 sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 100/g' $HOME/$FOLDER/config/config.toml
 sed -i 's|indexer =.*|indexer = "'null'"|g' $HOME/$FOLDER/config/config.toml
+sed -i \
+  -e 's|^pruning *=.*|pruning = "custom"|' \
+  -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
+  -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
+  -e 's|^pruning-interval *=.*|pruning-interval = "17"|' \
+  $HOME/$FOLDER/config/app.toml
 ```
 
 #### Optional (You can skip this step)
@@ -90,7 +96,16 @@ LimitNPROC=infinity
 WantedBy=multi-user.target
 EOF
 ```
-                                                        
+## 7. Download latest Snapshot
+We will you snapshot from [kjnodes validator](https://services.kjnodes.com/home/mainnet/uptick/snapshot)
+```
+cp $HOME/.uptickd/data/priv_validator_state.json $HOME/.uptickd/priv_validator_state.json.backup
+rm -rf $HOME/.uptickd/data
+```
+```
+curl -L https://snapshots.kjnodes.com/uptick/snapshot_latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.uptickd
+mv $HOME/.uptickd/priv_validator_state.json.backup $HOME/.uptickd/data/priv_validator_state.json
+```                                                        
 ## 6. Start synchronization
 ```
 sudo systemctl daemon-reload
@@ -154,7 +169,9 @@ rm -rf $(which uptickd)
 
 👉[Official guide](https://docs.uptick.network/)
 
-👉[Uptick Explorer]()
+👉[Uptick Explorer](https://uptick.explorers.guru/)
+
+👉[Kjnodes snapshot] (https://services.kjnodes.com/home/mainnet/uptick/snapshot)
 
 👉[Uptick Github](https://github.com/UptickNetwork/uptick)
 
