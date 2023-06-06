@@ -28,9 +28,7 @@ Make sure that you are installing the [latest release](https://github.com/Uptick
 ```
 git clone https://github.com/UptickNetwork/uptick
 cd uptick
-latestTag=$(curl -s https://api.github.com/repos/UptickNetwork/uptick/releases/latest | grep '.tag_name'|cut -d\" -f4)
-echo $latestTag
-git checkout $latestTag
+git checkout v0.2.4
 make install
 ```
 ```
