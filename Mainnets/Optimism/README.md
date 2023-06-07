@@ -73,7 +73,7 @@ NODE_TYPE=full
 SYNC_SOURCE=l1
 
 # Reference L2 node to run healthcheck against
-HEALTHCHECK__REFERENCE_RPC_PROVIDER=https://goerli.optimism.io
+HEALTHCHECK__REFERENCE_RPC_PROVIDER=https://mainnet.optimism.io
 
 # L1 node to run fault detection against
 FAULT_DETECTOR__L1_RPC_PROVIDER=<YOUR_MAINNET_ETHEREUM_RPC>
@@ -89,7 +89,7 @@ DATA_TRANSPORT_LAYER__RPC_ENDPOINT=<YOUR_MAINNET_ETHEREUM_RPC>
 BEDROCK_SOURCE=download
 
 # L1 node that the op-node (Bedrock) will get chain data from
-OP_NODE__RPC_ENDPOINT=<YOUR_GOERLI_ETHEREUM_RPC>
+OP_NODE__RPC_ENDPOINT=<YOUR_MAINNET_ETHEREUM_RPC>
 
 # Type of RPC that op-node is connected to, see README
 OP_NODE__RPC_TYPE=basic
@@ -142,7 +142,7 @@ If you get something like this in response to the above rpc call, your node is s
 
 👉[Optimism Official docs](https://github.com/smartcontracts/simple-optimism-node)
 
-👉[Optimism Goerli Explorer](https://goerli-optimism.etherscan.io/)
+👉[Optimism Mainnet Explorer](https://optimistic.etherscan.io/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
