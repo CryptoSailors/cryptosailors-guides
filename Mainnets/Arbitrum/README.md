@@ -24,17 +24,19 @@ Check the latest version of [docker-compose](https://github.com/docker/compose/r
 sudo apt install docker.io -y
 git clone https://github.com/docker/compose
 cd compose
-git checkout v2.16.0
-make
+latestTag=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
+make 
 cd ~
 sudo mv compose/bin/build/docker-compose /usr/bin/docker-compose
 sudo chmod +x /usr/bin/docker-compose
 sudo docker-compose version
 ```
 ## 3. Install and start Arbitrum mainnet node
-First check latest realiease. In our case the [latest release](https://github.com/OffchainLabs/nitro/tags) is `offchainlabs/nitro-node:v2.0.13-174496c`
+First check latest realiease. In our case the [latest release](https://github.com/OffchainLabs/nitro/tags) is `offchainlabs/nitro-node:v2.0.14-2baa834`
 ```
-RELEASE="offchainlabs/nitro-node:v2.0.13-174496c"
+RELEASE="offchainlabs/nitro-node:v2.0.14-2baa834"
 mkdir -p $HOME/data/arbitrum
 chmod -fR 777 $HOME/data/arbitrum
 ```
@@ -67,7 +69,7 @@ curl -X POST http://localhost:8547 \
 ## 6. Upgrade your Arbitrum node
 First check latest realiease. In our case the [latest release](https://github.com/OffchainLabs/nitro/tags) is `offchainlabs/nitro-node:v2.0.12-65d4e7a`
 ```
-RELEASE="offchainlabs/nitro-node:v2.0.13-174496c"
+RELEASE="offchainlabs/nitro-node:v2.0.14-2baa834"
 ```
 ```
 echo $RELEASE
