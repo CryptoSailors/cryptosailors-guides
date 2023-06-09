@@ -178,6 +178,7 @@ make build ENV=mainnet
 sudo mv build/kyved /usr/bin
 cd ~
 sudo systemctl restart kyved
+sudo journalctl -u kyved -f -n 100
 ```
 #
 👉[Dedicated Ryzen 5 Server on webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
