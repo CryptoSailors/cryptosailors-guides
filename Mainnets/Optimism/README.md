@@ -23,114 +23,163 @@ sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential g
 ## 2. Install golang go.
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
-## 3. Install docker and docker-compose
-Check the latest version of [docker-compose](https://github.com/docker/compose/releases) and follow the guide.
+## 3. Install a node.
 ```
-sudo apt install docker.io -y
-git clone https://github.com/docker/compose
-cd compose
-latestTag=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep '.tag_name'|cut -d\" -f4)
+mkdir optimism-node && cd optimism-node && mkdir node
+openssl rand -hex 32 > node/engine_jwt_secret.txt
+openssl rand -hex 32 > node/p2pkey.txt
+sudo chmod +x node/engine_jwt_secret.txt
+sudo chmod +x node/p2pkey.txt
+git clone https://github.com/ethereum-optimism/op-geth
+cd op-geth
+latestTag=$(curl -s https://api.github.com/repos/ethereum-optimism/op-geth/releases/latest | grep '.tag_name'|cut -d\" -f4)
 echo $latestTag
-git checkout $latestTag
-make 
-cd ~
-sudo mv compose/bin/build/docker-compose /usr/bin/docker-compose
-sudo chmod +x /usr/bin/docker-compose
-docker-compose version
+go build -o ~/go/bin/op-geth ./cmd/geth
+cd ~/optimism-node
+git clone https://github.com/ethereum-optimism/optimism
+cd optimism
+latestTag=$(curl -s https://api.github.com/repos/ethereum-optimism/optimism/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+go build -o ~/go/bin/op-node ./op-node/cmd
+cd 
 ```
-## 4. Install and configure Optimism node
+## 4. Download Snapshot.
+For this step i recomend to use `screen` or `tmux` module. The Snapshot will take about 450GB.
 ```
-git clone https://github.com/smartcontracts/simple-optimism-node.git
-cd simple-optimism-node
-cp .env.example .env
+mkdir temp
+cd temp
+aria2c https://storage.googleapis.com/oplabs-mainnet-data/mainnet-bedrock.tar
 ```
-Now we need open a .env file and do configuration.
 ```
-sudo nano .env
+tar -xvzf mainnet-bedrock.tar
+cd
 ```
-You should edit following items:
-- NETWORK_NAME
-- HEALTHCHECK__REFERENCE_RPC_PROVIDER
-- FAULT_DETECTOR__L1_RPC_PROVIDER
-- DATA_TRANSPORT_LAYER__RPC_ENDPOINT
-- OP_NODE__RPC_ENDPOINT
+## 5. Create services.
+#### op-geth
 ```
-###############################################################################
-#                                ↓ REQUIRED ↓                                 #
-###############################################################################
+sudo tee <<EOF >/dev/null /etc/systemd/system/op-geth.service
+[Unit]
+Description=op-geth optimism
+After=network-online.target
 
-# Network to run the node on ("mainnet" or "goerli")
-NETWORK_NAME=mainnet
+[Service]
+User=$USER
+ExecStart=/home/optimism/go/bin/op-geth \
+  --ws \
+  --ws.port=8746 \
+  --ws.addr=0.0.0.0 \
+  --ws.origins="*" \
+  --ws.api=eth,net,debug \
+  --http \
+  --http.port=8745 \
+  --http.addr=0.0.0.0 \
+  --http.vhosts="*" \
+  --http.corsdomain="*" \
+  --http.api=eth,net,debug \
+  --authrpc.addr=localhost \
+  --authrpc.jwtsecret=/home/optimism/optimism-node/node/engine_jwt_secret.txt \
+  --authrpc.port=8751 \
+  --authrpc.vhosts="*" \
+  --datadir=/home/optimism/optimism-node/node/gethdata \
+  --verbosity=3 \
+  --rollup.disabletxpoolgossip=true \
+  --rollup.sequencerhttp=https://mainnet-sequencer.optimism.io \
+  --nodiscover \
+  --syncmode=full \
+  --maxpeers=0 \
+  --verbosity=4 \
+  --metrics \
+  --metrics.addr=0.0.0.0 \
+  --metrics.port=6770 \
+  --networkid=10 \
+  --pprof \
+  --pprof.addr=0.0.0.0 \
+  --pprof.port=6760 \
+  --port "30307" \
+  --snapshot=false
+Restart=always
+RestartSec=3
+LimitNOFILE=65536
 
-# Type of node to run ("full" or "archive"), note that "archive" is 10x bigger
-NODE_TYPE=full
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+#### op-node
+```
+sudo tee <<EOF >/dev/null /etc/systemd/system/op-node.service
+[Unit]
+Description=op-node optimism
+After=network-online.target
 
-###############################################################################
-#                            ↓ REQUIRED (LEGACY) ↓                            #
-###############################################################################
+[Service]
+User=$USER
+ExecStart=$HOME/go/bin/op-node \
+  --l1=http://YOUR_ETHEREUM_RPC_URL \
+  --l1.trustrpc \ 
+  --l2=http://127.0.0.1:8751 \
+  --network=mainnet \
+  --verifier.l1-confs=2 \
+  --l1.epoch-poll-interval=2m \
+  --rpc.enable-admin \
+  --rpc.addr=0.0.0.0 \
+  --rpc.port=8845 \
+  --metrics.enabled \
+  --metrics.addr=0.0.0.0 \
+  --metrics.port=6870 \
+  --l2.jwt-secret=$HOME/optimism-node/node/engine_jwt_secret.txt \
+  --pprof.enabled \
+  --pprof.addr=0.0.0.0 \
+  --pprof.port=6860 \
+  --p2p.priv.path=$HOME/optimism-node/node/p2p_priv.txt \
+  --p2p.peerstore.path=$HOME/optimism-node/node/opnode_peerstore_db \
+  --p2p.discovery.path=$HOME/optimism-node/node/opnode_discovery_db \
+  --p2p.listen.ip=0.0.0.0 \
+  --p2p.listen.tcp=2020 \
+  --p2p.listen.udp=2020 \
+  --p2p.peers.lo=10 \
+  --p2p.peers.hi=20 \
+  --p2p.nat \
+  --log.level=info \
+  --log.format=logfmt
+Restart=always
+RestartSec=3
+LimitNOFILE=65535
 
-# Where to sync data from ("l1" or "l2"), see README
-SYNC_SOURCE=l1
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+##### Note. If you have L1 node erigon, parameter --l1.rpckind=erigon is mandatory, otherwise you can do without it.
 
-# Reference L2 node to run healthcheck against
-HEALTHCHECK__REFERENCE_RPC_PROVIDER=https://mainnet.optimism.io
+## 6. Start all services.
+```
+sudo systemctl daemon-reload
+sudo systemctl enable op-geth
+sudo systemctl enable op-node.service
+sudo systemctl start op-geth
+sudo systemctl start op-node
+```
+## 7. Stop all services and install snapshot
+```
+sudo systemctl stop op-geth
+sudo systemctl stop op-node
+```
+```
+sudo rm -rf $HOME/optimism-node/node/gethdata/geth
+sudo mv temp/geth $HOME/optimism-node/node/gethdata/geth
+```
+```
+sudo systemctl start op-geth
+sudo systemctl start op-node
+```
+## 8. Check logs.
+```
+sudo journalctl -u op-geth.service -f -n 100
+sudo journalctl -u op-node.service -f -n 100
+```
 
-# L1 node to run fault detection against
-FAULT_DETECTOR__L1_RPC_PROVIDER=<YOUR_MAINNET_ETHEREUM_RPC>
-
-# Node to get chain data from (if SYNC_SOURCE is "l1" then use L1 node, etc.)
-DATA_TRANSPORT_LAYER__RPC_ENDPOINT=<YOUR_MAINNET_ETHEREUM_RPC>
-
-###############################################################################
-#                            ↓ REQUIRED (BEDROCK) ↓                           #
-###############################################################################
-
-# Where to get the Bedrock database ("download" or "migration"), see README
-BEDROCK_SOURCE=download
-
-# L1 node that the op-node (Bedrock) will get chain data from
-OP_NODE__RPC_ENDPOINT=<YOUR_MAINNET_ETHEREUM_RPC>
-
-# Type of RPC that op-node is connected to, see README
-OP_NODE__RPC_TYPE=basic
-```
-To close redactor press CTRL+X,Y,ENTER
-
-## 5. Launch a node
-To start an Optimism node you should be inside folder `simple-optimism-node`
-```
-sudo docker-compose up -d
-```
-Check all logs
-```
-sudo docker-compose logs -f --tail 100
-```
-Check geth logs
-```
-sudo docker-compose logs op-geth -f --tail 100
-```
-Chekc Optimism node logs
-```
-sudo docker-compose logs op-node -f --tail 100
-```
-Check l2geth logs
-```
-sudo docker-compose logs l2geth -f --tail 100
-```
-## 6 Verify your node status.
-Input command bellow to verify,that you configure node correctly.
-```
-curl -X POST $(curl -4 ifconfig.co):9993 -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' | jq
-```
-If you get something like this in response to the above rpc call, your node is setup correctly:
-```
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": "0x62ca4"
-}
-```
-## 7 Your RPC url are:
+## 9 Your RPC url are:
 
 - `http://YOUR_IP:9993`
 - `ws://YOUR_IP:9994`
@@ -141,6 +190,12 @@ If you get something like this in response to the above rpc call, your node is s
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
 👉[Optimism Official docs](https://github.com/smartcontracts/simple-optimism-node)
+
+👉[Optimism op-geth Github](https://github.com/ethereum-optimism/op-geth)
+
+👉[Optimism op-node Github](https://github.com/ethereum-optimism/optimism/releases)
+
+👉[Optimism Bedrock Snapshot](https://storage.googleapis.com/oplabs-mainnet-data/mainnet-bedrock.tar) 
 
 👉[Optimism Mainnet Explorer](https://optimistic.etherscan.io/)
 
