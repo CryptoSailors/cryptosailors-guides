@@ -69,7 +69,7 @@ ExecStart=/home/optimism/go/bin/op-geth \
   --ws.port=8746 \
   --ws.addr=0.0.0.0 \
   --ws.origins="*" \
-  --ws.api=eth,net,debug \
+  --ws.api=debug,eth,txpool,net,engine,web3 \
   --http \
   --http.port=8745 \
   --http.addr=0.0.0.0 \
