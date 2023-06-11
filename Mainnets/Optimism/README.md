@@ -181,8 +181,8 @@ sudo journalctl -u op-node.service -f -n 100
 
 ## 9 Your RPC url are:
 
-- `http://YOUR_IP:9993`
-- `ws://YOUR_IP:9994`
+- `http://YOUR_IP:8745`
+- `ws://YOUR_IP:8746`
 #
 
 👉[Webtropia — server rental](https://www.webtropia.com/?kwk=255074042020228216158042)
