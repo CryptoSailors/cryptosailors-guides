@@ -116,7 +116,7 @@ After=network-online.target
 User=$USER
 ExecStart=$HOME/go/bin/op-node \
   --l1=http://YOUR_ETHEREUM_RPC_URL \
-  --l1.trustrpc \ 
+  --l1.trustrpc \
   --l2=http://127.0.0.1:8751 \
   --network=mainnet \
   --verifier.l1-confs=2 \
@@ -178,11 +178,28 @@ sudo systemctl start op-node
 sudo journalctl -u op-geth.service -f -n 100
 sudo journalctl -u op-node.service -f -n 100
 ```
+Wait for 5 minutes. If node will start catch new blocks, delete the snapshot.
+
+```
+cd ~
+sudo rm -rf temp
+```
 
 ## 9 Your RPC url are:
 
 - `http://YOUR_IP:8745`
 - `ws://YOUR_IP:8746`
+
+## 10 Delete your node
+```
+sudo systemctl start op-geth
+sudo systemctl start op-node
+```
+```
+sudo rm -rf /etc/systemd/system/op-node.service
+sudo rm -rf /etc/systemd/system/op-geth.service
+sudo rm -rf optimism-node
+```
 #
 
 👉[Webtropia — server rental](https://www.webtropia.com/?kwk=255074042020228216158042)
