@@ -192,8 +192,8 @@ sudo rm -rf temp
 
 ## 10 Delete your node
 ```
-sudo systemctl start op-geth
-sudo systemctl start op-node
+sudo systemctl stop op-geth
+sudo systemctl stop op-node
 ```
 ```
 sudo rm -rf /etc/systemd/system/op-node.service
