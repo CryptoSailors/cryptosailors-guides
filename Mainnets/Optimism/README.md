@@ -51,7 +51,7 @@ cd temp
 aria2c https://storage.googleapis.com/oplabs-mainnet-data/mainnet-bedrock.tar
 ```
 ```
-tar -xvzf mainnet-bedrock.tar
+tar -xvf mainnet-bedrock.tar
 cd
 ```
 ## 5. Create services.
