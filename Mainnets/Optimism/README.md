@@ -167,7 +167,7 @@ sudo systemctl stop op-node
 ```
 ```
 sudo rm -rf $HOME/optimism-node/node/gethdata/geth
-sudo mv temp/geth $HOME/optimism-node/node/gethdata/geth
+sudo mv temp/geth $HOME/optimism-node/node/gethdata/
 ```
 ```
 sudo systemctl start op-geth
