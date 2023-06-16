@@ -112,7 +112,7 @@ sudo systemctl start uptickd
 sudo systemctl enable uptickd
 sudo journalctl -u uptickd -f -n 100
 ```
-We are launchig a node from State Synch. Node need some time to catch up a peers. Press `CTRL+X,Y,Enter` to exit from the logs. To checke your synch launch command:
+To checke your synch launch command:
 ```
 uptickd status 2>&1 | jq .SyncInfo
 ```
