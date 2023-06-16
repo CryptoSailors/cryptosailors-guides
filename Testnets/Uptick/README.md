@@ -154,7 +154,7 @@ uptickd tx staking create-validator \
 Finaly you should see your validator in [Block Explorer](https://gon.ping.pub/uptick%20origin/staking) on Active or Inactive set.
 
 ## 10. Backup your node
-After successfully creating a validator, you must take care of `priv_validator_key.json`. Without it you will not be able to restore the validator. It can be found in the folder `.kyve/config`
+After successfully creating a validator, you must take care of `priv_validator_key.json`. Without it you will not be able to restore the validator. It can be found in the folder `.uptickd/config`
 
 ## 11. Deleting a node
 ```
