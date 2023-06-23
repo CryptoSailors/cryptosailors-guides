@@ -30,11 +30,13 @@ source $HOME/.profile
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
 ## 4. Install a node
-Make sure that you are installing the [latest release](https://github.com/lavanet/lava/tags). In this guide we use release `v0.10.1`
+Make sure that you are installing the [latest release](https://github.com/lavanet/lava/tags).
 ```
 git clone https://github.com/lavanet/lava
 cd lava
-git checkout v0.10.1 
+latestTag=$(curl -s https://api.github.com/repos/lavanet/lava/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
 make install
 ```
 ```
@@ -139,7 +141,20 @@ lavad tx staking create-validator \
 ```
 Finaly you should see your validator in [Block Explorer](https://lava.explorers.guru/) on Active or Inactive set.
 
-## 9. Deleting a node
+## 9. Update your node.
+In case if new binary is out do the following actions.
+```
+cd lava
+latestTag=$(curl -s https://api.github.com/repos/lavanet/lava/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
+make install
+```
+```
+sudo systemctl restart lavad
+```
+
+## 10. Deleting a node
 ```
 sudo systemctl stop lavad
 sudo rm -rf .lava
@@ -149,7 +164,7 @@ sudo rm -rf /etc/systemd/system/lavad.service
 sudo rm -rf GHFkqmTzpdNLDd6T
 ```
 
-## 10. Set up an RPC provider.
+## 11. Set up an RPC provider.
 
 To launch an RPC provider, you need to set up your own independent node, which you will later connect to the lava node. Below are examples of connecting some nodes.
 Create a new provider wallet with `--keyring-backend`
