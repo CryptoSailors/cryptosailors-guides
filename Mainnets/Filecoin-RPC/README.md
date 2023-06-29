@@ -40,7 +40,7 @@ source ~/.bash_profile
 go version
 rm -rf go1.19.7.linux-amd64.tar.gz
 ```
-## 3. Install and Start FileCoin testnet node
+## 3. Install and Start FileCoin mainnet node
 ```
 git clone https://github.com/filecoin-project/lotus.git
 cd lotus/
@@ -164,7 +164,8 @@ In case if new release are out, do following steps:
 ```
 cd lotus
 git pull
-git checkout releases
+latestTag=$(curl -s https://api.github.com/repos/filecoin-project/lotus/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
 make clean all
 sudo make install
 ```
