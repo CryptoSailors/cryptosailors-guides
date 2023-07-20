@@ -30,8 +30,10 @@ Check the latest version of [docker-compose](https://github.com/docker/compose/r
 sudo apt install docker.io -y
 git clone https://github.com/docker/compose
 cd compose
-git checkout v2.17.2
-make
+latestTag=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
+make 
 cd ~
 sudo mv compose/bin/build/docker-compose /usr/bin/docker-compose
 sudo chmod +x /usr/bin/docker-compose
@@ -42,17 +44,54 @@ sudo docker-compose version
 git clone https://github.com/base-org/node
 cd node
 ```
-Open a `docker-compose.yml`. Find `OP_NODE_L1_ETH_RPC` under `environment` and input your Ethereum Goerli RPC url.
+Open a `.env.goerli`. Find `OP_NODE_L1_ETH_RPC` and input your Ethereum Goerli RPC url.
 ```
-sudo nano docker-compose.yml 
+sudo nano .env.goerli
 ```
 Example:
 ```
-environment:
-      - OP_NODE_L1_ETH_RPC=<YOUR_ETH_GOERLI_RPC_URL> # [recommended] replace wit.....
+# [recommended] replace with your preferred L1 (Ethereum, not Base) node RPC URL:
+OP_NODE_L1_ETH_RPC=http://YOUR_GOERLI_IP:PORT
 ```
-## 5. Start a Besu testnet node.
+Open a `docker-compose.yml` and chose goerli network.
 ```
+sudo nano docker-compose.yml
+```
+Example:
+```
+services:
+  geth: # this is Optimism's geth client
+    build: .
+    ports:
+      - 8546:8545       # RPC
+      - 8552:8546       # websocket
+      - 30306:30303     # P2P TCP (currently unused)
+      - 30306:30303/udp # P2P UDP (currently unused)
+      - 7305:6060       # metrics
+    command: [ "sh", "./geth-entrypoint" ]
+    env_file:
+      # select your network here:
+      - .env.goerli
+#      - .env.mainnet
+  node:
+    build: .
+    depends_on:
+      - geth
+    ports:
+      - 7545:8545     # RPC
+      - 9222:9222     # P2P TCP
+      - 9222:9222/udp # P2P UDP
+      - 7304:7300     # metrics
+      - 6061:6060     # pprof
+    command: [ "sh", "./op-node-entrypoint" ]
+    env_file:
+      # select your network here:
+      - .env.goerli
+#      - .env.mainnet
+```
+## 5. Start a Base testnet node.
+```
+sudo docker-compose build
 sudo docker-compose up -d
 ```
 ## 6. Check you node. 
