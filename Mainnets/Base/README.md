@@ -142,8 +142,8 @@ Whait about 10 min. and then check your logs:
 ```
 sudo docker-compose logs -f --tail 100
 ```
-#
 
+#
 👉[Webtropia — server rental](https://www.webtropia.com/?kwk=255074042020228216158042)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
@@ -151,3 +151,7 @@ sudo docker-compose logs -f --tail 100
 👉[Base Official docs](https://docs.base.org/guides/run-a-base-goerli-node)
 
 👉[Base Explorer](https://basescan.org/)
+
+**Guide created by**
+
+Pavel-LV | C.Sailors#7698 / @SeaInvestor
