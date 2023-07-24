@@ -63,8 +63,8 @@ services:
   geth: # this is Optimism's geth client
     build: .
     ports:
-      - 8547:8545       # RPC
-      - 8548:8546       # websocket
+      - 8549:8545       # RPC
+      - 8550:8546       # websocket
       - 30308:30303     # P2P TCP (currently unused)
       - 30308:30303/udp # P2P UDP (currently unused)
       - 7301:6060       # metrics
@@ -126,7 +126,7 @@ echo Latest synced block behind by: $((($(date +%s)-$( \
   
 ## 7. Link on your rpc:
 
-- `http://YOUR_IP:8545`
+- `http://YOUR_IP:8549`
 
 ## 8. Update your Base testnet node:
 
