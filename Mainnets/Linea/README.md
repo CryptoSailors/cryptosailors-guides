@@ -41,6 +41,9 @@ cd ~
 mkdir -p $HOME/.linea/config
 cd $HOME/.linea/config
 wget -O genesis.json https://docs.linea.build/files/genesis.json
+cd $HOME
+mkdir -p $HOME/.linea/data
+geth --datadir $HOME/.linea/data init $HOME/.linea/config/genesis.json
 ```
 ```
 NETWORK_ID="59144"
@@ -58,39 +61,39 @@ After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(whichis geth) \
-	--datadir /home/linea/.linea/data \
-	--networkid 59144 \
-	--miner.gasprice 1000000000 \
-	--miner.gaslimit '0x3A2C940' \
-	--rpc.allow-unprotected-txs \
-	--txpool.accountqueue 50000 \
-	--txpool.globalqueue 50000 \
-	--txpool.globalslots 50000 \
-	--txpool.pricelimit 1000000000 \
-	--rpc.txfeecap 100 \
-	--gpo.maxprice 100000000000000 \
-	--txpool.nolocals \
-	--port 30309 \
-	--http \
-	--http.addr "0.0.0.0" \
-	--http.port 8657 \
-	--authrpc.port 8656 \
-	--http.corsdomain '*' \
-	--http.api 'web3,eth,txpool,net' \
-	--http.vhosts='*' \
-	--ws \
-	--ws.addr "0.0.0.0" \
-	--ws.port 8657 \
-	--ws.origins '*' \
-	--ws.api 'eth,net,web3,txpool' \
-	--bootnodes enode://ca2f06aa93728e2883ff02b0c2076329e475fe667a48035b4f77711ea41a73cf6cb2ff232804c49538ad77794185d83295b57ddd2be79eefc50a9dd5c48bbb2e@3.128.49.168:30303 \
-	--syncmode full \
-	--metrics \
-	--pprof \
-	--pprof.addr "0.0.0.0" \
-	--pprof.port 9545 \
-	--verbosity 3
+ExecStart=$(which is geth) \
+--datadir /home/linea/.linea/data \
+--networkid 59144 \
+--miner.gasprice 1000000000 \
+--miner.gaslimit '0x3A2C940' \
+--rpc.allow-unprotected-txs \
+--txpool.accountqueue 50000 \
+--txpool.globalqueue 50000 \
+--txpool.globalslots 50000 \
+--txpool.pricelimit 1000000000 \
+--rpc.txfeecap 100 \
+--gpo.maxprice 100000000000000 \
+--txpool.nolocals \
+--port 30309 \
+--http \
+--http.addr "0.0.0.0" \
+--http.port 8657 \
+--authrpc.port 8656 \
+--http.corsdomain '*' \
+--http.api 'web3,eth,txpool,net' \
+--http.vhosts='*' \
+--ws \
+--ws.addr "0.0.0.0" \
+--ws.port 8657 \
+--ws.origins '*' \
+--ws.api 'eth,net,web3,txpool' \
+--bootnodes enode://ca2f06aa93728e2883ff02b0c2076329e475fe667a48035b4f77711ea41a73cf6cb2ff232804c49538ad77794185d83295b57ddd2be79eefc50a9dd5c48bbb2e@3.128.49.168:30303 \
+--syncmode full \
+--metrics \
+--pprof \
+--pprof.addr "0.0.0.0" \
+--pprof.port 9545 \
+--verbosity 3
 
 Restart=always
 RestartSec=3
@@ -132,6 +135,7 @@ sudo journalctl -u linea -f -n 100 -o cat
 🔰[Our WebSite](cryptosailors.tech)
 
 🔰[Our Twitter](https://twitter.com/Crypto_Sailors)
+
 **Guide created by**
 
 Pavel-LV | C.Sailors#7698 / @SeaInvestor
