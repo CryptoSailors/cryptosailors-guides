@@ -1,5 +1,5 @@
 <p align="center">
- <img src="[https://ddi.postimg.cc/L5DCH5mk/Base-Blog-header.png](https://i.postimg.cc/FsTXy88y/linea-cover.png)"width="900"/></a>
+ <img src="https://i.postimg.cc/FsTXy88y/linea-cover.png"width="900"/></a>
 </p>
 
 # In this guide we will setup Linea mainnet RPC node.
