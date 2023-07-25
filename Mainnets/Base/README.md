@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://i.postimg.cc/FsTXy88y/linea-cover.png"width="900"/></a>
+ <img src="[https://i.postimg.cc/FsTXy88y/linea-cover.png](https://camo.githubusercontent.com/dcb1d666e230e2ba31e9acff9a9ee7662827f5333acf58b50671254499905121/68747470733a2f2f692e706f7374696d672e63632f4c35444348356d6b2f426173652d426c6f672d6865616465722e706e67)"width="900"/></a>
 </p>
 
 # In this guide we will setup Base mainnet RPC node.
