@@ -152,6 +152,12 @@ sudo docker-compose logs -f --tail 100
 
 👉[Base Explorer](https://basescan.org/)
 
+🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
+
+🔰[Our WebSite](cryptosailors.tech)
+
+🔰[Our Twitter](https://twitter.com/Crypto_Sailors)
+
 **Guide created by**
 
 Pavel-LV | C.Sailors#7698 / @SeaInvestor
