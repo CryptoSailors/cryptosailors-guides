@@ -190,7 +190,33 @@ sudo rm -rf temp
 - `http://YOUR_IP:8745`
 - `ws://YOUR_IP:8746`
 
-## 10 Delete your node
+## 10 Update your node
+```
+cd optimism-node/op-geth
+git pull
+latestTag=$(curl -s https://api.github.com/repos/ethereum-optimism/op-geth/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
+go build -o ~/go/bin/op-geth ./cmd/geth
+cd ~/optimism-node/optimism
+git pull
+latestTag=$(curl -s https://api.github.com/repos/ethereum-optimism/optimism/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+go build -o ~/go/bin/op-node ./op-node/cmd
+cd
+```
+Restart your node
+```
+sudo systemctl restart op-geth
+sudo systemctl restart op-node
+```
+Check your logs
+```
+sudo journalctl -u op-geth.service -f -n 100 -o cat
+sudo journalctl -u op-node.service -f -n 100 -o cat
+```
+
+## 11 Delete your node
 ```
 sudo systemctl stop op-geth
 sudo systemctl stop op-node
