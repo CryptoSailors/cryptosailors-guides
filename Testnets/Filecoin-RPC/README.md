@@ -48,9 +48,10 @@ make clean calibnet
 sudo make install
 sudo make install-daemon-service
 ```
+## Install snapshot 
 ```
-sudo systemctl start lotus-daemon
-sudo systemctl stop lotus-daemon
+aria2c -x5 https://snapshots.calibrationnet.filops.net/minimal/latest.zst
+lotus daemon --import-snapshot <....831600_2023_08_17T12_13_00Z.car.zst>
 ```
 
 ## 4. Configure your node 
@@ -84,14 +85,8 @@ sudo nano ~/.lotus/config.toml
   # env var: LOTUS_LIBP2P_ANNOUNCEADDRESSES
   AnnounceAddresses = ["/ip4/0.0.0.0/tcp/1235"]
 ```
-- Set `SplitStore = true` feature to reduce disk usage
 - ColdStoreType needs to be set to messages to allow querying FEVM transactions.
 ```
-[Chainstore]
-  # type: bool
-  # env var: LOTUS_CHAINSTORE_ENABLESPLITSTORE
-  EnableSplitstore = true
- 
 [Chainstore.Splitstore]
   # ColdStoreType specifies the type of the coldstore.
   # It can be "messages" (default) to store only messages, "universal" to store all chain state or "discard" for discarding cold blocks.
