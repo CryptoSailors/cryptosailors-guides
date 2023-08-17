@@ -21,9 +21,9 @@ sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential g
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
 ## 3. Install Kava node
-First check the latest [Release](https://github.com/Kava-Labs/kava/tags) of kava node. In our example it is `v0.21.0`
+First check the latest [Release](https://github.com/Kava-Labs/kava/tags) of kava node. In our example it is `v0.24.0-alpha.0`
 ```
-REALEASE=v0.21.0
+REALEASE=v0.24.0-alpha.0
 git clone https://github.com/Kava-Labs/kava
 cd kava
 git checkout $RELEASE
