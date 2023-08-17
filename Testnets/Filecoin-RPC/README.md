@@ -22,10 +22,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
 ```
 ## 2. Install Golang go
-The Curent version don't support go version `v1.20` and latest. We will use `v1.19.7`
+The Curent version don't support go version `v1.20` and latest. We will use `v1.19.12`
 ```
-wget https://golang.org/dl/go1.19.7.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.19.7.linux-amd64.tar.gz
+wget https://golang.org/dl/go1.19.12.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.19.12.linux-amd64.tar.gz
 cat <<EOF >> ~/.bash_profile
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
@@ -34,7 +34,7 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 EOF
 source ~/.bash_profile
 go version
-rm -rf go1.19.7.linux-amd64.tar.gz
+rm -rf go1.19.12.linux-amd64.tar.gz
 ```
 ## 3. Install and Start FileCoin testnet node
 ```
