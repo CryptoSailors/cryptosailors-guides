@@ -51,7 +51,7 @@ sudo make install-daemon-service
 ## Install snapshot 
 ```
 aria2c -x5 https://snapshots.calibrationnet.filops.net/minimal/latest.zst
-lotus daemon --import-snapshot <....831600_2023_08_17T12_13_00Z.car.zst>
+sudo lotus daemon --import-snapshot /path/to/snapshot.zst --halt-after-import
 ```
 
 ## 4. Configure your node 
