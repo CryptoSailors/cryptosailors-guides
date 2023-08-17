@@ -48,23 +48,8 @@ sed -i.bak -e "s/^pruning-keep-recent  *=.*/pruning-keep-recent  = \"100\"/" $HO
 sed -i.bak -e "s/^pruning-keep-every  *=.*/pruning-keep-every  = \"0\"/" $HOME/.kava/config/app.toml
 sed -i.bak -e "s/^pruning-interval  *=.*/pruning-interval  = \"10\"/" $HOME/.kava/config/app.toml
 ```
-We will launch our node from [snapshot](https://polkachu.com/testnets/kava/snapshots) accodring  configuration bellow.
-```
-sudo apt install snapd -y
-sudo snap install lz4
-```
-```
-wget -O kava_3952228.tar.lz4 https://snapshots.polkachu.com/testnet-snapshots/kava/kava_3952228.tar.lz4 --inet4-only
-```
-```
-kava tendermint unsafe-reset-all --home $HOME/.kava --keep-addr-book
-```
-```
-lz4 -c -d kava_3952228.tar.lz4  | tar -x -C $HOME/.kava
-```
-```
-sudo rm -v kava_3952228.tar.lz4
-```
+We will launch our node from polkachu [snapshot](https://polkachu.com/testnets/kava/snapshots) 
+
 ## 5 Create a systemd file and launch our node
 ```
 sudo tee <<EOF >/dev/null /etc/systemd/system/kava.service
