@@ -36,25 +36,24 @@ source ~/.bash_profile
 go version
 rm -rf go1.19.12.linux-amd64.tar.gz
 ```
+
 ## 3. Install and Start FileCoin testnet node
 ```
 git clone https://github.com/filecoin-project/lotus.git
 cd lotus/
+git checkout releases
 export RUSTFLAGS="-C target-cpu=native -g"
 export FFI_BUILD_FROM_SOURCE=1
-git checkout v1.20.3-hyperspace-nv21-rpc-p01
-make clean hyperspacenet
-```
-## 4. Download the latest snapshot
-```
-aria2c -x5 https://snapshots.hyperspace.yoga/hyperspace-latest-pruned.car
-chmod -Rv 777 hyperspace-latest-pruned.car
+make clean calibnet
+sudo make install
+sudo make install-daemon-service
 ```
 ```
-lotus daemon --import-snapshot $HOME/lotus/hyperspace-latest-pruned.car --halt-after-import
+sudo systemctl start lotus-daemon
+sudo systemctl stop lotus-daemon
 ```
 
-## 5. Configure your node 
+## 4. Configure your node 
 ```
 sudo nano ~/.lotus/config.toml
 ```
@@ -112,10 +111,8 @@ sudo nano ~/.lotus/config.toml
   EnableEthRPC = true
 ```
 Save and close file `CTRL+X,Y,NETER`
-## 6. Create a systemd service
-```
-sudo make install-daemon-service
-```
+
+## 5. Configure systemd file
 ```
 sudo nano /etc/systemd/system/lotus-daemon.service
 ```
@@ -125,7 +122,7 @@ In the generated systemd file `/etc/systemd/system/lotus-daemon.service`, under 
 Environment=LOTUS_PATH="/path/to/.lotus"
 ```
 Save and close file `CTRL+X,Y,NETER`
-## 7. Launch your node
+## 6. Launch your node
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable lotus-daemon
