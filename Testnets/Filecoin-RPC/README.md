@@ -133,7 +133,7 @@ Check your logs
 tail -F /var/log/lotus/daemon.log
 ```
 
-## 8. Your RPC url
+## 7. Your RPC url
 - `http:YOUR_IP:1234/rpc/v1`
 #
 
