@@ -78,7 +78,21 @@ curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method":
 - `http://YOUR_IP:18545`
 - `ws://YOUR_IP:18546`
 
-## 6. Manual update your Fantom testnet node
+## 6. Update your Fantom testnet node
+
+You can download autoscript and launch it when new update is relesead or update a node manualy.
+
+#### Fantom tesnet auto update.
+```
+wget https://github.com/CryptoSailors/cryptosailors-guides/raw/main/Testnets/Fantom-RPC/fantom_update.sh
+sudo chmod +x fantom_update.sh
+```
+Launch script
+```
+./fantom_update.sh
+```
+
+#### Manual update of testnet node.
 ```
 cd go-opera
 git pull
@@ -95,8 +109,6 @@ sudo journalctl -u fantom -f -n 100
 #
 
 👉[Webtropia - server rental](https://www.webtropia.com/?kwk=255074042020228216158042)
-
-👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
