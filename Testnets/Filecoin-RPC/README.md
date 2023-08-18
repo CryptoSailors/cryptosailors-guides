@@ -47,67 +47,19 @@ export FFI_BUILD_FROM_SOURCE=1
 make clean calibnet
 sudo make install
 sudo make install-daemon-service
+cd ~
 ```
 ## Install snapshot 
 ```
 aria2c -x5 https://snapshots.calibrationnet.filops.net/minimal/latest.zst
+```
+input correct file path bellow 
+```
 sudo lotus daemon --import-snapshot /path/to/snapshot.zst --halt-after-import
 ```
 
-## 4. Configure your node 
-```
-sudo nano ~/.lotus/config.toml
-```
-- Set `ListenAddress`
-```
-[API]
-  # Binding address for the Lotus API
-  #
-  # type: string
-  # env var: LOTUS_API_LISTENADDRESS
-   ListenAddress = "/ip4/0.0.0.0/tcp/1234/http"
-```
-- Set `ListenAddresses` and `AnnounceAddresses`. Take any port wich you wish. In my case port `1235`
-```
-[Libp2p]
-  # Binding address for the libp2p host - 0 means random port.
-  # Format: multiaddress; see https://multiformats.io/multiaddr/
-  #
-  # type: []string
-  # env var: LOTUS_LIBP2P_LISTENADDRESSES
-  ListenAddresses = ["/ip4/0.0.0.0/tcp/1235"]
 
-  # Addresses to explicitally announce to other peers. If not specified,
-  # all interface addresses are announced
-  # Format: multiaddress
-  #
-  # type: []string
-  # env var: LOTUS_LIBP2P_ANNOUNCEADDRESSES
-  AnnounceAddresses = ["/ip4/0.0.0.0/tcp/1235"]
-```
-- ColdStoreType needs to be set to messages to allow querying FEVM transactions.
-```
-[Chainstore.Splitstore]
-  # ColdStoreType specifies the type of the coldstore.
-  # It can be "messages" (default) to store only messages, "universal" to store all chain state or "discard" for discarding cold blocks.
-  #
-  # type: string
-  # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTORETYPE
-  ColdStoreType = "messages"
-```
-- Set `EnableEthRPC = true`
-```
-[Fevm]
-  # EnableEthRPC enables eth_ rpc, and enables storing a mapping of eth transaction hashes to filecoin message Cids.
-  # This will also enable the RealTimeFilterAPI and HistoricFilterAPI by default, but they can be disabled by config options above.
-  #
-  # type: bool
-  # env var: LOTUS_FEVM_ENABLEETHRPC
-  EnableEthRPC = true
-```
-Save and close file `CTRL+X,Y,NETER`
-
-## 5. Configure systemd file
+## 4. Configure systemd file
 ```
 sudo nano /etc/systemd/system/lotus-daemon.service
 ```
@@ -117,7 +69,7 @@ In the generated systemd file `/etc/systemd/system/lotus-daemon.service`, under 
 Environment=LOTUS_PATH="/path/to/.lotus"
 ```
 Save and close file `CTRL+X,Y,NETER`
-## 6. Launch your node
+## 5. Launch your node
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable lotus-daemon
@@ -125,7 +77,16 @@ sudo systemctl start lotus-daemon
 ```
 Check your logs 
 ```
-tail -F /var/log/lotus/daemon.log
+sudo journalctl -u lotus-daemon -f -n 100 -o cat
+```
+
+## 6. Configure your node 
+```
+wget https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Testnets/Filecoin-RPC/config.toml
+sudo chmod +x config.toml
+sudo mv config.toml $HOME/.lotus
+sudo systmectl restart lotus-daemon
+sudo journalctl -u lotus-daemon -f -n 100 -o cat
 ```
 
 ## 7. Your RPC url
