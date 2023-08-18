@@ -80,7 +80,6 @@ curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method":
 
 ## 6. Manual update your Fantom testnet node
 ```
-source .bash_profile
 cd go-opera
 git pull
 latestTag=$(curl -s https://api.github.com/repos/Fantom-foundation/go-opera/releases/latest | grep '.tag_name'|cut -d\" -f4)
