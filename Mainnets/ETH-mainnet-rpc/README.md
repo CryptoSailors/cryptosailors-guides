@@ -70,7 +70,7 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=$(which geth) --rpc.gascap 150000000 --syncmode "snap" --http --http.api=eth,net,web3,engine --http.vhosts * --http.addr 0.0.0.0  --authrpc.jwtsecret=$HOME/lighthouse/jwt.hex
+ExecStart=$(which geth) --rpc.gascap 150000000 --syncmode "snap" --http --http.api=eth,net,web3,engine --http.vhosts * --http.addr 0.0.0.0  --authrpc.jwtsecret=$HOME/lighthouse/jwt.hex --ws --ws.port=8546 --ws.addr=0.0.0.0 --ws.origins="*" --ws.api=debug,eth,txpool,net,engine,web3
 Restart=on-failure
 LimitNOFILE=65535
 
@@ -121,6 +121,7 @@ curl -X POST http://localhost:8545 \
 
 ## 5. Your RPC endpoint.
  - `http://YOUR_IP:8545`
+ - `ws://YOUR_IP:8546`
 
 ## 6. Update your Ethereum node
 You can download autoscript and launch it when new update is relesead or update a node manualy.
