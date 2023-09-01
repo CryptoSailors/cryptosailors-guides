@@ -95,10 +95,8 @@ ExecStart=/home/moonbeam/moonbeam/target/release/moonbeam \\
      --execution wasm \
      --port 30333 \
      --rpc-port 9933 \
-     --ws-port 9944 \
      --wasm-execution compiled \
      --unsafe-rpc-external \
-     --unsafe-ws-external \
      --state-pruning=archive \
      --trie-cache-size 4 \
      --max-past-logs 100000 \
@@ -106,7 +104,6 @@ ExecStart=/home/moonbeam/moonbeam/target/release/moonbeam \\
      --base-path /home/moonbeam/moonbram \
      --ethapi=debug,trace,txpool \
      --wasm-runtime-overrides=/home/moonbeam/moonbram/wasm \
-     --ws-max-connections 10000 \
      --rpc-cors all \
      --runtime-cache-size 64 \
      --chain alphanet \
