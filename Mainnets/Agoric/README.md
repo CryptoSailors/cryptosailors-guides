@@ -126,7 +126,7 @@ agd status 2>&1 | jq .SyncInfo
 - If node show `false` - that means that you are synched and can contine. 
 - If node show `true` - that means that you are **NOT** synched and should wait.
 
-## 7. Create your wallet and claim test tokens.
+## 7. Create your wallet.
 The comment bellow will give you a wallet address and mnemonic phrase, which you should save on safe place.
 ```
 agd keys add wallet
@@ -152,7 +152,7 @@ agd tx staking create-validator \
 -y
 
 ```
-Finaly you should see your validator in [Block Explorer](https://humans.explorers.guru/) on Active or Inactive set.
+Finaly you should see your validator in [Block Explorer](https://agoric.explorers.guru/) on Active or Inactive set.
 
 ## 9. Deleting a node
 ```
