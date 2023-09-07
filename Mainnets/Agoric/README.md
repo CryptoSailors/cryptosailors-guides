@@ -158,7 +158,7 @@ Finaly you should see your validator in [Block Explorer](https://agoric.explorer
 ```
 sudo systemctl stop agd
 sudo rm -rf $FOLDER
-sudo rm -rf agd
+sudo rm -rf agoric-sdk
 sudo rm -rf /go/bin/agd
 sudo rm -rf /etc/systemd/system/agd.service
 ```
