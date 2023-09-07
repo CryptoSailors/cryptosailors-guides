@@ -165,7 +165,6 @@ sudo rm -rf /etc/systemd/system/agd.service
 
 ## 10. Upgrade your node
 ```
-cd agd-sdk
 cd agoric-sdk
 git fetch --all
 latestTag=$(curl -s https://api.github.com/repos/Agoric/agoric-sdk/releases/latest | grep '.tag_name'|cut -d\" -f4)
