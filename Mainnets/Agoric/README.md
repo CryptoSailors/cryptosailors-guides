@@ -22,6 +22,8 @@ sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential g
 ```
 ```
 MONIKER=YOUR_MONIKER
+```
+```
 CHAIN_ID=agoric-3
 export FOLDER=.agoric
 echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
