@@ -193,3 +193,14 @@ agd version
 👉[KJ Nodes Snapshot](https://services.kjnodes.com/mainnet/agoric/snapshot/)
 
 👉[Agoric Explorer](https://agoric.explorers.guru/)
+
+🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
+
+🔰[Our WebSite](cryptosailors.tech)
+
+🔰[Our Twitter](https://twitter.com/Crypto_Sailors)
+
+🔰[Our Youtube](https://www.youtube.com/@CryptoSailors)
+
+#### Guide created by 
+Pavel-LV | C.Sailors#7698 / @SeaInvestor
