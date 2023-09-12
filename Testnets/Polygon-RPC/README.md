@@ -74,7 +74,7 @@ EOF
 ```
 Download latest heimdall-mumbai [snapshot](https://snapshots.polygon.technology/). I recomend use `screen` or `tmux`, becouse downloading the snapshot will take about 20min.
 ```
-wget <snapshot-link-heimdall> -O - | tar -I zstd -xvf - -C ~/.heimdalld/data/
+curl -L https://snapshot-download.polygon.technology/snapdown.sh | bash -s -- --network mumbai --client heimdall --extract-dir $HOME/.heimdalld/data --validate-checksum true
 ```
 ## 7. Start a heimdall node
 ```
