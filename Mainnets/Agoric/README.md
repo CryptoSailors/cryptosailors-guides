@@ -82,7 +82,7 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${C
 sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:${COSMOS_PORT}657\"%" $HOME/$FOLDER/config/client.toml
 ```
 
-#### Create a systemd file for humans node
+#### Create a systemd file for agoric node
 ```
 sudo tee /etc/systemd/system/agd.service > /dev/null <<EOF
 [Unit]
