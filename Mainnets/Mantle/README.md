@@ -51,7 +51,7 @@ Configure `docker-compose-mainnet.yml` and change link at `ETH1_HTTP` on your ET
 ```
 sudo nano docker-compose-mainnet.yml
 ```
-You also can change custom ports on your own if need it.
+You also can change custom ports or your own if need it.
 #### Example:
 ```
  ports:
