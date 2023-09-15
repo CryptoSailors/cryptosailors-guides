@@ -77,7 +77,7 @@ First check latest realiease. In our case the [latest release](https://github.co
 cd networks
 docker-compose pull
 ```
-## Delete your node
+## 6. Delete your node
 ```
 cd networks
 sudo docker-compose down -v
