@@ -40,7 +40,7 @@ sudo docker-compose version
 ```
 sudo usermod -a -G docker `whoami`
 ```
-## 3. Install and start Mantle mainnet node
+## 3. Install and start Mantle testnet node
 ```
 sudo git clone https://github.com/mantlenetworkio/networks
 cd networks
