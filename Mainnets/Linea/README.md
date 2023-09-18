@@ -63,7 +63,7 @@ After=network-online.target
 User=$USER
 ExecStart=$(which is geth) \
 --datadir /home/linea/.linea/data \
---networkid 59144 \
+--networkid $NETWORK_ID \
 --miner.gasprice 1000000000 \
 --miner.gaslimit '0x3A2C940' \
 --rpc.allow-unprotected-txs \
@@ -87,7 +87,7 @@ ExecStart=$(which is geth) \
 --ws.port 8657 \
 --ws.origins '*' \
 --ws.api 'eth,net,web3,txpool' \
---bootnodes enode://ca2f06aa93728e2883ff02b0c2076329e475fe667a48035b4f77711ea41a73cf6cb2ff232804c49538ad77794185d83295b57ddd2be79eefc50a9dd5c48bbb2e@3.128.49.168:30303 \
+--bootnodes $BOOTNODES \
 --syncmode full \
 --metrics \
 --pprof \
