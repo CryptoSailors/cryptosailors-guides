@@ -10,7 +10,7 @@
 - 100 GB SSD
 
 #### My Recommendations
-- I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) with extended SSD or NVME disk.
+- I recommend Dedicated Ryzen 5 Server on [webtropia](https://bit.ly/45KaUj4) with extended SSD or NVME disk.
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
 ## 1. Node Preparation.
@@ -120,9 +120,17 @@ sudo journalctl -u linea -f -n 100 -o cat
 
 - `http://YOUR_IP:8657`
 
+## 7. Delete your node
+```
+sudo systemctl stop linea
+sudo rm -rf /etc/systemd/system/linea.service
+sudo rm -rf .linea
+sudo rm -rf go-ethereum
+```
+
 #
 
-👉[Webtropia — server rental](https://www.webtropia.com/?kwk=255074042020228216158042)
+👉[Webtropia — server rental](https://bit.ly/45KaUj4)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
