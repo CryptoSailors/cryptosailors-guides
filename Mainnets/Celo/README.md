@@ -40,7 +40,7 @@ sudo chmod +x /usr/bin/docker-compose
 sudo docker-compose version
 ```
 
-## 3. Install and configure Celo mannet node
+## 4. Install and configure Celo mannet node
 ```
 echo "export CELO_IMAGE=us.gcr.io/celo-org/geth:mainnet" >> $HOME/.profile
 source $HOME/.bash_profile
@@ -65,7 +65,7 @@ wget https://storage.googleapis.com/celo-chain-backup/mainnet/chaindata-latest.t
 lz4 -c -d chaindata-latest.tar.lz4  | tar -x -C $HOME/celo
 ```
 
-## 4. Start a celo mainnet node.
+## 5. Start a celo mainnet node.
 ```
 sudo docker run --name celo-fullnode -d --restart unless-stopped --stop-timeout 300 -p 0.0.0.0:8911:8545 -p 0.0.0.0:8912:8546 -p 30305:30303 -p 30306:30303/udp -v $PWD:$HOME/.celo $CELO_IMAGE --verbosity 3 --syncmode full --http --http.addr 0.0.0.0 --http.api eth,net,web3,debug,admin,personal --light.serve 90 --light.maxpeers 1000 --maxpeers 1100 --etherbase $CELO_ACCOUNT_ADDRESS --datadir $HOME/.celo
 ```
@@ -74,16 +74,23 @@ To check logs of your node:
 sudo docker logs celo-fullnode -f --tail 100
 ```
 
-## 5. Upgrade your celo fullnode
+## 6. Upgrade your celo fullnode
 ```
-docker stop -t 300 celo-fullnode
-docker rm celo-fullnode
+sudo docker stop -t 300 celo-fullnode
+sudo docker rm celo-fullnode
 sudo docker run --name celo-fullnode -d --restart unless-stopped --stop-timeout 300 -p 0.0.0.0:8911:8545 -p 0.0.0.0:8912:8546 -p 30305:30303 -p 30306:30303/udp -v $PWD:$HOME/.celo $CELO_IMAGE --verbosity 3 --syncmode full --http --http.addr 0.0.0.0 --http.api eth,net,web3,debug,admin,personal --light.serve 90 --light.maxpeers 1000 --maxpeers 1100 --etherbase $CELO_ACCOUNT_ADDRESS --datadir $HOME/.celo
 ```
-## 6. Link on your rpc:
+## 7. Link on your rpc:
 
 - `http://YOUR_IP:8911`
 
+## 8. Delete a node
+```
+sudo docker stop celo-fullnode
+sudo docker rm celo-fullnode
+sudo docker kill celo-fullnode
+sudo rm -rf celo
+```
 #
 
 👉[Webtropia — server rental](https://bit.ly/45KaUj4)
