@@ -9,6 +9,10 @@
 - 4 GB RAM
 - 600 GB SSD
 
+#### My Recommendations
+- I recommend Dedicated Ryzen 5 Server on [webtropia](https://bit.ly/45KaUj4)
+- I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
+
 ## 1. Node Preparation.
 ```
 sudo apt update && sudo apt upgrade -y
@@ -16,21 +20,26 @@ sudo apt update && sudo apt upgrade -y
 ```
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 ```
-- Install Golang go according step 2 of [this instruction.](https://github.com/CryptoSailors/cryptosailors-tools/blob/main/Install%20Golang%20%22Go%22/README.md)
-## 2. Install docker and docker-compose
+
+## 2. Install golang go
+Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
+
+## 3. Install docker and docker-compose
 Check the latest version of [docker-compose](https://github.com/docker/compose/releases) and follow the guide.
 ```
 sudo apt install docker.io -y
 git clone https://github.com/docker/compose
 cd compose
-git checkout v2.16.0
-make
+latestTag=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
+make 
 cd ~
 sudo mv compose/bin/build/docker-compose /usr/bin/docker-compose
 sudo chmod +x /usr/bin/docker-compose
 sudo docker-compose version
 ```
-## 3. Install and Start Arbitrum testnet node
+## 4. Install and Start Arbitrum testnet node
 First check latest realiease. In our case the [latest release](https://github.com/OffchainLabs/nitro/tags) is `offchainlabs/nitro-node:v2.0.14-2baa834`
 ```
 RELEASE="offchainlabs/nitro-node:v2.0.14-2baa834"
@@ -52,7 +61,7 @@ Check your logs:
 ```
 sudo docker logs arbitrum -f --tail 100
 ```
-## 4. Check your synch
+## 5. Check your synch
 Once your node is fully synced, the output from above will say `false`. To test your Arbitrum RPC node, you can send an RPC request using cURL
 ```
 curl -X POST http://localhost:8550 \
@@ -60,10 +69,10 @@ curl -X POST http://localhost:8550 \
   --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}'
 ```
 
-## 5. Link to your RPC
+## 6. Link to your RPC
 - `http://YOUR_IP:8550`
 
-## 6. Upgrade your Arbitrum node
+## 7. Upgrade your Arbitrum node
 First check latest realiease. In our case the [latest release](https://github.com/OffchainLabs/nitro/tags) is `offchainlabs/nitro-node:v2.0.14-2baa834`
 ```
 RELEASE="offchainlabs/nitro-node:v2.0.14-2baa834"
@@ -75,9 +84,17 @@ sudo docker stop arbitrum
 ```
 sudo docker run --name arbitrum --rm -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8550:8547 -p 0.0.0.0:8549:8548 $RELEASE --l1.url $ETH_RPC_URL --l2.chain-id=421613 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=*
 ```
+
+## 8. Delete your Arbitrum node
+```
+sudo docker down -w
+sudo docker kill arbitrum
+sudo docker rm arbitrum
+sudo rm -rf data
+```
 #
 
-👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
+👉[Webtropia — server rental](https://bit.ly/45KaUj4)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
