@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://i.postimg.cc/RZdG5Yvq/arbitrum-layer-2-nitro-upgrade-goes-live-ahead-of-ethereum-merge-900x478.jpg"width="900"/></a>
+ <img src="https://i.postimg.cc/pLtz1cck/3c894091-6a2c-435f-83b0-ad896755ad47-750x375.jpg"width="900"/></a>
 </p>
 
 # In this guide we will setup zkPolygon testnet RPC node.
