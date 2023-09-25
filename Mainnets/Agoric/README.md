@@ -5,12 +5,14 @@
 # Agoric mainnet node guide installation.
 
 ## 1. Requirements.
+
 #### Official 
 - 4 CPU or more
 - 16 GB RAM
 - 500 GB SSD
+  
 #### My Recommendations
-- I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
+- I recommend Dedicated Ryzen 5 Server on [webtropia](https://bit.ly/45KaUj4)
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
 ## 2. Server preparation.
@@ -30,6 +32,24 @@ echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
 echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
+
+#### Install Node.Js
+```
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+#### Update NPM to latest version
+
+```
+sudo npm install -g npm@latest -g expo-cli --unsafe-perm
+```
+
+#### Yarn installation
+```
+sudo chown -R $(whoami) /usr/local/bin
+npm install --global yarn -g expo-cli --unsafe-perm
+```
+
 ## 3. Install golang go
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
@@ -41,7 +61,7 @@ git fetch --all
 latestTag=$(curl -s https://api.github.com/repos/Agoric/agoric-sdk/releases/latest | grep '.tag_name'|cut -d\" -f4)
 echo $latestTag
 git checkout $latestTag
-yarn install
+yarn install 
 yarn build
 (cd packages/cosmic-swingset && make)
 ```
@@ -52,7 +72,7 @@ cd ~
 agd init $MONIKER --chain-id=$CHAIN_ID
 ```
 ```
-curl -Ls https://snapshots.kjnodes.com/agoric/genesis.json > $HOME/$FOLDER/agoric/config/genesis.json
+curl -Ls https://snapshots.kjnodes.com/agoric/genesis.json > $HOME/$FOLDER/config/genesis.json
 curl -Ls https://snapshots.kjnodes.com/agoric/addrbook.json > $HOME/$FOLDER/config/addrbook.json
 ```
 
@@ -108,8 +128,8 @@ EOF
 
 #### Download the latest snapshot
 ```
-curl -L https://snapshots.kjnodes.com/agoric/snapshot_latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.agoric
-mv $HOME/.agoric/priv_validator_state.json.backup $HOME/.agoric/data/priv_validator_state.json
+curl -L https://snapshots.kjnodes.com/agoric/snapshot_latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/$FOLDER
+mv $HOME/$FOLDER/priv_validator_state.json.backup $HOME/$FOLDER/data/priv_validator_state.json
 ```
                                                         
 ## 6. Start synchronization
@@ -131,6 +151,7 @@ The comment bellow will give you a wallet address and mnemonic phrase, which you
 ```
 agd keys add wallet
 ```
+
 ## 8. Сreate own validator
 ```
 agd tx staking create-validator \
@@ -177,7 +198,7 @@ agd version
 ```
 
 #
-👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
+👉[Webtropia](https://bit.ly/45KaUj4) Only Dedicated Server.
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
