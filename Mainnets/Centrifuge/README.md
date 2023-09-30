@@ -36,44 +36,11 @@ echo $latestTag
 git checkout $latestTag
 cargo build --release
 sudo chmod +x target/release/centrifuge-chain
-sudo cp ./target/release/centrifuge-chain /var/lib/centrifuge-data
-```
-```
-cd ~
-```
-```
-agd init $MONIKER --chain-id=$CHAIN_ID
-```
-```
-curl -Ls https://snapshots.kjnodes.com/agoric/genesis.json > $HOME/$FOLDER/config/genesis.json
-curl -Ls https://snapshots.kjnodes.com/agoric/addrbook.json > $HOME/$FOLDER/config/addrbook.json
+sudo mkdir data
 ```
 
-## 5. Node Configuration
-```
-sed -i -e "s|^seeds *=.*|seeds = \"400f3d9e30b69e78a7fb891f60d76fa3c73f0ecc@agoric.rpc.kjnodes.com:12759\"|" $HOME/$FOLDER/config/config.toml
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025ubld\"|" $HOME/$FOLDER/config/app.toml
-sed -i 's|indexer =.*|indexer = "'null'"|g' $HOME/$FOLDER/config/config.toml
-sed -i \
-  -e 's|^pruning *=.*|pruning = "custom"|' \
-  -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
-  -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
-  -e 's|^pruning-interval *=.*|pruning-interval = "19"|' \
-  $HOME/$FOLDER/config/app.toml
-```
+## 4. Crate a systemd file
 
-#### Optional (You can skip this step)
-If you run more than one cosmos node, you can change a ports using the comands bellow.
-```
-COSMOS_PORT=11
-echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.bash_profile
-source $HOME/.bash_profile
-```
-```
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${COSMOS_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${COSMOS_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${COSMOS_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${COSMOS_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${COSMOS_PORT}660\"%" $HOME/$FOLDER/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${COSMOS_PORT}317\"%; s%^address = \":8080\"%address = \":${COSMOS_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${COSMOS_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${COSMOS_PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${COSMOS_PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${COSMOS_PORT}546\"%" $HOME/$FOLDER/config/app.toml
-sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:${COSMOS_PORT}657\"%" $HOME/$FOLDER/config/client.toml
-```
 
 #### Create a systemd file for agoric node
 ```
