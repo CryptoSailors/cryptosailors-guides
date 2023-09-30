@@ -93,7 +93,7 @@ sed -i \
 If you run more than one cosmos node, you can change a ports using the comands bellow.
 ```
 COSMOS_PORT=11
-echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.profile
+echo "export COSMOS_PORT=${COSMOS_PORT}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 ```
