@@ -45,7 +45,7 @@ Take care about `--base-path` flag. You should input your `data` folder location
 ```
 sudo tee <<EOF >/dev/null /etc/systemd/system/centrifuge.service
 [Unit]
-Description="Centrifuge systemd service"
+Description="Centrifuge Testnet systemd service"
 After=network.target
 StartLimitIntervalSec=0
 
@@ -53,8 +53,8 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=10
-User=centrifuge_service
-SyslogIdentifier=centrifuge
+User=$USER
+SyslogIdentifier=centrifuge_testnet
 SyslogFacility=local7
 KillSignal=SIGHUP
 ExecStart=/home/centrifuge/centrifuge-chain/target/release/centrifuge-chain \
@@ -67,19 +67,25 @@ ExecStart=/home/centrifuge/centrifuge-chain/target/release/centrifuge-chain \
     --rpc-cors=all \
     --rpc-methods=unsafe \
     --pruning=archive \
-    --chain=centrifuge \
-    --parachain-id=2031 \
+    --chain=algol \
+    --parachain-id=2088 \
     --base-path=/home/centrifuge/centrifuge-chain/data \
     --log=main,info \
     --execution=wasm \
     --wasm-execution=compiled \
     --ws-max-connections=5000 \
-    --bootnodes=/ip4/35.198.171.148/tcp/30333/ws/p2p/12D3KooWDXDwSdqi8wB1Vjjs5SVpAfk6neadvNTPAik5mQXqV7jF \
-    --bootnodes=/ip4/34.159.117.205/tcp/30333/ws/p2p/12D3KooWMspZo4aMEXWBH4UXm3gfiVkeu1AE68Y2JDdVzU723QPc \
+    --bootnodes=/dnsaddr/bootstrap.algol.k-f.dev/p2p/12D3KooWQt8qAmXzgdNRuVKhW1NAdfowhoGC3apycsBYhvehp1mA \
+    --bootnodes=/dns4/node-7107773973489594368-0.p2p.onfinality.io/tcp/28330/ws/p2p/12D3KooWHAsVwkowLLnwd9ZRAmNFBdsvFzvB9XS8FhEufhvuvec3 \
+    --bootnodes=/ip4/34.141.22.46/tcp/30333/p2p/12D3KooWPdGhxLeQad8qfxr7cPrYGMW7sJhXL4rfjZMMJpWZ1nHd \
+    --bootnodes=/ip4/34.141.85.156/tcp/30333/p2p/12D3KooWH8B1nrkNRvKPTuhaaXy244PZoptRzfXPQqVai3bRq4TS \
+    --bootnodes=/ip4/34.141.48.250/tcp/30333/p2p/12D3KooWHsA69Fb1HkdWrwrxY3cSga3wWyHnxuk5GeYtCh59XsWB \
     -- \
-    --chain=polkadot \
+    --no-telemetry \
     --execution=wasm \
-    --wasm-execution=compiled
+    --wasm-execution=compiled \
+    --chain=/home/centrifuge/centrifuge-chain/res/rococo-local.json \
+    --bootnodes=/dnsaddr/bootstrap-relay.algol.k-f.dev/p2p/12D3KooWABjwDpbaapnTwei9ZhSLMHAWij5oZE4CsbsN8K8q4mYb \
+    --bootnodes=/dnsaddr/bootstrap-relay-2.algol.k-f.dev/p2p/12D3KooWRQqyBqsFw8gw2oqZHaiPLyw2jgCyz5jwRMmg3aWr3jP5
 
 [Install]
 WantedBy=multi-user.target
@@ -89,9 +95,9 @@ EOF
 ## 5. Start synchronization
 ```
 sudo systemctl daemon-reload
-sudo systemctl start centrufuge
-sudo systemctl enable centrufuge
-sudo journalctl -u centrufuge -f -n 100 -o cat
+sudo systemctl start centrifuge
+sudo systemctl enable centrifuge
+sudo journalctl -u centrifuge -f -n 100 -o cat
 ```
 
 - You can check yourself in [Centrifuge Polkadot Telemetry](https://telemetry.polkadot.io/#list/0xb3db41421702df9a7fcac62b53ffeac85f7853cc4e689e0b93aeb3db18c09d82) by your name
