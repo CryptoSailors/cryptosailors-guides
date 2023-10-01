@@ -1,5 +1,5 @@
 <p align="center">
- <img src=""/></a>
+ <img src="https://i.postimg.cc/QCQNc0h1/Centrifuge.jpg"/></a>
 </p>
 
 # In this guide we will install a Centrifuge Mainnet RPC node.
@@ -39,120 +39,107 @@ sudo chmod +x target/release/centrifuge-chain
 sudo mkdir data
 ```
 
-## 4. Crate a systemd file
-
-
-#### Create a systemd file for agoric node
+## 4. Create a systemd file
+Take care about `--base-path` flag. You should input your `data` folder location. In my case this is `/home/centrifuge/centrifuge-chain/data`
 ```
-sudo tee /etc/systemd/system/agd.service > /dev/null <<EOF
+sudo tee <<EOF >/dev/null /etc/systemd/system/centrifuge.service
 [Unit]
-Description=Agoric Cosmos daemon
-After=network-online.target
+Description="Centrifuge systemd service"
+After=network.target
+StartLimitIntervalSec=0
 
 [Service]
-# OPTIONAL: turn on JS debugging information.
-#SLOGFILE=.agoric/data/chain.slog
-User=$USER
-# OPTIONAL: turn on Cosmos nondeterminism debugging information
-#ExecStart=$(which agd) start start --log_level=info --trace-store=.agoric/data/kvstore.trace
-ExecStart=$(which agd) start start --log_level=warn
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=65535
+Type=simple
+Restart=always
+RestartSec=10
+User=centrifuge_service
+SyslogIdentifier=centrifuge
+SyslogFacility=local7
+KillSignal=SIGHUP
+ExecStart=/home/centrifuge/centrifuge-chain/target/release/centrifuge-chain \
+    --name=YOUR_NODE_NAME \
+    --port=30333 \
+    --rpc-port=9933 \
+    --ws-port=9944 \
+    --unsafe-ws-external \
+    --unsafe-rpc-external \
+    --rpc-cors=all \
+    --rpc-methods=unsafe \
+    --pruning=archive \
+    --chain=centrifuge \
+    --parachain-id=2031 \
+    --base-path=/home/centrifuge/centrifuge-chain/data \
+    --log=main,info \
+    --execution=wasm \
+    --wasm-execution=compiled \
+    --ws-max-connections=5000 \
+    --bootnodes=/ip4/35.198.171.148/tcp/30333/ws/p2p/12D3KooWDXDwSdqi8wB1Vjjs5SVpAfk6neadvNTPAik5mQXqV7jF \
+    --bootnodes=/ip4/34.159.117.205/tcp/30333/ws/p2p/12D3KooWMspZo4aMEXWBH4UXm3gfiVkeu1AE68Y2JDdVzU723QPc \
+    -- \
+    --chain=polkadot \
+    --execution=wasm \
+    --wasm-execution=compiled
 
 [Install]
 WantedBy=multi-user.target
-
 EOF
 ```
-
-#### Download the latest snapshot
-```
-curl -L https://snapshots.kjnodes.com/agoric/snapshot_latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/$FOLDER
-mv $HOME/$FOLDER/priv_validator_state.json.backup $HOME/$FOLDER/data/priv_validator_state.json
-```
-                                                        
-## 6. Start synchronization
+                                            
+## 5. Start synchronization
 ```
 sudo systemctl daemon-reload
-sudo systemctl start agd
-sudo systemctl enable agd
-sudo journalctl -u agd -f -n 100
-```
-Wait until your node is fully synchronized. To check your synchronization status use command bellow.
-```
-agd status 2>&1 | jq .SyncInfo
-```
-- If node show `false` - that means that you are synched and can contine. 
-- If node show `true` - that means that you are **NOT** synched and should wait.
-
-## 7. Create your wallet.
-The comment bellow will give you a wallet address and mnemonic phrase, which you should save on safe place.
-```
-agd keys add wallet
+sudo systemctl start centrufuge
+sudo systemctl enable centrufuge
+sudo journalctl -u centrufuge -f -n 100 -o cat
 ```
 
-## 8. Сreate own validator
+- You can check yourself in [Centrifuge Polkadot Telemetry](https://telemetry.polkadot.io/#list/0xb3db41421702df9a7fcac62b53ffeac85f7853cc4e689e0b93aeb3db18c09d82) by your name
+- Also you can check your synch by comand bellow:
 ```
-agd tx staking create-validator \
---amount 1000000ubld \
---pubkey $(agd tendermint show-validator) \
---moniker "YOUR_MONIKER_NAME" \
---identity "YOUR_KEYBASE_ID" \
---details "YOUR_DETAILS" \
---website "YOUR_WEBSITE_URL" \
---chain-id $CHAIN_ID \
---commission-rate 0.05 \
---commission-max-rate 0.20 \
---commission-max-change-rate 0.1 \
---min-self-delegation 1 \
---from wallet \
---gas-adjustment 1.4 \
---gas auto \
---gas-prices 0.025ubld \
--y
+curl -H "Content-Type: application/json" -d '{{"id":1, "jsonrpc":"2.0", "method": "eth_syncing", "params":[]}}' localhost:9933
+```
+The output `{"jsonrpc":"2.0","result":false,"id":1}` means that you are succesfully synced.
 
+## 6. Deleting a node
 ```
-Finaly you should see your validator in [Block Explorer](https://agoric.explorers.guru/) on Active or Inactive set.
-
-## 9. Deleting a node
-```
-sudo systemctl stop agd
-sudo rm -rf $FOLDER
-sudo rm -rf agoric-sdk
-sudo rm -rf /go/bin/agd
-sudo rm -rf /etc/systemd/system/agd.service
+sudo systemctl stop centrufuge
+sudo rm -rf centrifuge-chain
+sudo rm -rf /etc/systemd/system/centrufuge.service
 ```
 
-## 10. Upgrade your node
+## 7. Upgrade your node
 ```
-cd agoric-sdk
-git fetch --all
-latestTag=$(curl -s https://api.github.com/repos/Agoric/agoric-sdk/releases/latest | grep '.tag_name'|cut -d\" -f4)
+cd centrifuge-chain
+latestTag=$(curl -s https://api.github.com/repos/centrifuge/centrifuge-chain/releases/latest | grep '.tag_name'|cut -d\" -f4)
 echo $latestTag
 git checkout $latestTag
-yarn install
-yarn build
-(cd packages/cosmic-swingset && make)
-agd version
+cargo build --release
+sudo chmod +x target/release/centrifuge-chain
+sudo ./target/release/centrifuge-chain --version
+sudo systemctl restart centrifuge
 ```
+Then check your logs
+```
+sudo journalctl -u centrifuge -f -n 100 -o cat
+```
+
+## 8. Your RPC URL
+- `http://YOUR_IP_ADDRESS:9933` 
 
 #
 👉[Webtropia](https://bit.ly/45KaUj4) Only Dedicated Server.
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[Discord](https://discord.gg/agoric-585576150827532298)
+👉[Discord](https://discord.gg/r5SSnqXyQG)
 
-👉[WebSite](https://agoric.com/)
+👉[WebSite](https://centrifuge.io/)
 
-👉[Official guide](https://github.com/Agoric/agoric-sdk)
+👉[Official Github](https://github.com/centrifuge/centrifuge-chain)
 
-👉[KJ Nodes Guide](https://services.kjnodes.com/mainnet/agoric/installation/)
+👉[Official guide](https://docs.centrifuge.io/)
 
-👉[KJ Nodes Snapshot](https://services.kjnodes.com/mainnet/agoric/snapshot/)
-
-👉[Agoric Explorer](https://agoric.explorers.guru/)
+👉[Centrifuge Explorer](https://telemetry.polkadot.io/#list/0xb3db41421702df9a7fcac62b53ffeac85f7853cc4e689e0b93aeb3db18c09d82)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
