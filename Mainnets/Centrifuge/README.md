@@ -37,6 +37,7 @@ git checkout $latestTag
 cargo build --release
 sudo chmod +x target/release/centrifuge-chain
 sudo mkdir data
+cd ~
 ```
 
 ## 4. Create a systemd file
