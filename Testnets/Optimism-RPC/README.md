@@ -57,6 +57,7 @@ mkdir temp
 cd temp
 aria2c https://datadirs.optimism.io/goerli-bedrock.tar.zst
 sudo tar -xvf goerli-bedrock.tar.zst
+sudo chmod -R 777 geth
 cd ~
 ```
 
@@ -176,6 +177,10 @@ sudo systemctl stop op-node
 ```
 sudo rm -rf $HOME/optimism-node/node/gethdata/geth
 sudo mv temp/geth $HOME/optimism-node/node/gethdata/
+```
+```
+sudo systemctl start op-geth
+sudo systemctl start op-node
 ```
 
 ## 8. Check logs.
