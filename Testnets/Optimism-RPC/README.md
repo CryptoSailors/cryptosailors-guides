@@ -56,6 +56,7 @@ The Snapshot will take about 10GB. The latest shanpshot you can found [here](htt
 mkdir temp
 cd temp
 aria2c https://datadirs.optimism.io/goerli-bedrock.tar.zst
+sudo tar -xvf goerli-bedrock.tar.zst
 cd ~
 ```
 
@@ -175,7 +176,6 @@ sudo systemctl stop op-node
 ```
 sudo rm -rf $HOME/optimism-node/node/gethdata/geth
 sudo mv temp/geth $HOME/optimism-node/node/gethdata/
-sudo tar -xvf goerli-bedrock.tar.zst
 ```
 
 ## 8. Check logs.
