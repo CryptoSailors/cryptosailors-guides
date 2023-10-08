@@ -44,7 +44,7 @@ go build -o ~/go/bin/op-node ./op-node/cmd
 cd 
 ```
 ## 4. Download Snapshot.
-For this step i recomend to use `screen` or `tmux` module. The Snapshot will take about 450GB. The latest shanpshot you can found [here](https://community.optimism.io/docs/developers/build/run-a-node/#get-the-data-dir)
+For this step i recomend to use `screen` or `tmux` module. The Snapshot will take about 450GB. The latest shanpshot you can found [here](https://community.optimism.io/docs/developers/nodes/mainnet/)
 ```
 mkdir temp
 cd temp
