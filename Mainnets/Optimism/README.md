@@ -51,7 +51,7 @@ cd temp
 aria2c https://datadirs.optimism.io/mainnet-bedrock.tar.zst
 ```
 ```
-tar -xvf mainnet-bedrock.tar
+tar -xvf mainnet-bedrock.tar.zst
 cd
 ```
 ## 5. Create services.
