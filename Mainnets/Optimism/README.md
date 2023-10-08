@@ -48,7 +48,7 @@ For this step i recomend to use `screen` or `tmux` module. The Snapshot will tak
 ```
 mkdir temp
 cd temp
-aria2c https://storage.googleapis.com/oplabs-mainnet-data/mainnet-bedrock.tar
+aria2c https://datadirs.optimism.io/mainnet-bedrock.tar.zst
 ```
 ```
 tar -xvf mainnet-bedrock.tar
