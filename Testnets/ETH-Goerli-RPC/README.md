@@ -8,7 +8,11 @@
 
 - 4-CPU
 - 8-GBRAM
-- 400-GBSSD 
+- 400-GBSSD
+
+  #### My Recommendations
+- I recommend Dedicated Ryzen 5 Server on [webtropia](https://bit.ly/45KaUj4) with extended SSD or NVME disk.
+- I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
 ## 1. Node Preparation
 ```
@@ -30,8 +34,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source $HOME/.cargo/env
 ```
 
-Install Golang go from [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22) according section 2.
-## 2. Installing Geth
+## 2. Install golang go
+Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
+
+## 3. Installing Geth
 ```
 git clone https://github.com/ethereum/go-ethereum
 cd go-ethereum
@@ -42,7 +48,8 @@ sudo mv build/bin/geth /usr/bin/
 geth version
 cd ~
 ```
-## 3. Install Lighthouse
+
+## 4. Install Lighthouse
 ```
 git clone https://github.com/sigp/lighthouse.git
 cd lighthouse
@@ -57,7 +64,8 @@ Close redactor buy CTRL+X,Y,Enter.
 ```
 cd ~
 ```
-## 4. Configuring and launch Geth and Lighthouse node.
+
+## 5. Configuring and launch Geth and Lighthouse node.
 ```
 sudo tee /etc/systemd/system/geth.service > /dev/null <<EOF
 [Unit]
@@ -67,7 +75,17 @@ After=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=$(which geth) --goerli --rpc.gascap 150000000 --syncmode "snap" --http --http.api=eth,net,web3,engine --http.vhosts * --http.addr 0.0.0.0  --authrpc.jwtsecret=$HOME/lighthouse/jwt.hex
+ExecStart=$(which geth) \
+   --goerli \
+   --rpc.gascap 150000000 \
+   --state.scheme=path \
+   --syncmode "snap" \
+--http \
+--http.api=eth,net,web3,engine \
+--http.vhosts * \
+--http.addr 0.0.0.0 \
+--authrpc.jwtsecret=$HOME/lighthouse/jwt.hex
+
 Restart=on-failure
 LimitNOFILE=65535
 
@@ -92,7 +110,14 @@ After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$HOME/.cargo/bin/lighthouse bn --network goerli --execution-endpoint http://localhost:8551 --execution-jwt $HOME/lighthouse/jwt.hex --http  --disable-deposit-contract-sync --checkpoint-sync-url=https://prater-checkpoint-sync.stakely.io
+ExecStart=$HOME/.cargo/bin/lighthouse bn \
+   --network goerli \
+   --execution-endpoint http://localhost:8551 \
+   --execution-jwt $HOME/lighthouse/jwt.hex \
+   --http \
+   --disable-deposit-contract-sync \
+   --checkpoint-sync-url=https://prater-checkpoint-sync.stakely.io
+
 Restart=always
 RestartSec=3
 LimitNOFILE=10000
@@ -116,10 +141,10 @@ curl -X POST http://localhost:8545 \
 ```
 - If the show `false` that means that your node is fully synchronized.
 
-## 5. Your Ethereum RPC endpoint
+## 6. Your Ethereum RPC endpoint
 - `http://YOUR_IP:8545`
 
-## 6. Update your Ethereum Goerli node
+## 7. Update your Ethereum Goerli node
 You can download autoscript and launch it when new update is relesead or update a node manualy.
 
 #### Ethereum Goerli auto update.
@@ -131,6 +156,7 @@ Launch script
 ```
 ./ethereum_update.sh
 ```
+
 #### Ethereum Goerli manual update
 ```
 source .bash_profile
@@ -147,7 +173,7 @@ sudo systemctl restart geth
 sudo journalctl -u geth -f -n 100
 ```
 
-## 7. Update your Lighthouse Beacone node
+## 8. Update your Lighthouse Beacone node
 You can download autoscript and launch it when new update is relesead or update a node manualy.
 
 #### Lighthouse Beacone auto update.
@@ -159,6 +185,7 @@ Launch script
 ```
 ./lighthouse_update.sh
 ```
+
 #### Lighthouse Beacone manual update
 ```
 source .bash_profile
@@ -177,8 +204,7 @@ sudo journalctl -u lighthouse -f -n 100
 ```
 #
 
-
-👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
+👉[Webtropia — server rental](https://bit.ly/45KaUj4)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
