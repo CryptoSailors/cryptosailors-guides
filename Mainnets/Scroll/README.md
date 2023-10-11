@@ -1,14 +1,14 @@
 <p align="center">
- <img src=""width="900"/></a>
+ <img src="https://i.postimg.cc/wBzNz3Kf/Scroll-Logo-Large-scaled.jpg"width="900"/></a>
 </p>
 
-# In this guide we will setup Scroll mainnet RPC node. (UNDER MAITANANCE)
+# In this guide we will setup Scroll mainnet RPC node.
 
 #### Flollowing parametrs:
 - 8 CPU 
 - 32 GB RAM
 - 1TB+ SSD
-- 
+
 #### My Recommendations
 - I recommend Dedicated Ryzen 7 Server on [webtropia](https://bit.ly/45KaUj4)
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
@@ -30,6 +30,7 @@ L1_ENDPOINT="http://YOUR_ETH_MAINNET_NODE:PORT"
 echo "export L1_ENDPOINT=${L1_ENDPOINT}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
+```
 git clone https://github.com/scroll-tech/go-ethereum l2geth-source
 cd l2geth-source
 latestTag=$(curl -s https://api.github.com/repos/scroll-tech/go-ethereum/releases/latest | grep '.tag_name'|cut -d\" -f4)
@@ -40,27 +41,94 @@ make nccc_geth
 ./build/bin/geth version
 ```
 
-## 5. Upgrade your Scroll node
+## 4. Crate a systemd file and launch a node
+```
+sudo tee <<EOF >/dev/null /etc/systemd/system/scroll.service
+[Unit]
+Description=geth daemon
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=/home/scroll/l2geth-source/build/bin/geth --scroll \
+--datadir "./l2geth-datadir" \
+--gcmode archive \
+--cache.noprefetch \
+--http \
+--http.addr "0.0.0.0" \
+--http.port 8491 \
+--http.api "eth,net,web3,debug,scroll" \
+--l1.endpoint "$L1_ENDPOINT" \
+--l1.confirmations "finalized" \
+--datadir $HOME/.scroll \
+--http.vhosts "*" \
+--ws \
+--ws.origins '*' \
+--ws.addr 0.0.0.0 \
+--ws.port 8492 \
+--port "30317"
+
+Restart=always
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+```
+sudo systemctl daemon-reload
+sudo systemctl enable scroll
+sudo systemctl start scroll
+sudo journalctl -u scroll -f -n 100 -o cat
+```
+
+## 5 Your RPC url are:
+
+- `http://YOUR_IP:8491`
+- `ws://YOUR_IP:8492`
+
+## 6. Upgrade your Scroll node
 First check latest realiease. In our case the [latest release](https://github.com/scroll-tech/go-ethereum/releases)
 ```
+cd l2geth-source
+git pull
+latestTag=$(curl -s https://api.github.com/repos/scroll-tech/go-ethereum/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
+git branch
+make nccc_geth
+./build/bin/geth version
+```
 
+## 7. Delete your node
 ```
-## Delete your node
+sudo systemctl disable scroll
+sudo systemctl stop scroll
+sudo rm -rf /etc/systemd/system/scroll.service
+sudo rm -rf l2geth-source
+sudo rm -rf .scroll
 ```
 
-```
 👉[Webtropia — server rental](https://bit.ly/45KaUj4)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
 👉[Scroll Website](https://scroll.io/)
 
-👉[Scroll Official docs]()
+👉[Scroll Official docs](https://docs.scroll.io/en/home/)
 
-👉[Mantle Github](https://github.com/mantlenetworkio)
+👉[Scroll Github](https://github.com/scroll-tech/go-ethereum)
 
-👉[Mantle Explorer](https://explorer.mantle.xyz/)
+👉[Scroll Explorer](https://scrollscan.com/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
 🔰[Our WebSite](cryptosailors.tech)
+
+🔰[Our Twitter](https://twitter.com/Crypto_Sailors)
+
+🔰[Our Youtube](https://www.youtube.com/@CryptoSailors)
+
+#### Guide created by 
+Pavel-LV | C.Sailors#7698 / @SeaInvestor
