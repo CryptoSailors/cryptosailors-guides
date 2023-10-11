@@ -41,7 +41,7 @@ make nccc_geth
 ./build/bin/geth version
 ```
 
-## 4. Crate a systemd file and launch a node
+## 4. Create a systemd file and launch a node
 ```
 sudo tee <<EOF >/dev/null /etc/systemd/system/scroll.service
 [Unit]
