@@ -37,6 +37,7 @@ git checkout $latestTag
 cargo build --release
 sudo chmod +x target/release/centrifuge-chain
 sudo mkdir data
+sudo chmod -R 777 data
 cd ~
 ```
 
@@ -122,6 +123,7 @@ sudo rm -rf /etc/systemd/system/centrufuge.service
 
 ## 7. Upgrade your node
 ```
+source "$HOME/.cargo/env"
 cd centrifuge-chain
 latestTag=$(curl -s https://api.github.com/repos/centrifuge/centrifuge-chain/releases/latest | grep '.tag_name'|cut -d\" -f4)
 echo $latestTag
