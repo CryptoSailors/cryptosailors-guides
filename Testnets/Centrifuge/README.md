@@ -58,34 +58,40 @@ SyslogIdentifier=centrifuge_testnet
 SyslogFacility=local7
 KillSignal=SIGHUP
 ExecStart=/home/centrifuge/centrifuge-chain/target/release/centrifuge-chain \
-    --name=YOUR_NODE_NAME \
-    --port=30333 \
-    --rpc-port=9933 \
-    --ws-port=9944 \
-    --unsafe-ws-external \
-    --unsafe-rpc-external \
-    --rpc-cors=all \
-    --rpc-methods=unsafe \
-    --pruning=archive \
-    --chain=algol \
-    --parachain-id=2088 \
-    --base-path=/home/centrifuge/centrifuge-chain/data \
-    --log=main,info \
-    --execution=wasm \
-    --wasm-execution=compiled \
-    --ws-max-connections=5000 \
-    --bootnodes=/dnsaddr/bootstrap.algol.k-f.dev/p2p/12D3KooWQt8qAmXzgdNRuVKhW1NAdfowhoGC3apycsBYhvehp1mA \
-    --bootnodes=/dns4/node-7107773973489594368-0.p2p.onfinality.io/tcp/28330/ws/p2p/12D3KooWHAsVwkowLLnwd9ZRAmNFBdsvFzvB9XS8FhEufhvuvec3 \
-    --bootnodes=/ip4/34.141.22.46/tcp/30333/p2p/12D3KooWPdGhxLeQad8qfxr7cPrYGMW7sJhXL4rfjZMMJpWZ1nHd \
-    --bootnodes=/ip4/34.141.85.156/tcp/30333/p2p/12D3KooWH8B1nrkNRvKPTuhaaXy244PZoptRzfXPQqVai3bRq4TS \
-    --bootnodes=/ip4/34.141.48.250/tcp/30333/p2p/12D3KooWHsA69Fb1HkdWrwrxY3cSga3wWyHnxuk5GeYtCh59XsWB \
-    -- \
-    --no-telemetry \
-    --execution=wasm \
-    --wasm-execution=compiled \
-    --chain=/home/centrifuge/centrifuge-chain/res/rococo-local.json \
-    --bootnodes=/dnsaddr/bootstrap-relay.algol.k-f.dev/p2p/12D3KooWABjwDpbaapnTwei9ZhSLMHAWij5oZE4CsbsN8K8q4mYb \
-    --bootnodes=/dnsaddr/bootstrap-relay-2.algol.k-f.dev/p2p/12D3KooWRQqyBqsFw8gw2oqZHaiPLyw2jgCyz5jwRMmg3aWr3jP5
+  --name=YOUR_NODE_NAME \
+  --base-path=/home/centrifuge/centrifuge-chain/data \
+  --collator \
+  --chain=altair \
+  --port 30433 \
+  --rpc-port 9934 \
+  --rpc-cors=all \
+  --ws-port 9945 \
+  --parachain-id=2088 \
+  --execution=wasm \
+  --wasm-execution=compiled \
+  --unsafe-rpc-external \
+  --unsafe-ws-external \
+  --rpc-methods=unsafe \
+  --pruning=archive \
+  --bootnodes=/ip4/35.198.171.148/tcp/30333/ws/p2p/12D3KooWDXDwSdqi8wB1Vjjs5SVpAfk6neadvNTPAik5mQXqV7jF \
+  --bootnodes=/ip4/65.108.136.39/tcp/30333/p2p/12D3KooWE5h6gyrwGDpGvVHZPpqRX7G9XyYoyyk3XwNmaQqXYo5D \
+  --log=main,info \
+  --trie-cache-size 0 \
+  --no-private-ipv4 \
+  --no-mdns \
+  -- \
+  --execution=wasm \
+  --wasm-execution=compiled \
+  --port 30434 \
+  --rpc-port 9935 \
+  --ws-port 9946 \
+  --no-private-ipv4 \
+  --no-mdns \
+  --sync fast \
+  --state-pruning 100 \
+  --blocks-pruning 100 \
+  --database paritydb \
+  --chain=kusama
 
 [Install]
 WantedBy=multi-user.target
@@ -103,7 +109,7 @@ sudo journalctl -u centrifuge -f -n 100 -o cat
 - You can check yourself in [Centrifuge Polkadot Telemetry](https://telemetry.polkadot.io/#list/0xb3db41421702df9a7fcac62b53ffeac85f7853cc4e689e0b93aeb3db18c09d82) by your name
 - Also you can check your synch by comand bellow:
 ```
-curl -H "Content-Type: application/json" -d '{{"id":1, "jsonrpc":"2.0", "method": "eth_syncing", "params":[]}}' localhost:9933
+curl -H "Content-Type: application/json" -d '{{"id":1, "jsonrpc":"2.0", "method": "eth_syncing", "params":[]}}' localhost:9934
 ```
 The output `{"jsonrpc":"2.0","result":false,"id":1}` means that you are succesfully synced.
 
@@ -131,7 +137,7 @@ sudo journalctl -u centrifuge -f -n 100 -o cat
 ```
 
 ## 8. Your RPC URL
-- `http://YOUR_IP_ADDRESS:9933` 
+- `http://YOUR_IP_ADDRESS:9934` 
 
 #
 👉[Webtropia](https://bit.ly/45KaUj4) Only Dedicated Server.
@@ -146,7 +152,7 @@ sudo journalctl -u centrifuge -f -n 100 -o cat
 
 👉[Official guide](https://docs.centrifuge.io/)
 
-👉[Centrifuge Explorer](https://telemetry.polkadot.io/#list/0xb3db41421702df9a7fcac62b53ffeac85f7853cc4e689e0b93aeb3db18c09d82)
+👉[Centrifuge Explorer](https://telemetry.polkadot.io/#list/0xaa3876c1dc8a1afcc2e9a685a49ff7704cfd36ad8c90bf2702b9d1b00cc40011)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
