@@ -191,18 +191,6 @@ sudo rm -rf temp
 - `ws://YOUR_IP:8746`
 
 ## 10 Update your node
-You can download autoscript and launch it when new update is relesead or update a node manualy.
-
-#### Optimism auto update
-```
-wget https://github.com/CryptoSailors/cryptosailors-guides/blob/main/Mainnets/Optimism/op_mainnet_update.sh
-sudo chmod +x op_mainnet_update.sh
-```
-Launch script
-```
-./op_mainnet_update.sh
-```
-#### Optimism Manual update
 ```
 cd optimism-node/op-geth
 git pull
