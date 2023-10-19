@@ -34,9 +34,9 @@ sudo chmod +x /usr/bin/docker-compose
 sudo docker-compose version
 ```
 ## 3. Install and start Arbitrum mainnet node
-First check latest realiease. In our case the [latest release](https://github.com/OffchainLabs/nitro/tags) is `offchainlabs/nitro-node:v2.0.14-2baa834`
+First check latest realiease. In our case the [latest release](https://github.com/OffchainLabs/nitro/tags) is `offchainlabs/nitro-node:v2.1.1-e9d8842`
 ```
-RELEASE="offchainlabs/nitro-node:v2.0.14-2baa834"
+RELEASE="offchainlabs/nitro-node:v2.1.1-e9d8842"
 mkdir -p $HOME/data/arbitrum
 chmod -fR 777 $HOME/data/arbitrum
 ```
@@ -49,7 +49,7 @@ echo "export ETH_RPC_URL=${ETH_RPC_URL}" >> .bash_profile
 source .bash_profile
 ```
 ```
-sudo docker run --name arbitrum --rm -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8547:8547 -p 0.0.0.0:8548:8548 $RELEASE --l1.url $ETH_RPC_URL --l2.chain-id=42161 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=* --init.url="https://snapshot.arbitrum.io/mainnet/nitro.tar"
+sudo docker run --name arbitrum --restart unless-stopped --stop-timeout 300 -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8547:8547 -p 0.0.0.0:8548:8548 $RELEASE --parent-chain.connection.url $ETH_RPC_URL --chain.id=42161 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=* --init.url="https://snapshot.arbitrum.io/mainnet/nitro.tar"
 ```
 Check your logs: 
 ```
@@ -69,14 +69,15 @@ curl -X POST http://localhost:8547 \
 ## 6. Upgrade your Arbitrum node
 First check latest realiease. In our case the [latest release](https://github.com/OffchainLabs/nitro/tags) is `offchainlabs/nitro-node:v2.0.12-65d4e7a`
 ```
-RELEASE="offchainlabs/nitro-node:v2.0.14-2baa834"
+RELEASE="offchainlabs/nitro-node:v2.1.1-e9d8842"
 ```
 ```
 echo $RELEASE
 sudo docker stop arbitrum
+sudo docker rm arbitrum
 ```
 ```
-sudo docker run --name arbitrum --rm -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8547:8547 -p 0.0.0.0:8548:8548 $RELEASE --l1.url $ETH_RPC_URL --l2.chain-id=42161 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=* --init.url="https://snapshot.arbitrum.io/mainnet/nitro.tar"
+sudo docker run --name arbitrum --restart unless-stopped --stop-timeout 300 -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8547:8547 -p 0.0.0.0:8548:8548 $RELEASE --parent-chain.connection.url $ETH_RPC_URL --chain.id=42161 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=*
 ```
 #
 
