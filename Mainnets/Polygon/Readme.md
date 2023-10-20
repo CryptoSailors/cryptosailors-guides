@@ -64,7 +64,7 @@ sudo tee /etc/systemd/system/heimdalld.service > /dev/null <<EOF
 [Service]
   Restart=on-failure
   RestartSec=5s
-  ExecStart=$(which heimdalld) start --rest-server
+  ExecStart=$(which heimdalld) start --rest-server --chain=mainnet
   Type=simple
   User=$USER
 
