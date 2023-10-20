@@ -121,7 +121,7 @@ cd ~
 mkdir .bor && cd .bor && mkdir data && cd data && mkdir bor && cd bor && mkdir chaindata
 cd ~
 cd .bor
-wget https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Testnets/Polygon-RPC/config.toml
+wget https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Mainnets/Polygon/config.toml
 ```
 **Create a systemd file for bor**
 ```
