@@ -14,6 +14,14 @@
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
 ## 2. Server preparation.
+
+Create a user
+```
+sudo adduser polygon
+sudo usermod -aG sudo polygon
+sudo usermod -aG systemd-journal polygon
+sudo su - polygon
+```
 ```
 sudo apt update && sudo apt upgrade -y
 ```
@@ -136,7 +144,7 @@ sudo tee /etc/systemd/system/bor.service > /dev/null <<EOF
 [Service]
   Restart=on-failure
   RestartSec=5s
-  ExecStart=$(which bor) server -config /root/.bor/config.toml
+  ExecStart=$(which bor) server -config /home/polygon/.bor/config.toml
   Type=simple
   User=$USER
   KillSignal=SIGINT
@@ -148,7 +156,7 @@ sudo tee /etc/systemd/system/bor.service > /dev/null <<EOF
 EOF
 ```
 ## 10. Download the lates snapshot and launch a node.
-Download latest bor-mumbai [snapshot](https://snapshots.polygon.technology/). I recomend use `screen` or `tmux`, becouse downloading the snapshot will take about 70min.
+Download latest bor-mainnet [snapshot](https://snapshots.polygon.technology/). I recomend use `screen` or `tmux`, becouse downloading the snapshot will take about 5h.
 ```
 curl -L https://snapshot-download.polygon.technology/snapdown.sh | bash -s -- --network mainnet --client bor --extract-dir $HOME/.bor/data/bor/chaindata --validate-checksum true
 ```
