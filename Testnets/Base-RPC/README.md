@@ -112,7 +112,7 @@ services:
 
 ## 5. Downoald latest snapshot
 
-I recommend launch `tmux` or `screen` windows, becaouse downloading of [shanpshot](https://docs.base.org/guides/run-a-base-node) will take about 7h.
+I recommend launch `tmux` or `screen` windows, because downloading of [shanpshot](https://docs.base.org/guides/run-a-base-node) will take about 7h.
 ```
 cd ~
 wget https://base-goerli-archive-snapshots.s3.us-east-1.amazonaws.com/$(curl https://base-goerli-archive-snapshots.s3.us-east-1.amazonaws.com/latest) -O - | tar -xz -C $HOME/node
