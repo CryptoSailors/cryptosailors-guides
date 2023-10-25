@@ -19,7 +19,7 @@
 
 ```
 sudo adduser base
-sudo su - aG sudo base
+sudo usermod - aG sudo base
 sudo su - base
 ```
 ```
@@ -60,7 +60,7 @@ Open a `.env.goerli`. Find `OP_NODE_L1_ETH_RPC` and input your Ethereum Goerli R
 ```
 sudo nano .env.goerli
 ```
-Example:
+#### Example:
 ```
 # [recommended] replace with your preferred L1 (Ethereum, not Base) node RPC URL:
 OP_NODE_L1_ETH_RPC=http://YOUR_GOERLI_IP:PORT
