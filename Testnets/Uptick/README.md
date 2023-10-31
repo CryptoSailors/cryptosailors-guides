@@ -10,7 +10,7 @@ Official
 - 8 GB RAM
 - 200 GB SSD
 - #### My Recommendations
-- I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
+- I recommend Dedicated Ryzen 5 Server on [webtropia](https://bit.ly/45KaUj4)
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
 ## 2. Server preparation.
@@ -31,8 +31,8 @@ Install [GO according this instruction](https://github.com/CryptoSailors/cryptos
 
 ## 3. Node installation.
 ```
-wget https://raw.githubusercontent.com/UptickNetwork/uptick-testnet/main/origin_1170-1/lib/uptickd-linux-amd64-v0.2.10.tar.gz
-tar -zxvf uptickd-linux-amd64-v0.2.10.tar.gz && chmod +x uptickd
+wget https://raw.githubusercontent.com/UptickNetwork/uptick-testnet/main/origin_1170-1/lib/uptickd-linux-amd64-v0.2.13.tar.gz
+tar -zxvf uptickd-linux-amd64-v0.2.13.tar.gz && chmod +x uptickd
 sudo mv uptickd go/bin
 ```
 Change `<moniker-name>` on your name
@@ -167,7 +167,7 @@ rm -rf $(which uptickd)
 ```
 
 #
-👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
+👉[Webtropia](https://bit.ly/45KaUj4) Only Dedicated Server.
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
