@@ -149,7 +149,7 @@ echo Latest synced block behind by: $((($(date +%s)-$( \
 ```
 cd node
 sudo docker-compose stop
-git rest --hard
+git reset --hard
 git pull
 ```
 Configure your `docker-compose.yml` and `.env.goerli` from step 4 and launch a node.
