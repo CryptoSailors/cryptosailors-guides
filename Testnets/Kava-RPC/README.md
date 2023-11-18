@@ -10,6 +10,10 @@
 - 8-GBRAM
 - 600-GB SSD 
 
+#### My Recommendations
+- I recommend Dedicated Ryzen 5 Server on [webtropia](https://bit.ly/45KaUj4)
+- I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
+
 ## 1. Node Preparation
 ```
 sudo apt update && sudo apt upgrade -y
@@ -73,10 +77,10 @@ sudo systemctl enable kava
 sudo systemctl daemon-reload
 sudo systemctl start kava
 sudo journalctl -u kava -f -n 100
-
+```
 #
 
-👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
+👉[Webtropia](https://bit.ly/45KaUj4) Only Dedicated Server.
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
