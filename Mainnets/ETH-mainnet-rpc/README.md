@@ -13,7 +13,21 @@
 - I recommend Dedicated Ryzen 5 Server on [webtropia](https://bit.ly/45KaUj4) with extended SSD or NVME disk.
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
-## 1. Node Preparation
+## 1. Create a user
+
+```
+sudo adduser ethereum
+```
+```
+sudo usermod -aG sudo ethereum
+sudo usermod -aG systemd-journal ethereum
+```
+```
+sudo su - ethereum
+```
+
+## 2. Server preparation.
+
 ```
 sudo apt update && sudo apt upgrade -y
 ```
@@ -33,10 +47,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source $HOME/.cargo/env
 ```
 
-## 2. Install golang go
+## 3. Install golang go
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
-## 3. Installing Geth
+## 4. Installing Geth
 ```
 git clone https://github.com/ethereum/go-ethereum
 cd go-ethereum
@@ -47,7 +61,7 @@ sudo mv build/bin/geth /usr/bin/
 geth version
 cd ~
 ```
-## 4. Install Lighthouse
+## 5. Install Lighthouse
 ```
 git clone https://github.com/sigp/lighthouse.git
 cd lighthouse
@@ -62,7 +76,7 @@ Close redactor buy CTRL+X,Y,Enter.
 ```
 cd ~
 ```
-## 5. Configuring and launch Geth and Lighthouse node.
+## 6. Configuring and launch Geth and Lighthouse node.
 ```
 sudo tee /etc/systemd/system/geth.service > /dev/null <<EOF
 [Unit]
@@ -141,11 +155,11 @@ curl -X POST http://localhost:8545 \
 ```
 - If the show `false` that means that your node is fully synchronized.
 
-## 6. Your RPC endpoint.
+## 7. Your RPC endpoint.
  - `http://YOUR_IP:8545`
  - `ws://YOUR_IP:8546`
 
-## 7. Update your Ethereum node
+## 8. Update your Ethereum node
 You can download autoscript and launch it when new update is relesead or update a node manualy.
 
 #### Ethereum auto update.
@@ -173,7 +187,7 @@ sudo systemctl restart geth
 sudo journalctl -u geth -f -n 100
 ```
 
-## 8. Update your Lighthouse Beacone node
+## 9. Update your Lighthouse Beacone node
 You can download autoscript and launch it when new update is relesead or update a node manualy.
 
 #### Lighthouse Beacone auto update.
