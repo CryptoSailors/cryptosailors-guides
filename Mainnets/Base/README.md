@@ -140,7 +140,7 @@ echo Latest synced block behind by: $((($(date +%s)-$( \
 
 - `http://YOUR_IP:8549`
 
-## 9. Update your Base testnet node:
+## 9. Update your Base mainnet node:
 
 ```
 cd node
