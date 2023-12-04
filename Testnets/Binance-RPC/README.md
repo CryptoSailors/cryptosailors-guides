@@ -7,7 +7,10 @@
 #### System requirements:
 - 16 CPU cores
 - 64 GB RAM
-- 2 TB SSD (Recommended)
+- 100 GB SSD (Recommended)
+#### My Recommendations
+- I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
+- I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
 ## 1. Node Preparation.
 ```
@@ -29,27 +32,23 @@ echo "cd ~" >> /home/binance/.bashrc
 ## 3. Download the pre-build binaries.
 ```
 su -s /bin/bash binance
-mkdir binaries && cd binaries
-wget   $(curl -s https://api.github.com/repos/bnb-chain/bsc/releases/latest |grep browser_ |grep geth_linux |cut -d\" -f4)
-mv geth_linux geth
-chmod -v u+x geth
+git clone https://github.com/bnb-chain/bsc
+cd bsc
+latestTag=$(curl -s https://api.github.com/repos/bnb-chain/bsc/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
+make
+cd ~
 ```
 
 Check the current version:
 ```
-./geth version
+./bsc/build/bin/geth --version
 ```
 
 You should see something like this:
 ```
-Geth
-Version: 1.1.19
-Git Commit: 6587671e748805a438c4c617e766ce168a38e5e6
-Architecture: amd64
-Go Version: go1.19.5
-Operating System: linux
-GOPATH=
-GOROOT=
+geth version 1.3.1-1dca4866-20231109
 ```
 
 ## 4. Download the config files genesis.json and config.toml.
@@ -64,7 +63,7 @@ rm testnet.zip
 ## 5. Perform sync from genesis
 ```
 cd ~
-geth --datadir $HOME/.bsc init $HOME/.bsc/config/genesis.json
+./bsc/build/bin/geth --datadir $HOME/.bsc init $HOME/.bsc/config/genesis.json
 ```
 
 ## 6. Enable journalctl to view Binance RPC node logs.
@@ -84,7 +83,7 @@ sudo systemctl restart systemd-journald
 
 ## 8. Setup the Sytemd Service.
 ```
-sudo tee /etc/systemd/system/bscgeth.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/binance.service > /dev/null <<EOF
 [Unit]
 Description=BSC node
 After=online.target
@@ -92,7 +91,7 @@ After=online.target
 [Service]
 Type=simple
 User=binance
-ExecStart=/home/binance/binaries/geth --config /home/binance/.bsc/config/config.toml --txlookuplimit=0 --syncmode=full --tries-verify-mode=none --pruneancient=true --diffblock=5000 --cache 8000 --rpc.allow-unprotected-txs --datadir /home/binance/.bsc --http --http.vhosts "*" --http.addr 0.0.0.0 --ws --ws.origins '*' --ws.addr 0.0.0.0 --port 31303 --http.port 8645
+ExecStart=/home/binance/bsc/build/bin/geth --config /home/binance/.bsc/config/config.toml --txlookuplimit=0 --syncmode=full --tries-verify-mode=none --pruneancient=true --diffblock=5000 --cache 8000 --rpc.allow-unprotected-txs --datadir /home/binance/.bsc --http --http.vhosts "*" --http.addr 0.0.0.0 --ws --ws.origins '*' --ws.addr 0.0.0.0 --port 31303 --http.port 8645
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=4096
@@ -105,13 +104,13 @@ EOF
 ## 9. Add Service to autostart and run it.
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable bscgeth
-sudo systemctl start bscgeth
+sudo systemctl enable binance
+sudo systemctl start binance
 ```
 Verify that the service is running and works fine:
 ```
 sudo systemctl status bscgeth
-journalctl -u bscgeth -f -n 100 -o cat
+journalctl -u binance -f -n 100 -o cat
 ```
 You should see something like this:
 ```
@@ -163,26 +162,18 @@ sudo su bincance
 cd ~
 ```
 ```
-cd binaries
-wget   $(curl -s https://api.github.com/repos/bnb-chain/bsc/releases/latest |grep browser_ |grep geth_linux |cut -d\" -f4)
-mv geth_linux geth
-chmod -v u+x geth
-./geth version
-```
-You should see something like this:
-```
-Geth
-Version: 1.1.20
-Git Commit: fc4303c6c601a697bc1d1f9da17e11c556c6dba1
-Architecture: amd64
-Go Version: go1.19.6
-Operating System: linux
-GOPATH=/home/binance/go
-GOROOT=/usr/local/go
+cd bsc
+git pull
+latestTag=$(curl -s https://api.github.com/repos/bnb-chain/bsc/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
+make
+cd ~
+./bsc/build/bin/geth --version
 ```
 ```
-sudo systemctl restart bscgeth
-journalctl -u bscgeth -f -n 100 -o cat
+sudo systemctl restart binance
+journalctl -u binance -f -n 100 -o cat
 ```
 
 #
