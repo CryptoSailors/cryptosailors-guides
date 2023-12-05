@@ -91,14 +91,14 @@ After=online.target
 [Service]
 Type=simple
 User=binance
-ExecStart=/home/binance/bsc/build/bin/geth --config /home/binance/.bsc/config/config.toml --txlookuplimit=0 --syncmode=full --tries-verify-mode=none --pruneancient=true --diffblock=5000 --cache 8000 --rpc.allow-unprotected-txs --datadir /home/binance/.bsc --http --http.vhosts "*" --http.addr 0.0.0.0 --ws --ws.origins '*' --ws.addr 0.0.0.0 --port 31303 --http.port 8645
+ExecStart=/home/binance/bsc/build/bin/geth --config /home/binance/.bsc/config/config.toml --datadir /home/binance/.bsc/ --ws --ws.origins '*' --txlookuplimit=0 --syncmode=full --tries-verify-mode=none --pruneancient=true --diffblock=5000
+
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=4096
 
 [Install]
 WantedBy=multi-user.target
-EOF
 ```
 
 ## 9. Download latest snapshot
@@ -129,7 +129,7 @@ INFO [02-25|11:11:41.442] Imported new chain segment               blocks=1908 t
 
 You can run a cURL request to see the status of your node:
 ```
-geth attach http://localhost:8645
+geth attach http://localhost:8545
 eth.syncing
 ```
 
@@ -159,7 +159,7 @@ eth.syncing
 false
 ```
 ## 11. Your RPC URL are:
-- `http://YOUR_IP:8645`
+- `http://YOUR_IP:8545`
 
 ## 12. Upgrade your node
 In case of new update, do the following commands:
