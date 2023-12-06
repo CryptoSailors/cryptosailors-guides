@@ -31,9 +31,9 @@ Install [GO according this instruction](https://github.com/CryptoSailors/cryptos
 
 ## 3. Node installation.
 ```
-wget https://raw.githubusercontent.com/UptickNetwork/uptick-testnet/main/origin_1170-1/lib/uptickd-linux-amd64-v0.2.13.tar.gz
-tar -zxvf uptickd-linux-amd64-v0.2.13.tar.gz && chmod +x uptickd
-sudo mv uptickd go/bin
+wget https://raw.githubusercontent.com/UptickNetwork/uptick-testnet/main/origin_1170-1/lib/uptickd-linux-amd64-v0.2.14.tar.gz
+tar -zxvf uptickd-linux-amd64-v0.2.14.tar.gz && chmod +x uptickd
+sudo mv uptickd go/bin/
 ```
 Change `<moniker-name>` on your name
 ```
