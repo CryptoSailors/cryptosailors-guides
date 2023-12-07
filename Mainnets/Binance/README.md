@@ -90,8 +90,18 @@ After=online.target
 
 [Service]
 Type=simple
-User=binance
-ExecStart=/home/binance/bsc/build/bin/geth --config /home/binance/.bsc/config/config.toml --datadir /home/binance/.bsc/ --ws --ws.origins '*' --txlookuplimit=0 --syncmode=full --tries-verify-mode=none --pruneancient=true --diffblock=5000
+User=$USER
+ExecStart=/home/binance/bsc/build/bin/geth \
+         --config /home/binance/.bsc/config/config.toml \
+         --datadir /home/binance/.bsc/ \
+         --ws \
+         --ws.origins '*' \
+         --syncmode=full \
+         --tries-verify-mode=none \
+         --pruneancient=true \
+         --diffblock=5000 \
+         --history.transactions=0 \
+         --db.engine=pebble
 
 Restart=on-failure
 RestartSec=3
@@ -185,7 +195,7 @@ journalctl -u binance -f -n 100 -o cat
 
 #
 
-👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
+👉[Webtropia — server rental](https://www.webtropia.com/?kwk=255074042020228216158042)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
@@ -193,7 +203,7 @@ journalctl -u binance -f -n 100 -o cat
 
 👉[Binance Github](https://github.com/bnb-chain/bsc)
 
-👉[Binance testnet explorer](https://testnet.bscscan.com/)
+👉[Binance explorer](https://bscscan.com/)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
