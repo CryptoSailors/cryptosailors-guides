@@ -79,6 +79,10 @@ Check your logs
 ```
 sudo journalctl -u lotus-daemon -f -n 100 -o cat
 ```
+and
+```
+tail -F /var/log/lotus/daemon.log
+```
 
 ## 6. Configure your node 
 ```
@@ -101,7 +105,7 @@ sudo journalctl -u lotus-daemon -f -n 100 -o cat
 
 👉[FileCoin Github](https://github.com/filecoin-project/lotus)
 
-👉[FileCoin Testnet Explorer](https://hyperspace.filfox.info/en/tipset)
+👉[FileCoin Testnet Explorer](https://calibration.filfox.info/en)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
