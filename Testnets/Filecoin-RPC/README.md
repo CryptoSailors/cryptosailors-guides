@@ -85,7 +85,7 @@ sudo journalctl -u lotus-daemon -f -n 100 -o cat
 wget https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Testnets/Filecoin-RPC/config.toml
 sudo chmod +x config.toml
 sudo mv config.toml $HOME/.lotus
-sudo systmectl restart lotus-daemon
+sudo systemctl restart lotus-daemon
 sudo journalctl -u lotus-daemon -f -n 100 -o cat
 ```
 
