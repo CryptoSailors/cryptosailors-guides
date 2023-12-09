@@ -182,7 +182,7 @@ sudo systemctl restart lotus-daemon
 
 👉[FileCoin Github](https://github.com/filecoin-project/lotus)
 
-👉[FileCoin Testnet Explorer](https://hyperspace.filfox.info/en/tipset)
+👉[FileCoin Mainnet Explorer](https://filfox.info/en)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
