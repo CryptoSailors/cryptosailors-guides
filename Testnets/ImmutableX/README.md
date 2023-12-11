@@ -32,9 +32,6 @@ sudo apt install docker.io -y
 ## 3. Install and Start ImmytableX testnet node
 
 ```
-sudo mkdir /opt/immutable-zkevm
-```
-```
 sudo mkdir opt && cd opt && sudo mkdir immutable-zkevm
 cd ~
 sudo chmod -R 777 opt
@@ -65,7 +62,7 @@ sudo docker run \
 sudo docker run \
   -d \
   --restart=always \
-  -v /opt/immutable-zkevm:/mnt/geth \
+  -v $HOME/opt/immutable-zkevm:/mnt/geth \
   --name geth \
   -p 8936:8545 \
   geth \
