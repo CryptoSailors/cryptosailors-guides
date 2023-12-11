@@ -41,7 +41,7 @@ sudo chmod -R 777 opt
 sudo openssl rand -base64 > $HOME/opt/immutable-zkevm/password
 ```
 ```
-docker pull ghcr.io/immutable/go-ethereum/go-ethereum:v0.0.5
+sudo docker pull ghcr.io/immutable/go-ethereum/go-ethereum:v0.0.5
 ```
 ```
 sudo docker tag ghcr.io/immutable/go-ethereum/go-ethereum:v0.0.5 geth
@@ -74,7 +74,7 @@ sudo docker run \
   --keystore /mnt/geth/keystore \
   --networkid 13473 \
   --http \
-  --http.port "7535" \
+  --http.port "8545" \
   --http.addr "0.0.0.0"
 ```
 Check you logs
