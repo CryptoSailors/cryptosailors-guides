@@ -96,7 +96,9 @@ ExecStart=/home/optimism/go/bin/op-geth \
   --pprof.addr=0.0.0.0 \
   --pprof.port=6760 \
   --port "30307" \
-  --snapshot=false
+  --snapshot=false \
+  --op-network="op-mainnet" 
+
 Restart=always
 RestartSec=3
 LimitNOFILE=65536
@@ -141,7 +143,9 @@ ExecStart=$HOME/go/bin/op-node \
   --p2p.peers.hi=20 \
   --p2p.nat \
   --log.level=info \
-  --log.format=logfmt
+  --log.format=logfmt \
+  --network="op-mainnet"
+
 Restart=always
 RestartSec=3
 LimitNOFILE=65535
