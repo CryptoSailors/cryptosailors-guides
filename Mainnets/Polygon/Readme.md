@@ -126,7 +126,7 @@ bor version
 ## 9. Configure your bor node
 ```
 cd ~
-mkdir .bor && cd .bor && mkdir data && cd data && mkdir bor && cd bor && mkdir chaindata
+mkdir .bor && cd .bor && mkdir data && cd data && mkdir bor
 cd ~
 cd .bor
 wget https://raw.githubusercontent.com/CryptoSailors/cryptosailors-guides/main/Mainnets/Polygon/config.toml
