@@ -38,10 +38,10 @@ sudo chmod -R 777 opt
 sudo openssl rand -base64 > $HOME/opt/immutable-zkevm/password
 ```
 ```
-sudo docker pull ghcr.io/immutable/go-ethereum/go-ethereum:v0.0.5
+sudo docker pull ghcr.io/immutable/go-ethereum/go-ethereum:v0.0.8
 ```
 ```
-sudo docker tag ghcr.io/immutable/go-ethereum/go-ethereum:v0.0.5 geth
+sudo docker tag ghcr.io/immutable/go-ethereum/go-ethereum:v0.0.8 geth
 ```
 ```
 sudo docker run \
