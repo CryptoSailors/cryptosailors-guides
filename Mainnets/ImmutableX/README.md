@@ -60,7 +60,6 @@ sudo docker run \
   geth \
   --config /etc/geth/mainnet.toml \
   --datadir /mnt/geth \
-  --keystore /mnt/geth/keystore \
   --networkid 13371 \
   --http \
   --http.port "8545" \
