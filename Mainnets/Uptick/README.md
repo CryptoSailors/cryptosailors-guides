@@ -24,11 +24,14 @@ sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential g
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
 ## 4. Install a node
-Make sure that you are installing the [latest release](https://github.com/UptickNetwork/uptick/releases/latest). In this guide we use release `v0.2.4`
+Make sure that you are installing the [latest release](https://github.com/UptickNetwork/uptick/releases/latest). In this guide we use release `v0.2.11`
 ```
 git clone https://github.com/UptickNetwork/uptick
 cd uptick
-git checkout v0.2.4
+git fetch --all
+latestTag=$(curl -s https://api.github.com/repos/UptickNetwork/uptick/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
 make install
 ```
 ```
