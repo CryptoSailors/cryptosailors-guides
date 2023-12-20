@@ -59,19 +59,17 @@ SyslogIdentifier=centrifuge_testnet
 SyslogFacility=local7
 KillSignal=SIGHUP
 ExecStart=/home/centrifuge/centrifuge-chain/target/release/centrifuge-chain \
-  --name=YOUR_NODE_NAME \
+  --name=CryptoSailors🐬 \
   --base-path=/home/centrifuge/centrifuge-chain/data \
   --collator \
   --chain=altair \
   --port 30433 \
   --rpc-port 9934 \
   --rpc-cors=all \
-  --ws-port 9945 \
   --parachain-id=2088 \
   --execution=wasm \
   --wasm-execution=compiled \
   --unsafe-rpc-external \
-  --unsafe-ws-external \
   --rpc-methods=unsafe \
   --pruning=archive \
   --bootnodes=/ip4/35.198.171.148/tcp/30333/ws/p2p/12D3KooWDXDwSdqi8wB1Vjjs5SVpAfk6neadvNTPAik5mQXqV7jF \
@@ -85,7 +83,6 @@ ExecStart=/home/centrifuge/centrifuge-chain/target/release/centrifuge-chain \
   --wasm-execution=compiled \
   --port 30434 \
   --rpc-port 9935 \
-  --ws-port 9946 \
   --no-private-ipv4 \
   --no-mdns \
   --sync fast \
