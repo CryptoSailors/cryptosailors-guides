@@ -58,11 +58,9 @@ SyslogIdentifier=centrifuge
 SyslogFacility=local7
 KillSignal=SIGHUP
 ExecStart=/home/centrifuge/centrifuge-chain/target/release/centrifuge-chain \
-    --name=YOUR_NODE_NAME \
+    --name=CryptoSailors🐬 \
     --port=30333 \
     --rpc-port=9933 \
-    --ws-port=9944 \
-    --unsafe-ws-external \
     --unsafe-rpc-external \
     --rpc-cors=all \
     --rpc-methods=unsafe \
@@ -73,13 +71,13 @@ ExecStart=/home/centrifuge/centrifuge-chain/target/release/centrifuge-chain \
     --log=main,info \
     --execution=wasm \
     --wasm-execution=compiled \
-    --ws-max-connections=5000 \
     --bootnodes=/ip4/35.198.171.148/tcp/30333/ws/p2p/12D3KooWDXDwSdqi8wB1Vjjs5SVpAfk6neadvNTPAik5mQXqV7jF \
     --bootnodes=/ip4/34.159.117.205/tcp/30333/ws/p2p/12D3KooWMspZo4aMEXWBH4UXm3gfiVkeu1AE68Y2JDdVzU723QPc \
     -- \
     --chain=polkadot \
     --execution=wasm \
     --wasm-execution=compiled
+
 
 [Install]
 WantedBy=multi-user.target
