@@ -1,5 +1,5 @@
 <p align="center">
- <img src=""/></a>
+ <img src="https://i.postimg.cc/bJq03rkS/mainnet-pic.png"/></a>
 </p>
 
 # Pylons mainnet node guide installation.
