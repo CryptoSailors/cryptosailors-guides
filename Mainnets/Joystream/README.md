@@ -82,6 +82,12 @@ sudo journalctl -u joystream -f -n 100
 ```
 You can check your node name in [Joystream Telemetry](https://telemetry.polkadot.io/#list/0x6b5e488e0fa8f9821110d5c13f4c468abcd43ce5e297e62b34c53c3346465956)
 
+## 7 . Your Session keys
+This keys should be inserted in your validator node through [polkadot.js.org](https://polkadot.js.org/)
+```
+curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "author_rotateKeys", "params":[]}' http://localhost:9933
+```
+
 ## 7. Delete your node
 
 ```
