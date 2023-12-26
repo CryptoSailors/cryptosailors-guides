@@ -88,7 +88,7 @@ This keys should be inserted in your validator node through [polkadot.js.org](ht
 curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "author_rotateKeys", "params":[]}' http://localhost:9933
 ```
 
-## 7. Delete your node
+## 8. Delete your node
 
 ```
 sudo systemctl stop joystream
