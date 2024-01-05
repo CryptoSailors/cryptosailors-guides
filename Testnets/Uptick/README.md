@@ -21,32 +21,35 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake snapd lz4 -y
 ```
 ```
-CHAIN_ID=origin_1170-1
+MONIKER=<INPUT_YOUR_MONIKER>
+CHAIN_ID=origin_1170-2
 export FOLDER=.uptickd
 echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
 echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
+echo "export MONIKER=${MONIKER}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 Install [GO according this instruction](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22)
 
 ## 3. Node installation.
 ```
-wget https://raw.githubusercontent.com/UptickNetwork/uptick-testnet/main/origin_1170-1/lib/uptickd-linux-amd64-v0.2.14.tar.gz
-tar -zxvf uptickd-linux-amd64-v0.2.14.tar.gz && chmod +x uptickd
-sudo mv uptickd go/bin/
+git clone https://github.com/UptickNetwork/uptick.git
+cd uptick
+git checkout v0.2.11
+make install
 ```
 Change `<moniker-name>` on your name
 ```
-uptickd init <moniker-name> --chain-id=$CHAIN_ID
+uptickd init $MONIKER --chain-id=$CHAIN_ID
 ```
 Download the genis.json file.
 ```
-wget -O $HOME/$FOLDER/config/genesis.json "https://raw.githubusercontent.com/UptickNetwork/uptick-testnet/main/origin_1170-1/config/genesis.json"
+curl -Ls wget https://raw.githubusercontent.com/UptickNetwork/uptick-testnet/main/origin_1170-2/config/genesis.json > $HOME/$FOLDER/config/genesis.json
 ```
 
 ## 4. Configure our node
 ```
-PEERS=4e9c4865b96e4675da9322d50e1ec439161d56ea@54.179.233.10:26656
+PEERS=cc619896674fcbfa6994f2703bf657cfa062635e@13.213.143.45:26656
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/$FOLDER/config/config.toml
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $HOME/$FOLDER/config/config.toml
 sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 100/g' $HOME/$FOLDER/config/config.toml
