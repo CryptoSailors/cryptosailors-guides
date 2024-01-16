@@ -21,7 +21,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake snapd lz4 -y
 ```
 ```
-CHAIN_ID=origin_1170-1
+CHAIN_ID=origin_1170-2
 export FOLDER=.uptickd
 echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
 echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
@@ -31,9 +31,13 @@ Install [GO according this instruction](https://github.com/CryptoSailors/cryptos
 
 ## 3. Node installation.
 ```
-wget https://raw.githubusercontent.com/UptickNetwork/uptick-testnet/main/origin_1170-1/lib/uptickd-linux-amd64-v0.2.14.tar.gz
-tar -zxvf uptickd-linux-amd64-v0.2.14.tar.gz && chmod +x uptickd
-sudo mv uptickd go/bin/
+git clone https://github.com/UptickNetwork/uptick.git
+cd uptick
+git fetch --all
+latestTag=$(curl -s https://api.github.com/repos/UptickNetwork/uptick/releases/latest | grep '.tag_name'|cut -d\" -f4)
+echo $latestTag
+git checkout $latestTag
+make install
 ```
 Change `<moniker-name>` on your name
 ```
@@ -69,7 +73,7 @@ After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which uptickd) start
+ExecStart=$(which uptickd) start --chain-id origin_1170-2
 Restart=always
 RestartSec=3
 LimitNOFILE=10000
@@ -177,9 +181,9 @@ rm -rf $(which uptickd)
 
 👉[Official guide](https://docs.uptick.network/)
 
-👉[Uptick Explorer](https://gon.ping.pub/uptick%20origin/staking)
+👉[Uptick Explorer](https://testnet.itrocket.net/uptick/staking/uptickvaloper1auqf0ahahc8svy55h59aky3plxmyuxepq6d89t)
 
-👉[NodeStake snapshot](https://services.kjnodes.com/home/mainnet/uptick/snapshot)
+👉[Itrocket snapshot](https://itrocket.net/services/testnet/uptick/)
 
 👉[Uptick Github](https://nodestake.top/uptick)
 
