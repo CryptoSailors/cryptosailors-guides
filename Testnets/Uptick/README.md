@@ -96,15 +96,12 @@ sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:${CO
 ```
 
 ## 6. Download latest Snapshot
-We will you snapshot from [NodeStake validator](https://nodestake.top/uptick)
+We will you snapshot from [Itrocket validator](https://itrocket.net/services/testnet/uptick/)
 ```
-cp $HOME/$FOLDER/data/priv_validator_state.json $HOME/$FOLDER/priv_validator_state.json.backup
-rm -rf $HOME/$FOLDER/data
-```
-```
-SNAP_NAME=$(curl -s https://ss-t.uptick.nodestake.top/ | egrep -o ">20.*\.tar.lz4" | tr -d ">")
-curl -o - -L https://ss-t.uptick.nodestake.top/${SNAP_NAME}  | lz4 -c -d - | tar -x -C $HOME/$FOLDER
-mv $HOME/$FOLDER/priv_validator_state.json.backup $HOME/$FOLDER/data/priv_validator_state.json
+cp $HOME/$FOLDER/data/priv_validator_state.json $HOME/.uptickd/priv_validator_state.json.backup
+rm -rf $HOME/$FOLDER/data 
+curl https://testnet-files.itrocket.net/uptick/snap_uptick.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/$FOLDER
+mv $HOME/.uptickd/priv_validator_state.json.backup $HOME/$FOLDER/data/priv_validator_state.json
 ```
 
 ## 7. Start a node
@@ -130,12 +127,7 @@ If you would like recover your wallet
 ```
 uptickd keys add wallet --recover
 ```
-Got to the [faucet](https://faucet.origin.uptick.network/) and claim test tokens.
 
-Check your wallet balance
-```
-uptickd q bank balances <your-wallet-address>
-```
 ## 9. Сreate own validator
 ```
 uptickd tx staking create-validator \
@@ -153,7 +145,7 @@ uptickd tx staking create-validator \
   --details="" \
   --gas=auto
 ```
-Finaly you should see your validator in [Block Explorer](https://gon.ping.pub/uptick%20origin/staking) on Active or Inactive set.
+Finaly you should see your validator in [Block Explorer](https://testnet.itrocket.net/uptick/staking) on Active or Inactive set.
 
 ## 10. Backup your node
 After successfully creating a validator, you must take care of `priv_validator_key.json`. Without it you will not be able to restore the validator. It can be found in the folder `.uptickd/config`
@@ -181,11 +173,11 @@ rm -rf $(which uptickd)
 
 👉[Official guide](https://docs.uptick.network/)
 
-👉[Uptick Explorer](https://testnet.itrocket.net/uptick/staking/uptickvaloper1auqf0ahahc8svy55h59aky3plxmyuxepq6d89t)
+👉[Uptick Explorer](https://testnet.itrocket.net/uptick/staking)
 
 👉[Itrocket snapshot](https://itrocket.net/services/testnet/uptick/)
 
-👉[Uptick Github](https://nodestake.top/uptick)
+👉[Uptick Github](https://github.com/UptickNetwork/uptick)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
