@@ -13,7 +13,15 @@ Official
 - I recommend Dedicated Ryzen 5 Server on [webtropia](https://bit.ly/45KaUj4)
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
-## 2. Server preparation.
+## 2. Create a user
+```
+sudo adduser uptick
+sudo usermod -aG sudo uptick
+sudo usermod -aG systemd-journal uptick
+sudo su - uptick
+```
+
+## 3. Server preparation.
 ```
 sudo apt update && sudo apt upgrade -y
 ```
@@ -21,7 +29,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake snapd lz4 -y
 ```
 ```
-CHAIN_ID=origin_1170-2
+CHAIN_ID=origin_1170-3
 export FOLDER=.uptickd
 echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
 echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
@@ -29,7 +37,7 @@ source $HOME/.bash_profile
 ```
 Install [GO according this instruction](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22)
 
-## 3. Node installation.
+## 4. Node installation.
 ```
 git clone https://github.com/UptickNetwork/uptick.git
 cd uptick
@@ -38,6 +46,7 @@ latestTag=$(curl -s https://api.github.com/repos/UptickNetwork/uptick/releases/l
 echo $latestTag
 git checkout $latestTag
 make install
+cd ~
 ```
 Change `<moniker-name>` on your name
 ```
@@ -45,12 +54,12 @@ uptickd init <moniker-name> --chain-id=$CHAIN_ID
 ```
 Download the genis.json file.
 ```
-wget -O $HOME/$FOLDER/config/genesis.json "https://raw.githubusercontent.com/UptickNetwork/uptick-testnet/main/origin_1170-1/config/genesis.json"
+curl -Ls wget https://raw.githubusercontent.com/UptickNetwork/uptick-testnet/main/origin_1170-3/config/genesis.json > $HOME/.uptickd/config/genesis.json
 ```
 
-## 4. Configure our node
+## 5. Configure our node
 ```
-PEERS=4e9c4865b96e4675da9322d50e1ec439161d56ea@54.179.233.10:26656
+PEERS=cda6bd82e62e8c91b54498d7fbd930b962f1125b@47.128.211.171:26656
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/$FOLDER/config/config.toml
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $HOME/$FOLDER/config/config.toml
 sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 100/g' $HOME/$FOLDER/config/config.toml
@@ -73,7 +82,7 @@ After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which uptickd) start --chain-id origin_1170-2
+ExecStart=$(which uptickd) start --chain-id origin_1170-3
 Restart=always
 RestartSec=3
 LimitNOFILE=10000
