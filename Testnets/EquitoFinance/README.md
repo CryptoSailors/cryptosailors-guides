@@ -1,4 +1,4 @@
-# update_equito_testnet_node
+# Update_equito_testnet_node
 This repository contains a script to update the Equito TestNet Node on the server
 
 ## Requirements
