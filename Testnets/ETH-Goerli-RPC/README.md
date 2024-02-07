@@ -28,6 +28,11 @@ sudo apt install software-properties-common -y
 sudo apt-get install protobuf-compiler -y
 ```
 ```
+IP_GOERLI=YOUR_GOERLI_IP_ADDRESS_WHITOUT_PORT
+echo "export IP_GOERLI=${IP_GOERLI}" >> $HOME/.bash_profile
+source $HOME/.bash_profile
+```
+```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ```
 ```
@@ -111,12 +116,17 @@ After=network-online.target
 [Service]
 User=$USER
 ExecStart=$HOME/.cargo/bin/lighthouse bn \
-   --network goerli \
-   --execution-endpoint http://localhost:8551 \
-   --execution-jwt $HOME/lighthouse/jwt.hex \
-   --http \
-   --disable-deposit-contract-sync \
-   --checkpoint-sync-url=https://prater-checkpoint-sync.stakely.io
+ --network goerli \
+ --port 9006 \
+ --port6 9096 \
+ --http \
+ --http-address $IP_GOERLI \
+ --http-port 5053 \
+ --http-allow-origin "*" \
+ --execution-endpoint http://localhost:8551 \
+ --execution-jwt /home/ethereum/lighthouse/jwt.hex \
+ --disable-deposit-contract-sync \
+ --checkpoint-sync-url=https://prater-checkpoint-sync.stakely.io
 
 Restart=always
 RestartSec=3
