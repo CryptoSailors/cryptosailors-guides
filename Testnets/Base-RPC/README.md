@@ -56,7 +56,7 @@ sudo docker-compose version
 git clone https://github.com/base-org/node
 cd node
 ```
-Open a `.env.goerli`. Find `OP_NODE_L1_ETH_RPC` and input your Ethereum Goerli RPC url.
+Open a `.env.goerli`. Find `OP_NODE_L1_ETH_RPC` and `OP_NODE_L1_BEACON` input your Ethereum Goerli RPC and beacon url.
 ```
 sudo nano .env.goerli
 ```
@@ -64,6 +64,10 @@ sudo nano .env.goerli
 ```
 # [recommended] replace with your preferred L1 (Ethereum, not Base) node RPC URL:
 OP_NODE_L1_ETH_RPC=http://YOUR_GOERLI_IP:PORT
+```
+```
+# [required] replace with your preferred L1 CL beacon endpoint:
+OP_NODE_L1_BEACON=http://YOUR_GOERLI_IP:PORT
 ```
 Open a `docker-compose.yml` and chose goerli network. And add volume folder.
 ```
