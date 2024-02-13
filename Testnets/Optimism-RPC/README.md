@@ -206,12 +206,14 @@ sudo rm -rf temp
 ## 10 Update your node
 ```
 cd optimism-node/op-geth
+git reset --hard
 git pull
 latestTag=$(curl -s https://api.github.com/repos/ethereum-optimism/op-geth/releases/latest | grep '.tag_name'|cut -d\" -f4)
 echo $latestTag
 git checkout $latestTag
 go build -o ~/go/bin/op-geth ./cmd/geth
 cd ~/optimism-node/optimism
+git reset --hard
 git pull
 latestTag=$(curl -s https://api.github.com/repos/ethereum-optimism/optimism/releases/latest | grep '.tag_name'|cut -d\" -f4)
 echo $latestTag
