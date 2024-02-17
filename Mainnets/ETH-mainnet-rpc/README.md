@@ -128,6 +128,7 @@ User=$USER
 ExecStart=$HOME/.cargo/bin/lighthouse bn \
    --execution-endpoint http://localhost:8551 \
    --execution-jwt $HOME/lighthouse/jwt.hex \
+   --http-address 0.0.0.0 \
    --http \
    --disable-deposit-contract-sync \
    --checkpoint-sync-url=https://mainnet-checkpoint-sync.stakely.io
