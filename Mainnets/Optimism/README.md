@@ -20,6 +20,15 @@ sudo apt update && sudo apt upgrade -y
 ```
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 ```
+Insert your Goerli and Beacon http URL address in variable.
+```
+YOUR_ETHEREUM_RPC_URL="http://123.4.567.8:8545"
+$YOUR_ETHEREUM_BEACON_RPC_URL="http://123.4.567.8:5052"
+echo "export YOUR_ETHEREUM_RPC_URL=${YOUR_ETHEREUM_RPC_URL}" >> $HOME/.bash_profile
+echo "export YOUR_ETHEREUM_BEACON_RPC_URL=${YOUR_ETHEREUM_BEACON_RPC_URL}" >> $HOME/.bash_profile
+source $HOME/.bash_profile
+```
+
 ## 2. Install golang go.
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
@@ -117,7 +126,8 @@ After=network-online.target
 [Service]
 User=$USER
 ExecStart=$HOME/go/bin/op-node \
-  --l1=http://YOUR_ETHEREUM_RPC_URL \
+  --l1=$YOUR_ETHEREUM_RPC_URL \
+  --l1.beacon=$YOUR_ETHEREUM_BEACON_RPC_URL \
   --l1.trustrpc \
   --l2=http://127.0.0.1:8751 \
   --network=mainnet \
@@ -197,13 +207,15 @@ sudo rm -rf temp
 ## 10 Update your node
 ```
 cd optimism-node/op-geth
-git pull
+git reset --hard
+sudo git pull
 latestTag=$(curl -s https://api.github.com/repos/ethereum-optimism/op-geth/releases/latest | grep '.tag_name'|cut -d\" -f4)
 echo $latestTag
 git checkout $latestTag
 go build -o ~/go/bin/op-geth ./cmd/geth
 cd ~/optimism-node/optimism
-git pull
+git reset --hard
+sudo git pull
 latestTag=$(curl -s https://api.github.com/repos/ethereum-optimism/optimism/releases/latest | grep '.tag_name'|cut -d\" -f4)
 echo $latestTag
 go build -o ~/go/bin/op-node ./op-node/cmd
