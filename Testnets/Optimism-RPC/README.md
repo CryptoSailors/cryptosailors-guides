@@ -25,7 +25,7 @@ Insert your Goerli and Beacon http URL address in variable.
 YOUR_GOERLI_ETHEREUM_RPC_URL="http://123.4.567.8:8545"
 $YOUR_GOERLI_BEACON_RPC_URL="http://123.4.567.8:5052"
 echo "export YOUR_GOERLI_ETHEREUM_RPC_URL=${YOUR_GOERLI_ETHEREUM_RPC_URL}" >> $HOME/.bash_profile
-echo "export YOUR_GOERLI_BEACON_RPC_URL=${YOUR_GOERLI_ETHEREUM_RPC_URL}" >> $HOME/.bash_profile
+echo "export YOUR_GOERLI_BEACON_RPC_URL=${YOUR_GOERLI_BEACON_RPC_URL}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 
