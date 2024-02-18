@@ -105,7 +105,7 @@ services:
       - 9222:9222     # P2P TCP
       - 9222:9222/udp # P2P UDP
       - 7304:7300     # metrics
-      - 6061:6060     # pprof
+      - 6161:6060     # pprof
     command: [ "bash", "./op-node-entrypoint" ]
     env_file:
       # select your network here:
