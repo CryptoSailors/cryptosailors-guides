@@ -3,7 +3,7 @@
 chain = "mainnet"
 # identity = "Pratiks-MacBook-Pro.local"
 # log-level = "INFO"
-datadir = "/home/polygon/.bor/data/chaindata"
+datadir = "/home/polygon/.bor/data/"
 # keystore = "$BOR_DIR/keystore"
 syncmode = "full"
 # gcmode = "full"
