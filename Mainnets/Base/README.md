@@ -112,7 +112,7 @@ services:
 I recommend launch `tmux` or `screen` windows, because downloading of [shanpshot](https://docs.base.org/guides/run-a-base-node) will take about 10h.
 ```
 cd ~
-wget https://base-mainnet-archive-snapshots.s3.us-east-1.amazonaws.com/$(curl https://base-mainnet-archive-snapshots.s3.us-east-1.amazonaws.com/latest)  -O - | tar -xz -C $HOME/node
+wget https://base-snapshots-mainnet-archive.s3.amazonaws.com/$(curl https://base-snapshots-mainnet-archive.s3.amazonaws.com/latest) -O - | tar -xz -C $HOME/node
 ```
 
 ## 6. Start a Base mainnet node.
