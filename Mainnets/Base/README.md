@@ -114,6 +114,10 @@ I recommend launch `tmux` or `screen` windows, because downloading of [shanpshot
 cd ~
 wget https://base-snapshots-mainnet-archive.s3.amazonaws.com/$(curl https://base-snapshots-mainnet-archive.s3.amazonaws.com/latest) -O - | tar -xz -C $HOME/node
 ```
+```
+sudo mkdir $HOME/node/data
+sudo sudo mv $HOME/node/snapshots/mainnet/download/geth $HOME/node/data
+```
 
 ## 6. Start a Base mainnet node.
 ```
