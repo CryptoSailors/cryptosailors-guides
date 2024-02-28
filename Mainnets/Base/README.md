@@ -75,8 +75,6 @@ version: '3.8'
 services:
   geth: # this is Optimism's geth client
     build: .
-    volumes:
-     - /home/base/node/data:/data
     ports:
       - 8549:8545       # RPC
       - 8550:8546       # websocket
@@ -84,6 +82,8 @@ services:
       - 30308:30303/udp # P2P UDP (currently unused)
       - 7301:6060       # metrics
     command: [ "bash", "./geth-entrypoint" ]
+    volumes:
+        - 'home/base/node/data:/data
     env_file:
       # select your network here:
 #      - .env.goerli
@@ -105,6 +105,8 @@ services:
 #      - .env.goerli
 #      - .env.sepolia
       - .env.mainnet
+
+
 ```
 
 ## 5. Downoald latest snapshot
