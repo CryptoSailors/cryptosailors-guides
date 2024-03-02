@@ -40,16 +40,18 @@ RELEASE="offchainlabs/nitro-node:v2.1.3-e815395"
 mkdir -p $HOME/data/arbitrum
 chmod -fR 777 $HOME/data/arbitrum
 ```
-Input your URL address started from `htttp://123` or link from [infura](https://www.infura.io/).
+Input your ETH and Beacon URL address started from htttp://123 or link from [infura](https://www.infura.io/).
 ```
-ETH_RPC_URL="http://123....:8545 or link from infura"
+ETH_RPC_URL="http://123....:8545" or link from infura"
+ETH_BEACON_URL="http://123....:5052" or link from infura"
 ```
 ```
 echo "export ETH_RPC_URL=${ETH_RPC_URL}" >> .bash_profile
+echo "export ETH_BEACON_URL=${ETH_BEACON_URL}" >> .bash_profile
 source .bash_profile
 ```
 ```
-sudo docker run --name arbitrum --restart unless-stopped --stop-timeout 300 -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8547:8547 -p 0.0.0.0:8548:8548 $RELEASE --parent-chain.connection.url $ETH_RPC_URL --chain.id=42161 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=* --init.url="https://snapshot.arbitrum.io/mainnet/nitro.tar"
+sudo docker run --name arbitrum --restart unless-stopped --stop-timeout 300 -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8547:8547 -p 0.0.0.0:8548:8548 $RELEASE --parent-chain.connection.url=$ETH_RPC_URL --parent-chain.blob-client.beacon-url=$ETH_BEACON_URL --chain.id=42161 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=* --init.url="https://snapshot.arbitrum.io/mainnet/nitro.tar"
 ```
 Check your logs: 
 ```
@@ -77,7 +79,7 @@ sudo docker stop arbitrum
 sudo docker rm arbitrum
 ```
 ```
-sudo docker run --name arbitrum --restart unless-stopped --stop-timeout 300 -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8547:8547 -p 0.0.0.0:8548:8548 $RELEASE --parent-chain.connection.url $ETH_RPC_URL --chain.id=42161 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=*
+sudo docker run --name arbitrum --restart unless-stopped --stop-timeout 300 -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8547:8547 -p 0.0.0.0:8548:8548 $RELEASE --parent-chain.connection.url=$ETH_RPC_URL --parent-chain.blob-client.beacon-url=$ETH_BEACON_URL --chain.id=42161 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=*
 ```
 #
 
