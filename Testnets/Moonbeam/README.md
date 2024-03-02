@@ -160,6 +160,8 @@ cargo build --release
 ```
 sudo systemctl restart moonbeam
 sudo journalctl -u cat -f -n 100 -o cat
+```
+
 #
 
 
