@@ -126,7 +126,7 @@ sudo systemctl start moonbeam
 Verify that the service is running and works fine:
 ```
 sudo systemctl status moonbeam
-sudo journalctl -u moonbeam -f -n 100
+sudo journalctl -u cat -f -n 100 -o cat
 ```
 You should see something like this:
 ```
@@ -148,13 +148,28 @@ When the node will be successfully synced, the output from above will print
 ## 6. Your RPC endpoints will be: 
 - `http:YOUR:IP:9933`
 
+## 7. Update your node
+```
+cd monnbeam
+git fetch --all
+latestTag=$(curl -s https://api.github.com/repos/moonbeam-foundation/moonbeam/releases/latest | grep '.tag_name'|cut -d\" -f4)
+git checkout $latestTag
+echo $latestag
+cargo build --release
+```
+```
+sudo systemctl restart moonbeam
+sudo journalctl -u cat -f -n 100 -o cat
 #
+
 
 👉[Hetzner — server rental](https://hetzner.cloud/?ref=NY9VHC3PPsL0)
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
 👉[Moonbeam Official guide](https://docs.moonbeam.network)
+
+👉[Moonbeam Githun](https://github.com/moonbeam-foundation/moonbeam/releases)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
