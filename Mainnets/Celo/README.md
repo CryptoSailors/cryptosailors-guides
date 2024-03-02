@@ -78,6 +78,7 @@ sudo docker logs celo-fullnode -f --tail 100
 ```
 sudo docker stop -t 300 celo-fullnode
 sudo docker rm celo-fullnode
+sudo docker pull $CELO_IMAGE
 sudo docker run --name celo-fullnode -d --restart unless-stopped --stop-timeout 300 -p 0.0.0.0:8911:8545 -p 0.0.0.0:8912:8546 -p 30305:30303 -p 30306:30303/udp -v $PWD:$HOME/.celo $CELO_IMAGE --verbosity 3 --syncmode full --http --http.addr 0.0.0.0 --http.api eth,net,web3,debug,admin,personal --light.serve 90 --light.maxpeers 1000 --maxpeers 1100 --etherbase $CELO_ACCOUNT_ADDRESS --datadir $HOME/.celo
 ```
 ## 7. Link on your rpc:
