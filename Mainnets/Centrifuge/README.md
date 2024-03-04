@@ -71,6 +71,7 @@ ExecStart=/home/centrifuge/centrifuge-chain/target/release/centrifuge-chain \
     --log=main,info \
     --execution=wasm \
     --wasm-execution=compiled \
+    --relay-chain-rpc-urls "wss://rpc.ibp.network/polkadot" \
     --bootnodes=/ip4/35.198.171.148/tcp/30333/ws/p2p/12D3KooWDXDwSdqi8wB1Vjjs5SVpAfk6neadvNTPAik5mQXqV7jF \
     --bootnodes=/ip4/34.159.117.205/tcp/30333/ws/p2p/12D3KooWMspZo4aMEXWBH4UXm3gfiVkeu1AE68Y2JDdVzU723QPc \
     -- \
