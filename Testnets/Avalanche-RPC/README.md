@@ -34,71 +34,46 @@ sudo apt update && sudo apt upgrade -y
 ```
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 ```
-Instal Golang Go according [this instruction](https://github.com/CryptoSailors/Tools/tree/main/Install%20Golang%20%22Go%22)
+
+## 4. Install golang go
+Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
+
 
 ## 4. Node installation.
 ```
-wget -nd -m https://raw.githubusercontent.com/ava-labs/avalanche-docs/master/scripts/avalanchego-installer.sh
-chmod 755 avalanchego-installer.sh
+git clone https://github.com/ava-labs/avalanchego
+cd avalanchego
+./scripts/build.sh
+cd ~
 ```
-```
-./avalanchego-installer.sh
-```
-```
-sudo journalctl -u avalanchego -f
-```
-Now your node start sycnh mainnet chain. We should stop it and switch it to testnet.
-```
-sudo systemctl stop avalanchego
-```
-Open a  `node.json` in redactor and add a parametr `"network-id": "fuji"`
-```
-sudo nano /home/avalanche/.avalanchego/configs/node.json
-```
-```
-{
-  "http-host": "",
-  "public-ip": "YOUR_IP_ADDRESS_HERE",
-  "network-id": "fuji"
-}
-```
-Close redactor by CTRX+X,Y,ENTER
 
 ## 5. Launch a node
+```
+sudo tee /etc/systemd/system/avalanchego.service > /dev/null <<EOF
+[Unit]
+Description=AvalancheGo systemd service
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+User=$USER
+WorkingDirectory=$HOME
+ExecStart=$HOME/avalanchego/build/avalanchego \
+ --network-id=fuji \
+ --http-host 0.0.0.0
+
+LimitNOFILE=32768
+Restart=always
+RestartSec=1
+[Install]
+WantedBy=multi-user.target
+```
 ```
 sudo systemctl enable avalanchego
 sudo systemctl daemon-reload
 sudo systemctl restart avalanchego
 sudo journalctl -u avalanchego -f -n 100
 ```
-## 6. Updated a node
-Most probably that you avalanche testnet node will be out of date. To fix it you need update it by last binary release. Checke the [latest release here](https://github.com/ava-labs/avalanchego/releases). In our case this is `v1.9.8` 
-```
-RELEASE=v1.9.8
-echo $RELEASE
-mkdir temp
-cd temp
-```
-```
-sudo wget https://github.com/ava-labs/avalanchego/releases/download/$RELEASE/avalanchego-linux-amd64-$RELEASE.tar.gz
-```
-```
-sudo tar -xvzf avalanchego-linux-amd64-$RELEASE.tar.gz
-```
-```
-sudo mv avalanchego-$RELEASE avalanche-node
-sudo chmod +r avalanche-node
-sudo systemctl stop avalanchego
-```
-```
-sudo cp -r avalanche-node /home/avalanche
-sudo systemctl start avalanchego
-sudo journalctl -fu avalanchego -o cat -n 100
-```
-```
-sudo rm -rf avalanchego-linux-amd64-$RELEASE.tar.gz
-sudo rm -rf avalanche-node
-```
+
 #
 👉[Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) Only Dedicated Server.
 
