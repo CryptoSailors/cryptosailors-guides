@@ -13,16 +13,7 @@ Official
 - I recommend Dedicated Ryzen 7 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
-## 2. Server preparation.
-```
-sudo apt update && sudo apt upgrade -y
-```
-```
-sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
-```
-Instal Golang Go according [this instruction](https://github.com/CryptoSailors/Tools/tree/main/Install%20Golang%20%22Go%22)
-
-## 3. Create your own user
+## 2. Create your own user
 ```
 sudo adduser avalanche
 ```
@@ -35,9 +26,15 @@ usermod -a -G systemd-journal avalanche
 ```
 sudo su - avalanche
 ```
+
+## 3. Server preparation.
 ```
-cd ~
+sudo apt update && sudo apt upgrade -y
 ```
+```
+sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
+```
+Instal Golang Go according [this instruction](https://github.com/CryptoSailors/Tools/tree/main/Install%20Golang%20%22Go%22)
 
 ## 4. Node installation.
 ```
