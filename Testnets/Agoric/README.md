@@ -58,8 +58,13 @@ curl -Ls https://snapshots.kjnodes.com/agoric/addrbook.json > $HOME/$FOLDER/conf
 
 ## 5. Node Configuration
 ```
-sed -i -e "s|^seeds *=.*|seeds = \"3f472746f46493309650e5a033076689996c8881@agoric-testnet.rpc.kjnodes.com:12759\"|" $HOME/$FOLDER/config/config.toml
+SEED="3f472746f46493309650e5a033076689996c8881@agoric-testnet.rpc.kjnodes.com:12759,5c2a752c9b1952dbed075c56c600c3a79b58c395@agoric-testnet-seed.autostake.com:27106"
+PEER="5c2a752c9b1952dbed075c56c600c3a79b58c395@agoric-testnet-peer.autostake.com:27106"
+```
+```
+sed -i -e "s|^seeds *=.*|seeds = \"$SEED\"|" $HOME/$FOLDER/config/config.toml
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025ubld\"|" $HOME/$FOLDER/config/app.toml
+sed -i "s/persistent_peers = \"\"/persistent_peers = \"$PEER\"/" "$HOME/$FOLDER/config/config.toml
 sed -i 's|indexer =.*|indexer = "'null'"|g' $HOME/$FOLDER/config/config.toml
 sed -i \
   -e 's|^pruning *=.*|pruning = "custom"|' \
@@ -95,7 +100,7 @@ After=network-online.target
 User=$USER
 # OPTIONAL: turn on Cosmos nondeterminism debugging information
 #ExecStart=$(which agd) start start --log_level=info --trace-store=.agoric/data/kvstore.trace
-ExecStart=$(which agd) start start --log_level=warn
+ExecStart=$(which agd) start start 
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
