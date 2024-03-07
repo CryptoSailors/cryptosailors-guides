@@ -52,7 +52,7 @@ cd ~
 agd init $MONIKER --chain-id=$CHAIN_ID
 ```
 ```
-curl -Ls https://snapshots.kjnodes.com/agoric/genesis.json > $HOME/$FOLDER/agoric/config/genesis.json
+curl -Ls https://snapshots.kjnodes.com/agoric/genesis.json > $HOME/$FOLDER/config/genesis.json
 curl -Ls https://snapshots.kjnodes.com/agoric/addrbook.json > $HOME/$FOLDER/config/addrbook.json
 ```
 
