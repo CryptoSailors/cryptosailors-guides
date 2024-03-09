@@ -14,9 +14,11 @@
 
 ## 1. Node Preparation.
 ```
-sudo apt-get install wget jq unzip aria2 lz4 screen -y
+sudo apt update && sudo apt upgrade -y
 ```
-
+```
+sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
+```
 ## 2. Create Binance User and add it to Sudo group.
 Create binance account:
 ```
@@ -46,9 +48,9 @@ Check the current version:
 ./bsc/build/bin/geth --version
 ```
 
-You should see something like this:
+You should see something like this or newer:
 ```
-geth version 1.3.1-1dca4866-20231109
+geth version 1.3.10-c8cc9196
 ```
 
 ## 4. Download the config files genesis.json and config.toml.
