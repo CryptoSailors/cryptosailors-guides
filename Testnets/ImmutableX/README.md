@@ -38,10 +38,10 @@ sudo chmod -R 777 opt
 sudo openssl rand -base64 > $HOME/opt/immutable-zkevm/password
 ```
 ```
-sudo docker pull ghcr.io/immutable/go-ethereum/go-ethereum:v0.0.8
+sudo docker pull ghcr.io/immutable/go-ethereum/go-ethereum:v1.0.0-beta.1
 ```
 ```
-sudo docker tag ghcr.io/immutable/go-ethereum/go-ethereum:v0.0.8 geth
+sudo docker tag ghcr.io/immutable/go-ethereum/go-ethereum:v1.0.0-beta.1 geth
 ```
 ```
 sudo docker run \
@@ -55,8 +55,9 @@ sudo docker run \
   --rm \
   -v $HOME/opt/immutable-zkevm:/mnt/geth \
   --name geth \
-  geth init \
-  --datadir /mnt/geth /etc/geth/testnet.json 
+  geth immutable bootstrap rpc \
+  --zkevm testnet \
+  --datadir /mnt/geth /etc/geth/testnet.json
 ```
 ```
 sudo docker run \
@@ -66,10 +67,9 @@ sudo docker run \
   --name geth \
   -p 8936:8545 \
   geth \
+  --zkevm testnet \
   --config /etc/geth/testnet.toml \
   --datadir /mnt/geth \
-  --keystore /mnt/geth/keystore \
-  --networkid 13473 \
   --http \
   --http.port "8545" \
   --http.addr "0.0.0.0"
