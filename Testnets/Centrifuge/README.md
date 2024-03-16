@@ -121,8 +121,8 @@ sudo rm -rf /etc/systemd/system/centrufuge.service
 ## 7. Upgrade your node
 ```
 source "$HOME/.cargo/env"
-git pull
 cd centrifuge-chain
+git pull
 latestTag=$(curl -s https://api.github.com/repos/centrifuge/centrifuge-chain/releases/latest | grep '.tag_name'|cut -d\" -f4)
 echo $latestTag
 git checkout $latestTag
