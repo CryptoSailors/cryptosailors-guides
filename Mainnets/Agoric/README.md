@@ -35,8 +35,11 @@ source $HOME/.bash_profile
 
 #### Install Node.Js
 ```
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt remove nodejs  
+sudo apt remove nodejs-doc
+sudo dpkg --remove --force-remove-reinstreq libnode-dev
+sudo dpkg --remove --force-remove-reinstreq libnode72:amd64
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs
 ```
 #### Update NPM to latest version
 
@@ -47,7 +50,7 @@ sudo npm install -g npm@latest -g expo-cli --unsafe-perm
 #### Yarn installation
 ```
 sudo chown -R $(whoami) /usr/local/bin
-npm install --global yarn -g expo-cli --unsafe-perm
+sudo npm install --global yarn -g expo-cli --unsafe-perm
 ```
 
 ## 3. Install golang go
