@@ -13,6 +13,18 @@
 - I recommend Dedicated Ryzen 5 Server on [webtropia](https://www.webtropia.com/?kwk=255074042020228216158042)
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
+## 1. Create user
+```
+sudo adduser agoric
+```
+```
+sudo usermod -aG sudo agoric
+sudo usermod -aG systemd-journal agoric
+```
+```
+sudo su - agoric
+```
+
 ## 2. Server preparation.
 ```
 sudo apt update && sudo apt upgrade -y
