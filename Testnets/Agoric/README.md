@@ -42,6 +42,27 @@ echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
 echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
+
+#### Install Node.Js
+```
+sudo apt remove nodejs  
+sudo apt remove nodejs-doc
+sudo dpkg --remove --force-remove-reinstreq libnode-dev
+sudo dpkg --remove --force-remove-reinstreq libnode72:amd64
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs
+```
+#### Update NPM to latest version
+
+```
+sudo npm install -g npm@latest -g expo-cli --unsafe-perm
+```
+
+#### Yarn installation
+```
+sudo chown -R $(whoami) /usr/local/bin
+sudo npm install --global yarn -g expo-cli --unsafe-perm
+```
+
 ## 3. Install golang go
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
