@@ -37,33 +37,34 @@ cd ~
 sudo chmod -R 777 opt
 ```
 ```
-sudo docker pull ghcr.io/immutable/go-ethereum/go-ethereum:v0.0.8
+sudo docker pull ghcr.io/immutable/go-ethereum/go-ethereum:v1.0.0-beta.1
 ```
 ```
-sudo docker tag ghcr.io/immutable/go-ethereum/go-ethereum:v0.0.8 geth
+sudo docker tag ghcr.io/immutable/go-ethereum/go-ethereum:v1.0.0-beta.1 geth
 ```
 ```
 sudo docker run \
   --rm \
   -v $HOME/opt/immutable-zkevm:/mnt/geth \
   --name geth \
-  geth init \
+  geth immutable bootstrap rpc \
+  --zkevm mainnet \
   --datadir /mnt/geth /etc/geth/mainnet.json 
 ```
 ```
 sudo docker run \
-  -d \
-  --restart=always \
-  -v $HOME/opt/immutable-zkevm:/mnt/geth \
-  --name geth \
-  -p 8936:8545 \
-  geth \
-  --config /etc/geth/mainnet.toml \
-  --datadir /mnt/geth \
-  --networkid 13371 \
-  --http \
-  --http.port "8545" \
-  --http.addr "0.0.0.0"
+-d \
+--restart=always \
+-v $HOME/opt/immutable-zkevm:/mnt/geth \
+--name geth \
+-p 8936:8545 \
+geth \
+--zkevm mainnet \
+--config /etc/geth/mainnet.toml \
+--datadir /mnt/geth \
+--http \
+--http.port "8545" \
+--http.addr "0.0.0.0"
 ```
 Check you logs
 ```
