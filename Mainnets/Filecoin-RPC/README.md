@@ -7,12 +7,25 @@
 #### Flollowing parametrs:
 - 8 CPU 
 - 32 GB RAM
+- 600 GB NVME
 
 #### My Recommendations
 - I recommend Dedicated Ryzen 5 Server on [Webtropia](https://www.webtropia.com/?kwk=255074042020228216158042) with extended SSD or NVME disk.
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
-## 1. Node Preparation.
+## 1. Create a user
+```
+sudo adduser filecoin
+```
+```
+sudo usermod -aG sudo filecoin
+sudo usermod -aG systemd-journal filecoin
+```
+```
+sudo su - filecoin
+```
+
+## 2. Node Preparation.
 ```
 sudo apt update && sudo apt upgrade -y
 ```
@@ -25,22 +38,11 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 source "$HOME/.cargo/env"
 ```
-## 2. Install Golang go
-The Curent version don't support go version `v1.20` and latest. We will use `v1.19.7`
-```
-wget https://golang.org/dl/go1.19.7.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.19.7.linux-amd64.tar.gz
-cat <<EOF >> ~/.bash_profile
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export GO111MODULE=on
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
-EOF
-source ~/.bash_profile
-go version
-rm -rf go1.19.7.linux-amd64.tar.gz
-```
-## 3. Install and Start FileCoin mainnet node
+
+## 3. Install golang go
+Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
+
+## 4. Install and Start FileCoin mainnet node
 ```
 git clone https://github.com/filecoin-project/lotus.git
 cd lotus/
@@ -49,9 +51,9 @@ make clean all
 sudo make install
 
 ```
-## 4. Download the latest snapshot
+## 5. Download the latest snapshot
 ```
-aria2c -x5 https://snapshots.mainnet.filops.net/minimal/latest.zst
+aria2c -x5 https://forest-archive.chainsafe.dev/latest/mainnet/
 ```
 ```
 sudo lotus daemon --import-snapshot /path/to/snapshot.car --halt-after-import
@@ -178,7 +180,7 @@ sudo systemctl restart lotus-daemon
 
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
-👉[FileCoin Official docs](https://kb.factor8.io/docs/filecoin/testnets/hyperspace)
+👉[FileCoin Official docs](https://lotus.filecoin.io/lotus/install/linux/)
 
 👉[FileCoin Github](https://github.com/filecoin-project/lotus)
 
