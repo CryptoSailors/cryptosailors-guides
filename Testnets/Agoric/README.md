@@ -71,7 +71,7 @@ Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/
 git clone https://github.com/Agoric/agoric-sdk
 cd agoric-sdk
 git fetch --all
-latestTag=agoric-upgrade-14-rc0
+latestTag=agoric-upgrade-14-rc1
 echo $latestTag
 git checkout $latestTag
 yarn install
@@ -207,7 +207,7 @@ sudo rm -rf /etc/systemd/system/agd.service
 ```
 cd agoric-sdk
 git fetch --all
-latestTag=agoric-upgrade-14-rc0
+latestTag=agoric-upgrade-14-rc1
 echo $latestTag
 git checkout $latestTag
 yarn install
