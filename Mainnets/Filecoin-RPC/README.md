@@ -59,7 +59,7 @@ aria2c -x5 https://forest-archive.chainsafe.dev/latest/mainnet/
 sudo lotus daemon --import-snapshot /path/to/snapshot.car --halt-after-import
 ```
 After command above should be created folder `.lotus`. If you launched command from user, the folder `.lotus` can be created in the `/root`. In this case move folder `.lotus` from the `/root` to the user folder.
-## 5. Configure your node.
+## 6. Configure your node.
 ```
 sudo nano ~/.lotus/config.toml
 ```
@@ -122,8 +122,9 @@ sudo nano ~/.lotus/config.toml
   EnableEthRPC = true
 ```
 Save and close file `CTRL+X,Y,NETER`
-## 6. Create a systemd service
+## 7. Create a systemd service
 ```
+cd lotus
 sudo make install-daemon-service
 ```
 ```
@@ -137,12 +138,12 @@ Environment=LOTUS_PATH="/path/to/.lotus"
 and change
 ```
 MemoryAccounting=true
-MemoryHigh=96G
-MemoryMax=128G
+MemoryHigh=16G
+MemoryMax=32G
 LimitNOFILE=65536
 ```
 Save and close file `CTRL+X,Y,NETER`
-## 7. Launch your node
+## 8. Launch your node
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable lotus-daemon
@@ -157,10 +158,10 @@ tail -F /var/log/lotus/daemon.log
 lotus sync wait
 ```
 
-## 8. Your RPC url
+## 9. Your RPC url
 - `http:YOUR_IP:1234/rpc/v1`
 
-## 9. Update your node.
+## 10. Update your node.
 
 In case if new release are out, do following steps:
 ```
