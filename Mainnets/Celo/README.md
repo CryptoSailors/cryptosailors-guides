@@ -76,6 +76,7 @@ sudo docker logs celo-fullnode -f --tail 100
 
 ## 6. Upgrade your celo fullnode
 ```
+CELO_IMAGE=us.gcr.io/celo-org/geth:1.8.2
 sudo docker stop -t 300 celo-fullnode
 sudo docker rm celo-fullnode
 sudo docker pull $CELO_IMAGE
