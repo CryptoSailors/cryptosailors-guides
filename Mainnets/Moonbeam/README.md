@@ -84,7 +84,6 @@ ExecStart=/home/moonbeam/moonbeam/target/release/moonbeam \
      --name "YOUR_NODE_NAME" \
      -- \
      --port 30334 \
-     --execution wasm \
      --name="YOUR_NODE_NAME"
 
 
