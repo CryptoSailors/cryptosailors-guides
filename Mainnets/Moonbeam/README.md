@@ -124,11 +124,11 @@ When the node will be successfully synced, the output from above will print
 
 ## 7. Update your node
 ```
-cd monnbeam
+cd moonbeam
 git fetch --all
 latestTag=$(curl -s https://api.github.com/repos/moonbeam-foundation/moonbeam/releases/latest | grep '.tag_name'|cut -d\" -f4)
 git checkout $latestTag
-echo $latestag
+echo $latestTag
 cargo build --release
 ```
 ```
