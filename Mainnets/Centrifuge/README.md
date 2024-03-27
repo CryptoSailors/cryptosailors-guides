@@ -37,6 +37,7 @@ git checkout $latestTag
 cargo build --release
 sudo chmod +x target/release/centrifuge-chain
 sudo mkdir data
+sudo chmod -R 777 data
 cd ~
 ```
 
@@ -58,7 +59,7 @@ SyslogIdentifier=centrifuge
 SyslogFacility=local7
 KillSignal=SIGHUP
 ExecStart=/home/centrifuge/centrifuge-chain/target/release/centrifuge-chain \
-    --name=CryptoSailors🐬 \
+    --name=YOUR_NAME \
     --port=30333 \
     --rpc-port=9933 \
     --unsafe-rpc-external \
@@ -71,7 +72,6 @@ ExecStart=/home/centrifuge/centrifuge-chain/target/release/centrifuge-chain \
     --log=main,info \
     --execution=wasm \
     --wasm-execution=compiled \
-    --relay-chain-rpc-urls "wss://rpc.ibp.network/polkadot" \
     --bootnodes=/ip4/35.198.171.148/tcp/30333/ws/p2p/12D3KooWDXDwSdqi8wB1Vjjs5SVpAfk6neadvNTPAik5mQXqV7jF \
     --bootnodes=/ip4/34.159.117.205/tcp/30333/ws/p2p/12D3KooWMspZo4aMEXWBH4UXm3gfiVkeu1AE68Y2JDdVzU723QPc \
     -- \
@@ -88,9 +88,9 @@ EOF
 ## 5. Start synchronization
 ```
 sudo systemctl daemon-reload
-sudo systemctl start centrufuge
-sudo systemctl enable centrufuge
-sudo journalctl -u centrufuge -f -n 100 -o cat
+sudo systemctl enable centrifuge
+sudo systemctl start centrifuge
+sudo journalctl -u centrifuge -f -n 100 -o cat
 ```
 
 - You can check yourself in [Centrifuge Polkadot Telemetry](https://telemetry.polkadot.io/#list/0xb3db41421702df9a7fcac62b53ffeac85f7853cc4e689e0b93aeb3db18c09d82) by your name
@@ -102,7 +102,7 @@ The output `{"jsonrpc":"2.0","result":false,"id":1}` means that you are succesfu
 
 ## 6. Deleting a node
 ```
-sudo systemctl stop centrufuge
+sudo systemctl stop centrifuge
 sudo rm -rf centrifuge-chain
 sudo rm -rf /etc/systemd/system/centrufuge.service
 ```
