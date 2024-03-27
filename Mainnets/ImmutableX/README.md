@@ -40,7 +40,7 @@ sudo chmod -R 777 opt
 sudo docker pull ghcr.io/immutable/go-ethereum/go-ethereum:prod-v1.0.0-beta.4
 ```
 ```
-sudo docker tag ghcr.io/immutable/go-ethereum/go-ethereum:v1.0.0-beta.4 geth
+sudo docker tag ghcr.io/immutable/go-ethereum/go-ethereum:prod-v1.0.0-beta.4 geth
 ```
 ```
 sudo docker run \
