@@ -56,7 +56,7 @@ h. You should see in the **"Balances"** section **"10 XFI"** and **"100 MPX toke
 
 The next step is join to the **"CrossFi wallet"** which we will use to perform our transactions.
 
-**Please note** You need a seed phrase of your MetaMask wallet which you use to register on the "CrossFi Hub" portal.
+**Please note** ***You need a seed phrase of your MetaMask wallet which you use to register on the "CrossFi Hub" portal.***
 
 a. Go to the **"CrossFi Console"** website, [click here](https://test.xficonsole.com)
 
