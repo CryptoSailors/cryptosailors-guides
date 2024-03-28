@@ -22,4 +22,4 @@ First of all, you need to sign up for your MetaMask wallet on the TestPad page.
 
 7. Click the **"Sign"** button to continue registration of the **"CrossFi"** chain. <img src="https://i.postimg.cc/mDJQfLrx/6.jpg"/></a>
 
-8. After this, the registration process has been completed successfully, and you will be redirected to the main portal of the **"TestPad"** console. <img src="https://i.postimg.cc/7hp822YB/7.jpg"/></a>
+8. After this, the registration process is completed, and you will be redirected to the main portal of the **"TestPad"** console. <img src="https://i.postimg.cc/7hp822YB/7.jpg"/></a>
