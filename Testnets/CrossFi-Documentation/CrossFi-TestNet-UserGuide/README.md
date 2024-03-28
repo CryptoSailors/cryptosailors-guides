@@ -46,7 +46,7 @@ e. After getting the following message **"You are now authorized!"** back to the
 
 d. On the **"CrossFi Hub"** page, you need to click the **"Authorize"** button. <img src="https://i.postimg.cc/C5TFhggn/13.jpg"/></a>
 
-f. In the new window, click **"Claim 100 MPX"** and **"Claim 10 XFI"**(In this example we use the Premium account). <img src="https://i.postimg.cc/Pf34R5dq/14.jpg"/></a>
+f. In the new window, click **"Claim 100 MPX"** and **"Claim 10 XFI"** ***(In this example we use the Premium account)***. <img src="https://i.postimg.cc/Pf34R5dq/14.jpg"/></a>
 
 g. Close the **"Window"** and refresh the page to update the amount of the tokens in your account. <img src="https://i.postimg.cc/sxhvmmV7/15.jpg"/></a>
 
