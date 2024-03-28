@@ -20,4 +20,4 @@ First of all, you need to sign up for your MetaMask wallet on the TestPad page.
 
 6. Click the **"Switch Network"** button to switch the selected network within MetaMask to the **"CrossFi"**. <img src="https://i.postimg.cc/NFDPk248/5.jpg"/></a>
 
-7. Click **"Sign"** button to continue registration of the **"CrossFi"** chain <img src="https://i.postimg.cc/mDJQfLrx/6.jpg"/></a>
+7. Click the **"Sign"** button to continue registration of the **"CrossFi"** chain. <img src="https://i.postimg.cc/mDJQfLrx/6.jpg"/></a>
