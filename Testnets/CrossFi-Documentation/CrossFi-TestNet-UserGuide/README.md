@@ -51,3 +51,13 @@ f. In the new window, click **"Claim 100 MPX"** and **"Claim 10 XFI"**. <img src
 g. Close the **"Window"** and refresh the page to update the amount of the tokens in your account. <img src="https://i.postimg.cc/sxhvmmV7/15.jpg"/></a>
 
 h. You should see in the **"Balances"** section **"10 XFI"** and **"100 MPX tokens"**. <img src="https://i.postimg.cc/fW8ZLphP/16.jpg"/></a> <img src="https://i.postimg.cc/G34r4zhh/17.jpg"/></a>
+
+## 3. Join to the CrossFi wallet
+
+The next step is join to the **"CrossFi wallet"** which we will use to perform our transactions.
+
+**Please note** You need a seed phrase of your MetaMask wallet which you use to register on the "CrossFi Hub" portal.
+
+a. Go to the **"CrossFi Console"** website, [click here](https://test.xficonsole.com)
+
+
