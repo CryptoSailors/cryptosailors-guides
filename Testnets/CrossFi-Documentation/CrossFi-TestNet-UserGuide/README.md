@@ -42,9 +42,9 @@ c. You will be redirected to the browser where you need to click the **"Open Tel
 
 d. In the **"CrossFi bot chat, "** click **"start"** button to complete the authorization process. <img src="https://i.postimg.cc/5935FNX3/11.jpg"/></a>
 
-e. After getting the following message **"You are now authorized!"** back to the CrossFi Hub portal. <img src="https://i.postimg.cc/cH5sVnDh/12.jpg"/></a>
+e. After getting the following message **"You are now authorized!"** back to the **"CrossFi Hub"** portal. <img src="https://i.postimg.cc/cH5sVnDh/12.jpg"/></a>
 
-d. On the CrossFi Hub page, you need to click the **"Authorize"** button. <img src="https://i.postimg.cc/C5TFhggn/13.jpg"/></a>
+d. On the **"CrossFi Hub"** page, you need to click the **"Authorize"** button. <img src="https://i.postimg.cc/C5TFhggn/13.jpg"/></a>
 
 f. In the new window, click **"Claim 100 MPX"** and **"Claim 10 XFI"**. <img src="https://i.postimg.cc/Pf34R5dq/14.jpg"/></a>
 
