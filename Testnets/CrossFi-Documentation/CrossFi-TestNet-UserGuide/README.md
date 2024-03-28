@@ -8,4 +8,6 @@
 
 First of all you need to sign up on the [TestPad](https://testpad.xfi.foundation/) page.
 
-On the main page you need to "SignUp" using you Metamask Wallet 
+On the main page you need to "SignUp" using you Metamask Wallet.
+
+1. Open the following [link](https://testpad.xfi.foundation/)
