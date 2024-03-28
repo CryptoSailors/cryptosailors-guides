@@ -80,7 +80,7 @@ In this guide, we have reviewed how to register for the **"Cosmos Hub""** portal
 
 Below, you may find the links to complete CrossFi tasks to get points.
 
-- [Send Transaction Task]
+- [Send Transaction Task]https://github.com/CryptoSailors/cryptosailors-guides/tree/main/Testnets/CrossFi-Documentation/CrossFi-TestNet-UserGuide/Send-Transaction-Task
 
 👉[Webtropia](https://bit.ly/45KaUj4) Only Dedicated Server.
 
