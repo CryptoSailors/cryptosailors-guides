@@ -17,3 +17,5 @@ First of all, you need to sign up for your MetaMask wallet on the TestPad page.
 4. Click the **"Connect"** button to connect the TestPad console to your wallet. <img src="https://i.postimg.cc/sX8cJ9dR/3.jpg"/></a>
 
 5. Click the **"Approve"** button to allow CrossFi Network to be used within MetaMask. <img src="https://i.postimg.cc/kX7cv5LG/4.jpg"/></a>
+
+6. Click the **"Switch Network"** button to switch the selected network within MetaMask to the CrossFi. <img src="https://i.postimg.cc/NFDPk248/5.jpg"/></a>
