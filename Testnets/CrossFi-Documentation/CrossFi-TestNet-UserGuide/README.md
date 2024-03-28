@@ -2,7 +2,7 @@
  <img src="https://i.postimg.cc/4xV0YcVk/398312834-1264357517679972-6145588202110043290-n.png"/></a>
 </p>
 
-# In this Guide, we will show you how you can perform a User Crossfi Testnet Tasks
+# In this Guide, we will show you how you can perform a User CrossFi Testnet Tasks
 
 ## 1. Sign Up.
 
@@ -29,8 +29,25 @@ h. After this, the registration process is completed, and you will be redirected
 The next step is getting tokens to perform the Test Tasks.
 
 **Please note** 
-- Regular Telegram accounts can get 1 MPX and 0.01 XFI coins, once in 24 hours.
-- Premium Telegram accounts can get 100 MPX tokens and 10 XFI coins, once in 24 hours.
+- Regular Telegram accounts can get 1 MPX and 0.01 XFI coins once in 24 hours.
+- Premium Telegram accounts can get 100 MPX tokens and 10 XFI coins once in 24 hours.
 
-***In the near futur the team want to add a faucet with an authorization via Discord. After getting a role of the verified user, you'll be able to claim 25 MPX and 2.5 XFI, once in 24 hours.***
+***In the near future, the team wants to add a faucet with authorization via Discord. After getting the role of the verified user, you'll be able to claim 25 MPX and 2.5 XFI once in 24 hours.***
 
+a. Go to the **"Faucet"** section and click the **"Telegram"** button. <img src="https://i.postimg.cc/5tRjLTwn/8.jpg"/></a>
+
+b. In the new tab, click the **"Open Telegram"** button. <img src="https://i.postimg.cc/Xq3WCkDs/9.jpg"/></a>
+
+c. You will be redirected to the browser where you need to click the **"Open Telegram Desktop"** button. <img src="https://i.postimg.cc/L4zLF4kS/10.jpg"/></a>
+
+d. In the **"CrossFi bot chat, "** click **"start"** button to complete the authorization process. <img src="https://i.postimg.cc/5935FNX3/11.jpg"/></a>
+
+e. After getting the following message **"You are now authorized!"** back to the CrossFi Hub portal. <img src="https://i.postimg.cc/cH5sVnDh/12.jpg"/></a>
+
+d. On the CrossFi Hub page, you need to click the **"Authorize"** button. <img src="https://i.postimg.cc/C5TFhggn/13.jpg"/></a>
+
+f. In the new window, click **"Claim 100 MPX"** and **"Claim 10 XFI"**. <img src="https://i.postimg.cc/Pf34R5dq/14.jpg"/></a>
+
+g. Close the **"Window"** and refresh the page to update the amount of the tokens in your account. <img src="https://i.postimg.cc/sxhvmmV7/15.jpg"/></a>
+
+h. You should see in the **"Balances"** section **"10 XFI"** and **"100 MPX tokens"**. <img src="https://i.postimg.cc/fW8ZLphP/16.jpg"/></a> <img src="https://i.postimg.cc/G34r4zhh/17.jpg"/></a>
