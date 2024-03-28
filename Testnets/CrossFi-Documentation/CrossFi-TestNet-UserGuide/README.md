@@ -8,7 +8,7 @@
 
 First of all, you need to sign up for your **"MetaMask"** wallet on the "**TestPad"** page.
 
-a. Open the following. [link](https://testpad.xfi.foundation/)
+a. Open the following [link](https://testpad.xfi.foundation/)
 
 b. Then click the **"Sign Up"** button. <img src="https://i.postimg.cc/k4Nr0ZTc/1.jpg"/></a>
 
