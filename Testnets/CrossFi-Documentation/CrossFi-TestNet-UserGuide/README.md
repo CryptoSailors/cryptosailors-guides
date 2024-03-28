@@ -6,7 +6,7 @@
 
 ## 1. Sign Up.
 
-First of all you need to sign up your MetaMask wallet on the TestPad page.
+First of all, you need to sign up for your MetaMask wallet on the TestPad page.
 
 1. Open the following [link](https://testpad.xfi.foundation/)
 2. Then Click "Sign Up" button <img src="https://i.postimg.cc/k4Nr0ZTc/1.jpg"/></a>
