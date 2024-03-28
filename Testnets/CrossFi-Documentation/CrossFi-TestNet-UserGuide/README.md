@@ -60,4 +60,48 @@ The next step is join to the **"CrossFi wallet"** which we will use to perform o
 
 a. Go to the **"CrossFi Console"** website, [click here](https://test.xficonsole.com)
 
+b. On the console wallet page, click **"Log in with a seed phrase"**. <img src="https://i.postimg.cc/9FTBQ36P/18.jpg"/></a>
 
+c. Enter the **"Seed Phrase"** of your metamask wallet, which you used to register on the **"CrossFi Hub"** portal. <img src="https://i.postimg.cc/JnLQXpjD/19.jpg"/></a>
+
+d. After logging in to the console, you will see your **"Cosmos address"** and **"EVM address"**. <img src="https://i.postimg.cc/1t72KxB7/20.jpg"/></a> <img src="https://i.postimg.cc/xTzhL4zg/21.jpg"/></a>
+
+**Please note** 
+
+***Make sure that your **"Cosmos address"** and **"EVM address"** match the addresses on the "CrossFi Hub" portal.***
+
+- **"CrossFi Hub"** Cosmos Address and **"CrossFi Console"** Cosmos Address. <img src="https://i.postimg.cc/bNfcVP84/22.jpg"/></a> <img src="https://i.postimg.cc/4NvCr0xy/23.jpg"/></a>
+
+- **"CrossFi Hub"** EVM Address and **"CrossFi Console"** EVM Address. <img src="https://i.postimg.cc/Kv2wr5D2/24.jpg"/></a> <img src="https://i.postimg.cc/zGdQNYZz/25.jpg"/></a>
+
+## 4. Summary 
+
+In this guide, we have reviewed how to register for the **"Cosmos Hub""** portal and get **"TestNet tokens"**. Also, on how to log on to the **"Console"** portal with your MetaMask wallet seed phrase.
+
+Below, you may find the links to complete CrossFi tasks to get points.
+
+- [Send Transaction Task]
+
+👉[Webtropia](https://bit.ly/45KaUj4) Only Dedicated Server.
+
+👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
+
+👉[WebSite](https://crossfi.org/)
+
+👉[Official guide](https://github.com/crossfichain/testnet)
+
+👉[Crossfi Explorer](https://testnet.itrocket.net/crossfi/uptime)
+
+👉[Itrocket snapshot](https://itrocket.net/services/testnet/crossfi/)
+
+👉[Uptick Github](https://github.com/crossfichain)
+
+🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
+
+🔰[Our WebSite](cryptosailors.tech)
+
+🔰[Our Twitter](https://twitter.com/Crypto_Sailors)
+
+#### Guide created by 
+
+AntonMashnin / @antonmashnin
