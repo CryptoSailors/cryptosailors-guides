@@ -12,4 +12,4 @@ On the main page you need to "SignUp" using you Metamask Wallet.
 
 1. Open the following [link](https://testpad.xfi.foundation/)
 2. Then Click "Sign Up" button <img src="https://i.postimg.cc/k4Nr0ZTc/1.jpg"/></a>
-
+3. In the "Pop Up" menu you need to click "Next <img src="https://i.postimg.cc/Bn5VQDTS/2.jpg"/></a>
