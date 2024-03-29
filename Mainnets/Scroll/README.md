@@ -22,7 +22,7 @@ sudo usermod -aG sudo scroll
 sudo usermod -aG systemd-journal scroll
 ```
 ```
-sudo su - filecoin
+sudo su - scroll
 ```
 
 ## 2. Node Preparation.
