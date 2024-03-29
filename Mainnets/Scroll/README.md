@@ -48,7 +48,6 @@ cd l2geth-source
 latestTag=$(curl -s https://api.github.com/repos/scroll-tech/go-ethereum/releases/latest | grep '.tag_name'|cut -d\" -f4)
 echo $latestTag
 git checkout $latestTag
-git branch
 make nccc_geth
 ./build/bin/geth version
 ```
