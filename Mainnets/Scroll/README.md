@@ -13,7 +13,19 @@
 - I recommend Dedicated Ryzen 7 Server on [webtropia](https://bit.ly/45KaUj4)
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
-## 1. Node Preparation.
+## 1. Create a user
+```
+sudo adduser scroll
+```
+```
+sudo usermod -aG sudo scroll
+sudo usermod -aG systemd-journal scroll
+```
+```
+sudo su - filecoin
+```
+
+## 2. Node Preparation.
 ```
 sudo apt update && sudo apt upgrade -y
 ```
@@ -21,10 +33,10 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 ```
 
-## 2. Install golang go
+## 3. Install golang go
 Use [this guide](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22#2-if-you-installing-golang-go-on-clear-server-you-need-input-following-commands) to install golang go using the second section.
 
-## 3. Install and start Scroll mainnet node
+## 4. Install and start Scroll mainnet node
 ```
 L1_ENDPOINT="http://YOUR_ETH_MAINNET_NODE:PORT"
 echo "export L1_ENDPOINT=${L1_ENDPOINT}" >> $HOME/.bash_profile
@@ -41,7 +53,7 @@ make nccc_geth
 ./build/bin/geth version
 ```
 
-## 4. Create a systemd file and launch a node
+## 5. Create a systemd file and launch a node
 ```
 sudo tee <<EOF >/dev/null /etc/systemd/system/scroll.service
 [Unit]
@@ -83,12 +95,12 @@ sudo systemctl start scroll
 sudo journalctl -u scroll -f -n 100 -o cat
 ```
 
-## 5 Your RPC url are:
+## 6 Your RPC url are:
 
 - `http://YOUR_IP:8491`
 - `ws://YOUR_IP:8492`
 
-## 6. Upgrade your Scroll node
+## 7. Upgrade your Scroll node
 First check latest realiease. In our case the [latest release](https://github.com/scroll-tech/go-ethereum/releases)
 ```
 cd l2geth-source
@@ -101,7 +113,7 @@ make nccc_geth
 ./build/bin/geth version
 ```
 
-## 7. Delete your node
+## 8. Delete your node
 ```
 sudo systemctl disable scroll
 sudo systemctl stop scroll
