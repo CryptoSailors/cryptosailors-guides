@@ -48,13 +48,6 @@ sudo docker run \
   --rm \
   -v $HOME/opt/immutable-zkevm:/mnt/geth \
   --name geth \
-  geth account new --datadir /mnt/geth --password /mnt/geth/password
-```
-```
-sudo docker run \
-  --rm \
-  -v $HOME/opt/immutable-zkevm:/mnt/geth \
-  --name geth \
   geth immutable bootstrap rpc \
   --zkevm testnet \
   --datadir /mnt/geth /etc/geth/testnet.json
