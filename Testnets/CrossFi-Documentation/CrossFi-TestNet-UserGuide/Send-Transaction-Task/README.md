@@ -2,7 +2,7 @@
  <img src="https://i.postimg.cc/4xV0YcVk/398312834-1264357517679972-6145588202110043290-n.png"/></a>
 </p>
 
-# In this Guide, we will show you how you can perform a "Send" Transaction and confirm it.
+# In this Guide, we will show you how you can perform a "Send" transaction task and confirm it.
 
 ## 1. Send transaction.
 
