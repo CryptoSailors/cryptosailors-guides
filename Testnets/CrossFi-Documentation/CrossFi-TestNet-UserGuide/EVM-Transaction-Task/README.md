@@ -14,6 +14,12 @@ b. Go to the **"Balance XFI"** section and click **"Send"**. <img src="https://i
 
 c. On the **"Send XFI"** tab, in the **"Wallet address"** field, enter the destination wallet where you will send coins, set the amount of the **"XFI Coins"**, and click the **"Next"** button. <img src="https://i.postimg.cc/h45YdQ5x/4.jpg"/></a>
 
+d. Make sure that you fill all fields correctly (destination address and amount of the tokens). If all look fine, then click the **"Send"** button. <img src="https://i.postimg.cc/BbRsYYQf/5.jpg"/></a>
+
+e. If all looks fine you should see the message **"You have successfully sent XFI"** <img src="https://i.postimg.cc/c488sP3Y/6.jpg"/></a>
+
+
+
 
 
 d. Open the **"Operation history"** tab in the **"Console"** wallet. <img src="https://i.postimg.cc/sXY8H60t/5.jpg"/></a>
