@@ -28,7 +28,7 @@ a. On the main menu of the **"CrossFi Hub"**, open the **"Earn XFT" tab. <img sr
 
 b. Go to the **"EVM"** section and click the **"Check"** button. <img src="https://i.postimg.cc/0jw4wh2F/9.jpg"/></a>
 
-c. Paste the transaction hash you previously copied in the **"Check Task"** menu and click the **"Confirm"** button. <img src="https://i.postimg.cc/T2z82bn7/8.jpg"/></a> <img src="https://i.postimg.cc/vBnz04DT/9.jpg"/></a>
+c. Paste the transaction hash you previously copied in the **"Check Task"** menu and click the **"Confirm"** button. <img src="https://i.postimg.cc/Yq4F1M7h/10.jpg"/></a> <img src="https://i.postimg.cc/vBnz04DT/9.jpg"/></a>
 
 ## 3. Summary 
 
