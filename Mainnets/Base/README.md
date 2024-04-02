@@ -6,7 +6,9 @@
 
 #### Flollowing parametrs:
 
-- No official info.
+- 8 CPU
+- 16 GBRAM
+- 4 TB SSD
 
 #### My Recommendations
 
