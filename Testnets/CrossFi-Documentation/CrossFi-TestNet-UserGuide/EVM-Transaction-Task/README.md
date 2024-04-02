@@ -34,7 +34,7 @@ c. Paste the transaction hash you previously copied in the **"Check Task"** menu
 
 In this guide, we have reviewed how to perform and register the **"EVM"** transaction and confirm it.
 
-Below, you may find the links related to the CrossFi Tasks and other resources of the CrossFi project
+Below, you may find the links related to the CrossFi Tasks and other resources of the CrossFi project.
 
 
 ---
