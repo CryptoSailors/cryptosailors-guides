@@ -40,11 +40,11 @@ Below, you may find the links related to the CrossFi Tasks and other resources o
 ---
 👉[CrossFi-TestNet-UserGuide](https://github.com/CryptoSailors/cryptosailors-guides/tree/main/Testnets/CrossFi-Documentation/CrossFi-TestNet-UserGuide).
 
-👉[CrossFi-Send-Transaction-Task](https://github.com/CryptoSailors/cryptosailors-guides/blob/main/Testnets/CrossFi-Documentation/CrossFi-TestNet-UserGuide/1)%20Send-Transaction-Task).
+👉[CrossFi-Send-Transaction-Task](https://github.com/CryptoSailors/cryptosailors-guides/blob/main/Testnets/CrossFi-Documentation/CrossFi-TestNet-UserGuide/1)%20Send-Transaction-Task/).
 
-👉[CrossFi-Send-Transaction-Task](https://github.com/CryptoSailors/cryptosailors-guides/tree/main/Testnets/CrossFi-Documentation/CrossFi-TestNet-UserGuide/2)%20EVM-Transaction-Task).
+👉[CrossFi-Send-Transaction-Task](https://github.com/CryptoSailors/cryptosailors-guides/tree/main/Testnets/CrossFi-Documentation/CrossFi-TestNet-UserGuide/2)%20EVM-Transaction-Task/).
 
-👉[CrossFi-Send-Transaction-Task](https://github.com/CryptoSailors/cryptosailors-guides/blob/main/Testnets/CrossFi-Documentation/CrossFi-TestNet-UserGuide/3)%20MultiSend-1-Transaction-Task/README.md).
+👉[CrossFi-Send-Transaction-Task](https://github.com/CryptoSailors/cryptosailors-guides/blob/main/Testnets/CrossFi-Documentation/CrossFi-TestNet-UserGuide/3)%20MultiSend-1-Transaction-Task/).
 
 👉[Webtropia](https://bit.ly/45KaUj4) Only Dedicated Server.
 
