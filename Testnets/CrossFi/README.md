@@ -186,7 +186,7 @@ rm -rf $(which crossfid)
 
 👉[Itrocket snapshot](https://itrocket.net/services/testnet/crossfi/)
 
-👉[Uptick Github](https://github.com/crossfichain)
+👉[Сrossfi Github](https://github.com/crossfichain)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
