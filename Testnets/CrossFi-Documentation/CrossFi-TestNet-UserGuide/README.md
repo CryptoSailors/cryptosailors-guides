@@ -96,7 +96,7 @@ Below, you may find the links to complete CrossFi tasks to get points.
 
 👉[Itrocket snapshot](https://itrocket.net/services/testnet/crossfi/)
 
-👉[Uptick Github](https://github.com/crossfichain)
+👉[Crossfi Github](https://github.com/crossfichain)
 
 🔰[Our Telegram Channel](https://t.me/CryptoSailorsAnn)
 
