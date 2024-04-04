@@ -55,7 +55,7 @@ sudo docker-compose version
 git clone https://github.com/base-org/node
 cd node
 ```
-Open a `.env.mainnet`. Find `OP_NODE_L1_ETH_RPC` and input your Ethereum RPC url.
+Open a `.env.mainnet`. Find `OP_NODE_L1_ETH_RPC` and `OP_NODE_L1_BEACON`. Input your Ethereum and Beacon RPC url.
 ```
 sudo nano .env.mainnet
 ```
@@ -64,6 +64,9 @@ sudo nano .env.mainnet
 ```
 # [recommended] replace with your preferred L1 (Ethereum, not Base) node RPC URL:
 OP_NODE_L1_ETH_RPC=http://YOUR_ETHEREUM_RPC_IP:PORT
+
+# [required] replace with your preferred L1 CL beacon endpoint:
+OP_NODE_L1_BEACON=http://YOUR_BEACON_RPC_IP:PORT
 ```
 Open a `docker-compose.yml` chose mainnet network and input your data volume.
 ```
