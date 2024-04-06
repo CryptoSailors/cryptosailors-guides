@@ -13,7 +13,19 @@
 - I recommend Dedicated Ryzen 5 Server on [webtropia](https://bit.ly/45KaUj4) with extended SSD or NVME disk.
 - I recommend for convenience the SSH terminal - [MobaXTerm](https://mobaxterm.mobatek.net/download.html).
 
-## 1. Node Preparation.
+## 1. Create a user
+```
+sudo adduser linea
+```
+```
+sudo usermod -aG sudo linea
+sudo usermod -aG systemd-journal linea
+```
+```
+sudo su - linea
+```
+
+## 2. Node Preparation.
 ```
 sudo apt update && sudo apt upgrade -y
 ```
@@ -21,11 +33,11 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 ```
 
-## 2. Install golang Go.
+## 3. Install golang Go.
 
 Install Golang go according step 2 of [this instruction](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22).
 
-## 3. Install Geth
+## 4. Install Geth
 ```
 git clone https://github.com/ethereum/go-ethereum
 cd go-ethereum
@@ -36,7 +48,7 @@ sudo mv build/bin/geth /usr/bin/
 geth version
 cd ~
 ```
-## 4. Install and configure Linea mainnet node
+## 5. Install and configure Linea mainnet node
 ```
 mkdir -p $HOME/.linea/config
 cd $HOME/.linea/config
@@ -110,17 +122,17 @@ LimitNOFILE=10000
 WantedBy=multi-user.target
 EOF
 ```
-## 5. Start a Linea mainnet node.
+## 6. Start a Linea mainnet node.
 ```
 sudo systemctl enable linea
 sudo systemctl start linea
 sudo journalctl -u linea -f -n 100 -o cat
 ```
-## 6. Link on your rpc:
+## 7. Link on your rpc:
 
 - `http://YOUR_IP:8657`
 
-## 7. Delete your node
+## 8. Delete your node
 ```
 sudo systemctl stop linea
 sudo rm -rf /etc/systemd/system/linea.service
