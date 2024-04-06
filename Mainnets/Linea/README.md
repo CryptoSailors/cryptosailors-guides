@@ -52,7 +52,7 @@ cd ~
 ```
 mkdir -p $HOME/.linea/config
 cd $HOME/.linea/config
-wget -O genesis.json https://docs.linea.build/files/besu/genesis-mainnet.json
+wget -O genesis.json https://docs.linea.build/files/geth/mainnet/genesis.json
 cd $HOME
 mkdir -p $HOME/.linea/data
 geth --datadir $HOME/.linea/data init $HOME/.linea/config/genesis.json
