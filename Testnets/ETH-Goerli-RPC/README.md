@@ -56,9 +56,9 @@ cd lighthouse
 git checkout stable
 make
 ```
-Open nano redactor and insert key from [generator](https://seanwasere.com/generate-random-hex/)
 ```
-sudo nano jwt.hex
+openssl rand -hex 32 > jwt.hex
+sudo chmod +x jwt.hex
 ```
 Close redactor buy CTRL+X,Y,Enter.
 ```
