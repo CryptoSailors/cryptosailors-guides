@@ -44,6 +44,9 @@ sudo usermod -a -G docker `whoami`
 ```
 sudo git clone https://github.com/mantlenetworkio/networks
 cd networks
+sudo mkdir -p mainnet/secret
+sudo chmod -R 777 mainnet
+sudo node -e "console.log(require('crypto').randomBytes(32).toString('hex'))" > mainnet/secret/jwt_secret_txt
 ```
 Install latest snapshot according [this instruction](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnet.md#download-latest-snapshot-from-mantle). I recomend use tmux or screen for this operation. 
 
