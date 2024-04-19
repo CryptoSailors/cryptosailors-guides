@@ -117,7 +117,7 @@ ExecStart=$HOME/.cargo/bin/lighthouse bn \
  --execution-endpoint http://localhost:8551 \
  --execution-jwt $HOME/lighthouse/jwt.hex \
  --disable-deposit-contract-sync \
- --checkpoint-sync-url=https://prater.checkpoint.sigp.io
+ --checkpoint-sync-url=http://unstable.prater.beacon-api.nimbus.team/
 
 Restart=always
 RestartSec=3
