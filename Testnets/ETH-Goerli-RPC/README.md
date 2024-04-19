@@ -117,7 +117,7 @@ ExecStart=$HOME/.cargo/bin/lighthouse bn \
  --execution-endpoint http://localhost:8551 \
  --execution-jwt /home/ethereum/lighthouse/jwt.hex \
  --disable-deposit-contract-sync \
- --checkpoint-sync-url=https://prater-checkpoint-sync.stakely.io
+ --checkpoint-sync-url=https://prater.checkpoint.sigp.io
 
 Restart=always
 RestartSec=3
