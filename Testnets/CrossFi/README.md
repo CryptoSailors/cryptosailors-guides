@@ -31,7 +31,11 @@ sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential g
 ```
 CHAIN_ID=crossfi-evm-testnet-1
 export FOLDER=.mineplex-chain
+```
+```
 export MONIKER=YOUR_NODE_NAME_HERE
+```
+```
 echo "export MONIKER=${MONIKER}" >> $HOME/.bash_profile
 echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
 echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
