@@ -156,11 +156,15 @@ echo Latest synced block behind by: $((($(date +%s)-$( \
 ```
 cd node
 sudo docker-compose stop
+sudo cp docker-compose.yml docker-compose.yml_backup
+sudo cp .env.mainnet .env.mainnet_backup
 git reset --hard
 git pull
 ```
 Configure your `docker-compose.yml` and `.env.goerli` from step 4 and launch a node.
 ```
+sudo cp -r .env.mainnet_backup .env.mainnet
+sudo cp -r docker-compose.yml_backup docker-compose.yml
 sudo docker-compose build
 sudo docker-compose up -d
 ```
