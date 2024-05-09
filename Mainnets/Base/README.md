@@ -88,7 +88,7 @@ services:
       - 7301:6060       # metrics
     command: [ "bash", "./geth-entrypoint" ]
     volumes:
-        - 'home/base/node/data:/data
+        - /home/base/node/data:/data
     env_file:
       # select your network here:
 #      - .env.sepolia
