@@ -81,17 +81,16 @@ services:
   geth: # this is Optimism's geth client
     build: .
     ports:
-      - 8549:8545       # RPC
-      - 8550:8546       # websocket
-      - 30308:30303     # P2P TCP (currently unused)
-      - 30308:30303/udp # P2P UDP (currently unused)
+      - 8545:8545       # RPC
+      - 8546:8546       # websocket
+      - 30303:30303     # P2P TCP (currently unused)
+      - 30303:30303/udp # P2P UDP (currently unused)
       - 7301:6060       # metrics
     command: [ "bash", "./geth-entrypoint" ]
     volumes:
         - 'home/base/node/data:/data
     env_file:
       # select your network here:
-#      - .env.goerli
 #      - .env.sepolia
       - .env.mainnet
   node:
@@ -103,15 +102,12 @@ services:
       - 9222:9222     # P2P TCP
       - 9222:9222/udp # P2P UDP
       - 7300:7300     # metrics
-      - 6061:6060     # pprof
+      - 6060:6060     # pprof
     command: [ "bash", "./op-node-entrypoint" ]
     env_file:
       # select your network here:
-#      - .env.goerli
 #      - .env.sepolia
       - .env.mainnet
-
-
 ```
 
 ## 5. Downoald latest snapshot
