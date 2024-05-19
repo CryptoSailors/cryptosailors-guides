@@ -58,7 +58,7 @@ sudo mkdir -p mainnet/secret
 sudo chmod -R 777 mainnet
 sudo node -e "console.log(require('crypto').randomBytes(32).toString('hex'))" > mainnet/secret/jwt_secret_txt
 ```
-Install latest snapshot according [this instruction](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnet.md#download-latest-snapshot-from-mantle). I recomend use tmux or screen for this operation. 
+Install latest full node snapshot according [this instruction](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnetv2.md#operating-the-node). I recomend use tmux or screen for this operation. 
 
 Configure `docker-compose-mainnet.yml` and change link at `ETH1_HTTP` on your ETH mainnet RPC node. 
 ```
