@@ -14,15 +14,22 @@
 
 ## 1. Node Preparation.
 ```
+sudo adduser base
+sudo usermod -aG sudo base
+sudo su - base
+```
+```
 sudo apt update && sudo apt upgrade -y
 ```
 ```
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 ```
 
-- Install Golang go according step 2 of [this instruction.](https://github.com/CryptoSailors/cryptosailors-tools/blob/main/Install%20Golang%20%22Go%22/README.md)
+## 2. Install golang Go.
 
-## 2. Install docker and docker-compose
+Install Golang go according step 2 of [this instruction](https://github.com/CryptoSailors/cryptosailors-tools/tree/main/Install%20Golang%20%22Go%22).
+
+## 3. Install docker and docker-compose
 Check the latest version of [docker-compose](https://github.com/docker/compose/releases) and follow the guide.
 ```
 sudo apt install docker.io -y
@@ -40,7 +47,7 @@ sudo docker-compose version
 ```
 sudo usermod -a -G docker `whoami`
 ```
-## 3. Install and start Mantle mainnet node
+## 4. Install and start Mantle mainnet node
 ```
 sudo git clone https://github.com/mantlenetworkio/networks
 cd networks
@@ -70,11 +77,11 @@ Check your logs
 sudo docker-compose logs replica -f --tail 100
 ```
 
-## 4. Link to your RPC
+## 5. Link to your RPC
 - `http://YOUR_IP:8625`
 - `ws://YOUR_IP:8626`
 
-## 5. Upgrade your Mantle node
+## 6. Upgrade your Mantle node
 First check latest realiease. In our case the [latest release](https://github.com/mantlenetworkio/mantle/releases)
 ```
 cd networks
