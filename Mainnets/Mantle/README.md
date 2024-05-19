@@ -60,7 +60,7 @@ sudo node -e "console.log(require('crypto').randomBytes(32).toString('hex'))" > 
 ```
 Install latest full node snapshot according [this instruction](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnetv2.md#operating-the-node). I recomend use tmux or screen for this operation. 
 
-Configure `docker-compose-mainnet.yml` and change link at `ETH1_HTTP` on your ETH mainnet RPC node. 
+Configure `docker-compose-mainnetv2.yml` and change link at `ETH1_HTTP` on your ETH mainnet RPC node. 
 ```
 sudo nano docker-compose-mainnet.yml
 ```
@@ -73,7 +73,7 @@ You also can change custom ports or your own if need it.
 ```
 #### CTRL+X,Y
 ```
-sudo docker-compose -f docker-compose-mainnet.yml up -d
+sudo docker-compose -f docker-compose-mainnetv2.yml up -d
 ```
 Check your logs
 ```
