@@ -62,14 +62,7 @@ Install latest full node snapshot according [this instruction](https://github.co
 
 Configure `docker-compose-mainnetv2.yml` and change link at `ETH1_HTTP` on your ETH mainnet RPC node. 
 ```
-sudo nano docker-compose-mainnet.yml
-```
-You also can change custom ports or your own if need it.
-#### Example:
-```
- ports:
-      - ${VERIFIER_HTTP_PORT:-8625}:8545
-      - ${VERIFIER_WS_PORT:-8626}:8546
+sudo nano docker-compose-mainnetv2.yml
 ```
 #### CTRL+X,Y
 ```
@@ -77,7 +70,10 @@ sudo docker-compose -f docker-compose-mainnetv2.yml up -d
 ```
 Check your logs
 ```
-sudo docker-compose logs replica -f --tail 100
+sudo docker-compose -f docker-compose-mainnetv2.yml logs op-geth -f --tail 100
+```
+```
+sudo docker-compose -f docker-compose-mainnetv2.yml logs op-node -f --tail 100
 ```
 
 ## 5. Link to your RPC
