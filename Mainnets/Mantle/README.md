@@ -14,9 +14,9 @@
 
 ## 1. Node Preparation.
 ```
-sudo adduser base
-sudo usermod -aG sudo base
-sudo su - base
+sudo adduser mantle
+sudo usermod -aG sudo mantle
+sudo su - mantle
 ```
 ```
 sudo apt update && sudo apt upgrade -y
