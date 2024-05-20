@@ -77,8 +77,8 @@ sudo docker-compose -f docker-compose-mainnetv2.yml logs op-node -f --tail 100
 ```
 
 ## 5. Link to your RPC
-- `http://YOUR_IP:8625`
-- `ws://YOUR_IP:8626`
+- `http://YOUR_IP:8545`
+- `ws://YOUR_IP:8546`
 
 ## 6. Upgrade your Mantle node
 First check latest realiease. In our case the [latest release](https://github.com/mantlenetworkio/mantle/releases)
