@@ -52,7 +52,10 @@ cargo build --release
 ```
 cd ~
 ```
+```
 mkdir moonbeam-data && cd moonbeam-data && mkdir wasm
+```
+
 ## 5. Setup the Sytemd Service.
 ```
 sudo tee <<EOF >/dev/null /etc/systemd/system/moonbeam.service
