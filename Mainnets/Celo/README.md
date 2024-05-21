@@ -47,7 +47,7 @@ sudo docker-compose version
 
 ## 4. Install and configure Celo mannet node
 ```
-echo "export CELO_IMAGE=us.gcr.io/celo-org/geth:mainnet" >> $HOME/.profile
+echo "export CELO_IMAGE=us.gcr.io/celo-org/geth:mainnet" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 ```
