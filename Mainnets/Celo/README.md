@@ -15,6 +15,11 @@
 
 ## 1. Node Preparation.
 ```
+sudo adduser celo
+sudo usermod -aG sudo celo
+sudo su - celo
+```
+```
 sudo apt update && sudo apt upgrade -y
 ```
 ```
