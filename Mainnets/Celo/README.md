@@ -64,6 +64,10 @@ source $HOME/.bash_profile
 
 #### Download and unpack celo mainnet snapshot
 ```
+mkdir celo
+sudo chmod -R 777 celo 
+```
+```
 wget https://storage.googleapis.com/celo-chain-backup/mainnet/chaindata-latest.tar.lz4
 ```
 ``` 
