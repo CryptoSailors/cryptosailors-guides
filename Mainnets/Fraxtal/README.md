@@ -76,6 +76,8 @@ sudo nano .env
 # Your Ethereum RPC node endpoint. As an L2, your Frax node will verify tx finality by
 # querying your own Ethereum RPC node.
 OP_NODE_L1_ETH_RPC=http://YOUR_ETHEREUM_RPC:PORT
+OP_NODE_L1_BEACON=http://YOUR_ETHEREUM_BEACON_RPC:PORT
+
 ```
 If you have several nodes on one machine, you can configure your `docker-compose.yml` like me bellow. Just copy and past in your `docker-compose.yml`
 ```
@@ -86,10 +88,12 @@ version: "3.8"
 
 services:
   mainnet-geth:
-    image: us-docker.pkg.dev/oplabs-tools-artifacts/images/op-geth:v1.101305.1
+    image: us-docker.pkg.dev/oplabs-tools-artifacts/images/op-geth:v1.101315.0
     ports:
-      - 8545:8545
-      - 8546:8546
+      - 8534:8545
+      - 8535:8546
+      - 30303:30303/tcp
+      - 30303:30303/udp
     entrypoint: ["geth-entrypoint"]
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8545"]
@@ -102,10 +106,10 @@ services:
       - ./mainnet/genesis.json:/data/genesis.json:ro
       - ./geth-entrypoint.sh:/bin/geth-entrypoint
   mainnet-node:
-    image: ghcr.io/fraxfinance/fraxtal-op-node:v1.4.2-frax-1.0.0
+    image: ghcr.io/fraxfinance/fraxtal-op-node:v1.7.5-frax-1.1.0
     ports:
       - 7390:8545
-      - 9346:9222
+      - 9346:9222/tcp
       - 9346:9222/udp
     entrypoint: ["node-entrypoint"]
     depends_on:
