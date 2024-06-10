@@ -11,6 +11,11 @@
 
 ## 1. Node Preparation.
 ```
+sudo adduser arbitrum
+sudo usermod -aG sudo arbitrum
+sudo su - arbitrum
+```
+```
 sudo apt update && sudo apt upgrade -y
 ```
 ```
