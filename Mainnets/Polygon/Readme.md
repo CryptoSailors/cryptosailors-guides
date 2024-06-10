@@ -200,7 +200,7 @@ sudo systemctl start bor && journalctl -u bor -f -n 100
 #### Heimdall Manual update
 ```
 source .bash_profile
-sudo systemclt stop bor
+sudo systemctl stop bor
 sudo systemctl stop heimdalld
 cd heimdall
 git pull
