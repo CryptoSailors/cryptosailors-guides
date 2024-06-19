@@ -56,6 +56,12 @@ The system will ask following:
 Open your browser and insert you link with ip
 ```http://123.123.123.123:3000```
 
+or you can check it through the linux by comand
+
+```
+docker logs hubble-hubble-1 -f --tail 100
+```
+
 👉[SSH terminal MobaxTerm](https://mobaxterm.mobatek.net/download.html)
 
 👉[Farcaster Official docs](https://docs.farcaster.xyz/hubble/hubble)
