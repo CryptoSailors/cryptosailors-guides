@@ -184,10 +184,11 @@ curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method":
 source .bash_profile
 sudo systemctl stop bor
 cd bor
-git pull
+sudo git reset --hard
+sudo git pull
 latestTag=$(curl -s https://api.github.com/repos/maticnetwork/bor/releases/latest | grep '.tag_name'|cut -d\" -f4)
 echo $latestTag
-git checkout $latestTag
+sudo git checkout $latestTag
 make
 bor version
 ```
