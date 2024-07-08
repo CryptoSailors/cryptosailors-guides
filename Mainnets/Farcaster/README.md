@@ -21,6 +21,13 @@ sudo apt update && sudo apt upgrade -y
 ```
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 ```
+```
+sudo ufw allow 2283/tcp
+sudo ufw allow 2282/tcp
+sudo ufw allow 2282/udp
+sudo ufw allow 2283/udp
+sudo ufw allow 3000/udp
+sudo ufw allow 3000/tcp
 
 ## 2. Install golang go
 Install Golang go according step 2 of [this instruction.](https://github.com/CryptoSailors/cryptosailors-tools/blob/main/Install%20Golang%20%22Go%22/README.md)
