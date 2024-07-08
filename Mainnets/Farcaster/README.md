@@ -28,6 +28,7 @@ sudo ufw allow 2282/udp
 sudo ufw allow 2283/udp
 sudo ufw allow 3000/udp
 sudo ufw allow 3000/tcp
+```
 
 ## 2. Install golang go
 Install Golang go according step 2 of [this instruction.](https://github.com/CryptoSailors/cryptosailors-tools/blob/main/Install%20Golang%20%22Go%22/README.md)
