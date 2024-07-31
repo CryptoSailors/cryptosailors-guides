@@ -9,7 +9,9 @@
 To stake a Lava token, you must open Lava Explorer, which any validator can provide. In our case, we'll review the "w3" dashboard.
 
 a. Open the following [link](https://lava-explorer.w3coins.io/Lava/staking)
+
 b. Click on the "wallet" in the upper correct corner <img src="https://i.postimg.cc/XqGdMyY0/1.png"/></a>
+
 c. Connect your Keplr wallet (or any other wallet that supports Lava Network) <img src="https://i.postimg.cc/hjSXnZKn/2.png"/></a>
 
 ## 2. Staking Tokens
