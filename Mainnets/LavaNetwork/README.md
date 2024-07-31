@@ -17,11 +17,17 @@ c. Connect your Keplr wallet (or any other wallet that supports Lava Network) <i
 ## 2. Staking Tokens
 
 a. To stake your tokens, you can select the necessary validator. In our case, it will be CryptoSailors.
+
 b. Find it in the top list of the validators and click the "delegate" button <img src="https://i.postimg.cc/K8QgpyPb/3.png"/></a>
+
 c. In the "amount" field, you need to set the number of tokens that you want to delegate  <img src="https://i.postimg.cc/kgRkfn36/4.png"/></a>
+
 d. Let's set the total amount of available tokens to our validator (in our example, we'll stake "5" tokens) and click the "Send" button to complete the transaction <img src="https://i.postimg.cc/0Nph1cN9/5.png"/></a>
+
 e. On the latest step, we need to confirm our transaction <img src="https://i.postimg.cc/P5DR12Y1/6.png"/></a>
+
 f. Wait until the transaction is completed <img src="https://i.postimg.cc/63pcb02j/8.png"/></a>
+
 g. You may click on the "View Transaction" button to check the details of the transaction <img src="https://i.postimg.cc/x1Q4yLR7/9.png"/></a> <img src="https://i.postimg.cc/x1Q4yLR7/9.png"/></a> https://i.postimg.cc/Dfbj9xpH/10.png
 
 ## 3. Summary 
