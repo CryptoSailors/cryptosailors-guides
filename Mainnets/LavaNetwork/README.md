@@ -28,7 +28,7 @@ e. On the latest step, we need to confirm our transaction <img src="https://i.po
 
 f. Wait until the transaction is completed <img src="https://i.postimg.cc/63pcb02j/8.png"/></a>
 
-g. You may click on the "View Transaction" button to check the details of the transaction <img src="https://i.postimg.cc/x1Q4yLR7/9.png"/></a> <img src="https://i.postimg.cc/x1Q4yLR7/9.png"/></a> https://i.postimg.cc/Dfbj9xpH/10.png
+g. You may click on the "View Transaction" button to check the details of the transaction <img src="https://i.postimg.cc/x1Q4yLR7/9.png"/></a> <img src="https://i.postimg.cc/Dfbj9xpH/10.png"/></a> 
 
 ## 3. Summary 
 
