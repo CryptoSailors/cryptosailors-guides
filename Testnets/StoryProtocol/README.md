@@ -116,11 +116,6 @@ geth attach $HOME/.story/geth/iliad/geth.ipc
 - `admin.peers` will print out a list of other geth nodes your client is connected to - if this is blank there is a peer connectivity issue
 - `eth.syncing` will return `false` if geth is in the process of syncing, `true` otherwise
 - `exit` to exit from geth
-```
-story status 2>&1 | jq .SyncInfo
-```
-- If node show `false` - that means that you are synched and can contine. 
-- If node show `true` - that means that you are **NOT** synched and should wait.
 
 ## 7. Create your wallet.
 The comment bellow will give you a wallet address and mnemonic phrase, which you should save on safe place.
