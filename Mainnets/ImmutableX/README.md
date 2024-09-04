@@ -37,10 +37,10 @@ cd ~
 sudo chmod -R 777 opt
 ```
 ```
-sudo docker pull ghcr.io/immutable/go-ethereum/go-ethereum:v1.0.0-beta.7
+sudo docker pull ghcr.io/immutable/go-ethereum/go-ethereum:latest
 ```
 ```
-sudo docker tag ghcr.io/immutable/go-ethereum/go-ethereum:v1.0.0-beta.7 geth
+sudo docker tag ghcr.io/immutable/go-ethereum/go-ethereum:latest geth
 ```
 ```
 sudo docker run \
