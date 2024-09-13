@@ -26,7 +26,12 @@ sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential g
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
 ```
-
+```
+ustup component add --toolchain nightly rust-std
+```
+```
+rustup component add rust-src
+```
 ## 3. Install a Centrifuge node
 ```
 git clone https://github.com/centrifuge/centrifuge-chain
