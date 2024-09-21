@@ -56,7 +56,7 @@ echo "export ETH_BEACON_URL=${ETH_BEACON_URL}" >> .bash_profile
 source .bash_profile
 ```
 ```
-sudo docker run --name arbitrum --restart unless-stopped --stop-timeout 300 -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8547:8547 -p 0.0.0.0:8548:8548 -p 0.0.0.0:8646:8646 $RELEASE --parent-chain.connection.url=$ETH_RPC_URL --parent-chain.blob-client.beacon-url=$ETH_BEACON_URL --chain.id=42161 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=* --ws.port=8646 --ws.addr=0.0.0.0 --ws.origins="*"  --ws.api=debug,eth,txpool,net,engine,web3
+sudo docker run --name arbitrum --restart unless-stopped --stop-timeout 300 -it -d -v $HOME/data/arbitrum:/home/user/.arbitrum -p 0.0.0.0:8547:8547 -p 0.0.0.0:8548:8548 -p 0.0.0.0:8646:8646 $RELEASE --parent-chain.connection.url=$ETH_RPC_URL --parent-chain.blob-client.beacon-url=$ETH_BEACON_URL --chain.id=42161 --http.api=net,web3,eth,debug --http.corsdomain=* --http.addr=0.0.0.0 --http.vhosts=* --ws.port=8646 --ws.addr=0.0.0.0 --ws.origins="*"  --ws.api=debug,eth,txpool,net,engine,web3 --init.latest "pruned"
 ```
 Check your logs: 
 ```
